@@ -36,7 +36,23 @@ class Paper:
 
 
 def parse_pdf(file_path: Union[str, Path]) -> Paper:
-    """Parse PDF file into a `Paper`."""
+    """Parse PDF file into a `Paper`.
+
+    Args:
+        file_path (Union[str, Path]): Path to the PDF file.
+
+    Returns:
+        Paper: A `Paper` object.
+
+    Example:
+    ```python
+    pdfs = pathlib.Path('data/').glob('*.pdf')
+
+    for i, pdf in enumerate(pdfs):
+        paper = parse_pdf(pdf)
+        paper.save(f'data/parsed/{i}.pkl.gz')
+    ```
+    """
 
     text = extract_text(file_path)
 
