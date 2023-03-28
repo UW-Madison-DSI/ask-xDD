@@ -1,0 +1,13 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+{
+	"name": "ASKEM",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "llm",
+	"workspaceFolder": "/askem",
+	"shutdownAction": "stopCompose",
+	"remoteUser": "root",
+	"postCreateCommand": "pip install -r requirements.txt"
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+}
