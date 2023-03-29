@@ -7,7 +7,7 @@
 	"workspaceFolder": "/askem",
 	"shutdownAction": "stopCompose",
 	"remoteUser": "root",
-	"postCreateCommand": "pip install -r requirements.txt"
+	"postCreateCommand": "pip install -r .devcontainer/requirements.txt"
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
 }

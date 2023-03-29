@@ -1,0 +1,5 @@
+ipywidgets
+gradio
+nltk
+openai
+python-dotenv
