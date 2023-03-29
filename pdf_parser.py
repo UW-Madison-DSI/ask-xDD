@@ -8,14 +8,16 @@ from dataclasses import dataclass
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.high_level import extract_text
-from preprocessing import clean_text
+from preprocessing import to_sentences, to_chunks
 
 
 @dataclass
 class Paper:
     title: str
     doi: str
-    text: List[str]
+    text: str
+    sentences: List[str]
+    chunks: List[str]
     metadata: dict
 
     @classmethod
@@ -55,13 +57,23 @@ def parse_pdf(file_path: Union[str, Path]) -> Paper:
     """
 
     text = extract_text(file_path)
+    sentences = to_sentences(text)
+    chunks = to_chunks(sentences)
 
+    # Extract metadata
     with open(file_path, "rb") as file:
         parser = PDFParser(file)
         document = PDFDocument(parser)
-
         metadata = document.info[0]
-        title = metadata.get("Title", "No title")
-        doi = metadata.get("doi")
 
-        return Paper(title=title, doi=doi, text=clean_text(text), metadata=metadata)
+    title = metadata.get("Title", "No title")
+    doi = metadata.get("doi")
+
+    return Paper(
+        title=title,
+        doi=doi,
+        text=text,
+        sentences=sentences,
+        chunks=chunks,
+        metadata=metadata,
+    )
