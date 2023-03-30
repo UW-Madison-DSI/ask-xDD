@@ -7,4 +7,10 @@ services:
       source: ..
       target: /askem
   tty: true
-  stdin_open: true
+  # deploy:
+  #   resources:
+  #     reservations:
+  #       devices:
+  #         - driver: nvidia
+  #           count: all
+  #           capabilities: [gpu]
