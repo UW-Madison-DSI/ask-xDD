@@ -3,3 +3,4 @@ gradio
 nltk
 openai
 python-dotenv
+pdfminer.six
