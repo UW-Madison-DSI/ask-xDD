@@ -130,12 +130,12 @@ def _t5(x: str, model_name: str = "google/long-t5-tglobal-base") -> str:
 def summarize(sentences: List[str], **kwargs) -> str:
     """Summarize sentences using LLM."""
 
-    TEMPLATE = f"Summarize: {'.'.join(sentences)}"
+    TEMPLATE = f"summarize: {'.'.join(sentences)}"
     return _t5(TEMPLATE.format(sentences), **kwargs)
 
 
 def prompt_sum(article: str, question: str, **kwargs) -> str:
     """Prompt-based text summary using LLM."""
 
-    TEMPLATE = f"Based on the following article, answer the following question: {question}. The article is: {article}"
+    TEMPLATE = f"answer_me: {question} context: {article}"
     return _t5(TEMPLATE.format(question=question, article=article), **kwargs)
