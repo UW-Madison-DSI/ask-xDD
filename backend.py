@@ -5,9 +5,11 @@ from typing import List
 import openai
 import torch
 import torch.nn.functional as F
-from transformers import AutoModel, AutoTokenizer
+from transformers import AutoModel, AutoTokenizer, LongT5ForConditionalGeneration
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
+############################## GPT ##############################
 
 
 def _compress(chunk: str) -> str:
@@ -99,3 +101,41 @@ def dot_score(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
     a = a.unsqueeze(0) if len(a.shape) == 1 else a
     b = b.unsqueeze(0) if len(b.shape) == 1 else b
     return a @ b.T
+
+
+############################## Long-T5 ##############################
+
+
+def _t5(x: str, model_name: str = "google/long-t5-tglobal-base") -> str:
+    """Summarize sentences using LLM."""
+
+    # Tokenize input sentences
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    inputs_dict = tokenizer(
+        x,
+        max_length=16384,
+        padding="max_length",
+        truncation=True,
+        return_tensors="pt",
+    )
+
+    # Generate summary
+    model = LongT5ForConditionalGeneration.from_pretrained(model_name)
+    y = model.generate(
+        inputs_dict.input_ids, attention_mask=inputs_dict.attention_mask, max_length=512
+    )
+    return tokenizer.decode(y[0])
+
+
+def summarize(sentences: List[str], **kwargs) -> str:
+    """Summarize sentences using LLM."""
+
+    TEMPLATE = f"Summarize: {'.'.join(sentences)}"
+    return _t5(TEMPLATE.format(sentences), **kwargs)
+
+
+def prompt_sum(article: str, question: str, **kwargs) -> str:
+    """Prompt-based text summary using LLM."""
+
+    TEMPLATE = f"Based on the following article, answer the following question: {question}. The article is: {article}"
+    return _t5(TEMPLATE.format(question=question, article=article), **kwargs)
