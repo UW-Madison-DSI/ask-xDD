@@ -4,3 +4,5 @@ nltk
 openai
 python-dotenv
 pdfminer.six
+captum
+gradio
