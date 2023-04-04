@@ -134,8 +134,8 @@ def summarize(sentences: List[str], **kwargs) -> str:
     return _t5(TEMPLATE.format(sentences), **kwargs)
 
 
-def prompt_sum(article: str, question: str, **kwargs) -> str:
+def prompt_sum(text: str, question: str, **kwargs) -> str:
     """Prompt-based text summary using LLM."""
 
-    TEMPLATE = f"answer_me: {question} context: {article}"
-    return _t5(TEMPLATE.format(question=question, article=article), **kwargs)
+    TEMPLATE = f"answer_me: {question} context: {text}"
+    return _t5(TEMPLATE.format(question=question, article=text), **kwargs)
