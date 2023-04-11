@@ -1,11 +1,16 @@
 import os
 from concurrent.futures import ThreadPoolExecutor
-from typing import List
+from typing import List, Protocol
 
 import openai
 import torch
 import torch.nn.functional as F
-from transformers import AutoModel, AutoTokenizer, LongT5ForConditionalGeneration
+from transformers import (
+    AutoModel,
+    AutoTokenizer,
+    LongT5ForConditionalGeneration,
+    AutoModelForSeq2SeqLM,
+)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -103,7 +108,7 @@ def dot_score(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
     return a @ b.T
 
 
-############################## Long-T5 ##############################
+############################## LLMs ##############################
 
 
 def _t5(x: str, model_name: str = "google/long-t5-tglobal-base") -> str:
@@ -127,6 +132,26 @@ def _t5(x: str, model_name: str = "google/long-t5-tglobal-base") -> str:
     return tokenizer.decode(y[0])
 
 
+def _mt0(x: str, model_name: str = "bigscience/mt0-base") -> str:
+    """Summarize sentences using LLM."""
+
+    # Tokenize input sentences
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    inputs_dict = tokenizer(
+        x,
+        max_length=16384,
+        padding="max_length",
+        return_tensors="pt",
+    )
+
+    # Generate summary
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+    y = model.generate(
+        inputs_dict.input_ids, attention_mask=inputs_dict.attention_mask, max_length=512
+    )
+    return tokenizer.decode(y[0])
+
+
 def summarize(sentences: List[str], **kwargs) -> str:
     """Summarize sentences using LLM."""
 
@@ -137,5 +162,5 @@ def summarize(sentences: List[str], **kwargs) -> str:
 def prompt_sum(text: str, question: str, **kwargs) -> str:
     """Prompt-based text summary using LLM."""
 
-    TEMPLATE = f"answer_me: {question} context: {text}"
+    TEMPLATE = f"Based on the following context answer this question: {question} Context: {text}"
     return _t5(TEMPLATE.format(question=question, article=text), **kwargs)
