@@ -1,6 +1,6 @@
 import os
+from typing import List
 from concurrent.futures import ThreadPoolExecutor
-from typing import List, Protocol
 
 import openai
 import torch
@@ -111,7 +111,7 @@ def dot_score(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
 ############################## LLMs ##############################
 
 
-def _t5(x: str, model_name: str = "google/long-t5-tglobal-base") -> str:
+def t5(x: str, model_name: str = "google/long-t5-tglobal-base") -> str:
     """Summarize sentences using LLM."""
 
     # Tokenize input sentences
@@ -132,7 +132,7 @@ def _t5(x: str, model_name: str = "google/long-t5-tglobal-base") -> str:
     return tokenizer.decode(y[0])
 
 
-def _mt0(x: str, model_name: str = "bigscience/mt0-base") -> str:
+def mt0(x: str, model_name: str = "bigscience/mt0-base") -> str:
     """Summarize sentences using LLM."""
 
     # Tokenize input sentences
