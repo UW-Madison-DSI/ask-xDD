@@ -5,6 +5,11 @@ from transformers import (
 )
 
 
+def format_qa(question: str, context: str) -> str:
+    """Format question and context for T5."""
+    return f"question: {question} context: {context}"
+
+
 def t5(x: str, model_name: str = "google/long-t5-tglobal-base") -> str:
     """Summarize sentences using LLM."""
 
