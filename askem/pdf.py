@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.high_level import extract_text
-from preprocessing import to_sentences, to_chunks
+from .preprocessing import to_sentences, to_chunks
 
 
 @dataclass
