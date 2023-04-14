@@ -6,3 +6,5 @@ python-dotenv
 pdfminer.six
 captum
 gradio
+farm-haystack
+farm-haystack[faiss]
