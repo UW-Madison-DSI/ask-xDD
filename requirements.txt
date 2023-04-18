@@ -1,0 +1,5 @@
+nltk
+python-dotenv
+farm-haystack
+farm-haystack[faiss]
+streamlit
