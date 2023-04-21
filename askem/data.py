@@ -4,7 +4,7 @@ from datasets import load_dataset
 
 def get_covid_qa():
     """Get the COVID-QA dataset."""
-    dataset = load_dataset("covid_qa")
+    dataset = load_dataset("covid_qa_deepset")
     return dataset["train"]
 
 
