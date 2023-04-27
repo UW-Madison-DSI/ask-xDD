@@ -1,5 +1,6 @@
 import random
 from datasets import load_dataset
+from peewee import SqliteDatabase, Model, TextField, IntegerField
 
 
 def get_covid_qa():
@@ -9,6 +10,7 @@ def get_covid_qa():
 
 
 COVID_QA = get_covid_qa()
+BENCH_DB = SqliteDatabase("data/benchmark.db")
 
 
 def get_example(dataset, id=None):
@@ -19,3 +21,14 @@ def get_example(dataset, id=None):
     data = dataset[id]
     columns = ["context", "question", "is_impossible", "answers"]
     return {x: data[x] for x in columns}
+
+
+class GPTBench(Model):
+    id = IntegerField(primary_key=True)
+    context = TextField()
+    question = TextField()
+    true_answer = TextField()
+    gpt_answer = TextField()
+
+    class Meta:
+        database = BENCH_DB
