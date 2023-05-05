@@ -8,3 +8,4 @@ captum
 gradio
 farm-haystack
 farm-haystack[faiss]
+bert-score
