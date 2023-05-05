@@ -7,7 +7,11 @@
 	"workspaceFolder": "/askem",
 	"shutdownAction": "stopCompose",
 	"remoteUser": "root",
-	"postCreateCommand": "pip install -r .devcontainer/requirements.txt"
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"git-lfs": "latest"
+	},
+	"postCreateCommand": "bash .devcontainer/post-create.sh"
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
 }
