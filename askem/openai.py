@@ -1,7 +1,8 @@
-from typing import List
 import os
-import openai
 from concurrent.futures import ThreadPoolExecutor
+from typing import List
+
+import openai
 import tiktoken
 
 ENCODING = tiktoken.encoding_for_model("gpt-3.5-turbo")
