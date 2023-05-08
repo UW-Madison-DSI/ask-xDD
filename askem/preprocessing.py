@@ -37,7 +37,7 @@ def main(input_dir: str, split_length: int = 200, recreate_index: bool = True):
 
     # Create pipeline
     pipeline = Pipeline()
-    pipeline.add_node(text_converter, name="text_converter", inputs=["files"])
+    pipeline.add_node(text_converter, name="text_converter", inputs=["File"])
     pipeline.add_node(preprocessor, name="preprocessor", inputs=["text_converter"])
     pipeline.add_node(document_store, name="document_store", inputs=["preprocessor"])
 

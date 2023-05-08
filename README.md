@@ -2,8 +2,6 @@
 
 repo: <https://github.com/JasonLo/askem>
 
-TODO: Fix the full-stop delimited for number bullets
-TODO: Purge the un-used code
 TODO: Search for newer model for dense passage retriever
 TODO: Containerize with proper vector store
 TODO: Benchmark from OpenAI x COVID-19-deepset with BERTScore
