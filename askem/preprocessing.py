@@ -34,7 +34,7 @@ class HaystackPreprocessor:
         pipeline.add_node(preprocessor, name="preprocessor", inputs=["text_converter"])
         return pipeline
 
-    def run_one(self, input_file: Path) -> List[dict]:
+    def run(self, input_file: Path) -> List[dict]:
         """Use haystack preprocessing to preprocess one file."""
 
         file_stem = Path(input_file).stem
@@ -47,13 +47,4 @@ class HaystackPreprocessor:
                 {"paper_id": file_stem, "type": "paragraph", "text_content": d.content}
             )
 
-        return outputs
-
-    def run(self, input_dir: str) -> List[dict]:
-        """Use haystack preprocessing to preprocess alls file."""
-
-        input_files = Path(input_dir).glob("**/*.txt")
-        outputs = []
-        for input_file in input_files:
-            outputs.extend(self.run_one(input_file))
         return outputs

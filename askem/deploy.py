@@ -1,11 +1,12 @@
 import json
 import logging
 import os
-from typing import Dict, List
+from pathlib import Path
 
 import click
 import weaviate
 from dotenv import load_dotenv
+from tqdm.autonotebook import tqdm
 
 from askem.preprocessing import HaystackPreprocessor, Preprocessor
 
@@ -71,11 +72,13 @@ def ingest_passages(input_dir: str, preprocessor: Preprocessor = None) -> None:
         preprocessor = HaystackPreprocessor()
 
     client = get_client()
+    input_files = Path(input_dir).glob("**/*.txt")
 
-    passages = preprocessor.run(input_dir=input_dir)
+    for input_file in tqdm(list(input_files)):
+        passages = preprocessor.run(input_file=input_file)
 
-    for passage in passages:
-        client.data_object.create(data_object=passage, class_name="Passage")
+        for passage in passages:
+            client.data_object.create(data_object=passage, class_name="Passage")
 
 
 @click.command()
