@@ -45,16 +45,26 @@ def init_retriever(force: bool = False):
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
             {
+                "name": "topic",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
+                "name": "preprocessor_id",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
                 "name": "type",
                 "dataType": ["text"],  # Paragraph, Table, Figure
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
-            {"name": "text_content", "dataType": ["text"]},
             {
                 "name": "cosmos_object_id",
                 "dataType": ["text"],
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
+            {"name": "text_content", "dataType": ["text"]},
         ],
     }
 
@@ -65,7 +75,9 @@ def init_retriever(force: bool = False):
         json.dump(client.schema.get("passage"), f, indent=2)
 
 
-def ingest_passages(input_dir: str, preprocessor: Preprocessor = None) -> None:
+def import_passages(
+    input_dir: str, topic: str, preprocessor: Preprocessor = None
+) -> None:
     """Ingest passages into Weaviate."""
 
     if preprocessor is None:
@@ -75,7 +87,7 @@ def ingest_passages(input_dir: str, preprocessor: Preprocessor = None) -> None:
     input_files = Path(input_dir).glob("**/*.txt")
 
     for input_file in tqdm(list(input_files)):
-        passages = preprocessor.run(input_file=input_file)
+        passages = preprocessor.run(input_file=input_file, topic=topic)
 
         for passage in passages:
             client.data_object.create(data_object=passage, class_name="Passage")
@@ -89,15 +101,21 @@ def ingest_passages(input_dir: str, preprocessor: Preprocessor = None) -> None:
     is_flag=True,
 )
 @click.option("--input-dir", help="Input directory.", type=str)
-def main(init: bool, input_dir: str):
-    """Main entrypoint."""
+@click.option("--topic", help="Topic.", type=str)
+def main(init: bool, input_dir: str, topic: str):
+    """Main entrypoint.
+
+    Usage:
+    python -m ./askem.deploy --init --input-dir data/covid_qa --topic covid
+
+    """
 
     logging.debug(f"Initializing passage retriever... with {init=}")
     if init:
         init_retriever(force=True)
 
     logging.debug(f"Ingesting passages from {input_dir}...")
-    ingest_passages(input_dir=input_dir)
+    import_passages(input_dir=input_dir, topic=topic)
 
 
 if __name__ == "__main__":
