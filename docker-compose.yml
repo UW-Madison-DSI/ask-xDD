@@ -2,6 +2,10 @@ version: '3.4'
 services:
   weaviate:
     command:
+    - --host
+    - 0.0.0.0
+    - --port
+    - '8080'
     - --scheme
     - http
     image: semitechnologies/weaviate:1.19.0
@@ -13,7 +17,7 @@ services:
       AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'false'
       AUTHENTICATION_APIKEY_ENABLED: 'true'
       AUTHENTICATION_APIKEY_USERS: 'api_testkey'
-      AUTHENTICATION_APIKEY_ALLOWED_KEYS: 'XVMvxrzHqPu85GD2qClHn0by2cSon0kt'
+      AUTHENTICATION_APIKEY_ALLOWED_KEYS: '${WEAVIATE_APIKEY}'
       ENABLE_MODULES: 'text2vec-transformers'
       DEFAULT_VECTORIZER_MODULE: 'text2vec-transformers'
       TRANSFORMERS_PASSAGE_INFERENCE_API: 'http://t2v-transformers-passage:8080'
