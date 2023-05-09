@@ -45,16 +45,26 @@ def init_retriever(force: bool = False):
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
             {
+                "name": "topic",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
+                "name": "preprocessor_id",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
                 "name": "type",
                 "dataType": ["text"],  # Paragraph, Table, Figure
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
-            {"name": "text_content", "dataType": ["text"]},
             {
                 "name": "cosmos_object_id",
                 "dataType": ["text"],
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
+            {"name": "text_content", "dataType": ["text"]},
         ],
     }
 
