@@ -47,7 +47,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "type",
+      "name": "topic",
       "tokenization": "word"
     },
     {
@@ -58,11 +58,26 @@
       "indexSearchable": true,
       "moduleConfig": {
         "text2vec-transformers": {
-          "skip": false,
+          "skip": true,
           "vectorizePropertyName": false
         }
       },
-      "name": "text_content",
+      "name": "preprocessor_id",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "type",
       "tokenization": "word"
     },
     {
@@ -78,6 +93,21 @@
         }
       },
       "name": "cosmos_object_id",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": false,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "text_content",
       "tokenization": "word"
     }
   ],

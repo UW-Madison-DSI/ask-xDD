@@ -9,13 +9,21 @@ logging.basicConfig(level=logging.INFO)
 
 
 class Preprocessor(Protocol):
-    def run(self, input_dir: str) -> List[dict]:
+    def run(self, input_dir: str, topic: str) -> List[dict]:
+        ...
+
+    @property
+    def preprocessor_id(self) -> str:
         ...
 
 
 class HaystackPreprocessor:
     def __init__(self):
         self.haystack_pipeline = self._get_pipeline()
+
+    @property
+    def preprocessor_id(self) -> str:
+        return "haystack_v0.0.1"
 
     @staticmethod
     def _get_pipeline() -> Pipeline:
@@ -34,7 +42,7 @@ class HaystackPreprocessor:
         pipeline.add_node(preprocessor, name="preprocessor", inputs=["text_converter"])
         return pipeline
 
-    def run(self, input_file: Path) -> List[dict]:
+    def run(self, input_file: Path, topic: str) -> List[dict]:
         """Use haystack preprocessing to preprocess one file."""
 
         file_stem = Path(input_file).stem
@@ -44,7 +52,13 @@ class HaystackPreprocessor:
         outputs = []
         for d in results["documents"]:
             outputs.append(
-                {"paper_id": file_stem, "type": "paragraph", "text_content": d.content}
+                {
+                    "preprocessor_id": self.preprocessor_id,
+                    "paper_id": file_stem,
+                    "type": "paragraph",
+                    "topic": topic,
+                    "text_content": d.content,
+                }
             )
 
         return outputs
