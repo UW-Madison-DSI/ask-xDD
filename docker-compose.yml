@@ -2,10 +2,6 @@ version: '3.4'
 services:
   weaviate:
     command:
-    - --host
-    - 0.0.0.0
-    - --port
-    - '8080'
     - --scheme
     - http
     image: semitechnologies/weaviate:1.19.0
@@ -25,10 +21,10 @@ services:
       PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
       QUERY_DEFAULTS_LIMIT: 25
   t2v-transformers-passage:
-    image: semitechnologies/transformers-inference:vblagoje-dpr-ctx_encoder-single-lfqa-wiki
+    image: semitechnologies/transformers-inference:facebook-dpr-ctx_encoder-single-nq-base
     environment:
       ENABLE_CUDA: '0'
   t2v-transformers-query:
-    image: semitechnologies/transformers-inference:vblagoje-dpr-question_encoder-single-lfqa-wiki
+    image: semitechnologies/transformers-inference:facebook-dpr-question_encoder-single-nq-base
     environment:
       ENABLE_CUDA: '0'
