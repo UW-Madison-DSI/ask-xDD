@@ -105,7 +105,7 @@
     "dynamicEfFactor": 8,
     "vectorCacheMaxObjects": 1000000000000,
     "flatSearchCutoff": 40000,
-    "distance": "dot",
+    "distance": "cosine",
     "pq": {
       "enabled": false,
       "bitCompression": false,

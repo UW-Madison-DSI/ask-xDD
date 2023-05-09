@@ -37,7 +37,7 @@ def init_retriever(force: bool = False):
         "description": "Paragraph chunk of a document",
         "vectorizer": "text2vec-transformers",
         "moduleConfig": {"text2vec-transformers": {"vectorizeClassName": False}},
-        "vectorIndexConfig": {"distance": "dot"},  # DPR is designed to use dot-product
+        # "vectorIndexConfig": {"distance": "dot"},
         "properties": [
             {
                 "name": "paper_id",
@@ -82,13 +82,19 @@ def ingest_passages(input_dir: str, preprocessor: Preprocessor = None) -> None:
 
 
 @click.command()
-@click.option("--force", "-f", help="Force re-initialization.", type=bool, is_flag=True)
-@click.option("--input-dir", "-i", help="Input directory.", type=str)
-def main(force: bool, input_dir: str):
+@click.option(
+    "--init",
+    help="Force re-initialization, It will wipe everything!",
+    type=bool,
+    is_flag=True,
+)
+@click.option("--input-dir", help="Input directory.", type=str)
+def main(init: bool, input_dir: str):
     """Main entrypoint."""
 
-    logging.debug(f"Initializing passage retriever... with {force=}")
-    init_retriever(force=force)
+    logging.debug(f"Initializing passage retriever... with {init=}")
+    if init:
+        init_retriever(force=True)
 
     logging.debug(f"Ingesting passages from {input_dir}...")
     ingest_passages(input_dir=input_dir)

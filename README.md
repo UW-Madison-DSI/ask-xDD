@@ -5,7 +5,7 @@ repo: <https://github.com/JasonLo/askem>
 To deploy the retriever
 
 ```sh
-bash ./scripts/launch_weaviate.sh
+bash ./scripts/launch_test.sh
 ```
 
 - TODO: COSMOS integration
