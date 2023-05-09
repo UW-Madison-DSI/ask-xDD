@@ -1,0 +1,21 @@
+[project]
+name = "askem"
+description = "xdd-askem project"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+dynamic = ["version"]
+authors = [
+    { name = "Jason Lo", email = "jason.lo@wisc.edu" }
+]
+dependencies = [
+    "farm-haystack==1.16.1",
+    "weaviate-client==3.17.0"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "askem/__about__.py"

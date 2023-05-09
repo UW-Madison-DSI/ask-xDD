@@ -12,3 +12,4 @@ farm-haystack[weaviate]
 bert-score
 pytest
 pre-commit
+hatchling

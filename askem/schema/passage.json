@@ -28,11 +28,11 @@
       "indexSearchable": true,
       "moduleConfig": {
         "text2vec-transformers": {
-          "skip": false,
+          "skip": true,
           "vectorizePropertyName": false
         }
       },
-      "name": "content",
+      "name": "paper_id",
       "tokenization": "word"
     },
     {
@@ -47,7 +47,37 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_id",
+      "name": "type",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": false,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "text_content",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "cosmos_object_id",
       "tokenization": "word"
     }
   ],
