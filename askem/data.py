@@ -26,6 +26,8 @@ def get_example(dataset, id=None):
 
 
 class GPTBench(Model):
+    """ORM for GPT benchmark."""
+
     id = IntegerField(primary_key=True)
     context = TextField()
     question = TextField()
