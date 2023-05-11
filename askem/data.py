@@ -25,14 +25,15 @@ def get_example(dataset, id=None):
     return {x: data[x] for x in columns}
 
 
-class GPTBench(Model):
-    """ORM for GPT benchmark."""
+class TestResults(Model):
+    """ORM for all results."""
 
     id = IntegerField(primary_key=True)
+    model_id = TextField()
     context = TextField()
     question = TextField()
     true_answer = TextField()
-    gpt_answer = TextField()
+    pred_answer = TextField()
 
     class Meta:
         database = BENCH_DB

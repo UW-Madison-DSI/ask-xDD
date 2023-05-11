@@ -1,16 +1,24 @@
-# CHTC interactive
+# CHTC interactive GPU-LAB
 
 universe = vanilla
-log = interactive.log
+log = job_$(Cluster)_$(Process).log
+error = job_$(Cluster)_$(Process).err
+output = job_$(Cluster)_$(Process).out
 
-# change the name of the file to be the name of your source code
-transfer_input_files = working.ipynb
-
+# Request machine
 +IsBuildJob = true
 # requirements = (OpSysMajorVer =?= 8)
-request_cpus = 4
++WantGPULab = true
++GPUJobLength = "medium"
 request_gpus = 1
-requirements = (GPUs_GlobalMemoryMb >= 8192)
+require_gpus = (Capability >= 7.5) && (GlobalMemoryMb >= 11000)
+request_cpus = 1
 request_memory = 32GB
 request_disk = 100GB
-queue
+
+# Files related
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = working.ipynb
+
+queue 1
