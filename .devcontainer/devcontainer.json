@@ -8,8 +8,8 @@
 	"shutdownAction": "stopCompose",
 	"remoteUser": "root",
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
-		"git-lfs": "latest"
+		"git-lfs": "latest",
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
 	},
 	"postCreateCommand": "bash .devcontainer/post-create.sh"
 	// "forwardPorts": [],
