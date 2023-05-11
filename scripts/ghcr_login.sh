@@ -1,0 +1,1 @@
+echo $GHCR_TOKEN | docker login ghcr.io -u JasonLo --password-stdin
