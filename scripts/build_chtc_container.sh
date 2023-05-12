@@ -1,1 +1,0 @@
-docker build . -f chtc/Dockerfile -t askem-chtc
