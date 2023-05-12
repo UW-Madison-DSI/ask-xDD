@@ -12,7 +12,7 @@ output = job_$(Cluster)_$(Process).out
 +GPUJobLength = "medium"
 request_gpus = 1
 require_gpus = (Capability >= 7.5) && (GlobalMemoryMb >= 11000)
-request_cpus = 1
+request_cpus = 4
 request_memory = 32GB
 request_disk = 100GB
 
