@@ -7,7 +7,6 @@ pdfminer.six
 captum
 gradio
 farm-haystack
-farm-haystack[faiss]
 farm-haystack[weaviate]
 bert-score
 pytest

@@ -12,3 +12,6 @@ condor_q -better-analyze <job_id>
 
 # Remove job
 condor_rm <job_id>
+
+# Check the number of GPUs available on the CHTC
+condor_status -compact -constraint 'TotalGpus > 0'
