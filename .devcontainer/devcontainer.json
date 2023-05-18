@@ -6,7 +6,7 @@
 	"image": "huggingface/transformers-pytorch-deepspeed-latest-gpu",
 	"runArgs": ["--security-opt", "seccomp=unconfined", "--gpus", "all", "--ipc=host"],
 	"workspaceMount": "source=${localWorkspaceFolder},target=/askem,type=bind,consistency=cached",
-	"mounts": ["source=data_clo36,target=/data,type=volume"],
+	"mounts": ["source=/data,target=/data,type=bind,consistency=cached"],
 	"workspaceFolder": "/askem",
 	"remoteUser": "root",
 	"customizations": {
@@ -22,7 +22,23 @@
 				"python.linting.pylintPath": "/usr/local/bin/pylint",
 				"python.pythonPath": "/usr/bin/python3",
 				"terminal.integrated.defaultProfile.linux": "bash"
-			}
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.black-formatter",
+				"ms-toolsai.jupyter",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode.live-server",
+				"mhutchie.git-graph",
+				"DavidAnson.vscode-markdownlint",
+				"GitHub.copilot-nightly",
+				"streetsidesoftware.code-spell-checker",
+				"actboy168.tasks",
+				"Gruntfuggly.todo-tree",
+				"albert.TabOut",
+				"marp-team.marp-vscode"
+			]
 		}
 	},
 	"postCreateCommand": "bash .devcontainer/post-create.sh"
