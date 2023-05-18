@@ -1,17 +1,18 @@
 import random
-
 import pandas as pd
-from datasets import load_dataset
+from datasets import load_dataset, Dataset
 from peewee import IntegerField, Model, SqliteDatabase, TextField
 
 
-def get_covid_qa():
-    """Get the COVID-QA dataset."""
+def get_covid_qa(split: str = "test") -> Dataset:
+    """Get the COVID-QA dataset with train/test split."""
     dataset = load_dataset("covid_qa_deepset")
-    return dataset["train"]
+    dataset = dataset["train"].train_test_split(test_size=0.2, seed=2023)
+
+    if split:
+        return dataset[split]
 
 
-COVID_QA = get_covid_qa()
 BENCH_DB = SqliteDatabase("data/benchmark.db")
 
 
@@ -25,12 +26,15 @@ def get_example(dataset, id=None):
     return {x: data[x] for x in columns}
 
 
-class GPTBench(Model):
+class TestResults(Model):
+    """ORM for all results."""
+
     id = IntegerField(primary_key=True)
+    model_id = TextField()
     context = TextField()
     question = TextField()
     true_answer = TextField()
-    gpt_answer = TextField()
+    pred_answer = TextField()
 
     class Meta:
         database = BENCH_DB

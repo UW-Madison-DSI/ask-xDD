@@ -1,17 +1,46 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+// docker volume create --driver local --opt type=none --opt device=/data/clo36/docker_volume --opt o=bind data_clo36
 {
 	"name": "ASKEM",
-	"dockerComposeFile": "docker-compose.yml",
-	"service": "llm",
+	"image": "huggingface/transformers-pytorch-deepspeed-latest-gpu",
+	"runArgs": ["--security-opt", "seccomp=unconfined", "--gpus", "all", "--ipc=host"],
+	"workspaceMount": "source=${localWorkspaceFolder},target=/askem,type=bind,consistency=cached",
+	"mounts": ["source=/data,target=/data,type=bind,consistency=cached"],
 	"workspaceFolder": "/askem",
-	"shutdownAction": "stopCompose",
 	"remoteUser": "root",
-	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
-		"git-lfs": "latest"
+	"customizations": {
+		"features": {
+			"git-lfs": "latest",
+			"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+		},
+		"vscode": {
+			"settings": {
+				"python.formatting.provider": "black",
+				"python.linting.enabled": true,
+				"python.linting.pylintEnabled": true,
+				"python.linting.pylintPath": "/usr/local/bin/pylint",
+				"python.pythonPath": "/usr/bin/python3",
+				"terminal.integrated.defaultProfile.linux": "bash"
+			},
+			"extensions": [
+				"ms-python.python",
+				"ms-python.pylint",
+				"ms-python.vscode-pylance",
+				"ms-python.black-formatter",
+				"ms-toolsai.jupyter",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode.live-server",
+				"mhutchie.git-graph",
+				"DavidAnson.vscode-markdownlint",
+				"GitHub.copilot-nightly",
+				"streetsidesoftware.code-spell-checker",
+				"actboy168.tasks",
+				"Gruntfuggly.todo-tree",
+				"albert.TabOut",
+				"marp-team.marp-vscode"
+			]
+		}
 	},
 	"postCreateCommand": "bash .devcontainer/post-create.sh"
-	// "forwardPorts": [],
-	// Use 'postCreateCommand' to run commands after the container is created.
 }

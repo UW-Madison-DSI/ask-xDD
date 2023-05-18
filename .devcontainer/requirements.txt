@@ -13,3 +13,4 @@ bert-score
 pytest
 pre-commit
 hatchling
+peewee
