@@ -1,0 +1,1569 @@
+Expert Review of Vaccines
+ISSN: 1476-0584 (Print) 1744-8395 (Online) Journal homepage: http://www.tandfonline.com/loi/ierv20
+RNA-based viral vectors
+Mark A Mogler & Kurt I Kamrud
+To cite this article: Mark A Mogler & Kurt I Kamrud (2015) RNA-based viral vectors, Expert Review of Vaccines, 14:2, 283-312, DOI: 10.1586/14760584.2015.979798 To link to this article: http://dx.doi.org/10.1586/14760584.2015.979798
+Published online: 08 Nov 2014. Submit your article to this journal Article views: 345 View related articles View Crossmark data Citing articles: 7 View citing articles
+
+Full Terms & Conditions of access and use can be found at http://www.tandfonline.com/action/journalInformation?journalCode=ierv20
+
+Download by: [University of Wisconsin - Madison]
+
+Date: 11 November 2017, At: 08:58
+
+SPECIAL FOCUS y RNA Vaccines
+
+Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+RNA-based viral vectors
+Expert Rev. Vaccines 14(2), 283–312 (2015)
+
+Mark A Mogler1 and Kurt I Kamrud*2
+1Harrisvaccines, Inc., 1102 Southern Hills Drive, Suite 101, Ames, IA 50010, USA 2Synthetic Genomics Vaccines, Inc., 11149 North Torrey Pines, La Jolla, CA 90237, USA *Author for correspondence: kkamrud@syntheticgenomics.com
+
+The advent of reverse genetic approaches to manipulate the genomes of both positive (+) and negative (-) sense RNA viruses allowed researchers to harness these genomes for basic research. Manipulation of positive sense RNA virus genomes occurred first largely because infectious RNA could be transcribed directly from cDNA versions of the RNA genomes. Manipulation of negative strand RNA virus genomes rapidly followed as more sophisticated approaches to provide RNA-dependent RNA polymerase complexes coupled with negative-strand RNA templates were developed. These advances have driven an explosion of RNA virus vaccine vector development. That is, development of approaches to exploit the basic replication and expression strategies of RNA viruses to produce vaccine antigens that have been engineered into their genomes. This study has led to significant preclinical testing of many RNA virus vectors against a wide range of pathogens as well as cancer targets. Multiple RNA virus vectors have advanced through preclinical testing to human clinical evaluation. This review will focus on RNA virus vectors designed to express heterologous genes that are packaged into viral particles and have progressed to clinical testing.
+
+KEYWORDS: alphavirus • flavivirus • orthomyxovirus • paramyxovirus • reverse genetics • rhabdovirus • RNA virus vector
+
+This review will describe RNA virus vector development and the reverse genetics approaches used to support the development for five RNA virus families: Togaviridae, Flaviviridae, Orthomyxoviridae, Rhabdoviridae and Paramyxoviridae. The RNA vector system(s) designed for each will be described and a summary of preclinical work that has supported advanced testing and human clinical evaluation will also be discussed. Although some systems have developed DNA-based vectors, only RNA particle-based systems will be discussed in this review. Reverse genetics systems for the generation of viruses in the Arenaviridae family have been described, but these RNA vectors are still in very early development and therefore will not be examined in this review. Finally, reverse genetics approaches to develop Lentivirus vectors are well established but will not be covered here as they have recently been reviewed elsewhere [1].
+Togaviridae Genus: Alphavirus Alphaviruses have a single-strand, positive-sense RNA genome that carries a 5´ 7-mG cap and a 3´ polyadenylated region. The alphavirus nonstructural proteins are coded for in the 5´ twothirds of the genome and the structural proteins are coded for in the 3´ one-third of the genome. The nonstructural proteins (termed nsP1, nsP2,
+
+nsP3 and nsP4) are translated from the genomic RNA. The nsP2 is a viral protease that processes the nonstructural polyprotein into its individual subunits that function to transcribe negativesense as well as new positive-sense viral RNA. The negative-sense replicative intermediate RNA codes for a subgenomic promoter (26S promoter) that is recognized by the nonstructural proteins and is used to generate a subgenomic mRNA that represents the 3´ one-third of the genome; the viral structural proteins are translated from this subgenomic mRNA. Replication occurs completely in the cytoplasm of cells and progeny viruses bud at the plasma membrane as virus capsid protein encapsidates genomic RNA and associates with the envelope glycoproteins that accumulate on the membrane of infected cells [2,3].
+Because alphaviruses are positive-sense RNA viruses, full-length cDNA clones of their genomes can be used to generate RNA transcripts that, when introduced into susceptible cells, will initiate a complete virus replication cycle and generate infectious virus. Manipulation of alphavirus genomes is possible through introduction of mutations/modifications to the cDNA of their respective clones. Two types of alphavirus vectors have been developed to express heterologous genes: propagation-competent vectors where a 26S promoter region is duplicated, either
+
+informahealthcare.com
+
+10.1586/14760584.2015.979798
+
+Ó 2015 Informa UK Ltd
+
+ISSN 1476-0584
+
+283
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+upstream or downstream of a complete structural gene region, that drives expression of a foreign gene or propagation-defective replicon vectors where a foreign gene is inserted in place of the structural protein gene region [4,5]. The replicon RNA can be packaged into virus replicon particles (VRP) by supplying the structural protein genes in trans. Replicon RNA is packaged into VRP when cells are cotransfected with helper RNA which encode the full complement of structural proteins. A split helper system that provides the structural proteins on separate helper RNAs greatly reduces the chance of an intact genome being regenerated by RNA–RNA recombination. Thus, the VRP are defective, in that they can infect target cells in culture or in vivo and can express the foreign gene at high levels, but they lack critical portions of the genome (i.e., the structural protein genes) necessary to produce virus particles which could spread to other cells [4,5]. Chimeric alphavirus vectors have also been developed where the structural region of one alphavirus is exchanged for a different alphavirus structural region; the resulting chimeric alphavirus is usually attenuated in nature [6–10].
+Alphavirus replicon vectors have been developed from a number of viruses within the Togaviridae family; these viruses consist of Salmonid alphavirus, Chikungunya virus (CHIKV), Sindbis-like XJ-160, Venezuelan equine encephalitis virus (VEEV), Sindbis and Semliki forest virus (SFV), with the majority of vaccine development having been conducted with VEEV, Sindbis and SFV [4,11–15].
+Alphavirus vectors have been developed against a large number of pathogens. A representative list of the many alphavirus vector particle-based vaccines developed and tested preclinically is presented in TABLE 1. This review will focus on alphavirus vector particle vaccines that have reached human clinical testing or have achieved regulatory approval/licensure to highlight how far this vaccine platform has progressed. Clinical evaluation of VRP vaccines has occurred for a number of infectious diseases and cancer indications using the VEEV and SFV VRP systems.
+Semliki forest virus vectors To the best of our knowledge, SFV vectors have only been examined clinically in a cancer setting and with the gene of interest being a cytokine (IL-12). Preclinical studies for the oncolytic nature of SFV supported its use in this setting [16–19]. A SFV replicon vector expressing murine IL-12 genes was shown to have oncogenic activity when injected directly into established B16 murine melanoma and P815 mastocytoma tumors to provide support for further development of a SFV replicon expressing the human cytokine counterpart [16–19]. Ren et al. (2003) encapsulated SFV-IL12 particles in cationic liposomes (LSFV-IL12) to reduce the possibility of antivector immunity and serum components from negatively affecting antitumor efficacy by inactivating the VRP [18]. The LSFVIL12 particles injected intraperitoneally in mice implanted subcutaneously with pancreatic cancer cells resulted in reduction of tumor size if vaccinations were initiated either immediately after tumor implantation or up to 3 weeks after implantation [18]. A Phase I human clinical trial in kidney carcinoma and melanoma patients using LSFV-IL12 delivered
+
+intravenously has been described and preliminary data have been provided that indicate this formulation (1 Â 108 or 5 Â 109 particles/m2 body surface) was well tolerated and that a transient increase (five- to tenfold) in IL-12 serum levels was detected within the first 3–4 days after injection [16–18]. A complete summary of the clinical outcomes of this clinical trial has not yet been published. A study protocol for a Phase I/II clinical trial using continuous intratumoral infusion of LSFV-IL12 in recurrent glioblastoma multiforme patients has been described, but no data are available on the status of this clinical trial [18].
+Venezuelan equine encephalitis vectors Development of VEEV VRP for human clinical evaluation has occurred in both an infectious disease and cancer setting [20–23]. VEEV VRP vaccines have been tested preclinically against a large range of pathogens (TABLE 1), of which only a few have progressed into human clinical evaluation. Some notable VEEV VRP preclinical testing examples include successful vaccines developed against Ebola virus (EBOV), Marburg virus, Lassa virus, Smallpox virus, equine encephalitis viruses, Clostridium botulinum neurotoxins and anthrax [24–30]; detailed descriptions of these studies are not provided here in order to focus on those VEEV VRP vaccines that have progressed into human clinical evaluation.
+The initial human evaluation of a VEEV VRP vaccine was with a replicon expressing an HIV antigen carried out by AlphaVax, Inc. The sequence of an HIV-1 Clade C gag gene was identified based on a prevalent virus circulating in South Africa, where one arm of the clinical trial would take place [31,32]. This first-in-man testing of the VEEV-gag VRP (AVX101) vaccine demonstrated that the vaccine was safe and well tolerated, but unlike the robust immune responses noted in preclinical testing of AVX101, anti-Gag immune responses in humans were limited [23]. The AVX101 vaccine expressed a nonmyristoylated HIV gag gene and it is known that myristoylation of the Gag protein is important in the production of Gag-derived virus-like particles (VLP) [33,34]. Furthermore, a VEEV-gag VRP expressing a myristoylated version of the gag gene was preliminarily reported to be more immunogenic in nonhuman primates than the AVX101 VRP, suggesting that the Gag myristoylation mutation (inhibiting Gag-VLP formation) may be related to the diminished immune responses noted in the trial [23].
+AlphaVax also developed VEEV VRP vaccines against seasonal influenza virus and tested them clinically [35,36]. The VEEV VRP vaccine for influenza virus was based on a replicon vector expressing the A/Wyoming/03/2003 Hemagglutinin (HA) gene that demonstrated promising immunogenicity and protection results from extensive preclinical studies in animal models [37]. The vaccine (AVX502) was tested initially in healthy young adults aged 18–40 years and then in the elderly (>65 years); the results of these clinical trials have not yet been formally published, but a preliminary summary of the studies is provided [OLMSTEAD R, PERS. COMM.].
+
+284
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+Table 1. Selected RNA virus vector vaccine references.
+
+Virus family
+
+Subfamily
+
+Genus
+
+Virus (strain or modification)
+
+Gene of interest
+
+Ref.
+
+Togaviridae
+
+Alphavirus
+
+SFV
+
+HIV gp160
+
+[345]
+
+LIV prME and NS1
+
+[346]
+
+Influenza A NP and HA
+
+[347]
+
+HPV16 E6 and E7 proteins
+
+[348]
+
+HCV core or E2
+
+[349]
+
+SIV env, gag-pol, nef, rev and tat
+
+[350]
+
+HCV nsP3
+
+[351]
+
+SINV
+
+Plasmodium yoelli CS
+
+[352]
+
+HTNV, SEOLV S and M
+
+[353]
+
+HPV 16 E7, fusion E7/ HSP70
+
+[354]
+
+RVFV Gn, Gc, nsM
+
+[355]
+
+HCV C, E1 and E2
+
+[356]
+
+VEEV
+
+MARV GP, NP, VP40, VP35, VP30 or VP24
+
+[25]
+
+BoNT C, MARV GP, Anthrax PA
+
+[27]
+
+Anthrax PA
+
+[28]
+
+Lassa and EBOV GP
+
+[29]
+
+Influenza A HA
+
+[37]
+
+VACV, A27L, B5R, A33R, L1R
+
+[26]
+
+EBOV GP
+
+[24]
+
+Rhesus lymphocrypticvirus gp350, EBNA-3A, EBNA-3B
+
+[357]
+
+BVDV E2
+
+[358]
+
+EBOV GP
+
+[24]
+
+Swine influenza A HA, NP
+
+[359]
+
+VEEV GP, WEEV GP, EEEV GP
+
+[30]
+
+ANDV: Andes virus; b/hPIV3: Bovine-human parainfluenza virus 3; BoNT-A: Botulinum neurotoxin type A; bPIV3: Bovine parainfluenza virus 3; bRSV: Bovine respiratory syncytial virus; BVDV: Bovine viral diarrhea virus; CAT: Chloramphenicol acetyltransferase; CEA: Carcinoembryonic antigen; CHIKV: Chikungunya virus; CS: Circumsporozoite; CSFV: Classical swine fever virus; CTL: Cytotoxic T lymphocyte; DEN1, DEN2, DEN3, DEN4: Dengue virus serotypes 1–4; DENV: Dengue virus; EAV: Equine arteritis virus; EBOV: Ebola virus; F: Fusion; G: Attachment glycoprotein; GFP: Green fluorescent protein; GP: Glycoprotein; GPC: Surface glycoprotein precursor; HA: Hemagglutinin; hMPV: Human metapneumovirus; HN: Hemagglutinin neuraminidase; hPIV1: Human parainfluenza virus 1; hPIV3: Human parainfluenza virus 3; HPV: Human papilloma virus; hRSV: Human respiratory syncytial virus; HSP70: Heat shock protein 70; HTNV: Hantaan virus; IAV: Influenza A virus; IRES: Internal ribosomal entry site; KUN: Kunjin virus; JEV: Japanese encephalitis virus; LGT: Langat virus; LIV: Louping ill virus; M: Membrane; MARV: Marburg virus; MeV: Measles virus; MS: Middle envelope surface protein; MuV: Mumps virus; MVEV: Murray Valley encephalitis virus; N: Nucleoprotein; NA: Neuraminidase; NDV: Newcastle disease virus; NiV: Nipah virus; NP: Nucleoprotein; P: Phosphoprotein; prME: Pre-membrane-envelope; RABV: Rabies virus; rB/HPIV3: Recombinant bovinehuman parainfluenza virus 3; RSV: Respiratory syncytial virus; RVFV: Rift Valley fever virus; S: Spike; sAg: Surface antigen; SARS-CoV: Severe acute respiratory syndrome coronavirus; SCFV: Single-cycle flavivirus; SEOLV: Seoul virus; SeV: Sendai virus; SFV: Semliki forest virus; SH: Small hydrophobic protein; SHIV: Simian human immunodeficiency virus; SINV: Sindbis virus; SIV: Simian immunodeficiency virus; SLEV: St Louis encephalitis virus; SV5: Simian virus 5; TBEV: Tick-borne encephalitis virus; VACV: Vaccinia virus; VEEV: Venezuelan equine encephalitis virus; VHSV: Viral hemorrhagic septicemia virus; VSV: Vesicular stomatitis virus; WNV: West Nile virus; YFV: Yellow fever virus.
+
+informahealthcare.com
+
+285
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+Table 1. Selected RNA virus vector vaccine references (cont.).
+
+Virus family
+
+Subfamily
+
+Genus
+
+Virus (strain or modification)
+
+Gene of interest
+
+Ref.
+
+Flaviviridae
+
+Flavivirus
+
+YFV (17D)
+
+JEV prME
+
+[45]
+
+DEN1–4 prME
+
+[49]
+
+WNV prME
+
+[55]
+
+DEN4 (814669 and derivatives)
+
+TBEV prME
+
+[64]
+
+LGT prME
+
+[65]
+
+SLEV prME
+
+[63]
+
+WNV prME
+
+[70]
+
+DEN2 prME
+
+[62]
+
+DEN2 (PDK-53)
+
+DEN1, 3, 4 prME
+
+[73]
+
+KUN
+
+EBOV GP
+
+[85]
+
+HIV-1 Gag
+
+[360]
+
+JEV (SA14-14-2)
+
+WNV prME
+
+[361]
+
+DENV prME
+
+[87]
+
+MVEV (IRES attenuated)
+
+IFN-b
+
+[88]
+
+WNV (SCFV)
+
+DENV prME
+
+[78]
+
+TBEV prME
+
+[83]
+
+Pestivirus
+
+BVDV (CP7)
+
+CSFV E2
+
+[91]
+
+CSFV E1/E2
+
+[97]
+
+BDV E2
+
+[98]
+
+BVDV (SD1)
+
+GFP
+
+[100]
+
+BVDV (NADL)
+
+Heterologous Erns
+
+[101]
+
+CSFV
+
+BVDV Erns or E2
+
+[105]
+
+JEV E(truncated)
+
+[104]
+
+Orthomyxoviridae
+
+Influenzavirus
+
+Influenza A
+
+Circumsporozoite (CS) protein of P. yoelii
+
+[119]
+
+CS protein of P. falciparum
+
+[118]
+
+HIV gp41
+
+[122]
+
+HIV gp41
+
+[120]
+
+HIV GAG
+
+[123]
+
+ANDV: Andes virus; b/hPIV3: Bovine-human parainfluenza virus 3; BoNT-A: Botulinum neurotoxin type A; bPIV3: Bovine parainfluenza virus 3; bRSV: Bovine respiratory syncytial virus; BVDV: Bovine viral diarrhea virus; CAT: Chloramphenicol acetyltransferase; CEA: Carcinoembryonic antigen; CHIKV: Chikungunya virus; CS: Circumsporozoite; CSFV: Classical swine fever virus; CTL: Cytotoxic T lymphocyte; DEN1, DEN2, DEN3, DEN4: Dengue virus serotypes 1–4; DENV: Dengue virus; EAV: Equine arteritis virus; EBOV: Ebola virus; F: Fusion; G: Attachment glycoprotein; GFP: Green fluorescent protein; GP: Glycoprotein; GPC: Surface glycoprotein precursor; HA: Hemagglutinin; hMPV: Human metapneumovirus; HN: Hemagglutinin neuraminidase; hPIV1: Human parainfluenza virus 1; hPIV3: Human parainfluenza virus 3; HPV: Human papilloma virus; hRSV: Human respiratory syncytial virus; HSP70: Heat shock protein 70; HTNV: Hantaan virus; IAV: Influenza A virus; IRES: Internal ribosomal entry site; KUN: Kunjin virus; JEV: Japanese encephalitis virus; LGT: Langat virus; LIV: Louping ill virus; M: Membrane; MARV: Marburg virus; MeV: Measles virus; MS: Middle envelope surface protein; MuV: Mumps virus; MVEV: Murray Valley encephalitis virus; N: Nucleoprotein; NA: Neuraminidase; NDV: Newcastle disease virus; NiV: Nipah virus; NP: Nucleoprotein; P: Phosphoprotein; prME: Pre-membrane-envelope; RABV: Rabies virus; rB/HPIV3: Recombinant bovinehuman parainfluenza virus 3; RSV: Respiratory syncytial virus; RVFV: Rift Valley fever virus; S: Spike; sAg: Surface antigen; SARS-CoV: Severe acute respiratory syndrome coronavirus; SCFV: Single-cycle flavivirus; SEOLV: Seoul virus; SeV: Sendai virus; SFV: Semliki forest virus; SH: Small hydrophobic protein; SHIV: Simian human immunodeficiency virus; SINV: Sindbis virus; SIV: Simian immunodeficiency virus; SLEV: St Louis encephalitis virus; SV5: Simian virus 5; TBEV: Tick-borne encephalitis virus; VACV: Vaccinia virus; VEEV: Venezuelan equine encephalitis virus; VHSV: Viral hemorrhagic septicemia virus; VSV: Vesicular stomatitis virus; WNV: West Nile virus; YFV: Yellow fever virus.
+
+286
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+Table 1. Selected RNA virus vector vaccine references (cont.).
+
+Virus family
+
+Subfamily
+
+Genus
+
+Virus (strain or modification)
+
+Gene of interest
+
+Ref.
+
+HIV gp160 and Gag
+
+[121]
+
+hPIV HN
+
+[124]
+
+RSV F
+
+[125]
+
+Rhabdoviridae
+
+Lyssavirus
+
+RABV
+
+HCV E2
+
+[149]
+
+Botulinum neurotoxin
+
+[148]
+
+SARS-CoV N or S
+
+[150]
+
+HIV-1 gp160
+
+[153]
+
+HIV-1 Gag
+
+[154]
+
+IL-2 and IL-4
+
+[157]
+
+IFN-b
+
+[156]
+
+SHIV Env and SIV Gag
+
+[362]
+
+SIV Gag-Pol
+
+[158]
+
+Vesiculovirus
+
+VSV
+
+HIV-1 gp120
+
+[164]
+
+IAV(H1N1) HA or NA
+
+[165]
+
+IAV(H5N1) HA
+
+[169]
+
+HBV MS
+
+[171]
+
+ANDV GPC
+
+[175]
+
+HCV C/E1/E2
+
+[176]
+
+RSV G or F
+
+[174]
+
+Yersinia pestis LcrV
+
+[177]
+
+Various filovirus GP
+
+Reviewed in [180]
+
+CD4
+
+[166]
+
+CD4 and CXCR4
+
+[167]
+
+CHIKV E1/E2
+
+[181]
+
+SIV Gag and Env
+
+[182]
+
+HIV-1 Gag and Env
+
+[183]
+
+VSV for oncolytic virotherapy Various genes
+
+Reviewed in [192]
+
+Novirhabdovirus VHSV
+
+WNV E
+
+[194]
+
+Paramyxoviridae
+
+Pneumovirinae Pneumovirus
+
+hRSV (subgroup A)
+
+hRSV G (subgroup B)
+
+[338]
+
+bRSV
+
+hRSV F and/or G
+
+[363]
+
+ANDV: Andes virus; b/hPIV3: Bovine-human parainfluenza virus 3; BoNT-A: Botulinum neurotoxin type A; bPIV3: Bovine parainfluenza virus 3; bRSV: Bovine respiratory syncytial virus; BVDV: Bovine viral diarrhea virus; CAT: Chloramphenicol acetyltransferase; CEA: Carcinoembryonic antigen; CHIKV: Chikungunya virus; CS: Circumsporozoite; CSFV: Classical swine fever virus; CTL: Cytotoxic T lymphocyte; DEN1, DEN2, DEN3, DEN4: Dengue virus serotypes 1–4; DENV: Dengue virus; EAV: Equine arteritis virus; EBOV: Ebola virus; F: Fusion; G: Attachment glycoprotein; GFP: Green fluorescent protein; GP: Glycoprotein; GPC: Surface glycoprotein precursor; HA: Hemagglutinin; hMPV: Human metapneumovirus; HN: Hemagglutinin neuraminidase; hPIV1: Human parainfluenza virus 1; hPIV3: Human parainfluenza virus 3; HPV: Human papilloma virus; hRSV: Human respiratory syncytial virus; HSP70: Heat shock protein 70; HTNV: Hantaan virus; IAV: Influenza A virus; IRES: Internal ribosomal entry site; KUN: Kunjin virus; JEV: Japanese encephalitis virus; LGT: Langat virus; LIV: Louping ill virus; M: Membrane; MARV: Marburg virus; MeV: Measles virus; MS: Middle envelope surface protein; MuV: Mumps virus; MVEV: Murray Valley encephalitis virus; N: Nucleoprotein; NA: Neuraminidase; NDV: Newcastle disease virus; NiV: Nipah virus; NP: Nucleoprotein; P: Phosphoprotein; prME: Pre-membrane-envelope; RABV: Rabies virus; rB/HPIV3: Recombinant bovinehuman parainfluenza virus 3; RSV: Respiratory syncytial virus; RVFV: Rift Valley fever virus; S: Spike; sAg: Surface antigen; SARS-CoV: Severe acute respiratory syndrome coronavirus; SCFV: Single-cycle flavivirus; SEOLV: Seoul virus; SeV: Sendai virus; SFV: Semliki forest virus; SH: Small hydrophobic protein; SHIV: Simian human immunodeficiency virus; SINV: Sindbis virus; SIV: Simian immunodeficiency virus; SLEV: St Louis encephalitis virus; SV5: Simian virus 5; TBEV: Tick-borne encephalitis virus; VACV: Vaccinia virus; VEEV: Venezuelan equine encephalitis virus; VHSV: Viral hemorrhagic septicemia virus; VSV: Vesicular stomatitis virus; WNV: West Nile virus; YFV: Yellow fever virus.
+
+informahealthcare.com
+
+287
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+Table 1. Selected RNA virus vector vaccine references (cont.).
+
+Virus family
+
+Subfamily
+
+Genus
+
+Virus (strain or modification)
+
+Gene of interest
+
+Ref.
+
+Metapneumovirus hMPV
+
+aMPV N or P
+
+[319]
+
+Paramyxovirinae Respirovirus
+
+hPIV3
+
+bPIV3 N
+
+[206]
+
+hPIV1 HN and F
+
+[205]
+
+hPIV2 HN and F
+
+[205]
+
+MeV HA
+
+[364]
+
+hPIV1 HN and hPIV2 HN and MeV HA
+
+[365]
+
+Ebo GP
+
+[366]
+
+bPIV3 N
+
+[207]
+
+hPIV3/DF-HN
+
+Ebo GP
+
+[367]
+
+hPIV1
+
+hMPV F or G or SH
+
+[368]
+
+rB/HPIV3
+
+RSV F or RSV G subgroup A
+
+[215]
+
+RSV F or RSV G subgroup A and B
+
+[216]
+
+hPIV3 F and HN
+
+[207]
+
+bPIV3
+
+hPIV3 F and HN (generating b/hPIV3)
+
+[212]
+
+hPIV3 F and HN (generating rB/HPIV3)
+
+[213]
+
+b/hPIV3
+
+hPIV3 F and HN
+
+[214]
+
+RSV F or RSV G or hMPV F
+
+[217]
+
+hRSV F or soluble hRSV F
+
+[369]
+
+hMPV F
+
+[370]
+
+RSV F
+
+[371]
+
+SeV RSV G
+
+[232]
+
+RSV F
+
+[233]
+
+HIV GAG
+
+[245]
+
+hPIV2 F or hPIV2 HN or HPIV3 HN or RSV F
+
+[228]
+
+RSV F
+
+[229]
+
+HIV Env
+
+[246]
+
+ANDV: Andes virus; b/hPIV3: Bovine-human parainfluenza virus 3; BoNT-A: Botulinum neurotoxin type A; bPIV3: Bovine parainfluenza virus 3; bRSV: Bovine respiratory syncytial virus; BVDV: Bovine viral diarrhea virus; CAT: Chloramphenicol acetyltransferase; CEA: Carcinoembryonic antigen; CHIKV: Chikungunya virus; CS: Circumsporozoite; CSFV: Classical swine fever virus; CTL: Cytotoxic T lymphocyte; DEN1, DEN2, DEN3, DEN4: Dengue virus serotypes 1–4; DENV: Dengue virus; EAV: Equine arteritis virus; EBOV: Ebola virus; F: Fusion; G: Attachment glycoprotein; GFP: Green fluorescent protein; GP: Glycoprotein; GPC: Surface glycoprotein precursor; HA: Hemagglutinin; hMPV: Human metapneumovirus; HN: Hemagglutinin neuraminidase; hPIV1: Human parainfluenza virus 1; hPIV3: Human parainfluenza virus 3; HPV: Human papilloma virus; hRSV: Human respiratory syncytial virus; HSP70: Heat shock protein 70; HTNV: Hantaan virus; IAV: Influenza A virus; IRES: Internal ribosomal entry site; KUN: Kunjin virus; JEV: Japanese encephalitis virus; LGT: Langat virus; LIV: Louping ill virus; M: Membrane; MARV: Marburg virus; MeV: Measles virus; MS: Middle envelope surface protein; MuV: Mumps virus; MVEV: Murray Valley encephalitis virus; N: Nucleoprotein; NA: Neuraminidase; NDV: Newcastle disease virus; NiV: Nipah virus; NP: Nucleoprotein; P: Phosphoprotein; prME: Pre-membrane-envelope; RABV: Rabies virus; rB/HPIV3: Recombinant bovinehuman parainfluenza virus 3; RSV: Respiratory syncytial virus; RVFV: Rift Valley fever virus; S: Spike; sAg: Surface antigen; SARS-CoV: Severe acute respiratory syndrome coronavirus; SCFV: Single-cycle flavivirus; SEOLV: Seoul virus; SeV: Sendai virus; SFV: Semliki forest virus; SH: Small hydrophobic protein; SHIV: Simian human immunodeficiency virus; SINV: Sindbis virus; SIV: Simian immunodeficiency virus; SLEV: St Louis encephalitis virus; SV5: Simian virus 5; TBEV: Tick-borne encephalitis virus; VACV: Vaccinia virus; VEEV: Venezuelan equine encephalitis virus; VHSV: Viral hemorrhagic septicemia virus; VSV: Vesicular stomatitis virus; WNV: West Nile virus; YFV: Yellow fever virus.
+
+288
+
+Expert Rev. Vaccines 14(2), (2015)
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+RNA-based viral vectors Review
+
+Table 1. Selected RNA virus vector vaccine references (cont.).
+
+Virus family
+
+Subfamily
+
+Genus
+
+Virus (strain or modification)
+
+Gene of interest
+
+Ref.
+
+hPIV3 HN
+
+[236]
+
+Human fibroblast growth factor-2 (FGF2)
+
+[249]
+
+HIV GAG
+
+[247]
+
+Avulavirus
+
+NDV
+
+hPIV3 HN
+
+[372]
+
+hPIV3 or SARS-CoV S
+
+[334]
+
+Ebo GP
+
+[332]
+
+Rubulavirus
+
+MuV
+
+HIV Gag
+
+[300]
+
+SV5 GFP
+
+[299]
+
+Morbilivirus
+
+MeV
+
+MuV HN, F SIV Env, Gag, Pol
+
+[294]
+
+GFP [253]
+
+HIV Env
+
+[290]
+
+HIV gp140
+
+[289]
+
+WNV prM-E or HIV gp140
+
+[288]
+
+SIV Gag, Env, Pol/Env, GFP, Lac-Z, CAT
+
+[296]
+
+WNV prM-E
+
+[373]
+
+CEA
+
+[374]
+
+HIV Gag and/or Env
+
+[286]
+
+CEA
+
+[268]
+
+H. pylori neutrophilactivating protein
+
+[375]
+
+HIV p17, p24, RT and Nef fusion
+
+[291]
+
+HIV p17, p24, RT and Nef fusion
+
+[292]
+
+RSV F or EBV gp350
+
+[254]
+
+HIV Env
+
+[295]
+
+HIV p17, p24, RT and Nef fusion
+
+[293]
+
+ANDV: Andes virus; b/hPIV3: Bovine-human parainfluenza virus 3; BoNT-A: Botulinum neurotoxin type A; bPIV3: Bovine parainfluenza virus 3; bRSV: Bovine respiratory syncytial virus; BVDV: Bovine viral diarrhea virus; CAT: Chloramphenicol acetyltransferase; CEA: Carcinoembryonic antigen; CHIKV: Chikungunya virus; CS: Circumsporozoite; CSFV: Classical swine fever virus; CTL: Cytotoxic T lymphocyte; DEN1, DEN2, DEN3, DEN4: Dengue virus serotypes 1–4; DENV: Dengue virus; EAV: Equine arteritis virus; EBOV: Ebola virus; F: Fusion; G: Attachment glycoprotein; GFP: Green fluorescent protein; GP: Glycoprotein; GPC: Surface glycoprotein precursor; HA: Hemagglutinin; hMPV: Human metapneumovirus; HN: Hemagglutinin neuraminidase; hPIV1: Human parainfluenza virus 1; hPIV3: Human parainfluenza virus 3; HPV: Human papilloma virus; hRSV: Human respiratory syncytial virus; HSP70: Heat shock protein 70; HTNV: Hantaan virus; IAV: Influenza A virus; IRES: Internal ribosomal entry site; KUN: Kunjin virus; JEV: Japanese encephalitis virus; LGT: Langat virus; LIV: Louping ill virus; M: Membrane; MARV: Marburg virus; MeV: Measles virus; MS: Middle envelope surface protein; MuV: Mumps virus; MVEV: Murray Valley encephalitis virus; N: Nucleoprotein; NA: Neuraminidase; NDV: Newcastle disease virus; NiV: Nipah virus; NP: Nucleoprotein; P: Phosphoprotein; prME: Pre-membrane-envelope; RABV: Rabies virus; rB/HPIV3: Recombinant bovinehuman parainfluenza virus 3; RSV: Respiratory syncytial virus; RVFV: Rift Valley fever virus; S: Spike; sAg: Surface antigen; SARS-CoV: Severe acute respiratory syndrome coronavirus; SCFV: Single-cycle flavivirus; SEOLV: Seoul virus; SeV: Sendai virus; SFV: Semliki forest virus; SH: Small hydrophobic protein; SHIV: Simian human immunodeficiency virus; SINV: Sindbis virus; SIV: Simian immunodeficiency virus; SLEV: St Louis encephalitis virus; SV5: Simian virus 5; TBEV: Tick-borne encephalitis virus; VACV: Vaccinia virus; VEEV: Venezuelan equine encephalitis virus; VHSV: Viral hemorrhagic septicemia virus; VSV: Vesicular stomatitis virus; WNV: West Nile virus; YFV: Yellow fever virus.
+
+informahealthcare.com
+
+289
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+The first clinical trial was a placebo-controlled, randomized, double-blind study in 216 healthy volunteers (aged 18–40 years), which evaluated the safety and humoral and cellular immune responses after one or two inoculations [35]. AVX502 was administered either subcutaneously or intramuscularly at two dosage levels and was found to be safe and well tolerated irrespective of the route or the dose given. Both antibody and T-cell responses were efficiently stimulated and persisted for the duration of the 4-month study. Among volunteers with prevaccination influenza antibody titers (measured by hemagglutination inhibition assay) that were below levels thought to be protective, 77 and 80% of these individuals receiving a single low or high dose, respectively, responded with protective HAI antibody titers. A second immunization in these individuals increased seroprotective responses to 86% for both dosage levels. A rapid and dose-dependent T-cell response (measured by antigen-specific IFN-g ELISPOT assay) was also observed and remained significantly elevated for at least 4 months. A second immunization extended the duration, but not the magnitude, of these T-cell responses. For both antibody and cellular responses, there was no significant difference observed between subcutaneous and intramuscular vaccinations.
+The same VEEV VRP vaccine (AVX502) was also tested in a Phase I trial involving 28 healthy adults aged 65 years or older. The trial was a placebo-controlled, randomized, doubleblind study that evaluated responses after administration of two doses of vaccine given at a single dosage level. The vaccine was safe and well tolerated in this group of healthy, ambulatory elderly subjects, paralleling the experience in young adults. At 4 weeks after the second dose, ten of 20 vaccine recipients had a fourfold or greater rise in HAI antibody titer compared to baseline. A significant increase in T-cell responses was also observed in those receiving vaccine at this time point. None of the eight placebo subjects had measurable increases in antibody or T-cell responses. The HAI antibody responses measured in the subjects receiving the vaccine exceeded the current regulatory approval guidelines for seroconversion in this age group.
+A VEEV VRP vaccine expressing human CMV (hCMV) antigens has been tested in preclinical studies that induced both humoral and cellular immune responses to the expressed antigens [38,39]. A combination of VRP expressing the extracellular domain of hCMV glycoprotein B (gB) or a pp65/IE1 fusion protein was chosen for human clinical evaluation [39]. Healthy young adults aged 18–45 years were immunized with two dosages of the vaccine (1 Â 107 or 1 Â 108 infectious units) at 0, 8 and 24 weeks in a randomized, double-blind Phase I clinical trial [20]. The combination vaccine (AVX601) was well tolerated and all vaccinated individuals developed cellular immune responses (by IFN-g ELISPOT) to CMV antigens and polyfunctional CD4+ and CD8+ T cells were detected by polychromatic flow cytometry. After the third dose, 93% of individuals in the low-dose group and all of the individuals in the highdose group demonstrated CMV neutralizing antibody response; 6 months after the third dose, 53 and 75% of the low-dose
+
+and high-dose groups remained neutralizing antibody positive, respectively [20].
+A Phase I/II study (open-label, dose-escalation study) was conducted to evaluate the safety and immunogenicity of carcinoembryonic antigen (CEA(6D))-expressing VRP vaccine (AVX701) in patients with CEA-expressing malignancies [21]. The subjects with advanced or metastatic (stage IV) CEAexpressing malignancies were treated with one of the three escalating doses of CEA-expressing VRP. In these subjects, AVX701 was administered by intramuscular injection every 3 weeks for a minimum of four immunizations, with additional doses in patients without progressive disease every 3 months. A total of 28 subjects were treated in the dose-ranging part of the study (dose range: 4 Â 107 IU to 4 Â 108 IU) and no safety or toxicity issues were identified. Following repeated administration, AVX701 was shown to be effective in eliciting CEA-specific T-cell and antibody response even in the presence of antivector neutralizing antibodies and elevated Treg levels. The study results also suggested that patients with CEA-specific T-cell responses exhibited longer overall survival [21].
+A VEEV VRP expressing the prostate-specific membrane antigen (PSMA) gene was evaluated in a Phase I clinical trial for patients with castration-resistant metastatic prostate cancer [22]. Two VRP doses (given up to five-times) were tested in patients; the PSMA-VRP was well tolerated at both doses tested (9 Â 106 IU or 3.6 Â 107 IU). There did not appear to be clinical benefit at the two PSMA-VRP doses studied suggesting that dosing was suboptimal. This is supported by the positive responses demonstrated with the CEA-VRP vaccine described above; the lowest CEA-VRP dose tested was equivalent to the highest PSMA-VRP dose tested in this study [21,22].
+Two additional cancer trials using VEEV VRP vaccines are currently recruiting patients. A Phase I study using CEA-VRP (AVX701) in patients with stage III colon cancer is now recruiting as an extension of the clinical trial already completed with this vaccine [40]. Development and testing of a VRP vaccine for treatment of HER2-neu positive cancers has taken place [41]. Preclinical testing of neu-VRP in neu transgenic mice induced robust CD8+, antigen-specific, T cells and tolerance to neu was broken in these animals resulting in the absence or inhibition of tumor growth in these animals [41]. Based on these promising results, a Phase I trial is recruiting patients with advanced or metastatic HER2-neu (HER2) expressing malignancies for treatment with a VRP expressing the extracellular domain and the transmembrane region of the HER2 gene (AVX901, [42]).
+Licensed veterinary VEEV VRP
+In addition to human clinical testing of VRP vaccines, the VEEV replicon has recently achieved USDA/CVB approval and licensure for veterinary vaccine development. The first VEEV (strain TC-83) VRP vaccine (expressing the influenza HA gene) against H3N2 swine influenza virus was fully licensed in 2012. Licensure of the H3-VRP vaccine was supported by significant safety and efficacy data as well as
+
+290
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+demonstration of USDA/CVB compliant manufacture of the vaccine [43]. In addition, conditional licensure of a porcine epidemic diarrhea virus VRP vaccine as well as an autogenous rotavirus C VRP vaccine have been granted in 2014.
+Flaviviridae Genus: Flavivirus Viruses in the genus Flavivirus have nonsegmented, ssRNA(+) genomes of approximately 10–12 kb contained within an enveloped, icosahedral nucleocapsid. The genome organization of the flaviviruses is characterized by 5´ and 3´ noncoding regions and a single polyprotein open reading frame. The 5’ portion of the polyprotein consists of the three structural proteins: capsid (C), pre-membrane (prM) and envelope (E), and the 3´ portion encodes seven nonstructural proteins. The polyprotein is co- and post-translationally cleaved into its constituent parts by viral and cellular factors.
+The Flavivirus genus contains a number of important human and animal pathogens, and vaccine development in this area has drawn significant attention over the years. Both traditional inactivated virus and attenuated virus vaccines have been produced, with varying degrees of success. Molecular cloning of several flavivirus genomes has enabled the production of recombinant, chimeric viruses that encode heterologous sequences. In most cases, this is accomplished by replacing the backbone virus sequence with an orthologous sequence from another flavivirus. However, there are some instances where unrelated sequences have been successfully incorporated into functional flavivirus genomes. The ability to manipulate the genomes of these viruses has proven to be a powerful tool for investigating the biology of both viruses and their hosts. This section will focus on the use of flaviviruses as vaccine platforms for both related and unrelated viruses.
+Yellow fever virus vectors A system to produce infectious YF-17D virus from in vitro RNA transcripts has enabled the production of chimeric viruses that take advantage of the attractive manufacturing and safety characteristics of the backbone virus [44]. The first chimeric virus based on the 17D backbone replaced the yellow fever virus (YFV) prM-E sequence with that of Japanese encephalitis virus (JEV) [45–47]. Clinical development of this vaccine (first ChimeriVax-JEÒ; now IMOJEVÒ) has been recently reviewed [48].
+Preclinical development of a tetravalent Dengue vaccine based on the 17D backbone (ChimeriVax-DENÒ) demonstrated promising safety and efficacy profiles in nonhuman primates and mice [49]. This vaccine has progressed to human clinical trials under the name ‘CYD-TDV’ and is nearing final regulatory approval [50]. A recently completed Phase IIb clinical trial showed efficacy against DENV serotypes 1, 3 and 4 but not against serotype 2 (ClinicalTrials.gov Identifier: [51]) [52]. The vaccine itself was well tolerated, and there was no indication that vaccination increased risk for antibodydependent enhancement of infection (dengue hemorrhagic
+
+fever or dengue shock syndrome). Enhancement of dengue disease is associated with incomplete protection against one or more serotypes, further complicating dengue vaccine development efforts. The results of the first Phase III clinical trial of the CYD-TDV vaccine were reported in mid-2014 [53] [54]. The vaccine had statistically significant efficacy against three serotypes, but not against serotype 2. Despite the relatively poor efficacy against serotype 2, the safety profile of the vaccine was acceptable and is a promising advance in the field of dengue vaccine development. Additional clinical trial results are expected in late 2014.
+The development, safety and preclinical efficacy of a 17Dbased West Nile virus (WNV) vaccine (ChimeriVax-WN02Ò) were recently reviewed [55]. This chimeric virus differs from an earlier version (ChimeriVax-WN01Ò) by several mutations in the E sequence (L07F, A316V and K440R) that improved safety outcomes in neurovirulence studies. The original chimera has been licensed for use in horses as both a live attenuated vaccine and a formalin-inactivated vaccine [55].
+While most applications of the 17D platform to date have relied on expression of heterologous prM-E sequence, the incorporation of nonflaviviral sequences would potentially allow for broader applicability of the vaccine platform. Stable incorporation of heterologous sequence (e.g., eGFP) between the E and the NS1 sequence has proven to be particularly useful [56]. Other insertion sites allow for small (~40 codon) insertions between the NS2B-NS3 sequences, which enable delivery of Tcell epitopes by this vector [57,58].
+Dengue virus vectors
+The attenuated Dengue 4 (DEN4) strain 814669 infectious clone has provided a platform for the creation of numerous chimeric DEN viruses. The C-prM-E or prM-E sequences derived from Dengue 1 (DEN1), Dengue 2 (DEN2) and Dengue 3 (DEN3) viruses have been used to replace the analogous sequence on the DEN4 backbone [59,60]. Further attenuation (in rhesus monkeys and humans) of this and other DENV has been accomplished by deletions in the 3´ UTR as well as other mutations [61,62].
+The DEN4 backbone containing the prM-E sequence of Saint Louis Encephalitis virus (SLEV) demonstrated protective immunity in monkeys [63]. This DEN4 platform has also been used to express the C-prM-E or prM-E sequence derived from tick-borne encephalitis virus (TBEV) and Langat virus (LGT) [64,65]. A Phase I clinical trial of a chimeric LGT/ DEN4 vaccine resulted in 80% seroconversion to LGT, but poor cross-reactivity with wild-type TBEV [66,67].
+The DEN4 backbone containing the prM-E sequence of SLEV demonstrated protective immunity in monkeys [63]. The prM-E of WNV in the DEN4 backbone demonstrated efficacy against challenge in several preclinical studies [68]. Initial clinical trials of the ‘WN/DEN4D30’ vaccine candidate induced seroconversion in 55–75% of vaccinates with a single dose and 89% after two doses [69,70]. The DEN4D30 backbone contains a 30-nucleotide deletion in the 3´ UTR.
+
+informahealthcare.com
+
+291
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+A DEN2/DEN4 chimera is advancing through clinical trials as part of the TV003 tetravalent dengue vaccine [62]. Clinical trials have demonstrated good safety and immunogenicity, with 90% of participants seroconverting to at least three dengue serotypes after a single vaccination [71,72].
+Similarly, a backbone based on DEN2 attenuated strain PDK-53 has been modified to incorporate prM-E sequences from DEN1, DEN3 and DEN4 viruses [73]. The four resulting viruses have been evaluated for preclinical safety and efficacy and are advancing as a tetravalent clinical candidate ‘DENvax’ [74]. A recently completed Phase I clinical trial showed acceptable safety and immunogenicity, with 62 and 96% of participants seroconverting to four or three serotypes, respectively [75,76].
+Replication-defective flavivirus vectors In contrast to use of replication-competent, chimeric flaviviruses as vaccine vectors, single-cycle flavivirus (SCFV) vectors have been developed [77–79]. These SCFV are rendered replication-defective by an internal deletion in the capsid sequence, which requires trans-complementation with C to recover functional particles. The risk of recombination events leading to replication-competent virus was reduced by alterations to the cyclization sequence of the trans-complemented C sequence. In the host, SCFV expresses subviral particles composed of the prM-E products, which induce immunity without cell-to-cell spread of the vector. The SCFV approach to vaccine design also allows for substitution of prM-E sequences on a common vector backbone.
+Preclinical efficacy of SCFV vaccines has been demonstrated for WNV, DENV, YFV, JEV and TBEV challenge, and a variety of safety studies have been completed [77,78,80–83].
+An alternate approach to the development of replicationdefective flaviviruses was demonstrated by the packaging of Kunjin virus replicons [84]. In this approach, the sequences encoding most of C, and all of prME, are deleted. The replicon RNA can be modified to accept transgenes in place of the deleted sequence, and packaging is accomplished by providing the Kunjin virus structural proteins in trans. This system has shown preclinical efficacy in guinea pigs against EBOV challenge and immunogenicity against HIV-1 Gag in mice [85].
+A method for the production of recombinant YFV using a two-component genome strategy has also been developed [86]. This method utilizes intact nonstructural coding sequences for both genomes, but deletes either C or prME. The two genomes only produce pseuodinfectious particles if both genomes are present in an infected cell, and can be modified to include transgenes (e.g., GFP). Infection of a cell with a single particle will produce subviral particles, transgene products and nonstructural proteins but the infection will not propagate.
+Other flavivirus-based vaccine vectors Recently, the attenuated JEV strain SA14-14-2 was used to develop a chimeric virus expressing prME sequences derived from WNV or DENV [87]. These chimeric vaccines induced
+
+protective responses in mice, and protected monkeys from challenge in the case of the chimeric DENV. Another strategy involves the attenuation of Murray Valley encephalitis virus (MVEV) by inserting an internal ribosomal entry site between the C and PrM sequences [88]. Insertion of sequence encoding IFN-b downstream of and in frame with the MVEV capsid sequence was stable using this genome design, and the resulting virus exhibited attenuation and immunogenicity in mice.
+Genus: Pestivirus The pestivirus genome is approximately 12.3 kb of nonsegmented ssRNA(+), and the viral particles are enveloped with an icosahedral nucleocapsid. The 5´ and 3´ ends of the genome are noncoding, and there is a single open reading frame encoding the polyprotein precursor. A 5´ internal ribosomal entry site initiates polyprotein translation, which begins with Npro (a nonstructural autoprotease), followed by the structural proteins C, Erns, E1, E2 and finally the remaining nonstructural proteins p7, NS2–3, NS4A, NS4B, NS5A and NS5B. As with the flaviviruses, the polyprotein is co- and posttranslationally cleaved, leading to cytoplasmic replication and eventual virus assembly and release.
+Viruses of the genus Pestivirus primarily infect ruminants and swine, and pestivirus diseases cause significant disruptions to animal agriculture. The type species of the genus, bovine viral diarrhea virus (BVDV), is endemic in many cattle-producing regions around the world. Classical swine fever virus (CSFV) is endemic in many countries throughout Asia and South America, but has been controlled or eradicated from North America and western Europe. Efficacious vaccines against CSFV and BVDV are currently available, but new vaccines that allow differentiation of infected and vaccinated animals (DIVA) are desirable as a means to improve control and eradication efforts [89]. This section will focus primarily on efforts to develop chimeric pestivirus vaccines for the prevention of classical swine fever.
+Bovine viral diarrhea virus vectors Successful recovery of virus from a full-length cDNA clone of BVDV isolate CP7 was reported in 1996 [90]. This backbone was developed as a chimeric vaccine candidate by replacing the E2 sequence of BVDV with the corresponding E2 sequence from CSFV strain Alfort 187 [91]. The resulting chimeric virus, CP7_E2alf, has been developed as a potential vaccine allowing DIVA, with several successful efficacy and safety trials in swine vaccination models [92–96]. Another version of this approach is the CP7_E1E2alf chimeric virus, which has both E1 and E2 sequences derived from CSFV [97].
+Serological cross-reactivity between some pestivirus species has been exploited to develop novel marker vaccines. The chimeric pestivirus CP7_E2gif was generated by replacing the BVDV strain CP7 E2 sequence with an analogous E2 sequence from border disease virus strain Gifhorn [98]. The resultant chimeric virus contains no sequence derived from CSFV, but still induced a protective immune response against CSFV challenge and allowed for DIVA serology [98,99].
+
+292
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+The BVDV genome has also been shown to accept the insertion of a heterologous gene between the Npro and C sequences. A gene construct encoding green fluorescent protein and the 2A protease from foot and mouth disease virus were inserted in-frame with the polyprotein sequence [100]. Growth kinetics and protein expression were only mildly impacted by the inserted sequence, suggesting that other heterologous genes may be compatible with pestivirus vectors. No in vivo experimentation with this vector design has been reported.
+Traditional attenuated or inactivated vaccines for BVDV are not compatible with DIVA serological assays that measure antibody against the Erns antigen. Heterologous pestivirus Erns sequence was used to replace the wild-type Erns sequence in a BVDV backbone [101]. The Erns sequence of giraffe pestivirus, reindeer pestivirus and pronghorn antelope pestivirus were compatible with the BVDV backbone and produced infectious chimeric virus. However, only the pronghorn antelope pestivirus/BVDV chimera proved to be distinguishable from BVDV infection by anti-Erns serology after vaccination. This approach may provide a method to develop DIVA-compatible BVDV vaccines.
+Classical swine fever virus vectors Deletion of Erns, E2 or partial E2 sequence from a CSFV infectious clone, followed by trans-complementation with the missing/defective glycoprotein, allows for recovery of nontransmissible replicon particles [102,103]. These CSFV replicons induce a protective response in some cases and are compatible with a DIVA approach to serology. Additionally, E2-deleted CSFV replicons with an inserted sequence derived from JEV (truncated E protein) induced immune responses to both CSFV and JEV in both mouse and pig models [104].
+Chimeric viruses with BVDV Erns or E2 sequence replacing that of CSFV have been shown to protect vaccinated pigs from lethal CSFV challenge while maintaining DIVA serological compatibility [93,94,105].
+Orthomyxoviridae Genus: Influenzavirus Viruses in the Orthomyxoviridae family are negative-sense, single-strand, RNA viruses with eight genome segments (PB2, PB1, PA, HA, NP, NA, M and NS). The eight genome segments express ten viral proteins; M and NS each code for two proteins generated through differential splicing of the respective primary transcripts. As is true for viruses in the Paramyxoviridae and Rhabdoviridae families, naked genomic RNA is not infectious; only genomic RNA encapsidated with the polymerase complex (PB1, PB2, PA and NP) to form a ribonucleoprotein (RNP) is able to initiate a replication and transcription cycle. Viral replication takes place in the nucleus of cells and progeny virus buds from the plasma membrane of infected cells (reviewed in [106]).
+The first successful reverse genetics manipulation of any negative-strand RNA virus genome was demonstrated with influenza virus [107]. This was accomplished by generating a
+
+plasmid DNA engineered to code for a modified influenza A NS segment; the chloramphenicol acetyltransferase (CAT) gene was inserted in place of the NS gene and flanked by the wild type 5´ and 3´ noncoding regions. RNA of the engineered CAT segment was produced by in vitro transcription and the RNA was complexed with purified influenza virus polymerase complex to form a CAT-RNP. Transfection of the CAT-RNP into cells followed by infection with influenza helper virus resulted in CAT expression in the transfected cells and release of influenza virus that had incorporated the CAT RNA segment. CAT expression was still evident after several passages of the modified influenza virus demonstrating that the CAT segment was truly packaged into particles [107]. Enami et al. (1990) extended this work by replacing the wild-type influenza A/WSN/33 (WSN) NA gene segment with one containing engineered point mutations by using a WSN helper virus lacking a wild-type NA segment, demonstrating the ability to engineer the genome of an influenza virus [108]. A rapid expansion of methods to produce influenza VLP and to rescue influenza from cDNA followed these early successes [109–117]. The culmination of the efforts resulted in construction of plasmids containing promoter elements to generate both viral RNA (vRNA) transcripts for incorporation into RNP and replication and mRNA transcripts for influenza protein expression to support polymerase complex formation and structural protein synthesis [111,113,115]. Generation of vRNA with precise 5´ and 3´ ends was accomplished by putting the influenza genome regions under the control of DNA-dependent RNA polymerase I (pol I) promoter elements; these RNAs were compatible with RNP formation and replication [115]. Flanking the pol I promoter elements with DNA-dependent RNA polymerase II promoter elements to produce mRNA for translation supported influenza virus protein expression allowing for rescue of recombinant influenza viruses using only an eight plasmid system [113].
+Influenzavirus A vectors
+With methods in place to manipulate the influenza genome segments, vaccine antigens were introduced into the vectors for a number of targets. A representative list of vaccine targets can be found in TABLE 1. Briefly, influenza vectors have been modified to express circumsporozoite protein B- and T-cell epitopes [118,119], HIV and SIV antigens [120–123], respiratory virus pathogen antigens [124,125] and tumor-associated antigens [126]. In all cases, antigen-specific immune responses were detected in animal models, demonstrating the potential of influenza virus vectors in a preclinical setting.
+Perhaps the most effective use of influenza reverse genetics capabilities has been the development of live attenuated influenza vaccines used in seasonal influenza vaccination. MedImmune produced the first cold-adapted live attenuated influenza vaccine (termed FluMistÒ in the USA) to be US FDA licensed for seasonal influenza in 2003 [127]. The reverse genetically engineered influenza viruses combine attenuating mutations, cold-adaption and temperature sensitivity characteristics to restrict vaccine virus replication to the nasopharynx of
+
+informahealthcare.com
+
+293
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+immunized individuals. Each new seasonal influenza vaccine is generated by swapping out relevant HA and NA segments in the context of the attenuated, cold-adapted and temperaturesensitive background influenza segments. FluMist is now approved for seasonal influenza vaccination in persons aged 2–49 years [128].
+The reverse genetics approach to rescue influenza virus provides the promise of unprecedented response times to the appearance of pandemic influenza virus outbreaks [129]. Advances in synthetic biology have reduced the time required to synthesize DNA from weeks to hours from receipt of a nucleotide sequence [130]. Recently, Dormitzer et al. (2013) completed a proof-of-concept study to demonstrate the speed with which synthetic seed influenza viruses could be rescued completely from cDNA in Madin Darby Canine Kidney cells [129]. Seed viruses are the source material for amplification of traditional inactivated influenza vaccines, so they represent a key component in the vaccine production process. Dormitzer et al. demonstrated that 4 days and 6.5 h after HA and NA sequences were provided to initiate DNA synthesis, synthetic seed viruses could be produced for a putative H7N9 pandemic influenza virus [129]. Furthermore, a derivation of the H7N9 synthetic seed virus has been used to manufacture a vaccine suitable for clinical evaluation. A Phase I clinical trial using the H7N9, MF59Ò adjuvanted, influenza vaccine has been reported (Bart 2014). Eighty-five percent of immunized subjects were immunologically protected (microneutralization titer >1:40) after receiving a second dose of the MF59 adjuvanted H7N9 inactivated vaccine (Bart 2014) [131]. The results of this study demonstrate that recombinant influenza virus vaccines represent a powerful tool to rapidly design, manufacture and test vaccines in response to a pandemic influenza outbreak.
+Rhabdoviridae Viruses of the family Rhabdoviridae are characteristically rodor bullet-shaped enveloped viruses containing a linear, nonsegmented, negative-sense ssRNA genome. This section will describe vaccine vector development efforts utilizing rabies virus (RABV) and vesicular stomatitis virus (VSV). The viral particle derives its shape from the helical nucleocapsid protein complexed with genomic RNA. The genome organization of VSV, from 3´ to 5´, consists of nucleocapsid (N), phosphoprotein (P), matrix (M), glycoprotein (G) and an RNA-dependent RNA polymerase (L). In the RABV genome, the P protein ortholog is referred to as NS. Following infection of the host cell, the viral transcriptase complex directs the synthesis of subgenomic mRNAs, pausing at intergenic regions. The transcriptase does not proceed in all cases, which manifests as a decreasing relative abundance of subgenomic mRNA by gene position (3´ to 5´) [132]. This characteristic allows for modulation of transgene expression by altering the insertion site. The genomes of VSV and RABV are amenable to insertion of heterologous genes without drastic impacts on viral replication, and viral particles accommodate the extra genome size by
+
+increasing the length of the helical nucleoprotein/RNA complex.
+Development of reverse genetics systems for
+single-strand, negative-sense RNA viruses Similar to the segmented Orthomyxoviridae viruses, wild-type, naked, negative-sense rhabdovirus RNA is not infectious; rather infectious RNA consists of an RNP complex containing N, P and L proteins. Early studies using viral functions expressed from plasmid constructs or provided by homologous virus infected cells resulted in successful encapsidation of small engineered RNAs or cDNA copies of naturally occurring defective interfering RNAs [133–136]. These studies helped define the 3´ and 5´ minimal terminal sequence requirements for replication of viral RNA.
+Understanding that an RNP complex is required for RNA replication was the key to developing reverse genetics systems for rhabdoviruses as well as paramyxoviruses. The basic approach to generate recombinant viruses from cDNA for viruses in the Rhabdoviridae and Paramyxoviridae families involved devising ways to introduce viral genome (or antigenome) RNA to cells that were also expressing the structural proteins N, P and L to reconstitute the active RNP replication complex. This was initially accomplished with the help of a recombinant vaccinia virus expressing the bacteriophage T7 DNA-dependent RNA polymerase [137–142]. Plasmid DNAs coding for a virus genome or antigenome and plasmids coding for the N, P and L genes all under the control of a T7 promoter were transfected into cells. The transfected cells were then infected with the recombinant T7 expressing vaccinia virus, and a combination of T7 transcription terminator sequences and ribozyme elements incorporated into the plasmid DNA constructs resulted in the production of authentic or near-authentic viral genome RNAs along with mRNA for each of the critical viral proteins. The T7 transcribed genomic or antigenomic RNA was then recognized by the expressed N, P and L proteins to form replication complexes and viral replication was initiated resulting in rescue of viruses completely from cDNA [137–142]. The reverse genetics system was further refined to reduce variables introduced by the vaccinia T7 expressing helper virus as it became known that vaccinia virus enhanced recombination events between genome templates and nonstructural protein helper plasmid constructs [138]. One approach to reduce this confounding effect was to render the recombinant vaccinia virus incapable of a complete replication cycle (by UV inactivation) yet allow it to retain expression of the T7 polymerase [143]. Another approach was to develop continuous cell lines that express the T7 polymerase to drive the relevant viral genomes and proteins involved in replication [140,144]. Yet another approach to reduce cell toxicity issues related to vaccinia helper virus could be attained through addition of cytosine arabinoside and rifampicin to cell culture during infection [145]. With development of reverse genetics systems firmly in place, the basics of single-strand, negative-sense RNA virus replication could be explored and these viruses could now be examined as vaccine vectors.
+
+294
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+Genus: Lyssavirus
+Rabies virus vectors
+Rabies virus is classified in the genus Lyssavirus and has a genome size of approximately 12 kb. The first successful recovery of an infectious negative-strand RNA virus entirely from a complete cDNA genome was achieved with RABV [141,146]. Prevalence of antibodies directed against RABV is low among the human population, except for those who are prophylactically vaccinated due to occupational hazards. Vaccination of companion animals (e.g., dogs) and wildlife for RABV is common, which may limit the utility of these vectors in such applications.
+One strategy for immunization with recombinant RABV involves the use of inactivated virions that have transgene products incorporated into the viral particle. This strategy has been used to induce immune responses against hepatitis C virus E2 glycoprotein and Clostridium botulinum neurotoxin, among others [147–149]. The E2 glycoprotein of hepatitis C virus was also immunogenic when expressed by replication-competent RABV vectors [149]. The severe acute respiratory syndrome coronavirus (SARS-CoV) nucleocapsid protein or spike glycoprotein genes were inserted between the G and L genes of a RABV-based vector [150]. Following a single intramuscular immunization with the vector expressing spike glycoprotein, mice developed high levels of SARS-CoV-neutralizing antibodies. The use of replication-competent RABV vectors presumably would be compatible with oral administration, since attenuated RABV vaccines have been used in this manner [151].
+The development of vaccines targeting HIV-1 has been an active area of RABV vector research [152]. Expression of HIV-1 gp160 envelope protein by replication-competent RABV induced neutralizing antibodies in mice [153]. Another report demonstrated that cytotoxic T lymphocyte (CTL) responses were also primed by this approach [154]. Building on this result, RABV vectors expressing HIV-1 Gag protein were also shown to induce specific CTL responses [155]. Modifications of the RABV G protein, intended to improve safety, did not harm the vector’s ability to induce these responses. Rabies vectors expressing HIV-1 proteins have also been modified to simultaneously express cytokines, such as IL-2, IL-4 and IFN-b [156–158]. Of these trials, IL-2 improved antibody responses slightly, while IFN-b increased CTL responses in mice. Simian immunodeficiency virus (SIV) Env and Gag or Gag-Pol proteins, when expressed by RABV vectors, induced neutralizing antibodies and CTL responses in macaques [158]. These animals, when challenged with virulent SIV, were protected from clinical disease.
+Ultimately, the use of RABV-based vectored vaccines in humans will depend on the development of constructs with acceptable safety profiles, particularly neurovirulence. Replication-defective and highly attenuated variants are being developed, primarily by the deletion of the viral P or M genes [152]. These viruses have severely reduced fitness and are primarily of interest as rabies vaccines. However, single-cycle RABV can be produced by deletion of the viral G gene. Such
+
+vectors undergo a single round of replication, but budded progeny lack the ability to infect cells [159]. Single-cycle RABV vectors show great promise as a safe platform for vaccine development. Various G-deleted RABV vectors are also being exploited as tools for the dissection of neuronal function, although these applications are outside the scope of this review [152,160].
+Genus: Vesiculovirus
+Vesicular stomatitis virus vectors
+VSV is an arthropod-borne virus that causes periodic epizootics among domestic livestock. Humans are rarely affected by VSV and infections are typically asymptomatic. Antibodies to VSV are uncommon, outside of high-exposure populations (e.g., veterinarians), making it likely that VSV-based vaccines would have little interference from preexisting antivector immunity.
+A method for producing recombinant VSV (rVSV) was developed shortly after the first infectious clone of RABV was reported [139,161–163]. Early development efforts demonstrated that foreign antigens, such as the envelope protein of HIV-1 or hemagglutinin of influenza virus, could be expressed from rVSV vectors [164–167]. Mice were protected from influenza challenge following intraperitoneal or intranasal immunization with rVSV-HA [168]. To reduce vector-associated pathogenesis, two rVSV vectors were developed with either a C-terminal truncated G protein or a deleted G protein [161]. The G-deleted vector (rVSVDG) protected mice from influenza challenge without inducing VSV-neutralizing antibodies, but required two administrations to induce influenza virus-neutralizing antibodies. In contrast, durable protection of mice against H5N1 influenza challenge was seen even in mice that received a single dose of rVSVDG-HA [169]. Further development of the rVSVDG platform would potentially allow for repeated immunizations without degrading vaccine vector efficacy [170].
+The rVSV platform has demonstrated preclinical efficacy against a wide range of pathogens, including hepatitis B virus, measles virus, sudden acute respiratory syndrome (SARS), respiratory syncytial virus (RSV), Andes virus, hepatitis C virus, Nipah virus and Yersinia pestis [171–179]. To our knowledge, none of these vaccine candidates have advanced to human clinical trials at this time. These varied antigens and disease models demonstrate the flexibility and potential of VSV as a vaccine platform.
+The rVSVDG platform has shown particular utility against filoviruses, such as EBOV or Marburg virus (reviewed in [180]). Recombinant VSV expressing filovirus glycoprotein have demonstrated preventive efficacy in a number of studies in nonhuman primates. As a post-exposure therapy, vaccination has shown mixed results, ranging from 33–100% survival. Certain aspects of the laboratory model likely contribute to this variability, such as challenge dose or route of exposure.
+Coincorporation of heterologous proteins into the VSV envelope provide a means to alter the tissue tropism of the virus, as was demonstrated by incorporation of CD4 and CXCR4 for targeting of HIV-infected cells [166,167]. Expression
+
+informahealthcare.com
+
+295
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+of CHIKV envelope glycoproteins in place of VSV G, and without trans-complementation with G, resulted in VSV particles that incorporated CHIKV E1/E2 into the envelope [181]. This vector induced immune responses specific to CHIKV and protected vaccinated mice from challenge.
+Multiple immunizations of nonhuman primates with rVSV expressing Gag and Env protected animals from AIDS following challenge with virulent SIV [182]. Boosting in this study was accomplished by exchanging the serotype of the rVSV G protein. Expression of HIV-1 Gag and Env from rVSV stimulated cytotoxic T-cell responses in mice, consistent with SIV experience [183]. Additional trials have supported the use of rVSV vectors for the control of HIV in humans [184,185]. Vaccine regimens that utilize rVSV and another vector system in a prime-boost model have also been developed for HIV [186,187].
+The first human clinical trial of an rVSV-based vaccine was conducted using a construct encoding HIV-1 Gag [188]. The dose-escalation study revealed acceptable safety profile, although Gag-specific CD4+ and CD8+ T-cell stimulation was low [189]. The clinical trial is still ongoing at the time of this writing. The only other report of rVSV use in humans was that of an emergency post-exposure vaccination following a laboratory accident. A laboratory worker was potentially exposed to Zaire ebolavirus (ZEBOV) by accidental needlestick and received research-grade rVSV expressing the ZEBOV glycoprotein [190]. No severe adverse reaction was observed, and the patient showed no signs of ZEBOV infection. Antibodies to VSV and ZEBOV were present after vaccination, consistent with the preclinical experience with that vector. A Phase I clinical trial of rVSV expressing ZEBOV glycoprotein is currently recruiting participants [191].
+The development of rVSV for use in oncolytic virotherapy was recently reviewed [192]. The first Phase I clinical trial of rVSV for oncolytic virotherapy has been initiated for treatment of hepatocellular carcinoma [193]. In this case, the virus expresses IFN-b to enhance the safety and efficacy following intratumoral injection.
+Genus: Novirhabdovirus
+Viral hemorrhagic septicemia virus vectors Another approach to rhabdovirus-based vaccine development is the use of viruses that do not naturally infect mammals as antigen presentation vehicles. Viral hemorrhagic septicemia virus, a member of the genus Novirhabdovirus, does not replicate at temperatures above 20˚C, making it naturally inactivated in mammals. Expression of WNV E protein domains by a recombinant viral hemorrhagic septicemia virus resulted in incorporation of WNV antigen into the viral particles, which were used to immunize mice [194]. Mice challenged with WNV were only partially protected, despite the presence of anti-WNV antibodies.
+Paramyxoviridae Viruses in the Paramyxoviridae family are responsible for a significant number of respiratory diseases in humans; most of the
+
+disease burden falls on young children and the elderly as well as the immunocompromised. RSV, human metapneumovirus (hMNV) and human paramyxovirus (hPIV) 1–3 are responsible for a majority of this disease [195–200]. Although live attenuated vaccines exist for measles virus and mumps virus (also members of the Paramyxoviridae family), RSV, hMNV and hPIV-1–3 have been refractory and no licensed vaccines are available.
+Paramyxoviridae family viruses have a single-strand, negativesense RNA genome (ranging from ~13 to 19 kb in size) surrounded by a lipid envelope; the viruses replicate solely in the cytoplasm of infected cells. All paramyxoviruses code for six common genes in their genome; the genes are entitled matrix (M), fusion (F), hemagglutinin neuraminidase (HN; sometimes referred to as G or H), nucleoprotein (NP or N), phosphoprotein (P) and the large polymerase protein (L). In addition to the six proteins found in all paramyxoviruses, some members code for additional proteins. Each gene has precise transcription initiation and termination signals such that a gradient of mRNAs is produced. This occurs because the RNA-dependent RNA polymerase pauses as it completes a new mRNA before engaging a new intergenic sequence. If it dissociates from the genomic RNA before engaging the next start signal, then it must reinitiate at the leader sequence found at the 3´ end of the genome again. This phenomenon results in those genes at the 5´ end of the genome being transcribed into mRNA less frequently than those at the 3´ end of the genome [133]. Although not required for efficient replication of all paramyxovirus RNA templates, the finding that RNA templates with a nucleotide length divisible by six (the rule of six) assisted the development of the reverse genetics systems and helped explain why natural defective interfering genomes as well as full-length viral genomes are generally divisible by a factor of six [200].
+The focus of the following section will be on the use of paramyxoviruses as vectors to express heterologous genes that are not naturally associated with the virus that the system is based on. This may be a subtle distinction in some of the examples where the heterologous gene is an ortholog of a gene from another paramyxovirus, but these examples are consistent with the use of these powerful systems as vectors to express genes not naturally associated with the base vector system employed. There are examples of reverse genetically derived paramyxoviruses developed as live attenuated viruses but without engineering expression of heterologous genes; these examples will not be specifically reviewed here. A description of paramyxovirus vector development is subdivided into the genus that the specific virus falls into phylogenetically with a general focus on those paramyxovirus vectors that have advanced into human clinical evaluation.
+Genus: Respirovirus
+Human parainfluenza virus vectors
+Recovery of hPIV-1, hPIV-2 and hPIV-3 infectious viruses completely from cDNA, using either genomic or antigenomic templates, has been accomplished [201–204]. Soon after the reverse
+
+296
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+genetics systems were developed, efforts to generate chimeric parainfluenza viruses began; Tao et al. (1998) replaced the wild-type F and HN hPIV-3 genes with those of hPIV-1 to generate a chimeric rPIV3-1 virus [205]. The rPIV3-1 virus demonstrated a mixture of hPIV-3 and hPIV-1 biological characteristics in cell culture. Other chimeric hPIV-3 viruses were generated by replacement of the wild-type hPIV-3 N gene with the N gene from two different strains of bPIV-3 (rHPIV3-NB). The chimeric rHPIV3-NB viruses demonstrated restricted replication in nonhuman primates yet induced robust anti-hPIV-3 immune responses [206]. The rHPIV3-NB chimeric was clinically tested in adults and young children as a live attenuated vaccine for hPIV-3; the vaccine was well tolerated and demonstrated restricted replication characteristics similar to those noted in nonhuman primates [207].
+Bovine parainfluenza virus vectors
+Bovine parainfluenza 3 (bPIV-3) has been shown to be antigenically similar to hPIV-3 and to induce hPIV-3 cross-reactive and protective immune responses in nonhuman primates [208]. A bPIV-3 virus (strain Kansas/15626/84) was shown to be well tolerated clinically as a live attenuated vaccine for hPIV-3 in children and infants [209–211]. Because of the species-restricted replication noted with bPIV-3 and the clinical safety demonstrated by the live bPIV-3 virus in humans, recombinant bPIV-3 vectors were developed [212,213]. Haller et al. (2000) generated a bPIV-3 vector where the F and HN wild-type genes were replaced with hPIV-3 F and HN genes and the chimeric was termed b/hPIV3 [212]. A similar bPIV-3-based vector was generated by Schmidt et al. (2000) and it was termed rBPIV3-FHHNH, where the human PIV-3 F and HN genes were used to replace the bovine PIV-3 orthologs [213]. This group also constructed a reciprocal vector, rHPIV3-FBHNB, using hPIV-3 as the base vector modified to contain the bovine F and HN gene PIV-3 orthologs [213].
+Both the b/hPIV3 and rBPIV-FHHNH (also known as rB/ HPIV3) viruses demonstrated replication in vitro that was nearly identical to hPIV-3 but reduced replication in vivo in hamsters and nonhuman primates; both viruses also conferred protection from challenge in vivo similar to that noted in animals after previous infection with hPIV-3 [212–214]. The rB/ HPIV3 virus was tested in adults, hPIV-3 seropositive children and hPIV-3 seronegative children and was shown to be safe and immunogenic [207].
+The rB/HPIV3 vector was engineered to express the G and/ or F genes of RSV subgroup A and B as possible vaccines against both RSV-A and RSV-B and hPIV-3 [215,216]. The six new vectors (rB/HPIV3-GA, rB/HPIV3-FA, rB/HPIV3-GAFA, rB/HPIV3-GB, rB/HPIV3-FB and rB/HPIV3-GBFB) were characterized in vitro and evaluated in hamsters and nonhuman primates to examine immunogenicity; robust immune responses to all three viruses (RSV-A, RSV-B and hPIV-3) were detected. In parallel, RSV G and F and hMPV F genes were introduced into the b/hPIV-3 vector described above to determine if the location of gene placement in the first or second 3´ genomic
+
+positions affected recombinant virus growth or heterologous gene expression [217]. Placement of heterologous genes in the second position was generally superior to the first position [217]. The b/hPIV-3 RSV and hMPV recombinant viruses were both shown to be immunogenic and protective in animal models [200]. The b/hPIV-3 RSV F virus (now referred to as MEDI-534) was further developed and tested clinically in healthy adults, seropositive children aged 1 to 9 years and RSV and hPIV-3 seronegative children aged 6 to 23 months. Seroconversion to RSV and hPIV-3 occurred in 67 and 100% of vaccinated children, respectively [200].
+Sendai virus vectors
+Sendai virus (SeV), also known as murine parainfluenza virus type 1, has structural and sequence similarity to hPIV-1 [218,219] and has been shown to be antigenically similar as well [220–222]. For this reason, SeV has been tested as a xenotropic vaccine for hPIV-1 clinically and has been shown to be well tolerated and safe in adults [200]. Recruitment of children and toddlers for clinical evaluation of SeV (as a vaccine against hPIV-1) in these age groups is occurring now [223]. Supported by the clinical safety demonstrated by wild-type SeV it has become the focus of vaccine vector development.
+Garcin et al. (1995) were the first to rescue infectious SeV from cDNA using vaccinia T7 expressing helper virus and plasmids providing the NP, P and L genes along with the SeV genome as described above [138]. This was followed closely by another group in 1996 [145]. In addition to replicationcompetent SeV vectors, versions modified by deletion of the F gene have been developed that are not transmissible [224]. The SeV-DF vector must be produced in cells that provide F in trans to make particles. These particles are able to infect cells in a similar manner to replication-competent SeV [225,226] and express heterologous genes but cannot spread to other cells [224,225]. Initial recombinant SeV viruses expressed reporter genes, but researchers rapidly began to introduce a host of additional genes [226,227]. Although SeV has been used to develop vaccines against a large range of pathogens (see TABLE 1), two major areas of SeV vaccine development have emerged; recombinant SeV vaccines targeted against respiratory viruses and HIV. These areas will be the focus in the following sections.
+Recombinant SeV vectors expressing the RSV G or F gene have been tested in mice, cotton rats and nonhuman primates [228–233]. The recombinant SeV RSV vaccines were shown to induce both humoral and cellular immune responses and provided protection from RSV challenge. Importantly, no evidence of exacerbation of disease in vaccinated animals was detected after RSV challenge [228–233]. An important consideration in RSV vaccine development as vaccine-mediated enhancement of disease was noted early in RSV vaccine clinical testing [234,235].
+All recombinant SeV are bivalent in nature due to the pPIV-1 immunity they provide coupled with expression of a heterologous gene. Development of recombinant SeV vaccines that can provide immunity to PIV other than hPIV-1 was a
+
+informahealthcare.com
+
+297
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+logical extension of this vector. Recombinant SeV expressing the F or HN genes of either hPIV-2 or hPIV-3 have been constructed and tested [228,236,237]. Experiments conducted in cotton rats demonstrated that the SeV hPIV-2 and hPIV-3 F or HN vaccines could induce protective immune responses to their respective hPIV and when combined with recombinant SeV RSV-F provided protection from hPIV-1, hPIV-2, hPIV-3 and RSV [228,237]. In addition, recombinant SeV expressing the influenza HA gene have also been tested and shown to induce protection from influenza virus challenge in mice [238].
+Recombinant SeV expressing HIV genes have been tested extensively and have been shown to induce both cellular and humoral immune responses in a range of animal models including nonhuman primates [239–246]. A recombinant SeV expressing the HIV gag gene has been used alone or in combination with DNA and adenovirus vectors, expressing the same gene, in a prime-boost vaccination regimen [242,244,245]. Initial studies used a replication-competent SeV-gag recombinant vaccine [240,242] and similar studies followed using the SeV DF vector [244,245]. The replication-competent SeV vaccine, termed SeV-G (NP), is currently in clinical evaluation in combination with an adenovirus 35 vector expressing four HIV genes (gag, reverse transcriptase, integrase and nef), termed Ad35-GRIN, in a prime-boost regimen in Kenya, Rwanda and the UK [247,248]. Although not discussed in this review, in addition to vaccines, recombinant SeV are being used as gene-delivery vehicles; one example is a nontransmissible SeV expressing the human fibroblast growth factor-2 gene [249]. This recombinant SeV has been tested clinically in patients with peripheral arterial disease and shown to be well tolerated [249]. Because preexisting immunity to hPIV-1 can neutralize SeV, the influence of preexisting immunity in human populations to successful SeV vaccine vector development in a clinical setting will ultimately be determined as more vaccine studies are conducted [250].
+Genus: Morbilivirus
+Measles virus vectors
+A safe and immunogenic measles virus (MeV) vaccine has been available since 1963 (reviewed in [251]); the original vaccine strain, Edmonston B, was reactogenic and was eventually replaced with the Schwarz/Moraten strain, which was derived through chicken embryo fibroblast passage of the Edmonston A and B viruses [252]. In addition to the Schwarz/Moraten strain, attenuated Edmonston AIK-C and EZ strains are also used as human vaccines [251]. The MeV vaccine is estimated to have been given to more than a billion people and has an outstanding history of safety and efficacy [253]. For this reason, recombinant MeV vaccine vectors enjoy a regulatory advantage over some other paramyxovirus-based vaccine vectors. The first rescue of MeV completely from cDNA occurred in 1995 and the system was based on the Edmonston B MeV strain [140]. Subsequently, the Schwarz/Moraten and Edmonston-Zagreb strains of MeV have been rescued from cDNA and developed as vaccine vectors due to their more attenuated phenotypes [253,254].
+
+Recombinant MeV vectors have been used to express a large range of proteins (see TABLE 1). Of particular note is their use in both cancer and HIV vaccine development as these vaccines have advanced into human clinical evaluation. The oncolytic nature of MeV has been linked to changes in receptor tropisms that occur as a result of passage in cell culture to generate attenuated vaccine viruses; specifically, attenuated MeV are capable of using CD46 as a cell entry receptor [255,256]. There is an upregulation of CD46 on many tumor cells relative to normal cells so MeV have a natural tropism for cancer cells over normal cells [257–264]. Given the long safety history of attenuated MeV vaccines and the fortuitous shift of cell entry receptor to one predominantly found on many cancer cells, development of recombinant MeV cancer vaccines was an obvious direction for the system to go.
+Although attenuated MeV without recombinant genome manipulation have been clinically tested in cancer patients [265], the inability to follow the pharmacokinetics of treatment make informed clinical development with oncolytic viruses difficult. In response to this, researchers engineered nonimmunogenic soluble marker peptides with no biological function into MeV vectors. The soluble extracellular domain of human CEA and the b-subunit of human chorionic gonadotropin (bhCG) were chosen as marker peptides and were engineered into recombinant MeV [266]. These recombinant MeV can be tracked by following the kinetics of marker gene expression and this has been correlated with therapeutic outcomes [266,267]. The MeV-CEA vector retained oncolytic potency in preclinical testing against ovarian and brain cancer and has moved into clinical evaluation for each indication ([268–271], ClinicalTrails.gov Identifier: [272]). A further refinement of the noninvasive monitoring approach was to engineer the human thyroidal sodium iodide symporter (NIS) membrane ion channel gene into recombinant MeV [273]. NIS is found on thyroid follicular cells where it functions to transport iodine into cells. Furthermore, NIS expression has successfully been exploited in clinical settings for thyroid imaging and ablation when combined with radioactive iodine [274,275]. By using single photon emission computed tomography or positron emission tomography imaging and radioactive iodine, MeV-NIS infected tissues can be monitored in a noninvasive manner as infected tissues will concentrate radioactive iodine used as a tracer [276,277]. MeV-NIS has been used in preclinical noninvasive monitoring against a host of different cancer indications [269,273,276,278,279]. These MeV-NIS preclinical successes have resulted in a large number of clinical trials that are either active, recruiting or about to recruit patients for the following indications: ovarian cancer, multiple myeloma, head and neck cancer and mesothelioma [280–285].
+In addition to using recombinant MeV in cancer virotherapy, significant effort has been made in the HIV vaccine field. Expression of individual SIV or HIV genes as well as multiple genes individually or as fusion proteins, in a single MeV recombinant, have undergone extensive preclinical testing [286–296]. One candidate vaccine expresses a fusion protein of p17, p24, reverse transcriptase and Nef (termed MV1-F4) from Clade B
+
+298
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+HIV-1 [291,292]. The MV1-F4 vaccine has been shown to be immunogenic, inducing both cellular and humoral responses to the F4 antigen, and safe as no toxic effects or virus shedding was detected in vaccinated cynomologous macaques [291,292]. The MV1-F4 vaccine has been tested in a human clinical trial in young healthy adults aged 18–27 years; the trial is complete but the results have not been made public [297].
+Genus: Rubulavirus Mumps & parainfluenza virus 5 vectors Two viruses in the Rubulavirus genus have been developed into recombinant vaccine vectors, Mumps (MuV) and parainfluenza virus 5 (PIV5) [298,299]. PIV5 was previously named simian virus 5 (SV5) but in 2009 the International Committee on Taxonomy of Viruses changed the designation to PIV5 because the virus had been isolated from many different species other than monkeys and the new designation was adopted to remove the assumption that monkeys were the natural host of the virus. Although the first rescue of MuV occurred in 2000 [298], there has not been significant use of it as a vaccine vector to date. A recombinant MuV vaccine expressing the HIV-1 gag gene was used in a prime-boost vaccination regimen with a recombinant VSV expressing the same HIV-1 antigen [300]. The highest Gagspecific T-cell responses were detected when the rMuVgag was used as the priming dose followed by the rVSVgag vaccine [300].
+More preclinical vaccine development has occurred with PIV5 vectors than MuV vectors although no recombinant PIV5 vectors have progressed past preclinical testing. The first rescue of PIV5 (SV5 at that time) from cDNA occurred in 1997; this group also demonstrated stable expression of a reporter gene (GFP) in recombinant virus passaged up to 20-times [299] – an important characteristic in replicationcompetent vaccine vectors. Mice vaccinated with a recombinant PIV5 vector expressing a model antigen (chicken ovalbumin) were shown to generate high avidity cytotoxic T cells to the antigen equivalent to those induced by a recombinant vaccinia virus expressing the same antigen [301]. Arimilli et al. (2008) engineered a PIV5 vector to express the TLR5 ligand flagellin [302]. The recombinant PIV5-flagellin was superior to wildtype PIV5 at activating IFN-g from both CD8+ and CD4+ T cells [302]. Subsequently, recombinant PIV5 vectors have been engineered with antigens from vaccinia virus, influenza virus, RABV and RSV; all of the recombinant PIV5 vectors demonstrated significant protection from the respective pathogen even in the face of preexisting PIV5 immunity [303–311]. Interestingly, a recombinant PIV5 vector expressing the H5N1 HA gene incorporated H5 HA into the recombinant PIV5 virion; inactivated rPIV5-H5 were still capable of protecting mice from challenge, albeit a protective response required a boost of the inactivated rPIV5-H5 vaccine [309].
+Genus: Metapneumovirus
+Metapneumovirus vectors Human metapneumovirus is a newly discovered paramyxovirus [312]. Although only recently described, serological evidence
+
+of hMPV infections can be dated back to 1958 suggesting that many of the cases of bronchiolitis and pneumonia without known etiology may be related to hMPV infection [312,313]. Human and avian MPV have been rescued from cDNA and their genomes have also been engineered to express a GFP reporter gene or for hMPV, extra copies of the hMPV G and F genes [314,315]. Subsequently, recombinant hMPV were generated with either the G or SH or G and SH genes deleted. These viruses replicated in cell culture but the DG and DG/D SH hMPV demonstrated restricted replication in the respiratory tract of hamsters yet provided protection from wild-type hMPV replication in their lungs [316]. Additional hMPV deletion mutants in the context of DG or DSH backgrounds have been generated in the M2 gene, which contains two overlapping reading frames (M2-1 and M2-2) [317]. Examination of replication in the respiratory tract of hamsters and nonhuman primates has demonstrated that hMPV DG and DM2-2 viruses may be promising hMPV vaccines [317,318]. Chimeric hMPV viruses incorporating avian MPV N or P orthologs have also been generated [319]. Both hMPV-NA and hMPV-PA replicated efficiently in cell culture and demonstrated restricted replication in the respiratory tract of nonhuman primates yet provided protection from hMPV challenge [319]. The hMPV-PA chimeric virus is about to undergo clinical testing in adults aged 18–49 years, hMPV-seropositive children aged 12–59 months, and hMPV-seronegative infants and children aged 6–59 months [320].
+Genus: Avulairus
+Newcastle disease virus vectors
+Newcastle disease virus (NDV) is a worldwide disease of avian species that is capable of causing serious economic losses in the poultry industry [321]. Two groups rescued NDV from cDNA separately for the first time in 1999 [322,323]. Prior to reverse genetics approaches to modify NDV, it was known to have oncolytic potential and has been tested extensively in human clinical trials; although oncolytic NDV vectors are being engineered to express biomolecules to increase their antitumor activity, this review will focus on the infectious disease aspects of NDV vector development. A review of oncolytic NDV vaccine development was recently published and readers are directed to it for more information on NDV-based cancer treatment [324].
+NDV strains can have varying virulence and the different virulence categories have been described as velogenic (highly virulent), mesogenic (intermediate virulence) or lentogenic (nonvirulent) [321]. Recombinant NDV vaccine vectors have been made from either mesogenic (Beaudette) or lentogenic (LaSota, Hitchner B1 and Clone-30) NDV strains. In general, recombinant NDV vectored vaccines are delivered by the intranasal/intratracheal routes of administration; this route induces robust mucosal immune responses that in turn make respiratory disease targets attractive for NDV vectors. From a veterinary perspective, all NDV vector vaccines are bivalent in nature as immunity to wild-type NDV is provided as a matter of course by the base system in addition to the incorporated
+
+informahealthcare.com
+
+299
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+heterologous gene [325,326]. Recombinant NDV vaccines against influenza virus have been developed with more focus being placed on viruses with pandemic potential [325–331]. NDV vaccines expressing the HA gene from H5N1 influenza virus have been tested in mice, chickens and nonhuman primates and shown to induce robust protective immune responses both in circulation and on mucosal surfaces [326,329,332,333]. Other respiratory pathogens have also been targeted for NDV vectored vaccines [327,334,335]. Recombinant NDV vaccines, based on both Beaudette and LaSota strain backbones, against SARS-CoV and hPIV-3 have been tested in nonhuman primates and shown to be immunogenic and protective [327,334]. A recombinant NDV vector expressing the RSV F gene was shown to be more immunogenic than even wild-type RSV infection in a mouse model [335]. Nonhuman primates vaccinated by the intranasal/ intratracheal route with a recombinant NDV vector expressing the glycoprotein from EBOV demonstrated robust humoral and cellular immune responses to EBOV glycoprotein, and IgA antibody titers were detected in respiratory tract secretions showing a mucosal immune response [332].
+HIV has also been a focus of recombinant NDV vaccine development. Early studies incorporated the SIV gag into a recombinant NDV vector [123]. A number or different routes of administration were examined and intranasal NDV-SIVgag administration was found to be superior in a mouse model [123]. The optimal site to introduce a HIV-1 gag gene into an NDV vector was determined both in terms of vaccine yield and induction of an immune response [336]. In other NDV-gag vaccine studies, the HIV-1 gag gene was modified by fusing it with a single-chain Fv antibody specific for the dendritic cell receptor, DEC205. Mice vaccinated with the NDV vaccine expressing the gag-DEC205 Fv fusion induced enhanced CD4+ and CD8+ Tcell immune responses [337]. An NDV-gag vaccine was also shown to be compatible in a prime-boost vaccine schedule when combined with other virus vectors also expressing the gag gene [187]. A search of ClinicalTrails.gov indicated that, to date, none of the infectious disease-specific recombinant NDV vectored vaccines have entered human clinical evaluation.
+Genus: Pneumovirus
+Respiratory syncytial virus vectors Recombinant RSV vectors have been generated from both the human (hRSV) and bovine (bRSV) RSV counterparts [137,144,338]. Human RSV is a very important pediatric respiratory pathogen with impact noted worldwide, yet no licensed vaccine for it is available [339]. This is in large part due to clinical testing of an inactivated RSV vaccine in young children revealing more severe clinical illness in vaccinated individuals than unvaccinated individuals who subsequently became infected with RSV [234,235].
+Development of hRSV or bRSV as a vaccine vector for other pathogens is limited to date. Most recombinant RSV viruses tested have been gene deletion or temperature-sensitive mutant versions of the wild-type virus generated to produce attenuated live vaccines against either the human or bovine
+
+parent virus [338,340–342]. At least two recombinant hRSV vectors have been developed that express a heterologous gene [343,344]. The first is a hRSV vector constructed to express the cystic fibrosis transmembrane conductance regulator and is being tested as a gene delivery vehicle for treatment of cystic fibrosis [343]. The second is a hRSV replicon that is noncytotoxic and capable of long-term gene of interest expression [344]. The hRSV replicon is propagation defective, that is, it cannot make progeny once it enters a cell. The hRSV replicon was engineered to express both a GFP reporter gene and a blasticidin S deaminase (bsd) selectable marker gene [344]. Although not tested as a vaccine vector yet, the hRSV replicon has potential for that and potentially as a self-limiting gene delivery vector [344].
+Expert commentary & five-year view In the nearly 30 years since the development of reverse genetics tools to manipulate RNA virus genomes, this diverse and complex group of viruses has become a source of powerful vaccine vector systems. This is evidenced by the fact that all five virus families discussed in this review have members that have progressed to human clinical evaluation and even to FDA and USDA vaccine licensure. Alphavirus replicon vectors have shown promise clinically against both infectious disease and cancer targets and fully licensed VEEV VRP vaccines are currently available for veterinary diseases of swine. Live attenuated influenza viruses generated completely from cDNA represent a safe and immunogenic alternative to traditionally inactivated vaccines and the same technology, supported by rapid DNA synthesis, has proven ability to produce synthetic seed viruses used to produce traditionally inactivated vaccines for pandemic influenza viruses. Vaccine vectors based on recombinant paramyxoviruses represent real promise for development of potential RSV vaccines as well as vectors with powerful oncogenic capacity. Chimeric flaviviruses based on the YFV-17D backbone have been approved for use in humans (JEV) and horses (WNV). The nature of WNV epidemiology presents challenges for clinical efficacy study design and ultimate regulatory approval. Three different tetravalent vaccines for DENV are advancing through the clinic, with the CYD-TDV candidate now completing Phase III trials. Dengue vaccine candidates based on chimeric DEN/DEN viruses are in Phase I and II trials. Trials conducted over the next several years will dramatically advance the practical understanding of DENV vaccinology. Novel replication-defective flaviviruses may provide a tool to improve the safety profile of existing efficacious vaccines. Chimeric pestivirus vaccines show great promise as a tool for the control of diseases in domestic livestock and wildlife. Vaccines based on recombinant rhabdoviruses have only just begun to enter human clinical trials, initially for HIV. Several VSV-based preclinical candidates for diseases that represent biodefense hazards or public health risks are also being commercialized. Oncolytic VSV promises to be an active area of clinical research in the future, with one clinical trial already underway.
+
+300
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+Financial & competing interests disclosure The authors have no relevant affiliations or financial involvement with any organization or entity with a financial interest in or financial conflict with the subject matter or materials discussed in the manuscript. This
+
+includes employment, consultancies, honoraria, stock ownership or options, expert testimony, grants or patents received or pending, or royalties.
+No writing assistance was utilized in the production of this manuscript.
+
+Key issues
+• Chimeric flaviviruses and live attenuated influenza vaccines (orthomyxoviruses) have achieved regulatory approval for use in humans, while chimeric flaviviruses and alphavirus replicons have reached approval in veterinary animals.
+• Recombinant alphavirus replicon, chimeric flavivirus, paramyxovirus and vaccines are advancing through human clinical trials supported by preclinical efficacy against a wide variety of infectious disease and cancer targets.
+• Rational design of flavivirus-, alphavirus- and rhabdovirus-based vaccines has increased vector safety that will support continued testing of these vector platforms.
+• Most flavivirus and paramyxovirus vector development has focused on the expression of sequences derived from other flaviviruses or paramyxoviruses, respectively; these chimeric vectors offer increased attenuation and great promise for development of vaccines against some of the most important insect-borne and pediatric respiratory illnesses known to man.
+• The oncolytic nature of many RNA viruses (ex paramyxoviruses and rhabdoviruses) that can be manipulated through reverse genetics represents a significant advancement in cancer treatment. New and continued clinical evaluation of these oncolytic viruses will likely shape the future of cancer therapy.
+
+References
+Papers of special note have been highlighted as: • of interest •• of considerable interest
+1. Emeagi PU, Goyvaerts C, Maenhout S, et al. Lentiviral vectors: a versatile tool to fight cancer. Curr Mol Med 2013;13(4): 602-25
+2. Schlesinger S, Schlesinger MJ. Togaviridae: the viruses and their replication. In: Fields Virology. Knipe DM, Howley PM, Editors Lippincott Williams & Wilkins, Philadelphia, 2001;p. 895-916
+3. Strauss JH, Strauss EG. The alphaviruses: gene expression, replication, and evolution. Microbiol Rev 1994;58(3):491-562
+4. Rayner JO, Dryga SA, Kamrud KI. Alphavirus vectors and vaccination. Rev Med Virol 2002;12(5):279-96
+5. Vander Veen RL, Harris DL, Kamrud KI. Alphavirus replicon vaccines. Anim Health Res Rev 2012;13(1):1-9
+6. Atasheva S, Wang E, Adams AP, et al. Chimeric alphavirus vaccine candidates protect mice from intranasal challenge with western equine encephalitis virus. Vaccine 2009;27(32):4309-19
+7. Paessler S, Fayzulin RZ, Anishchenko M, et al. Recombinant sindbis/Venezuelan equine encephalitis virus is highly attenuated and immunogenic. J Virol 2003;77(17): 9278-86
+8. Roy CJ, Adams AP, Wang E, et al. A chimeric Sindbis-based vaccine protects cynomolgus macaques against a lethal
+
+aerosol challenge of eastern equine encephalitis virus. Vaccine 2013;31(11): 1464-70
+9. Wang E, Petrakova O, Adams AP, et al. Chimeric Sindbis/eastern equine encephalitis vaccine candidates are highly attenuated and immunogenic in mice. Vaccine 2007; 25(43):7573-81
+10. Wang E, Volkova E, Adams AP, et al. Chimeric alphavirus vaccine candidates for chikungunya. Vaccine 2008;26(39):5030-9
+11. Glasker S, Lulla A, Lulla V, et al. Virus replicon particle based Chikungunya virus neutralization assay using Gaussia luciferase as readout. Virol J 2013;10:235
+12. Karlsen M, Villoing S, Rimstad E, Nylund A. Characterization of untranslated regions of the salmonid alphavirus 3 (SAV3) genome and construction of a SAV3 based replicon. Virol J 2009;6:173
+13. Moriette C, Leberre M, Lamoureux A, et al. Recovery of a recombinant salmonid alphavirus fully attenuated and protective for rainbow trout. J Virol 2006;80(8): 4088-98
+14. Wolf A, Hodneland K, Frost P, et al. Salmonid alphavirus-based replicon vaccine against infectious salmon anemia (ISA): impact of immunization route and interactions of the replicon vector. Fish Shellfish Immunol 2014;36(2):383-92
+15. Wu-yang Z, Guo-dong L. Research on basis of reverse genetics system of a Sindbis-like virus XJ-160. Virol J 2011;8:519
+
+16. Lundstrom K, Boulikas T. Viral and non-viral vectors in gene therapy: technology development and clinical trials. Technol Cancer Res Treat 2003;2(5): 471-86
+17. Lundstrom K. Biology and application of alphaviruses in gene therapy. Gene Ther 2005;12(Suppl 1):S92-97
+18. Ren H, Boulikas T, Lundstrom K, et al. Immunogene therapy of recurrent glioblastoma multiforme with a liposomally encapsulated replication-incompetent Semliki forest virus vector carrying the human interleukin-12 gene–a phase I/II clinical protocol. J Neurooncol 2003; 64(1-2):147-54
+19. Zhang J, Asselin-Paturel C, Bex F, et al. Cloning of human IL-12 p40 and p35 DNA into the Semliki Forest virus vector: expression of IL-12 in human tumor cells. Gene Ther 1997;4(4):367-74
+20. Bernstein DI, Reap EA, Katen K, et al. Randomized, double-blind, Phase 1 trial of an alphavirus replicon vaccine for cytomegalovirus in CMV seronegative adult volunteers. Vaccine 2009;28(2):484-93
+21. Morse MA, Hobeika AC, Osada T, et al. An alphavirus vector overcomes the presence of neutralizing antibodies and elevated numbers of Tregs to induce immune responses in humans with advanced cancer. J Clin Invest 2010;120(9):3234-41
+•• Alphavirus replicon particles break tolerance in clinical evaluation and antivector immunity did not impact boosting potential.
+
+informahealthcare.com
+
+301
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+22. Slovin SF, Kehoe M, Durso R, et al. A phase I dose escalation trial of vaccine replicon particles (VRP) expressing prostate-specific membrane antigen (PSMA) in subjects with prostate cancer. Vaccine 2013;31(6):943-9
+23. Wecker M, Gilbert P, Russell N, et al. Phase I safety and immunogenicity evaluations of an alphavirus replicon HIV-1 subtype C gag vaccine in healthy HIV-1-uninfected adults. Clin Vaccine Immunol 2012;19(10):1651-60
+24. Herbert AS, Kuehne AI, Barth JF, et al. Venezuelan equine encephalitis virus replicon particle vaccine protects nonhuman primates from intramuscular and aerosol challenge with ebolavirus. J Virol 2013; 87(9):4952-64
+25. Hevey M, Negley D, Pushko P, et al. Marburg virus vaccines based upon alphavirus replicons protect guinea pigs and nonhuman primates. Virology 1998;251(1): 28-37
+26. Hooper JW, Ferro AM, Golden JW, et al. Molecular smallpox vaccine delivered by alphavirus replicons elicits protective immunity in mice and non-human primates. Vaccine 2009;28(2):494-511
+27. Lee JS, Groebner JL, Hadjipanayis AG, et al. Multiagent vaccines vectored by Venezuelan equine encephalitis virus replicon elicits immune responses to Marburg virus and protection against anthrax and botulinum neurotoxin in mice. Vaccine 2006;24(47-48):6886-92
+28. Lee JS, Hadjipanayis AG, Welkos SL. Venezuelan equine encephalitis virus-vectored vaccines protect mice against anthrax spore challenge. Infect Immun 2003;71(3):1491-6
+29. Pushko P, Geisbert J, Parker M, et al. Individual and bivalent vaccines based on alphavirus replicons protect guinea pigs against infection with Lassa and Ebola viruses. J Virol 2001;75(23):11677-85
+30. Reed DS, Glass PJ, Bakken RR, et al. Combined alphavirus replicon particle vaccine induces durable and cross-protective immune responses against equine encephalitis viruses. J Virol 2014;88(20): 12077-86
+31. Davis NL, West A, Reap E, et al. Alphavirus replicon particles as candidate HIV vaccines. IUBMB Life 2002;53(4-5): 209-11
+32. Williamson C, Morris L, Maughan MF, et al. Characterization and selection of HIV-1 subtype C isolates for use in vaccine
+
+development. AIDS Res Hum Retroviruses 2003;19(2):133-44
+33. Bryant M, Ratner L. Myristoylationdependent replication and assembly of human immunodeficiency virus 1. Proc Natl Acad Sci USA 1990;87(2):523-7
+34. Gottlinger HG, Sodroski JG, Haseltine WA. Role of capsid precursor processing and myristoylation in morphogenesis and infectivity of human immunodeficiency virus type 1. Proc Natl Acad Sci USA 1989; 86(15):5781-5
+35. Phase 1/2 clinical trial of an alphavirus replicon vaccine for Influenza. Available from: http://clinicaltrials.gov/show/ NCT00440362
+36. A Safety and immunogenicity trial in adults 65 years of age or over to prevent influenza (AVX502-003). Available from: http:// clinicaltrials.gov/show/NCT00706732
+37. Hubby B, Talarico T, Maughan M, et al. Development and preclinical evaluation of an alphavirus replicon vaccine for influenza. Vaccine 2007;25(48):8180-9
+38. Reap EA, Dryga SA, Morris J, et al. Cellular and humoral immune responses to alphavirus replicon vaccines expressing cytomegalovirus pp65, IE1, and gB proteins. Clin Vaccine Immunol 2007; 14(6):748-55
+39. Reap EA, Morris J, Dryga SA, et al. Development and preclinical evaluation of an alphavirus replicon particle vaccine for cytomegalovirus. Vaccine 2007;25(42): 7441-9
+40. Immunotherapy With CEA(6D) VRP Vaccine (AVX701) in patients with stage iii colorectal Cancer. Available from: http:// clinicaltrials.gov/show/NCT01890213
+41. Wang X, Wang JP, Maughan MF, Lachman LB. Alphavirus replicon particles containing the gene for HER2/neu inhibit breast cancer growth and tumorigenesis. Breast cancer research : BCR 2005;7(1): R145-55
+42. A Phase I study to evaluate the antitumor activity and safety Of AVX901. Available from: http://clinicaltrials.gov/show/ NCT01526473
+43. Vander Veen RL, Loynachan AT, Mogler MA, et al. Safety, immunogenicity, and efficacy of an alphavirus replicon-based swine influenza virus hemagglutinin vaccine. Vaccine 2012;30(11):1944-50
+• The first alphavirus replicon particle vaccine fully licensed by the USDA for veterinary use.
+
+44. Rice CM, Grakoui A, Galler R, Chambers TJ. Transcription of infectious yellow fever RNA from full-length cDNA templates produced by in vitro ligation. New Biol 1989;1(3):285-96
+45. Chambers TJ, Nestorowicz A, Mason PW, Rice CM. Yellow fever/Japanese encephalitis chimeric viruses: construction and biological properties. J Virol 1999;73(4):3095-101
+46. Guirakhoo F, Zhang ZX, Chambers TJ, et al. Immunogenicity, genetic stability, and protective efficacy of a recombinant, chimeric yellow fever-Japanese encephalitis virus (ChimeriVax-JE) as a live, attenuated vaccine candidate against Japanese encephalitis. Virology 1999;257(2):363-72
+47. Monath TP, Soike K, Levenbook I, et al. Recombinant, chimaeric live, attenuated vaccine (ChimeriVax) incorporating the envelope genes of Japanese encephalitis (SA14-14-2) virus and the capsid and nonstructural genes of yellow fever (17D) virus is safe, immunogenic and protective in non-human primates. Vaccine 1999; 17(15-16):1869-82
+48. Appaiahgari MB, Vrati S. IMOJEV((R)): a Yellow fever virus-based novel Japanese encephalitis vaccine. Expert Rev Vaccines 2010;9(12):1371-84
+49. Guirakhoo F, Pugachev K, Zhang Z, et al. Safety and efficacy of chimeric yellow Fever-dengue virus tetravalent vaccine formulations in nonhuman primates. J Virol 2004;78(9):4761-75
+50. Guy B, Barrere B, Malinowski C, et al. From research to phase III: preclinical, industrial and clinical development of the Sanofi Pasteur tetravalent dengue vaccine. Vaccine 2011;29(42):7229-41
+• Reviews the research and clinical development of the chimeric yellow fever tetravalent dengue vaccine.
+51. Efficacy and safety of dengue vaccine in healthy children. Available from: http:// clinicaltrials.gov/show/NCT00842530
+52. Sabchareon A, Wallace D, Sirivichayakul C, et al. Protective efficacy of the recombinant, live-attenuated, CYD tetravalent dengue vaccine in Thai schoolchildren: a randomised, controlled phase 2b trial. Lancet 2012;380(9853):1559-67
+53. Study of a novel tetravalent dengue vaccine in healthy children aged 2 zto 14 years in asia. Available from: http://clinicaltrials.gov/ show/NCT01373281
+54. Capeding MR, Tran NH, Hadinegoro SR, et al. Clinical efficacy and safety of a novel tetravalent dengue vaccine in healthy children in Asia: a phase 3, randomised,
+
+302
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+observer-masked, placebo-controlled trial. Lancet 2014;384(9951):1358-65
+55. Dayan GH, Pugachev K, Bevilacqua J, et al. Preclinical and clinical development of a YFV 17 D-based chimeric vaccine against West Nile virus. Viruses 2013;5(12): 3048-70
+56. Martins MA, Bonaldo MC, Rudersdorf RA, et al. Immunogenicity of seven new recombinant yellow fever viruses 17D expressing fragments of SIVmac239 Gag, Nef, and Vif in Indian rhesus macaques. PLoS One 2013;8(1):e54434
+57. Barba-Spaeth G, Longman RS, Albert ML, Rice CM. Live attenuated yellow fever 17D infects human DCs and allows for presentation of endogenous and recombinant T cell epitopes. J Exp Med 2005;202(9):1179-84
+58. Tao D, Barba-Spaeth G, Rai U, et al. Yellow fever 17D as a vaccine vector for microbial CTL epitopes: protection in a rodent malaria model. J Exp Med 2005; 201(2):201-9
+59. Bray M, Lai CJ. Construction of intertypic chimeric dengue viruses by substitution of structural protein genes. Proc Natl Acad Sci USA 1991. 88(22):10342-6
+60. Chen W, Kawano H, Men R, et al. Construction of intertypic chimeric dengue viruses exhibiting type 3 antigenicity and neurovirulence for mice. J Virol 1995;69(8): 5186-90
+61. Blaney JE Jr., Durbin AP, Murphy BR, Whitehead SS. Development of a live attenuated dengue virus vaccine using reverse genetics. Viral Immunol 2006;19(1): 10-32
+62. Durbin AP, Kirkpatrick BD, Pierce KK, et al. Development and clinical evaluation of multiple investigational monovalent DENV vaccines to identify components for inclusion in a live attenuated tetravalent DENV vaccine. Vaccine 2011;29(42): 7242-50
+63. Blaney JE Jr, Speicher J, Hanson CT, et al. Evaluation of St. Louis encephalitis virus/ dengue virus type 4 antigenic chimeric viruses in mice and rhesus monkeys. Vaccine 2008;26(33):4150-9
+64. Pletnev AG, Bray M, Huggins J, Lai CJ. Construction and characterization of chimeric tick-borne encephalitis/dengue type 4 viruses. Proc Natl Acad Sci USA 1992;89(21):10532-6
+65. Pletnev AG, Karganova GG, Dzhivanyan TI, et al. Chimeric Langat/Dengue viruses protect mice from heterologous challenge with the highly virulent strains of tick-borne
+
+encephalitis virus. Virology 2000;274(1): 26-31
+66. Safety of and immune response to a tick-borne encephalitis vaccine (LGT (TP21)/DEN4) in Healthy Adults. Available from: http://clinicaltrials.gov/show/ NCT00118924
+67. Wright PF, Ankrah S, Henderson SE, et al. Evaluation of the Langat/dengue 4 chimeric virus as a live attenuated tick-borne encephalitis vaccine for safety and immunogenicity in healthy adult volunteers. Vaccine 2008;26(7):882-90
+68. Pletnev AG, Swayne DE, Speicher J, et al. Chimeric West Nile/dengue virus vaccine candidate: preclinical evaluation in mice, geese and monkeys for safety and immunogenicity. Vaccine 2006;24(40-41): 6392-404
+69. Safety of and immune response to a west nile virus vaccine (WN/DEN4delta30) in Healthy Adults. Available from: http:// clinicaltrials.gov/show/NCT00537147
+70. Durbin AP, Wright PF, Cox A, et al. The live attenuated chimeric vaccine rWN/ DEN4Delta30 is well-tolerated and immunogenic in healthy flavivirus-naive adult volunteers. Vaccine 2013;31(48): 5772-7
+71. Evaluation of the safety and immune response of five admixtures of a Tetravalent Dengue Virus Vaccine. Available from: http://clinicaltrials.gov/show/NCT01072786
+72. Durbin AP, Kirkpatrick BD, Pierce KK, et al. A single dose of any of four different live attenuated tetravalent dengue vaccines is safe and immunogenic in flavivirus-naive adults: a randomized, double-blind clinical trial. J Infect Dis 2013;207(6):957-65
+73. Huang CY, Butrapet S, Tsuchiya KR, et al. Dengue 2 PDK-53 virus as a chimeric carrier for tetravalent dengue vaccine development. J Virol 2003;77(21):11436-47
+74. Osorio JE, Huang CY, Kinney RM, Stinchcomb DT. Development of DENVax: a chimeric dengue-2 PDK-53-based tetravalent vaccine for protection against dengue fever. Vaccine 2011;29(42):7251-60
+75. Safety and immunogenicity study to assess denvax, a live attenuated Tetravalent Vaccine for Prevention of Dengue Fever. Available from: http://clinicaltrials.gov/show/ NCT01224639
+76. Osorio JE, Velez ID, Thomson C, et al. Safety and immunogenicity of a recombinant live attenuated tetravalent dengue vaccine (DENVax) in flavivirus-naive healthy adults in Colombia: a randomised, placebo-controlled,
+
+phase 1 study. The Lancet Infect Dis 2014; 14(9):830-8
+77. Mason PW, Shustov AV, Frolov I. Production and characterization of vaccines based on flaviviruses defective in replication. Virology 2006;351(2):432-43
+78. Suzuki R, Winkelmann ER, Mason PW. Construction and characterization of a single-cycle chimeric flavivirus vaccine candidate that protects mice against lethal challenge with dengue virus type 2. J Virol 2009;83(4):1870-80
+79. Widman DG, Frolov I, Mason PW. Third-generation flavivirus vaccines based on single-cycle, encapsidation-defective viruses. Adv Virus Res 2008;72:77-126
+80. Ishikawa T, Widman DG, Bourne N, et al. Construction and evaluation of a chimeric pseudoinfectious virus vaccine to prevent Japanese encephalitis. Vaccine 2008;26(22): 2772-81
+81. Nelson MH, Winkelmann E, Ma Y, et al. Immunogenicity of RepliVAX WN, a novel single-cycle West Nile virus vaccine. Vaccine 2010;29(2):174-82
+82. Widman DG, Ishikawa T, Fayzulin R, et al. Construction and characterization of a second-generation pseudoinfectious West Nile virus vaccine propagated using a new cultivation system. Vaccine 2008;26(22): 2762-71
+83. Rumyantsev AA, Goncalvez AP, Giel-Moloney M, et al. Single-dose vaccine against tick-borne encephalitis. Proc Natl Acad Sci USA 2013;110(32):13103-8
+84. Khromykh AA, Varnavski AN, Westaway EG. Encapsidation of the flavivirus kunjin replicon RNA by using a complementation system providing Kunjin virus structural proteins in trans. J Virol 1998;72(7):5967-77
+85. Reynard O, Mokhonov V, Mokhonova E, et al. Kunjin virus replicon-based vaccines expressing Ebola virus glycoprotein GP protect the guinea pig against lethal Ebola virus infection. J Infect Dis 2011; 204(Suppl 3):S1060-5
+86. Shustov AV, Mason PW, Frolov I. Production of pseudoinfectious yellow fever virus with a two-component genome. J Virol 2007;81(21):11737-48
+87. Li XF, Deng YQ, Yang HQ, et al. A chimeric dengue virus vaccine using Japanese encephalitis virus vaccine strain SA14-14-2 as backbone is immunogenic and protective against either parental virus in mice and nonhuman primates. J Virol 2013;87(24):13694-705
+
+informahealthcare.com
+
+303
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+88. Frese M, Lee E, Larena M, et al. Internal ribosome entry site-based attenuation of a flavivirus candidate vaccine and evaluation of the effect of beta interferon coexpression on vaccine properties. J Virol 2014;88(4): 2056-70
+89. Newcomer BW, Givens MD. Approved and experimental countermeasures against pestiviral diseases: bovine viral diarrhea, classical swine fever and border disease. Antiviral Res 2013;100(1):133-50
+90. Meyers G, Tautz N, Becher P, et al. Recovery of cytopathogenic and noncytopathogenic bovine viral diarrhea viruses from cDNA constructs. J Virol 1996;70(12):8606-13
+91. Reimann I, Depner K, Trapp S, Beer M. An avirulent chimeric Pestivirus with altered cell tropism protects pigs against lethal infection with classical swine fever virus. Virology 2004;322(1):143-57
+92. Koenig P, Lange E, Reimann I, Beer M. CP7_E2alf: a safe and efficient marker vaccine strain for oral immunisation of wild boar against Classical swine fever virus (CSFV). Vaccine 2007;25(17):3391-9
+93. Blome S, Aebischer A, Lange E, et al. Comparative evaluation of live marker vaccine candidates "CP7_E2alf" and "flc11" along with C-strain "Riems" after oral vaccination. Veterinary microbiology 2012; 158(1-2):L:42-59
+94. Eble PL, Geurts Y, Quak S, et al. Efficacy of chimeric Pestivirus vaccine candidates against classical swine fever: protection and DIVA characteristics. Veterinary microbiology 2013;162(2-4):437-46
+95. Renson P, Le Dimna M, Keranflech A, et al. CP7_E2alf oral vaccination confers partial protection against early classical swine fever virus challenge and interferes with pathogeny-related cytokine responses. Vet Res 2013;44:9
+96. Feliziani F, Blome S, Petrini S, et al. First assessment of classical swine fever marker vaccine candidate CP7_E2alf for oral immunization of wild boar under field conditions. Vaccine 2014;32(18):2050-5
+97. Reimann I, Depner K, Utke K, et al. Characterization of a new chimeric marker vaccine candidate with a mutated antigenic E2-epitope. Vet Microbiol 2010;142(1-2): 45-50
+98. Rasmussen TB, Uttenthal A, Reimann I, et al. Virulence, immunogenicity and vaccine properties of a novel chimeric pestivirus. J Gen Virol 2007;88(Pt 2):481-6
+99. von Rosen T, Rangelova D, Nielsen J, et al. DIVA vaccine properties of the live
+
+chimeric pestivirus strain CP7_E2gif. Vet Microbiol 2014;170(3-4):224-31
+100. Fan ZC, Dennis JC, Bird RC. Bovine viral diarrhea virus is a suitable viral vector for stable expression of heterologous gene when inserted in between N(pro) and C genes. Virus Res 2008;138(1-2):97-104
+101. Luo Y, Yuan Y, Ankenbauer RG, et al. Construction of chimeric bovine viral diarrhea viruses containing glycoprotein E rns of heterologous pestiviruses and evaluation of the chimeras as potential marker vaccines against BVDV. Vaccine 2012;30(26):3843-8
+102. Widjojoatmodjo MN, van Gennip HG, Bouma A, et al. Classical swine fever virus E (rns) deletion mutants: trans-complementation and potential use as nontransmissible, modified, live-attenuated marker vaccines. J Virol 2000;74(7): 2973-80
+103. van Gennip HG, Bouma A, van Rijn PA, et al. Experimental non-transmissible marker vaccines for classical swine fever (CSF) by trans-complementation of E(rns) or E2 of CSFV. Vaccine 2002;20(11-12):1544-56
+104. Yang Z, Wu R, Li RW, et al. Chimeric classical swine fever (CSF)-Japanese encephalitis (JE) viral replicon as a non-transmissible vaccine candidate against CSF and JE infections. Virus Res 2012; 165(1):61-70
+105. van Gennip HG, van Rijn PA, Widjojoatmodjo MN, et al. Chimeric classical swine fever viruses containing envelope protein E(RNS) or E2 of bovine viral diarrhoea virus protect pigs against challenge with CSFV and induce a distinguishable antibody response. Vaccine 2000;19(4-5):447-59
+106. Krug R, Alonso-Kaplen FV, Julkunen I, Katze MG. Expression and replication of the influenza virus genome. In: The influenza viruses. Krug R, Editor Plenum Press; New York, NY: 1989. p. 89-152
+107. Luytjes W, Krystal M, Enami M, et al. Amplification, expression, and packaging of foreign gene by influenza virus. Cell 1989; 59(6):1107-13
+108. Enami M, Luytjes W, Krystal M, Palese P. Introduction of site-specific mutations into the genome of influenza virus. Proc Natl Acad Sci USA 1990;87(10):3802-5
+109. Enami M, Enami K. Characterization of influenza virus NS1 protein by using a novel helper-virus-free reverse genetic system. J Virol 2000;74(12):5556-61
+
+110. Enami M, Palese P. High-efficiency formation of influenza virus transfectants. J Virol 1991;65(5):2711-13
+111. Fodor E, Devenish L, Engelhardt OG, et al. Rescue of influenza A virus from recombinant DNA. J virol 1999;73(11): 9679-82
+112. Gomez-Puertas P, Mena I, Castillo M, et al. Efficient formation of influenza virus-like particles: dependence on the expression levels of viral proteins. J Gen Virol 1999; 80(Pt 7):1635-45
+113. Hoffmann E, Neumann G, Kawaoka Y, et al. A DNA transfection system for generation of influenza A virus from eight plasmids. Proc Natl Acad Sci USA 2000; 97(11):6108-13
+114. Mena I, Vivo A, Perez E, Portela A. Rescue of a synthetic chloramphenicol acetyltransferase RNA into influenza virus-like particles obtained from recombinant plasmids. J Virol 1996;70(8): 5016-24
+115. Neumann G, Watanabe T, Ito H, et al. Generation of influenza A viruses entirely from cloned cDNAs. Proc Natl Acad Sci USA 1999;96(16):9345-50
+116. Neumann G, Watanabe T, Kawaoka Y. Plasmid-driven formation of influenza virus-like particles. J Virol 2000;74(1): 547-51
+117. Neumann G, Zobel A, Hobom G. RN A polymerase I-mediated expression of influenza viral RNA molecules. Virology 1994;202(1):477-9
+118. Miyahira Y, Garcia-Sastre A, Rodriguez D, et al. Recombinant viruses expressing a human malaria antigen can elicit potentially protective immune CD8+ responses in mice. Proc Natl Acad Sci USA 1998;95(7): 3954-9
+119. Rodrigues M, Li S, Murata K, et al. Influenza and vaccinia viruses expressing malaria CD8+ T and B cell epitopes. Comparison of their immunogenicity and capacity to induce protective immunity. J Immunol 1994;153(10):4636-48
+120. Ferko B, Katinger D, Grassauer A, et al. Chimeric influenza virus replicating predominantly in the murine upper respiratory tract induces local immune responses against human immunodeficiency virus type 1 in the genital tract. J Infect Dis 1998;178(5):1359-68
+121. Garulli B, Di Mario G, Stillitano MG, et al. Exploring mucosal immunization with a recombinant influenza virus carrying an HIV-polyepitope in mice with pre-existing
+
+304
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+immunity to influenza. Vaccine 2014; 32(21):2501-6
+122. Muster T, Ferko B, Klima A, et al. Mucosal model of immunization against human immunodeficiency virus type 1 with a chimeric influenza virus. J Virol 1995; 69(11):6678-86
+123. Nakaya Y, Zheng H, Garcia-Sastre A. Enhanced cellular immune responses to SIV Gag by immunization with influenza and vaccinia virus recombinants. Vaccine 2003; 21(17-18):2097-106
+124. Maeda Y, Hatta M, Takada A, et al. Live bivalent vaccine for parainfluenza and influenza virus infections. J Virol 2005; 79(11):6674-9
+125. Zhang P, Gu H, Bian C, et al. Characterization of recombinant influenza A virus as a vector expressing respiratory syncytial virus fusion protein epitopes. J Gen Virol 2014;95(Pt 9):1886-91
+126. Strobel I, Krumbholz M, Menke A, et al. Efficient expression of the tumor-associated antigen MAGE-3 in human dendritic cells, using an avian influenza virus vector. Hum Gene Ther 2000;11(16):2207-18
+127. Harper SA, Fukuda K, Cox NJ, Bridges CB . Advisory Committee on Immunization P. Using live, attenuated influenza vaccine for prevention and control of influenza: supplemental recommendations of the Advisory Committee on Immunization Practices (ACIP). MMWR Recomm Rep 2003;52(RR-13):1-8
+128. Mallory RM, Yi T, Ambrose CS. Shedding of Ann Arbor strain live attenuated influenza vaccine virus in children 6-59 months of age. Vaccine 2011;29(26): 4322-7
+129. Dormitzer PR, Suphaphiphat P, Gibson DG, et al. Synthetic generation of influenza vaccine viruses for rapid response to pandemics. Sci Transl Med 2013;5(185): 185ra168
+•• Synthetic generation of influenza vaccine viruses for rapid response to pandemics.
+130. Gibson DG. Enzymatic assembly of overlapping DNA fragments. Methods Enzymol 2011;498:349-61
+131. Bart SA, Hohenboken M, Della Cioppa G, et al. A cell culture-derived MF59adjuvanted pandemic A/H7N9 vaccine is immunogenic in adults. Sci Transl Med 2014;6(234):234ra255
+132. Wagner RRaR JK. Rhabdoviridae: The viruses and their replication. In: Fundamental Virology. Fields BN, Knipe PM. and Howly PM, Editors
+
+Lippincott-Raven Publishers; Philidelphia, PA: 1996. P. 561-75
+133. Lamb RAaK D. Paramyxoviridae: The viruses and their replication. In: Fundamental Virology. Fields BN, Knipe PM and Howly PM, Editors Lippincott-Raven Publishers; Philadelphia, PA: 1996. p. 577-604
+134. Pattnaik AK, Ball LA, LeGrone AW, Wertz GW. Infectious defective interfering particles of VSV from transcripts of a cDNA clone. Cell 1992;69(6):1011-20
+135. Pattnaik AK, Wertz GW. Replication and amplification of defective interfering particle RNAs of vesicular stomatitis virus in cells expressing viral proteins from vectors containing cloned cDNAs. J Virol 1990; 64(6):2948-57
+136. Pattnaik AK, Wertz GW. Cells that express all five proteins of vesicular stomatitis virus from cloned cDNAs support replication, assembly, and budding of defective interfering particles. Proc Natl Acad Sci USA 1991;88(4):1379-83
+137. Collins PL, Hill MG, Camargo E, et al. Production of infectious human respiratory syncytial virus from cloned cDNA confirms an essential role for the transcription elongation factor from the 5’ proximal open reading frame of the M2 mRNA in gene expression and provides a capability for vaccine development. Proc Natl Acad Sci USA 1995;92(25):11563-7
+138. Garcin D, Pelet T, Calain P, et al. A highly recombinogenic system for the recovery of infectious Sendai paramyxovirus from cDNA: generation of a novel copy-back nondefective interfering virus. EMBO J 1995;14(24):6087-94
+139. Lawson ND, Stillman EA, Whitt MA, Rose JK. Recombinant vesicular stomatitis viruses from DNA. Proc Natl Acad Sci USA 1995;92(10):4477-81
+140. Radecke F, Spielhofer P, Schneider H, et al. Rescue of measles viruses from cloned DNA. The EMBO journal 1995;14(23): 5773-84
+141. Schnell MJ, Mebatsion T, Conzelmann KK. Infectious rabies viruses from cloned cDNA. EMBO J 1994;13(18):4195-203
+142. Whelan SP, Ball LA, Barr JN, Wertz GT. Efficient recovery of infectious vesicular stomatitis virus entirely from cDNA clones. Proc Natl Acad Sci USA 1995;92(18): 8388-92
+143. Tsung K, Yim JH, Marti W, et al. Gene expression and cytopathic effect of vaccinia virus inactivated by psoralen and long-wave UV light. J Virol 1996;70(1):165-71
+
+144. Buchholz UJ, Finke S, Conzelmann KK. Generation of bovine respiratory syncytial virus (BRSV) from cDNA: BRSV NS2 is not essential for virus replication in tissue culture, and the human RSV leader region acts as a functional BRSV genome promoter. J Virol 1999;73(1):251-9
+145. Kato A, Sakai Y, Shioda T, et al. Initiation of Sendai virus multiplication from transfected cDNA or RNA with negative or positive sense. Genes Cells 1996;1(6): 569-79
+146. Conzelmann KK, Schnell M. Rescue of synthetic genomic RNA analogs of rabies virus by plasmid-encoded proteins. J Virol 1994;68(2):713-19
+147. Koser ML, McGettigan JP, Tan GS, et al. Rabies virus nucleoprotein as a carrier for foreign antigens. Proc Natl Acad Sci USA 2004;101(25):9405-10
+148. Mustafa W, Al-Saleem FH, Nasser Z, et al. Immunization of mice with the non-toxic HC50 domain of botulinum neurotoxin presented by rabies virus particles induces a strong immune response affording protection against high-dose botulinum neurotoxin challenge. Vaccine 2011;29(28): 4638-45
+149. Siler CA, McGettigan JP, Dietzschold B, et al. Live and killed rhabdovirus-based vectors as potential hepatitis C vaccines. Virology 2002;292(1):24-34
+150. Faber M, Lamirande EW, Roberts A, et al. A single immunization with a rhabdovirus-based vector expressing severe acute respiratory syndrome coronavirus (SARS-CoV) S protein results in the production of high levels of SARS-CoV-neutralizing antibodies. J Gen Virol 2005;86(Pt 5):1435-40
+151. Rupprecht CE, Hanlon CA, Blanton J, et al. Oral vaccination of dogs with recombinant rabies virus vaccines. Virus Res 2005;111(1):101-5
+152. Gomme EA, Wanjalla CN, Wirblich C, Schnell MJ. Rabies virus as a research tool and viral vaccine vector. Adv Virus Res 2011;79:139-64
+153. Schnell MJ, Foley HD, Siler CA, et al. Recombinant rabies virus as potential live-viral vaccines for HIV-1. Proc Natl Acad Sci USA 2000;97(7):3544-9
+154. McGettigan JP, Sarma S, Orenstein JM, et al. Expression and immunogenicity of human immunodeficiency virus type 1 Gag expressed by a replication-competent rhabdovirus-based vaccine vector. J Virol 2001;75(18):8724-32
+
+informahealthcare.com
+
+305
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+155. McGettigan JP, Foley HD, Belyakov IM, et al. Rabies virus-based vectors expressing human immunodeficiency virus type 1 (HIV-1) envelope protein induce a strong, cross-reactive cytotoxic T-lymphocyte response against envelope proteins from different HIV-1 isolates. J Virol 2001;75(9): 4430-4
+156. Faul EJ, Wanjalla CN, McGettigan JP, Schnell MJ. Interferon-beta expressed by a rabies virus-based HIV-1 vaccine vector serves as a molecular adjuvant and decreases pathogenicity. Virology 2008;382(2):226-38
+157. McGettigan JP, Koser ML, McKenna PM, et al. Enhanced humoral HIV-1-specific immune responses generated from recombinant rhabdoviral-based vaccine vectors co-expressing HIV-1 proteins and IL-2. Virology 2006;344(2):363-77
+158. Faul EJ, Aye PP, Papaneri AB, et al. Rabies virus-based vaccines elicit neutralizing antibodies, poly-functional CD8+ T cell, and protect rhesus macaques from AIDS-like disease after SIV(mac251) challenge. Vaccine 2009;28(2):299-308
+159. Gomme EA, Faul EJ, Flomenberg P, et al. Characterization of a single-cycle rabies virus-based vaccine vector. J Virol 2010; 84(6):2820-31
+160. Osakada F, Mori T, Cetin AH, et al. New rabies virus variants for monitoring and manipulating activity and gene expression in defined neural circuits. Neuron 2011;71(4): 617-31
+161. Roberts A, Buonocore L, Price R, et al. Attenuated vesicular stomatitis viruses as vaccine vectors. J Virol 1999;73(5):3723-32
+162. Lichty BD, Power AT, Stojdl DF, Bell JC. Vesicular stomatitis virus: re-inventing the bullet. Trends Mol Med 2004;10(5):210-16
+163. Bukreyev A, Skiadopoulos MH, Murphy BR, Collins PL. Nonsegmented negative-strand viruses as vaccine vectors. J Virol 2006;80(21):10293-306
+164. Johnson JE, Schnell MJ, Buonocore L, Rose JK. Specific targeting to CD4+ cells of recombinant vesicular stomatitis viruses encoding human immunodeficiency virus envelope proteins. J Virol 1997;71(7): 5060-8
+165. Kretzschmar E, Buonocore L, Schnell MJ, Rose JK. High-efficiency incorporation of functional influenza virus glycoproteins into recombinant vesicular stomatitis viruses. J Virol 1997;71(8):5982-9
+166. Schnell MJ, Buonocore L, Kretzschmar E, et al. Foreign glycoproteins expressed from recombinant vesicular stomatitis viruses are incorporated efficiently into virus particles.
+
+Proc Natl Acad Sci USA 1996;93(21): 11359-65
+167. Schnell MJ, Johnson JE, Buonocore L, Rose JK. Construction of a novel virus that targets HIV-1-infected cells and controls HIV-1 infection. Cell 1997;90(5):849-57
+168. Roberts A, Kretzschmar E, Perkins AS, et al. Vaccination with a recombinant vesicular stomatitis virus expressing an influenza virus hemagglutinin provides complete protection from influenza virus challenge. J Virol 1998;72(6):4704-11
+169. Schwartz JA, Buonocore L, Roberts A, et al. Vesicular stomatitis virus vectors expressing avian influenza H5 HA induce cross-neutralizing antibodies and long-term protection. Virology 2007;366(1):166-73
+170. Publicover J, Ramsburg E, Rose JK. A single-cycle vaccine vector based on vesicular stomatitis virus can induce immune responses comparable to those generated by a replication-competent vector. J Virol 2005;79(21):13231-8
+171. Cobleigh MA, Buonocore L, Uprichard SL, et al. A vesicular stomatitis virus-based hepatitis B virus vaccine vector provides protection against challenge in a single dose. J Virol 2010;84(15):7513-22
+172. Schlereth B, Rose JK, Buonocore L, et al. Successful vaccine-induced seroconversion by single-dose immunization in the presence of measles virus-specific maternal antibodies. J Virol 2000;74(10):4652-7
+173. Kapadia SU, Rose JK, Lamirande E, et al. Long-term protection from SARS coronavirus infection conferred by a single immunization with an attenuated VSV-based vaccine. Virology 2005;340(2): 174-82
+174. Kahn JS, Schnell MJ, Buonocore L, Rose JK. Recombinant vesicular stomatitis virus expressing respiratory syncytial virus (RSV) glycoproteins: RSV fusion protein can mediate infection and cell fusion. Virology 1999;254(1):81-91
+175. Brown KS, Safronetz D, Marzi A, et al. Vesicular stomatitis virus-based vaccine protects hamsters against lethal challenge with Andes virus. J Virol 2011;85(23): 12781-91
+176. Majid AM, Ezelle H, Shah S, Barber GN. Evaluating replication-defective vesicular stomatitis virus as a vaccine vehicle. J Virol 2006;80(14):6993-7008
+177. Chattopadhyay A, Park S, Delmas G, et al. Single-dose, virus-vectored vaccine protection against Yersinia pestis challenge: CD4+ cells are required at the time of
+
+challenge for optimal protection. Vaccine 2008;26(50):6329-37
+178. Chattopadhyay A, Rose JK. Complementing defective viruses that express separate paramyxovirus glycoproteins provide a new vaccine vector approach. J Virol 2011;85(5): 2004-11
+179. Lo MK, Bird BH, Chattopadhyay A, et al. Single-dose replication-defective VSV-based Nipah virus vaccines provide protection from lethal challenge in Syrian hamsters. Antiviral Res 2014;101:26-9
+180. Geisbert TW, Feldmann H. Recombinant vesicular stomatitis virus-based vaccines against Ebola and Marburg virus infections. J Infect Dis 2011;204(Suppl 3):S1075-81
+•• Reviews the development and preclinical testing of recombinant vesicular stomatitis virus-vectored filovirus vaccines.
+181. Chattopadhyay A, Wang E, Seymour R, et al. A chimeric vesiculo/alphavirus is an effective alphavirus vaccine. J Virol 2013; 87(1):395-402
+182. Rose NF, Marx PA, Luckay A, et al. An effective AIDS vaccine based on live attenuated vesicular stomatitis virus recombinants. Cell 2001;106(5):539-49
+183. Haglund K, Leiner I, Kerksiek K, et al. High-level primary CD8(+) T-cell response to human immunodeficiency virus type 1 gag and env generated by vaccination with recombinant vesicular stomatitis viruses. J Virol 2002;76(6):2730-8
+184. Wu K, Kim GN, Kang CY. Expression and processing of human immunodeficiency virus type 1 gp160 using the vesicular stomatitis virus New Jersey serotype vector system. J Gen Virol 2009;90(Pt 5):1135-40
+185. Marthas ML, Van Rompay KK, Abbott Z, et al. Partial efficacy of a VSV-SIV/MVASIV vaccine regimen against oral SIV challenge in infant macaques. Vaccine 2011; 29(17):3124-37
+186. Van Rompay KK. The use of nonhuman primate models of HIV infection for the evaluation of antiviral strategies. AIDS Res Hum Retroviruses 2012;28(1):16-35
+187. Lawrence TM, Wanjalla CN, Gomme EA, et al. Comparison of Heterologous Prime-Boost Strategies against Human Immunodeficiency Virus Type 1 Gag Using Negative Stranded RNA Viruses. PLoS ONE 2013;8(6):e67123
+188. Fuchs J, Frank I, Kochar M, et al. First-in-human phase I clinical trial of a recombinant vesicular stomatitis virus (rVSV)-based preventive HIV-1 vaccine. Retrovirology 2012;9(Suppl 2):P134
+
+306
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+189. Therapeutic Vaccine for HIV. Available from: http://clinicaltrials.gov/show/ NCT01859325
+190. Gunther S, Feldmann H, Geisbert TW, et al. Management of accidental exposure to Ebola virus in the biosafety level 4 laboratory, Hamburg, Germany. J Infect Dis 2011;204(Suppl 3):S785-90
+191. Safety and immunogenicity of prime-boost vsv ebola vaccine in healthy adults. Available from: http://apps.who.int/trialsearch/Trial2. aspx?TrialID=NCT02257840
+192. Hastie E, Grdzelishvili VZ. Vesicular stomatitis virus as a flexible platform for oncolytic virotherapy against cancer. J Gen Virol 2012;93(Pt 12):2529-45
+193. Viral therapy in treating patient with liver cancer. Available from: http://clinicaltrials. gov/show/NCT01628640
+194. Nzonza A, Lecollinet S, Chat S, et al. A recombinant novirhabdovirus presenting at the surface the E Glycoprotein from West Nile Virus (WNV) is immunogenic and provides partial protection against lethal WNV challenge in BALB/c mice. PLoS One 2014;9(3):e91766
+195. Downham MA, McQuillin J, Gardner PS. Diagnosis and clinical significance of parainfluenza virus infections in children. Arch Dis Child 1974;49(1):8-15
+196. Garbino J, Inoubli S, Mossdorf E, et al. Respiratory viruses in HIV-infected patients with suspected respiratory opportunistic infection. Aids 2008;22(6):701-5
+197. Glezen WP, Frank AL, Taber LH, Kasel JA. Parainfluenza virus type 3: seasonality and risk of infection and reinfection in young children. J Infect Dis 1984;150(6):851-7
+198. Henrickson KJ. Lower respiratory viral infections in immunocompetent children. Adv Pediatr Infect Dis 1994;9:59-96
+199. Leader S, Kohlhase K. Respiratory syncytial virus-coded pediatric hospitalizations, 1997 to 1999. Pediatr Infect Dis J 2002; 21(7):629-32
+200. Le Bayon JC, Lina B, Rosa-Calatrava M, Boivin G. Recent developments with live-attenuated recombinant paramyxovirus vaccines. Rev Med Virol 2013;23(1):15-34
+201. Durbin AP, Hall SL, Siew JW, et al. Recovery of infectious human parainfluenza virus type 3 from cDNA. Virology 1997; 235(2):323-32
+202. Hoffman MA, Banerjee AK. An infectious clone of human parainfluenza virus type 3. J Virol 1997;71(6):4272-7
+203. Kawano M, Kaito M, Kozuka Y, et al. Recovery of infectious human parainfluenza
+
+type 2 virus from cDNA clones and properties of the defective virus without V-specific cysteine-rich domain. Virology 2001;284(1):99-112
+204. McAuliffe JM, Surman SR, Newman JT, et al. Codon substitution mutations at two positions in the L polymerase protein of human parainfluenza virus type 1 yield viruses with a spectrum of attenuation in vivo and increased phenotypic stability in vitro. J Virol 2004;78(4):2029-36
+205. Tao T, Durbin AP, Whitehead SS, et al. Recovery of a fully viable chimeric human parainfluenza virus (PIV) type 3 in which the hemagglutinin-neuraminidase and fusion glycoproteins have been replaced by those of PIV type 1. J Virol 1998;72(4):2955-61
+206. Bailly JE, McAuliffe JM, Durbin AP, et al. A recombinant human parainfluenza virus type 3 (PIV3) in which the nucleocapsid N protein has been replaced by that of bovine PIV3 is attenuated in primates. J Virol 2000;74(7):3188-95
+207. Karron RA, Thumar B, Schappell E, et al. Evaluation of two chimeric bovine-human parainfluenza virus type 3 vaccines in infants and young children. Vaccine 2012;30(26): 3975-81
+208. van Wyke Coelingh KL, Winter CC, Tierney EL, et al. Attenuation of bovine parainfluenza virus type 3 in nonhuman primates and its ability to confer immunity to human parainfluenza virus type 3 challenge. J Infect Dis 1988;157(4): 655-62
+209. Karron RA, Makhene M, Gay K, et al. Evaluation of a live attenuated bovine parainfluenza type 3 vaccine in two- to six-month-old infants. Pediatr Infect Dis J 1996;15(8):650-4
+210. Karron RA, Wright PF, Hall SL, et al. A live attenuated bovine parainfluenza virus type 3 vaccine is safe, infectious, immunogenic, and phenotypically stable in infants and children. J Infect Dis 1995; 171(5):1107-14
+211. Karron RA, Wright PF, Newman FK, et al. A live human parainfluenza type 3 virus vaccine is attenuated and immunogenic in healthy infants and children. J Infect Dis 1995;172(6):1445-50
+212. Haller AA, Miller T, Mitiku M, Coelingh K. Expression of the surface glycoproteins of human parainfluenza virus type 3 by bovine parainfluenza virus type 3, a novel attenuated virus vaccine vector. J Virol 2000;74(24):11626-35
+213. Schmidt AC, McAuliffe JM, Huang A, et al. Bovine parainfluenza virus type 3
+
+(BPIV3) fusion and hemagglutinin-neuraminidase glycoproteins make an important contribution to the restricted replication of BPIV3 in primates. J Virol 2000;74(19):8922-9
+214. Pennathur S, Haller AA, MacPhail M, et al. Evaluation of attenuation, immunogenicity and efficacy of a bovine parainfluenza virus type 3 (PIV-3) vaccine and a recombinant chimeric bovine/human PIV-3 vaccine vector in rhesus monkeys. J Gen Virol 2003;84(Pt 12):3253-61
+215. Schmidt AC, McAuliffe JM, Murphy BR, Collins PL. Recombinant bovine/human parainfluenza virus type 3 (B/HPIV3) expressing the respiratory syncytial virus (RSV) G and F proteins can be used to achieve simultaneous mucosal immunization against RSV and HPIV3. J Virol 2001; 75(10):4594-603
+216. Schmidt AC, Wenzke DR, McAuliffe JM, et al. Mucosal immunization of rhesus monkeys against respiratory syncytial virus subgroups A and B and human parainfluenza virus type 3 by using a live cDNA-derived vaccine based on a host range-attenuated bovine parainfluenza virus type 3 vector backbone. J Virol 2002;76(3): 1089-99
+217. Tang RS, Schickli JH, MacPhail M, et al. Effects of human metapneumovirus and respiratory syncytial virus antigen insertion in two 3’ proximal genome positions of bovine/human parainfluenza virus type 3 on virus replication and immunogenicity. J Virol 2003;77(20):10819-28
+218. Gorman WL, Gill DS, Scroggs RA, Portner A. The hemagglutinin-neuraminidase glycoproteins of human parainfluenza virus type 1 and Sendai virus have high structure-function similarity with limited antigenic cross-reactivity. Virology 1990;175(1): 211-21
+219. Lyn D, Gill DS, Scroggs RA, Portner A. The nucleoproteins of human parainfluenza virus type 1 and Sendai virus share amino acid sequences and antigenic and structural determinants. J Gen Virol 1991;72(Pt 4): 983-7
+220. Dave VP, Allan JE, Slobod KS, et al. Viral cross-reactivity and antigenic determinants recognized by human parainfluenza virus type 1-specific cytotoxic T-cells. Virology 1994;199(2):376-83
+221. Hurwitz JL, Soike KF, Sangster MY, et al. Intranasal Sendai virus vaccine protects African green monkeys from infection with human parainfluenza virus-type one. Vaccine 1997;15(5):533-40
+
+informahealthcare.com
+
+307
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+222. Smith FS, Portner A, Leggiadro RJ, et al. Age-related development of human memory T-helper and B-cell responses toward parainfluenza virus type-1. Virology 1994; 205(2):453-61
+223. A Study to assess the safety of live intranasal sendai virus vaccine in children and toddlers. Available from: http://clinicaltrials. gov/show/NCT00186927
+224. Li HO, Zhu YF, Asakawa M, et al. A cytoplasmic RNA vector derived from nontransmissible Sendai virus with efficient gene transfer and expression. J Virol 2000; 74(14):6564-9
+225. Ferrari S, Griesenbach U, Shiraki-Iida T, et al. A defective nontransmissible recombinant Sendai virus mediates efficient gene transfer to airway epithelium in vivo. Gene Ther 2004;11(22):1659-64
+226. Yonemitsu Y, Kitson C, Ferrari S, et al. Efficient gene transfer to airway epithelium using recombinant Sendai virus. Nat Biotechnol 2000;18(9):970-3
+227. Hasan MK, Kato A, Shioda T, et al. Creation of an infectious recombinant Sendai virus expressing the firefly luciferase gene from the 3’ proximal first locus. J Gen Virol 1997;78(Pt 11):2813-20
+228. Jones B, Zhan X, Mishin V, et al. Human PIV-2 recombinant Sendai virus (rSeV) elicits durable immunity and combines with two additional rSeVs to protect against hPIV-1, hPIV-2, hPIV-3, and RSV. Vaccine 2009;27(12):1848-57
+229. Jones BG, Sealy RE, Rudraraju R, et al. Sendai virus-based RSV vaccine protects African green monkeys from RSV infection. Vaccine 2012;30(5):959-68
+230. Jones BG, Sealy RE, Surman SL, et al. Sendai virus-based RSV vaccine protects against RSV challenge in an in vivo maternal antibody model. Vaccine 2014; 32(26):3264-73
+231. Takimoto T, Hurwitz JL, Coleclough C, et al. Recombinant Sendai virus expressing the G glycoprotein of respiratory syncytial virus (RSV) elicits immune protection against RSV. J Virol 2004;78(11):6043-7
+232. Takimoto T, Hurwitz JL, Zhan X, et al. Recombinant Sendai virus as a novel vaccine candidate for respiratory syncytial virus. Viral Immunol 2005;18(2):255-66
+233. Zhan X, Hurwitz JL, Krishnamurthy S, et al. Respiratory syncytial virus (RSV) fusion protein expressed by recombinant Sendai virus elicits B-cell and T-cell responses in cotton rats and confers protection against RSV subtypes A and B. Vaccine 2007;25(52):8782-93
+
+234. Chin J, Magoffin RL, Shearer LA, et al. Field evaluation of a respiratory syncytial virus vaccine and a trivalent parainfluenza virus vaccine in a pediatric population. Am J Epidemiol 1969;89(4):449-63
+235. Fulginiti VA, Eller JJ, Sieber OF, et al. Respiratory virus immunization. I. A field trial of two inactivated respiratory virus vaccines; an aqueous trivalent parainfluenza virus vaccine and an alum-precipitated respiratory syncytial virus vaccine. Am J Epidemiol 1969;89(4):435-48
+236. Mason JN, Elbahesh H, Russell CJ. Influence of antigen insertion site and vector dose on immunogenicity and protective capacity in Sendai virus-based human parainfluenza virus type 3 vaccines. J Virol 2013;87(10):5959-69
+237. Zhan X, Slobod KS, Krishnamurthy S, et al. Sendai virus recombinant vaccine expressing hPIV-3 HN or F elicits protective immunity and combines with a second recombinant to prevent hPIV-1, hPIV-3 and RSV infections. Vaccine 2008; 26(27-28):3480-8
+238. Le TV, Mironova E, Garcin D, Compans RW. Induction of influenza-specific mucosal immunity by an attenuated recombinant Sendai virus. PLoS One 2011;6(4):e18780
+239. Kano M, Matano T, Kato A, et al. Primary replication of a recombinant Sendai virus vector in macaques. J Gen Virol 2002; 83(Pt 6):1377-86
+240. Kano M, Matano T, Nakamura H, et al. Elicitation of protective immunity against simian immunodeficiency virus infection by a recombinant Sendai virus expressing the Gag protein. Aids 2000;14(9):1281-2
+241. Kawada M, Tsukamoto T, Yamamoto H, et al. Gag-specific cytotoxic T-lymphocyte-based control of primary simian immunodeficiency virus replication in a vaccine trial. J Virol 2008;82(20): 10199-206
+242. Matano T, Kano M, Nakamura H, et al. Rapid appearance of secondary immune responses and protection from acute CD4 depletion after a highly pathogenic immunodeficiency virus challenge in macaques vaccinated with a DNA prime/ Sendai virus vector boost regimen. J Virol 2001;75(23):11891-6
+243. Takeda A, Igarashi H, Kawada M, et al. Evaluation of the immunogenicity of replication-competent V-knocked-out and replication-defective F-deleted Sendai virus vector-based vaccines in macaques. Vaccine 2008;26(52):6839-43
+
+244. Takeda A, Igarashi H, Nakamura H, et al. Protective efficacy of an AIDS vaccine, a single DNA priming followed by a single booster with a recombinant replication-defective Sendai virus vector, in a macaque AIDS model. J Virol 2003;77(17): 9710-15
+245. Yu S, Feng X, Shu T, et al. Potent specific immune responses induced by prime-boost-boost strategies based on DNA, adenovirus, and Sendai virus vectors expressing gag gene of Chinese HIV-1 subtype B. Vaccine 2008;26(48): 6124-31
+246. Zhang X, Sobue T, Isshiki M, et al. Elicitation of both anti HIV-1 Env humoral and cellular immunities by replicating vaccinia prime Sendai virus boost regimen and boosting by CD40Lm. PLoS One 2012;7(12):e51633
+247. McEnery R. First candidate HIV vaccine to employ Sendai vector poised for trials. IAVI Rep 2013;17(1):18
+• The first candidate HIV vaccine to employ Sendai vector to enter human clinical evaluation.
+248. Safety and immunogenicity study of sev-g (np) hiv vaccine administered intranasally and ad35-grin hiv vaccine given intramuscularly in prime-boost regimens in hiv-uninfected volunteers. Available from: http://clinicaltrials.gov/show/NCT01705990
+249. Yonemitsu Y, Matsumoto T, Itoh H, et al. DVC1-0101 to treat peripheral arterial disease: a Phase I/IIa open-label doseescalation clinical trial. Mol Ther 2013; 21(3):707-14
+250. Hara H, Hara H, Hironaka T, et al. Prevalence of specific neutralizing antibodies against Sendai virus in populations from different geographic areas: implications for AIDS vaccine development using Sendai virus vectors. Hum Vaccin 2011;7(6): 639-45
+251. Hilleman MR. Current overview of the pathogenesis and prophylaxis of measles with focus on practical implications. Vaccine 2001;20(5-6):651-65
+252. Schwarz AJ. Preliminary tests of a highly attenuated measles vaccine. Am J Dis Child 1962;103:386-9
+253. Combredet C, Labrousse V, Mollet L, et al. A molecularly cloned Schwarz strain of measles virus vaccine induces strong immune responses in macaques and transgenic mice. J Virol 2003;77(21): 11546-54
+254. Mok H, Cheng X, Xu Q, et al. Evaluation of Measles Vaccine Virus as a Vector to
+
+308
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+Deliver Respiratory Syncytial Virus Fusion Protein or Epstein-Barr Virus Glycoprotein gp350. The open virology journal 2012;6: 12-22
+255. Dorig RE, Marcil A, Chopra A, Richardson CD. The human CD46 molecule is a receptor for measles virus (Edmonston strain). Cell 1993;75(2): 295-305
+256. Naniche D, Varior-Krishnan G, Cervoni F, et al. Human membrane cofactor protein (CD46) acts as a cellular receptor for measles virus. J Virol 1993;67(10):6025-32
+257. Blok VT, Daha MR, Tijsma OM, et al. A possible role of CD46 for the protection in vivo of human renal tumor cells from complement-mediated damage. Lab Invest 2000;80(3):335-44
+258. Durrant LG, Spendlove I. Immunization against tumor cell surface complement-regulatory proteins. Curr Opin Investig Drugs 2001;2(7):959-66
+259. Fishelson Z, Donin N, Zell S, et al. Obstacles to cancer immunotherapy: expression of membrane complement regulatory proteins (mCRPs) in tumors. Mol Immunol 2003;40(2-4):109-23
+260. Hara T, Suzuki Y, Semba T, et al. High expression of membrane cofactor protein of complement (CD46) in human leukaemia cell lines: implication of an alternatively spliced form containing the STA domain in CD46 up-regulation. Scand J Immunol 1995;42(6):581-90
+261. Ong HT, Timm MM, Greipp PR, et al. Oncolytic measles virus targets high CD46 expression on multiple myeloma cells. Exp Hematol 2006;34(6):713-20
+262. Seya T, Hara T, Matsumoto M, Akedo H. Quantitative analysis of membrane cofactor protein (MCP) of complement. High expression of MCP on human leukemia cell lines, which is down-regulated during cell differentiation. J Immunol 1990;145(1): 238-45
+263. Simpson KL, Jones A, Norman S, Holmes CH. Expression of the complement regulatory proteins decay accelerating factor (DAF, CD55), membrane cofactor protein (MCP, CD46) and CD59 in the normal human uterine cervix and in premalignant and malignant cervical disease. Am J Pathol 1997;151(5):1455-67
+264. Varsano S, Rashkovsky L, Shapiro H, et al. Human lung cancer cell lines express cell membrane complement inhibitory proteins and are extremely resistant to complement-mediated lysis; a comparison with normal human respiratory epithelium
+
+in vitro, and an insight into mechanism(s) of resistance. Clin Exp Immunol 1998; 113(2):173-82
+265. Heinzerling L, Kunzi V, Oberholzer PA, et al. Oncolytic measles virus in cutaneous T-cell lymphomas mounts antitumor immune responses in vivo and targets interferon-resistant tumor cells. Blood 2005; 106(7):2287-94
+266. Peng KW, TenEyck CJ, Galanis E, et al. Intraperitoneal therapy of ovarian cancer using an engineered measles virus. Cancer Res 2002;62(16):4656-62
+267. Peng KW, Hadac EM, Anderson BD, et al. Pharmacokinetics of oncolytic measles virotherapy: eventual equilibrium between virus and tumor in an ovarian cancer xenograft model. Cancer Gene Ther 2006; 13(8):732-8
+268. Galanis E, Hartmann LC, Cliby WA, et al. Phase I trial of intraperitoneal administration of an oncolytic measles virus strain engineered to express carcinoembryonic antigen for recurrent ovarian cancer. Cancer Res 2010;70(3): 875-82
+269. Hasegawa K, Pham L, O’Connor MK, et al. Dual therapy of ovarian cancer using measles viruses expressing carcinoembryonic antigen and sodium iodide symporter. Clin Cancer Res 2006;12(6):1868-75
+270. Peng KW, Facteau S, Wegman T, et al. Non-invasive in vivo monitoring of trackable viruses expressing soluble marker peptides. Nat Med 2002;8(5):527-31
+271. Phuong LK, Allen C, Peng KW, et al. Use of a vaccine strain of measles virus genetically engineered to produce carcinoembryonic antigen as a novel therapeutic agent against glioblastoma multiforme. Cancer Res 2003;63(10): 2462-9
+272. Viral therapy in treating patients with recurrent glioblastoma multiforme. Available from: http://clinicaltrials.gov/show/ NCT00390299
+273. Dingli D, Peng KW, Harvey ME, et al. Image-guided radiovirotherapy for multiple myeloma using a recombinant measles virus expressing the thyroidal sodium iodide symporter. Blood 2004;103(5):1641-6
+274. Mazzaferri EL, Kloos RT. Clinical review 128: current approaches to primary therapy for papillary and follicular thyroid cancer. J Clin Endocrinol Metab 2001;86(4):1447-63
+275. Riesco-Eizaguirre G, Santisteban P. A perspective view of sodium iodide symporter research and its clinical
+
+implications. Eur J Endocrinol 2006;155(4): 495-512
+276. Carlson SK, Classic KL, Hadac EM, et al. In vivo quantitation of intratumoral radioisotope uptake using micro-single photon emission computed tomography/ computed tomography. Mol Imaging Biol 2006;8(6):324-32
+277. Dingli D, Kemp BJ, O’Connor MK, et al. Combined I-124 positron emission tomography/computed tomography imaging of NIS gene expression in animal models of stably transfected and intravenously transfected tumor. Mol Imaging Biol 2006; 8(1):16-23
+278. Blechacz B, Splinter PL, Greiner S, et al. Engineered measles virus as a novel oncolytic viral therapy system for hepatocellular carcinoma. Hepatology 2006; 44(6):1465-77
+279. Dingli D, Diaz RM, Bergert ER, et al. Genetically targeted radiotherapy for multiple myeloma. Blood 2003;102(2): 489-96
+280. A Phase II trial of oncolytic virotherapy by systemic administration of edmonston strain of measles virus. Available from: http:// clinicaltrials.gov/show/NCT02192775
+281. MV-NIS infected mesenchymal stem cells in treating patients with recurrent ovarian cancer. Available from: http://clinicaltrials. gov/show/NCT02068794
+282. Intrapleural measles virus therapy in patients with malignant pleural mesothelioma. Available from: http://clinicaltrials.gov/show/ NCT01503177
+283. Viral therapy in treating patients with recurrent or metastatic squamous cell carcinoma of the head and neck cancer. Available from: http://clinicaltrials.gov/show/ NCT01846091
+284. Vaccine therapy with or without cyclophosphamide in treating patients with recurrent or refractory multiple myeloma. Available from: http://clinicaltrials.gov/show/ NCT00450814%20MC038C% 20P30CA015083%20MC038C%2006005263%20NCI-2009-01194% 20NCT00450814
+285. Recombinant measles virus vaccine therapy and oncolytic virus therapy in treating patients with progressive, recurrent, or refractory ovarian epithelial cancer or primary peritoneal cancer. Available from: http://clinicaltrials.gov/show/NCT00408590
+286. Guerbois M, Moris A, Combredet C, et al. Live attenuated measles vaccine expressing HIV-1 Gag virus like particles covered with
+
+informahealthcare.com
+
+309
+
+Review Mogler & Kamrud
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+gp160DeltaV1V2 is strongly immunogenic. Virology 2009;388(1):191-203
+287. Liniger M, Zuniga A, Morin TN, et al. Recombinant measles viruses expressing single or multiple antigens of human immunodeficiency virus (HIV-1) induce cellular and humoral immune responses. Vaccine 2009;27(25-26):3299-305
+288. Lorin C, Combredet C, Labrousse V, et al. A paediatric vaccination vector based on live attenuated measles vaccine. Therapie 2005; 60(3):227-33
+289. Lorin C, Delebecque F, Labrousse V, et al. A recombinant live attenuated measles vaccine vector primes effective HLA-A0201-restricted cytotoxic T lymphocytes and broadly neutralizing antibodies against HIV-1 conserved epitopes. Vaccine 2005;23(36):4463-72
+290. Lorin C, Mollet L, Delebecque F, et al. A single injection of recombinant measles virus vaccines expressing human immunodeficiency virus (HIV) type 1 clade B envelope glycoproteins induces neutralizing antibodies and cellular immune responses to HIV. J Virol 2004;78(1): 146-57
+291. Lorin C, Segal L, Mols J, et al. Toxicology, biodistribution and shedding profile of a recombinant measles vaccine vector expressing HIV-1 antigens, in cynomolgus macaques. Naunyn Schmiedebergs Arch Pharmacol 2012;385(12):1211-25
+292. Stebbings R, Fevrier M, Li B, et al. Immunogenicity of a recombinant measles-HIV-1 clade B candidate vaccine. PLoS One 2012;7(11):e50397
+293. Stebbings R, Li B, Lorin C, et al. Immunogenicity of a recombinant measles HIV-1 subtype C vaccine. Vaccine 2013; 31(51):6079-86
+294. Wang Z, Hangartner L, Cornu TI, et al. Recombinant measles viruses expressing heterologous antigens of mumps and simian immunodeficiency viruses. Vaccine 2001; 19(17-19):2329-36
+295. Zuniga A, Liniger M, Morin TN, et al. Sequence and immunogenicity of a clinically approved novel measles virus vaccine vector. Hum Vaccin Immunother 2013;9(3): 607-13
+296. Zuniga A, Wang Z, Liniger M, et al. Attenuated measles virus as a vaccine vector. Vaccine 2007;25(16):2974-83
+297. Study to evaluate the dosage and safety of two intramuscular injections of an investigational clade B HIV vaccine. Available from: http://clinicaltrials.gov/show/ NCT01320176
+
+298. Clarke DK, Sidhu MS, Johnson JE, Udem SA. Rescue of mumps virus from cDNA. J Virol 2000;74(10):4831-8
+299. He B, Paterson RG, Ward CD, Lamb RA. Recovery of infectious SV5 from cloned DNA and expression of a foreign gene. Virology 1997;237(2):249-60
+300. Xu R, Nasar F, Megati S, et al. Prime-boost vaccination with recombinant mumps virus and recombinant vesicular stomatitis virus vectors elicits an enhanced human immunodeficiency virus type 1 Gag-specific cellular immune response in rhesus macaques. J Virol 2009;83(19):9813-23
+301. Parks GD, Alexander-Miller MA. High avidity cytotoxic T lymphocytes to a foreign antigen are efficiently activated following immunization with a recombinant paramyxovirus, simian virus 5. J Gen Virol 2002;83(Pt 5):116772
+302. Arimilli S, Johnson JB, Clark KM, et al. Engineered expression of the TLR5 ligand flagellin enhances paramyxovirus activation of human dendritic cell function. J Virol 2008;82(22):10975-85
+303. Chen Z, Xu P, Salyards GW, et al. Evaluating a parainfluenza virus 5-based vaccine in a host with pre-existing immunity against parainfluenza virus 5. PLoS One 2012;7(11):e50144
+304. Chen Z, Zhou M, Gao X, et al. A novel rabies vaccine based on a recombinant parainfluenza virus 5 expressing rabies virus glycoprotein. J Virol 2013;87(6):2986-93
+305. Clark KM, Johnson JB, Kock ND, et al. Parainfluenza virus 5-based vaccine vectors expressing vaccinia virus (VACV) antigens provide long-term protection in mice from lethal intranasal VACV challenge. Virology 2011;419(2):97-106
+306. Li Z, Gabbard JD, Mooney A, et al. Efficacy of parainfluenza virus 5 mutants expressing hemagglutinin from H5N1 influenza A virus in mice. J Virol 2013;87(17):9604-9
+307. Li Z, Gabbard JD, Mooney A, et al. Single-dose vaccination of a recombinant parainfluenza virus 5 expressing NP from H5N1 virus provides broad immunity against influenza A viruses. J Virol 2013; 87(10):5985-93
+308. Li Z, Mooney AJ, Gabbard JD, et al. Recombinant parainfluenza virus 5 expressing hemagglutinin of influenza A virus H5N1 protected mice against lethal highly pathogenic avian influenza virus H5N1 challenge. J Virol 2013;87(1):354-62
+309. Mooney AJ, Li Z, Gabbard JD, et al. Recombinant parainfluenza virus 5 vaccine
+
+encoding the influenza virus hemagglutinin protects against H5N1 highly pathogenic avian influenza virus infection following intranasal or intramuscular vaccination of BALB/c mice. J Virol 2013;87(1):363-71
+310. Phan SI, Chen Z, Xu P, et al. A respiratory syncytial virus (RSV) vaccine based on parainfluenza virus 5 (PIV5). Vaccine 2014; 32(25):3050-7
+311. Tompkins SM, Lin Y, Leser GP, et al. Recombinant parainfluenza virus 5 (PIV5) expressing the influenza A virus hemagglutinin provides immunity in mice to influenza A virus challenge. Virology 2007;362(1):139-50
+312. van den Hoogen BG, de Jong JC, Groen J, et al. A newly discovered human pneumovirus isolated from young children with respiratory tract disease. Nat Med 2001;7(6):719-24
+313. Hamelin ME, Abed Y, Boivin G. Human metapneumovirus: a new player among respiratory viruses. Clin Infect Dis 2004; 38(7):983-90
+314. Biacchesi S, Skiadopoulos MH, Tran KC, et al. Recovery of human metapneumovirus from cDNA: optimization of growth in vitro and expression of additional genes. Virology 2004;321(2):247-59
+315. Govindarajan D, Buchholz UJ, Samal SK. Recovery of avian metapneumovirus subgroup C from cDNA: cross-recognition of avian and human metapneumovirus support proteins. J Virol 2006;80(12): 5790-7
+316. Biacchesi S, Skiadopoulos MH, Yang L, et al. Recombinant human Metapneumovirus lacking the small hydrophobic SH and/or attachment G glycoprotein: deletion of G yields a promising vaccine candidate. J Virol 2004; 78(23):12877-87
+317. Buchholz UJ, Biacchesi S, Pham QN, et al. Deletion of M2 gene open reading frames 1 and 2 of human metapneumovirus: effects on RNA synthesis, attenuation, and immunogenicity. J Virol 2005;79(11): 6588-97
+318. Biacchesi S, Pham QN, Skiadopoulos MH, et al. Infection of nonhuman primates with recombinant human metapneumovirus lacking the SH, G, or M2-2 protein categorizes each as a nonessential accessory protein and identifies vaccine candidates. J Virol 2005;79(19):12608-13
+319. Pham QN, Biacchesi S, Skiadopoulos MH, et al. Chimeric recombinant human metapneumoviruses with the nucleoprotein or phosphoprotein open reading frame
+
+310
+
+Expert Rev. Vaccines 14(2), (2015)
+
+RNA-based viral vectors Review
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+replaced by that of avian metapneumovirus exhibit improved growth in vitro and attenuation in vivo. J Virol 2005;79(24): 15114-22
+320. Evaluation of the safety and immunogenicity of a live attenuated human metapneumovirus Vaccine. Available from: http://clinicaltrials.gov/show/NCT01255410
+321. Alexander DJ. Newcastle disease and other avian paramyxovirus infections. In: Diseases of poultry. Calnek BW, Barnes HJ, Beard CW, Reid WM and Yoder HW, Editors Iowa State University Press; Ames, IA: 1991. p. 496-519
+322. Peeters BP, de Leeuw OS, Koch G, Gielkens AL. Rescue of Newcastle disease virus from cloned cDNA: evidence that cleavability of the fusion protein is a major determinant for virulence. J Virol 1999; 73(6):5001-9
+323. Romer-Oberdorfer A, Mundt E, Mebatsion T, et al. Generation of recombinant lentogenic Newcastle disease virus from cDNA. J Gen Virol 1999; 80(Pt 11):2987-95
+324. Fournier P, Schirrmacher V. Oncolytic Newcastle Disease Virus as Cutting Edge between Tumor and Host. Biology 2013; 2(3):936-75
+325. Park MS, Steel J, Garcia-Sastre A, et al. Engineered viral vaccine constructs with dual specificity: avian influenza and Newcastle disease. Proc Natl Acad Sci USA 2006;103(21):8203-8
+326. Veits J, Wiesner D, Fuchs W, et al. Newcastle disease virus expressing H5 hemagglutinin gene protects chickens against Newcastle disease and avian influenza. Proc Natl Acad Sci USA 2006; 103(21):8197-202
+327. DiNapoli JM, Kotelkin A, Yang L, et al. Newcastle disease virus, a host range-restricted virus, as a vaccine vector for intranasal immunization against emerging pathogens. Proc Natl Acad Sci USA 2007; 104(23):9788-93
+328. DiNapoli JM, Nayak B, Yang L, et al. Newcastle disease virus-vectored vaccines expressing the hemagglutinin or neuraminidase protein of H5N1 highly pathogenic avian influenza virus protect against virus challenge in monkeys. J Virol 2010;84(3):1489-503
+329. Ge J, Deng G, Wen Z, et al. Newcastle disease virus-based live attenuated vaccine completely protects chickens and mice from lethal challenge of homologous and heterologous H5N1 avian influenza viruses. J Virol 2007;81(1):150-8
+
+330. Goff PH, Krammer F, Hai R, et al. Induction of cross-reactive antibodies to novel H7N9 influenza virus by recombinant Newcastle disease virus expressing a North American lineage H7 subtype hemagglutinin. J Virol 2013;87(14):8235-40
+331. Nakaya T, Cros J, Park MS, et al. Recombinant Newcastle disease virus as a vaccine vector. J Virol 2001;75(23): 11868-73
+332. DiNapoli JM, Yang L, Samal SK, et al. Respiratory tract immunization of non-human primates with a Newcastle disease virus-vectored vaccine candidate against Ebola virus elicits a neutralizing antibody response. Vaccine 2010;29(1): 17-25
+333. DiNapoli JM, Yang L, Suguitan A Jr, et al. Immunization of primates with a Newcastle disease virus-vectored vaccine via the respiratory tract induces a high titer of serum neutralizing antibodies against highly pathogenic avian influenza virus. J Virol 2007;81(21):11560-8
+334. DiNapoli JM, Ward JM, Cheng L, et al. Delivery to the lower respiratory tract is required for effective immunization with Newcastle disease virus-vectored vaccines intended for humans. Vaccine 2009;27(10): 1530-9
+335. Martinez-Sobrido L, Gitiban N, Fernandez-Sesma A, et al. Protection against respiratory syncytial virus by a recombinant Newcastle disease virus vector. J Virol 2006; 80(3):1130-9
+336. Carnero E, Li W, Borderia AV, et al. Optimization of human immunodeficiency virus gag expression by newcastle disease virus vectors for the induction of potent immune responses. J Virol 2009;83(2): 584-97
+337. Maamary J, Array F, Gao Q, et al. Newcastle disease virus expressing a dendritic cell-targeted HIV gag protein induces a potent gag-specific immune response in mice. J Virol 2011;85(5): 2235-46
+338. Jin H, Clarke D, Zhou HZ, et al. Recombinant human respiratory syncytial virus (RSV) from cDNA and construction of subgroup A and B chimeric RSV. Virology 1998;251(1):206-14
+339. Collins PL. The molecular biology of human respiratory syncytial virus (RSV) of genus Pneumovirus. In: The Paramyxoviruses. David WK, Editor Plenum Publishing Corp; New york: 1991. p. 103-62
+
+340. Blodorn K, Hagglund S, Fix J, et al. Vaccine safety and efficacy evaluation of a recombinant bovine respiratory syncytial virus (BRSV) with deletion of the SH gene and subunit vaccines based on recombinant human RSV proteins: N-nanorings, P and M2-1, in calves with maternal antibodies. PLoS ONE 2014;9(6):e100392
+341. Karron RA, Wright PF, Belshe RB, et al. Identification of a recombinant live attenuated respiratory syncytial virus vaccine candidate that is highly attenuated in infants. J Infect Dis 2005;191(7):1093-104
+342. Taylor G, Wyld S, Valarcher JF, et al. Recombinant bovine respiratory syncytial virus with deletion of the SH gene induces increased apoptosis and pro-inflammatory cytokines in vitro, and is attenuated and induces protective immunity in calves. J Gen Virol 2014;95(Pt 6):1244-54
+343. Kwilas AR, Yednak MA, Zhang L, et al. Respiratory syncytial virus engineered to express the cystic fibrosis transmembrane conductance regulator corrects the bioelectric phenotype of human cystic fibrosis airway epithelium in vitro. J Virol 2010;84(15):7770-81
+344. Malykhina O, Yednak MA, Collins PL, et al. A respiratory syncytial virus replicon that is noncytotoxic and capable of long-term foreign gene expression. J Virol 2011;85(10):4792-801
+345. Brand D, Lemiale F, Turbica I, et al. Comparative analysis of humoral immune responses to HIV type 1 envelope glycoproteins in mice immunized with a DNA vaccine, recombinant Semliki Forest virus RNA, or recombinant Semliki Forest virus particles. AIDS Res Hum Retroviruses 1998;14(15):1369-77
+346. Fleeton MN, Sheahan BJ, Gould EA, et al. Recombinant Semliki Forest virus particles encoding the prME or NS1 proteins of louping ill virus protect mice from lethal challenge. J Gen Virol 1999;80(Pt 5): 1189-98
+347. Berglund P, Fleeton MN, Smerdou C, Liljestrom P. Immunization with recombinant Semliki Forest virus induces protection against influenza challenge in mice. Vaccine 1999;17(5):497-507
+348. Daemen T, Pries F, Bungener L, et al. Genetic immunization against cervical carcinoma: induction of cytotoxic T lymphocyte activity with a recombinant alphavirus vector expressing human papillomavirus type 16 E6 and E7. Gene Ther 2000;7(21):1859-66
+349. Vidalin O, Fournillier A, Renard N, et al. Use of conventional or replicating nucleic
+
+informahealthcare.com
+
+311
+
+Downloaded by [University of Wisconsin - Madison] at 08:58 11 November 2017
+
+Review Mogler & Kamrud
+
+acid-based vaccines and recombinant Semliki forest virus-derived particles for the induction of immune responses against hepatitis C virus core and E2 antigens. Virology 2000;276(2):259-70
+350. Nilsson C, Makitalo B, Berglund P, et al. Enhanced simian immunodeficiency virus-specific immune responses in macaques induced by priming with recombinant Semliki Forest virus and boosting with modified vaccinia virus Ankara. Vaccine 2001;19(25-26):3526-36
+351. Brinster C, Chen M, Boucreux D, et al. Hepatitis C virus non-structural protein 3-specific cellular immune responses following single or combined immunization with DNA or recombinant Semliki Forest virus particles. J Gen Virol 2002;83(Pt 2): 369-81
+352. Tsuji M, Bergmann CC, Takita-Sonoda Y, et al. Recombinant Sindbis viruses expressing a cytotoxic T-lymphocyte epitope of a malaria parasite or of influenza virus elicit protection against the corresponding pathogen in mice. J Virol 1998;72(8): 6907-10
+353. Kamrud KI, Hooper JW, Elgh F, Schmaljohn CS. Comparison of the protective efficacy of naked DNA, DNA-based Sindbis replicon, and packaged Sindbis replicon vectors expressing Hantavirus structural genes in hamsters. Virology 1999;263(1):209-19
+354. Cheng WF, Hung CF, Hsu KF, et al. Enhancement of sindbis virus self-replicating RNA vaccine potency by targeting antigen to endosomal/lysosomal compartments. Hum Gene Ther 2001;12(3):235-52
+355. Heise MT, Whitmore A, Thompson J, et al. An alphavirus replicon-derived candidate vaccine against Rift Valley fever virus. Epidemiol Infect 2009;137(9): 1309-18
+356. Zhu W, Fu J, Lu J, et al. Induction of humoral and cellular immune responses against hepatitis C virus by vaccination with replicon particles derived from Sindbis-like virus XJ-160. Arch Virol 2013;158(5): 1013-19
+357. Sashihara J, Hoshino Y, Bowman JJ, et al. Soluble rhesus lymphocryptovirus gp350 protects against infection and reduces viral loads in animals that become infected with virus after challenge. PLoS Pathog 2011;7(10):e1002308
+
+358. Loy JD, Gander J, Mogler M, et al. Development and evaluation of a replicon particle vaccine expressing the E2 glycoprotein of bovine viral diarrhea virus (BVDV) in cattle. Virol J 2013;10:35
+359. Vander Veen RL, Mogler MA, Russell BJ, et al. Haemagglutinin and nucleoprotein replicon particle vaccination of swine protects against the pandemic H1N1 2009 virus. The Veterinary record 2013; 173(14):344
+360. Harvey TJ, Anraku I, Linedale R, et al. Kunjin virus replicon vectors for human immunodeficiency virus vaccine development. J Virol 2003;77(14):7796-803
+361. Li SH, Li XF, Zhao H, et al. Development and characterization of the replicon system of Japanese encephalitis live vaccine virus SA14-14-2. Virol J 2013;10:64
+362. McKenna PM, Koser ML, Carlson KR, et al. Highly attenuated rabies virus-based vaccine vectors expressing simian-human immunodeficiency virus89.6P Env and simian immunodeficiency virusmac239 Gag are safe in rhesus macaques and protect from an AIDS-like disease. J Infect Dis 2007;195(7):980-8
+363. Buchholz UJ, Granzow H, Schuldt K, et al. Chimeric bovine respiratory syncytial virus with glycoprotein gene substitutions from human respiratory syncytial virus (HRSV): effects on host range and evaluation as a live-attenuated HRSV vaccine. J Virol 2000; 74(3):1187-99
+364. Durbin AP, Skiadopoulos MH, McAuliffe JM, et al. Human parainfluenza virus type 3 (PIV3) expressing the hemagglutinin protein of measles virus provides a potential method for immunization against measles virus and PIV3 in early infancy. J Virol 2000;74(15): 6821-31
+365. Skiadopoulos MH, Surman SR, Riggs JM, et al. Evaluation of the replication and immunogenicity of recombinant human parainfluenza virus type 3 vectors expressing up to three foreign glycoproteins. Virology 2002;297(1):136-52
+366. Bukreyev AA, Dinapoli JM, Yang L, et al. Mucosal parainfluenza virus-vectored vaccine against Ebola virus replicates in the respiratory tract of vector-immune monkeys and is immunogenic. Virology 2010;399(2): 290-8
+
+367. Bukreyev A, Marzi A, Feldmann F, et al. Chimeric human parainfluenza virus bearing the Ebola virus glycoprotein as the sole surface protein is immunogenic and highly protective against Ebola virus challenge. Virology 2009;383(2):348-61
+368. Skiadopoulos MH, Biacchesi S, Buchholz UJ, et al. Individual contributions of the human metapneumovirus F, G, and SH surface glycoproteins to the induction of neutralizing antibodies and protective immunity. Virology 2006;345(2):492-501
+369. Tang RS, MacPhail M, Schickli JH, et al. Parainfluenza virus type 3 expressing the native or soluble fusion (F) Protein of Respiratory Syncytial Virus (RSV) confers protection from RSV infection in African green monkeys. J Virol 2004;78(20): 11198-207
+370. Tang RS, Mahmood K, Macphail M, et al. A host-range restricted parainfluenza virus type 3 (PIV3) expressing the human metapneumovirus (hMPV) fusion protein elicits protective immunity in African green monkeys. Vaccine 2005;23(14):1657-67
+371. Tang RS, Spaete RR, Thompson MW, et al. Development of a PIV-vectored RSV vaccine: preclinical evaluation of safety, toxicity, and enhanced disease and initial clinical testing in healthy adults. Vaccine 2008;26(50):6373-82
+372. Bukreyev A, Huang Z, Yang L, et al. Recombinant newcastle disease virus expressing a foreign viral antigen is attenuated and highly immunogenic in primates. J Virol 2005;79(21):13275-84
+373. Brandler S, Tangy F. Recombinant vector derived from live attenuated measles virus: potential for flavivirus vaccines. Comp Immunol Microbiol Infect Dis 2008; 31(2-3):271-91
+374. Myers R, Harvey M, Kaufmann TJ, et al. Toxicology study of repeat intracerebral administration of a measles virus derivative producing carcinoembryonic antigen in rhesus macaques in support of a phase I/II clinical trial for patients with recurrent gliomas. Hum Gene Ther 2008;19(7):690-8
+375. Iankov ID, Haralambieva IH, Galanis E. Immunogenicity of attenuated measles virus engineered to express Helicobacter pylori neutrophil-activating protein. Vaccine 2011; 29(8):1710-20
+
+312
+
+Expert Rev. Vaccines 14(2), (2015)

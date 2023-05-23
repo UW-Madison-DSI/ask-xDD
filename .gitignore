@@ -2,7 +2,7 @@ code
 tmp.txt
 tmp/
 tmp.ipynb
-data/
+data/covid1000
 .env
 .vscode/settings.json
 # Byte-compiled / optimized / DLL files
