@@ -1,7 +1,8 @@
 import bert_score as score
-from datasets import Dataset
-from askem.utils import wrap_print
 import numpy as np
+from datasets import Dataset
+
+from askem.utils import wrap_print
 
 
 def quick_eval(dataset: Dataset) -> Dataset:

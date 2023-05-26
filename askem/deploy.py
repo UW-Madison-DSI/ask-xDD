@@ -9,20 +9,9 @@ from dotenv import load_dotenv
 from tqdm.autonotebook import tqdm
 
 from askem.preprocessing import HaystackPreprocessor, Preprocessor
+from askem.retriever import get_client
 
 logging.basicConfig(level=logging.DEBUG)
-
-
-def get_client() -> weaviate.Client:
-    """Get the Weaviate client."""
-
-    load_dotenv()
-    WEAVIATE_APIKEY = os.getenv("WEAVIATE_APIKEY")
-
-    return weaviate.Client(
-        "http://localhost:8080",
-        auth_client_secret=weaviate.auth.AuthApiKey(WEAVIATE_APIKEY),
-    )
 
 
 def init_retriever(force: bool = False):
