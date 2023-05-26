@@ -1,6 +1,7 @@
 import random
+
 import pandas as pd
-from datasets import load_dataset, Dataset
+from datasets import Dataset, load_dataset
 from peewee import IntegerField, Model, SqliteDatabase, TextField
 
 

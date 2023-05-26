@@ -1,7 +1,7 @@
 from transformers import (
+    AutoModelForSeq2SeqLM,
     AutoTokenizer,
     LongT5ForConditionalGeneration,
-    AutoModelForSeq2SeqLM,
 )
 
 
