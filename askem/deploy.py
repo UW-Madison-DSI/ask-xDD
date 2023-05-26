@@ -1,11 +1,7 @@
 import json
 import logging
-import os
 from pathlib import Path
-
 import click
-import weaviate
-from dotenv import load_dotenv
 from tqdm.autonotebook import tqdm
 
 from askem.preprocessing import HaystackPreprocessor, Preprocessor

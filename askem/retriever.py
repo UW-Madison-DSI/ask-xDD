@@ -3,13 +3,11 @@ from dataclasses import dataclass
 from typing import List
 
 import weaviate
-from dotenv import load_dotenv
 
 
 def get_client() -> weaviate.Client:
     """Returns a weaviate client."""
 
-    load_dotenv()
     apikey = os.getenv("WEAVIATE_APIKEY")
     url = os.getenv("WEAVIATE_URL")
     return weaviate.Client(url, weaviate.auth.AuthApiKey(apikey))
