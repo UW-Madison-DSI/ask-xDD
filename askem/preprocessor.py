@@ -26,7 +26,7 @@ def join_paragraphs(passage: str):
 
     for next_line in lines[1:]:
         next_line = next_line.strip()
-        if not (current_line and current_line[-1] in {'.', '?', '!'}) and not (next_line and next_line[0].isupper()):
+        if not (current_line and current_line[-1] in {'.', '?', '!'}) and not (next_line and (next_line[0].isupper() or next_line[0].isdigit())):
             current_line += ' ' + next_line
         else:
             joined_lines.append(current_line)

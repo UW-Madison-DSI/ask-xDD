@@ -4,94 +4,180 @@ from pathlib import Path
 from typing import List, Protocol
 
 from haystack import Pipeline
-# from haystack.nodes import PreProcessor, TextConverter
 from haystack.nodes import TextConverter
 from preprocessor import PreProcessor
+from typing import Optional, Tuple
 
 logging.basicConfig(level=logging.INFO)
 
-def contains_time(s):
-    # Regex pattern for time in the format XX:XX
-    pattern = r'\b([01]\d|2[0-3]):([0-5]\d)\b'
-    match = re.search(pattern, s)
+MAX_WORDS = 250
+MIN_WORDS = 100
 
-    return match is not None  # Returns True if a match is found, False otherwise
-
-def contains_download(s):
-    return "download" in s or "Download" in s
-
-def adjust_paragraphs(original_paragraphs: List[str], min_words=100, max_words=250) -> List[str]:
-    paragraphs = []
-    adjusted_paragraphs = []
-    for i in range(len(original_paragraphs)):
-        paragraph = original_paragraphs[i]
-        paragraph_words = paragraph.split(" ")
-        num_of_words = len(paragraph_words)
-        if num_of_words < 25 and (contains_time(paragraph) or contains_download(paragraph)):
-            continue
-
-        if i > 0:
-            if not paragraph[0].isupper() and not paragraphs[-1][-1] in {'.', '?', '!'}:
-                paragraphs[-1] = paragraphs[-1] + " " + paragraph
-                continue
-
-        if num_of_words < 10:
-            continue
-
-        paragraphs.append(paragraph)
-
+def clean_paragraphs(paragraphs: List[str]) -> List[str]:
+    cleaned_paragraphs = []
     for i in range(len(paragraphs)):
         paragraph = paragraphs[i]
-        paragraph_words = paragraph.split(" ")
-        num_of_words = len(paragraph_words)
+        # print("Paragraph {} (length = {}): {}".format(i, len(paragraph.split(" ")), paragraph))
+        if detect_references(paragraph):
+            break
+        paragraph = remove_section_header(paragraph)
+        paragraph = remove_download_remnant(paragraph)
+        paragraph = remove_time_remnant(paragraph)
+        paragraph = concatenate_incomplete_paragraph(cleaned_paragraphs, paragraph)
+        paragraph = remove_short_paragraph(paragraph)
+        if paragraph:
+            cleaned_paragraphs.append(paragraph)
+    return cleaned_paragraphs
 
-        if min_words <= num_of_words and num_of_words <= max_words:
-            adjusted_paragraphs.append(paragraph)
-        elif num_of_words < min_words:
-            if i == len(paragraphs) - 1:
-                adjusted_paragraphs.append(paragraph)
-            else:
-                ## append to the begining of the next paragraph
-                next_paragraph = paragraphs[i+1]
-                paragraphs[i+1] = paragraph + "\n" + next_paragraph
+def detect_references(text: str) -> bool:
+    if text.strip().lower() == 'references':
+        return True
+    if text.strip().lower() == 'reference':
+        return True
+    return False
 
-        elif num_of_words > max_words:
-            sentences = paragraph.split(". ")
-            num_of_sentences = len(sentences)
+def remove_section_header(text: str) -> Optional[str]:
+    """Remove section header with only Captial letters or Captial letters and numbers."""
+    if not text:
+        return None
+    words = text.split(" ")
+    if all([word.isupper() or word.isdigit() for word in words]):
+        return None
+    return text
 
-            if num_of_sentences == 1:
-                # if the paragraph has only one sentence
-                adjusted_paragraphs.append(paragraph)
-            else:
-                # if the paragraph has more than one sentence
-                passage_start_index = 0
-                while passage_start_index < num_of_sentences:
-                    new_paragraph = sentences[passage_start_index]
-                    new_paragraph_length = len(sentences[passage_start_index].split())
-                    passage_end_index = passage_start_index
-                    for sentence_index in range(passage_start_index + 1, num_of_sentences):
-                        sentence  = sentences[sentence_index]
-                        sentence_words = sentence.split(" ")
-                        sentence_length = len(sentence_words)
-                        if new_paragraph_length + sentence_length > (max_words - 50):
-                            break
-                        else:
-                            new_paragraph += ". " + sentence
-                            new_paragraph_length += sentence_length
-                            passage_end_index = sentence_index
-                    
-                    if passage_end_index < num_of_sentences - 1 and len(sentences[passage_end_index + 1].split(" ")) < 30:
-                        new_paragraph = new_paragraph + ". " + sentences[passage_end_index + 1] + "."
-                    
-                    if passage_end_index == num_of_sentences - 1:
-                        while new_paragraph_length < min_words:
-                            passage_start_index -= 1
-                            new_paragraph = sentences[passage_start_index] + ". " + new_paragraph
-                            new_paragraph_length += len(sentences[passage_start_index].split(" "))
+def remove_download_remnant(text: str) -> Optional[str]:
+    """Remove useless download pattern like: `Download by: [UW-Madison (GeoDeepDive)]`."""
+    if not text:
+        return None
+    words = text.split(" ")
+    short = len(words) < 25
+    has_download = "download" in text or "Download" in text
+    if short and has_download:
+        return None
+    return text 
 
-                    adjusted_paragraphs.append(new_paragraph)
-                    passage_start_index = passage_end_index + 1
+def remove_time_remnant(text: str) -> Optional[str]:
+    """Remove useless time pattern like: `12:00`."""
+    if not text:
+        return None
+    words = text.split(" ")
+    short = len(words) < 25
+    pattern = r'\b([01]?[0-9]|2[0-3]):[0-5][0-9]\b'
+    has_time = re.search(pattern, text)
 
+    if short and has_time:
+        return None
+    return text
+
+def remove_short_paragraph(text: str) -> Optional[str]:
+    """Remove short paragraphs that are less than 15 words."""
+    if not text:
+        return None
+    words = text.split(" ")
+    if len(words) < 15:
+        return None
+    return text
+
+def concatenate_incomplete_paragraph(paragraphs: List[str], paragraph: str) -> Optional[str]:
+    """Concatenate incomplete paragraphs that do not end with a punctuation and is not capitalized"""
+    if not paragraph:
+        return None
+    if len(paragraphs) > 0:
+        if not (paragraph[0].isupper() or paragraph[0].isdigit())and not paragraphs[-1][-1] in {'.', '?', '!'}:
+            paragraphs[-1] = paragraphs[-1] + " " + paragraph
+            return None
+    return paragraph    
+
+def process_paragraphs(paragraphs_before_adjust: List[str]) -> List[str]:
+    """Process paragraphs to make sure each paragraph has a proper length."""
+    paragraphs_after_adjust = []
+    for i in range(len(paragraphs_before_adjust)):
+        process_single_paragraph(paragraphs_before_adjust, i, paragraphs_after_adjust)
+    return paragraphs_after_adjust
+
+def process_single_paragraph(paragraphs_before_adjust: List[str], index: int, paragraphs_after_adjust: List[str]) -> None:
+    """Process a single paragraph to make sure it has a proper length."""
+    paragraph = paragraphs_before_adjust[index]
+    paragraph_words = paragraph.split(" ")
+    num_of_words = len(paragraph_words)
+
+    if MIN_WORDS <= num_of_words and num_of_words <= MAX_WORDS:
+        ## if the paragraph is within the proper length
+        process_proper_paragraph(paragraphs_after_adjust, paragraph)
+    
+    elif num_of_words < MIN_WORDS:
+        ## if the paragraph is too short
+        process_short_paragraph(paragraphs_before_adjust, paragraphs_after_adjust, paragraph, index)
+    
+    elif num_of_words > MAX_WORDS:
+        ## if the paragraph is too long
+        process_long_paragraph(paragraphs_after_adjust, paragraph)
+
+def process_proper_paragraph(paragraphs_after_adjust: List[str], paragraph: str) -> None:
+    paragraphs_after_adjust.append(paragraph)
+
+def process_short_paragraph(paragraphs_before_adjust: List[str], paragraphs_after_adjust: List[str], paragraph: str, index: int) -> None:
+    if index == len(paragraphs_before_adjust) - 1:
+        # if the current paragraph is the last paragraph
+        paragraphs_after_adjust.append(paragraph)
+    else:
+        ## append to the begining of the next paragraph
+        paragraphs_before_adjust[index+1] = paragraph + "\n" + paragraphs_before_adjust[index+1]
+
+def process_long_paragraph(paragraphs_after_adjust: List[str], paragraph: str):
+    sentences = paragraph.split(". ")
+    num_of_sentences = len(sentences)
+
+    if num_of_sentences == 1:
+        # if the paragraph has only one sentence
+        paragraphs_after_adjust.append(paragraph)
+    else:
+        # if the paragraph has more than one sentence
+        passage_start_index = 0
+        while passage_start_index < num_of_sentences:
+            new_paragraph, passage_end_index = build_new_paragraph(sentences, passage_start_index)
+            paragraphs_after_adjust.append(new_paragraph)
+            passage_start_index = passage_end_index + 1
+
+def build_new_paragraph(sentences: List[str], start_index: int) -> Tuple[str, int]:
+    paragraph = sentences[start_index]
+    paragraph_length = len(paragraph.split())
+    end_index = start_index
+    num_of_sentences = len(sentences)
+
+    for sentence_index in range(start_index + 1, num_of_sentences):
+        sentence  = sentences[sentence_index]
+        sentence_words = sentence.split(" ")
+        sentence_length = len(sentence_words)
+        if paragraph_length + sentence_length > (MAX_WORDS - 50):
+            break
+        else:
+            paragraph += ". " + sentence
+            paragraph_length += sentence_length
+            end_index = sentence_index
+
+    # add overlap at the end if the paragprah is not the last paragraph and the total length doesn't exceed the limit
+    
+    if end_index < num_of_sentences - 1:
+        next_sentence = sentences[end_index + 1]
+        next_sentence_length = len(next_sentence.split(" "))
+        if paragraph_length + next_sentence_length < MAX_WORDS:
+            paragraph = paragraph + ". " + next_sentence + "."
+
+    # add overlap at the beginning if the paragraph is the last paragraph, until the total length exceeds the limit
+    if end_index == num_of_sentences - 1:
+        while start_index > 0 and paragraph_length < MIN_WORDS:
+            start_index -= 1
+            previous_sentence = sentences[start_index]
+            previous_sentence_length = len(previous_sentence.split(" "))
+            paragraph = previous_sentence + ". " + paragraph
+            paragraph_length += previous_sentence_length
+
+    return paragraph, end_index
+
+def adjust_paragraphs(original_paragraphs: List[str]) -> List[str]:
+    cleaned_paragraphs = clean_paragraphs(original_paragraphs)
+    adjusted_paragraphs = process_paragraphs(cleaned_paragraphs)  
     return adjusted_paragraphs
 
 class Preprocessor(Protocol):
