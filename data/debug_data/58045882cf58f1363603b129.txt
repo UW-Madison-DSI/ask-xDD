@@ -1,0 +1,837 @@
+Proteomics 2013, 13, 3309–3326
+
+DOI 10.1002/pmic.201300180
+
+RESEARCH ARTICLE
+
+Subcellular proteomic analysis of human host cells infected with H3N2 swine inﬂuenza virus
+
+3309
+
+Xiaopeng Wu1,2, Sanying Wang1,2, Yang Yu1,2, Jinyang Zhang1,2, Zeyu Sun3, Yan Yan1,2 and Jiyong Zhou1,2,4
+1 Key Laboratory of Animal Virology of Ministry of Agriculture, Zhejiang University, Hangzhou, P. R. China 2 State Key Laboratory for Diagnosis and Treatment of Infectious Diseases, First Afﬁliated Hospital, Zhejiang
+University, Hangzhou, P. R. China 3 Zhejiang California International Nanosystems Institute, Zhejiang University, Hangzhou, P. R. China 4 Collaborative Innovation Center for Diagnosis and Treatment of Infectious Diseases, First Afﬁliated Hospital,
+Zhejiang University, Hangzhou, P. R. China
+
+Cross-species transmissions of swine inﬂuenza viruses (SIVs) raise great public health concerns. In this study, subcellular proteomic proﬁles of human A549 cells inoculated with H3N2 subtype SIV were used to characterize dynamic cellular responses to infection. By 2DE and MS, 27 differentially expressed (13 upregulated, 14 downregulated) cytoplasmic proteins and 20 differentially expressed (13 upregulated, 7 downregulated) nuclear proteins were identiﬁed. Gene ontology analysis suggested that these differentially expressed proteins were mainly involved in cell death, stress response, lipid metabolism, cell signaling, and RNA PTMs. Moreover, 25 corresponding genes of the differentially expressed proteins were quantitated by real time RT-PCR to examine the transcriptional proﬁles between mock- and virus-infected A549 cells. Western blot analysis conﬁrmed that changes in abundance of identiﬁed cellular proteins heterogeneous nuclear ribonucleoprotein (hnRNP) U, hnRNP C, ALDH1A1, tryptophanyl-tRNA synthetase, IFI35, and HSPB1 in H3N2 SIV-infected cells were consistent with results of 2DE analysis. By confocal microscopy, nucleus-to-cytoplasm translocation of hnRNP C and colocalization between the viral nonstructural protein 1 and hnRNP C as well as N-myc (and STAT) interactor were observed upon infection. Ingenuity Pathway Analysis revealed that cellular proteins altered during infection were grouped mainly into NF␬B and interferon signaling networks. Collectively, these identiﬁed subcellular constituents provide an important framework for understanding host/SIV interactions and underlying mechanisms of SIV cross-species infection and pathogenesis.
+Keywords: 2DE / A549 cells / Interaction / Microbiology / Subcellular proteomics / Swine inﬂuenza
+Additional supporting information may be found in the online version of this article at the publisher’s web-site
+
+Received: May 7, 2013 Revised: August 25, 2013 Accepted: August 28, 2013
+
+Correspondence: Dr. Jiyong Zhou, Key Laboratory of Animal Virology of Ministry of Agriculture, College of Animal Sciences, Zhejiang University, 866 Yuhangtang Road, Hangzhou 310058, P. R. China E-mail: jyzhou@zju.edu.cn Fax: +86-571-8898-2218
+Abbreviations: GAPDH, glyceraldehyde-3-phosphate dehydrogenase; hnRNP, heterogeneous nuclear ribonucleoprotein; hpi,
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+1 Introduction
+Retrospective serological analysis has suggested that the swine-derived inﬂuenza A virus (SIV) H1N1 was the
+hours post infection; IFN, interferon; IFP, IFN-induced protein; IPA, Ingenuity Pathways Analysis; ISG, interferon-stimulated gene; NMI, N-myc (and STAT) interactor; PBST, PBS–Tween 20; SIV, swine inﬂuenza virus; VDAC1, voltage-dependent anion channel 1; WARS, tryptophanyl-tRNA synthetase; WB, Western blotting
+www.proteomics-journal.com
+
+3310
+
+X. Wu et al.
+
+culprit behind the 1918 human ﬂu pandemic [1]. The later Hong Kong H3N2 inﬂuenza outbreak (1968–1970) claimed 1–2 million lives, and the recent worldwide 2009 H1N1 ﬂu pandemic that left over 14 000 deaths was attributed to an inﬂuenza virus of swine origin [2]. SIVs have drawn increasing attention in recent years for their cross-species infection of humans. Among various subtypes of SIV, H3N2 and H1N1 strains were found to be present in the human population with relatively high morbidity and mortality [3]. Compared to H1N1, H3N2 has shown a higher epidemic severity index and was found to associate with human seasonal inﬂuenza with increasingly high frequency [4, 5]. Therefore, the need for novel therapeutic strategies against SIV underscores the importance of understanding the mechanisms underlying cross-species transmission of this virus.
+The segmented negative-sense RNA genome of SIV is known to encode 11 viral proteins, including polymerase acidic (PA) protein, basic protein 1 (PB1) and PB2, nucleoprotein (NP), hemagglutinin (HA), neuraminidase (NA), matrix protein (M1), ion-channel protein (M2), and two nonstructural proteins, NS1A and NS2/NEP [6]. These viral proteins have been shown to interact extensively with each other and with host cell proteins in various stages of the viral infection process [7]. As hosts simultaneously expressing receptors for avian and human inﬂuenza viruses, swine are thought to mediate reassortment of these inﬂuenza viral genomes [8]. However, there is still a dearth of knowledge on the molecular basis of human infection by SIV. In particular, very little is known about the proteins potentially involved with the cytopathogenesis and cellular adaptation related to SIV infection in human host cells.
+Virus infection often triggers different molecular events in different cellular compartments. Proteomic approaches have been demonstrated to be suitable for exploring molecular events related to virus–host interactions. Via proteomic methods, a number of novel cellular proteins in human cells involved in a variety of infections, including those of avian [9] and human [10–13] inﬂuenza viruses, have been identiﬁed. In recent years, subcellular fractionation techniques have been used in ﬁne proteomic analyses. To date, a small but increasing number of studies have investigated the patterns of cellular proteins at subcellular levels by 2DE coupled with MS (2DE/MS) during virus infection. Brasier et al. [14] investigated subcellular proteomic changes in human A549 cells infected with respiratory syncytial virus and found that cytoplasmic replication of this virus causes the nucleus-to-cytoplasm translocation of promyelocytic leukemia and speckled 100-kDa (SP100) proteins. Using subcellular fractionation and 2DE/MS techniques, Ohman and co-workers discovered that multiple components of the antiviral RNA recognition machinery are translocated to the mitochondria in human primary macrophages infected with H3N2 subtype inﬂuenza A virus [15]. Recently, Lam et al. [16] reported the altered localization patterns of relevant cellular proteins in a nucleolus proteome analysis of adenovirus-infected cells. Other studies have also used stable isotope labeling of amino acids in
+
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Proteomics 2013, 13, 3309–3326
+cell culture to investigate the subcellular response to infectious bronchitis virus and inﬂuenza A virus infections [17,18]. Therefore, subcellular proteomic strategies can provide the resolving power to obtain detailed protein expression proﬁles in speciﬁc subcellular fractions as well as help to identify potential protein translocation/redistribution patterns.
+In this study, we analyzed cytoplasmic and nuclear proteomic alterations induced by H3N2 subtype SIV infection in human primary A549 cells via a 2DE/MS proteomic approach, followed by Western blot coupled with Ingenuity Pathways Analysis (IPA), and observed colocalization of viral and cellular proteins. A total of 47 differentially expressed proteins were identiﬁed. To our knowledge, this is the ﬁrst study to report subcellular proteomic changes in human cells in response to SIV infection.
+2 Materials and methods
+2.1 Virus, cell culture, and sample preparation
+The A/swine/Zhejaing/04 (H3N2, H3 virus) strain was stored in our laboratory. Human lung A549 cells were routinely cultured at 37ЊC with 5% CO2 in DMEM (Invitrogen, Carlsbad, CA) supplemented with 10% fetal bovine serum and 1% penicillin–streptomycin.
+A549 cell monolayers were inoculated with the H3 virus at a multiplicity of infection of 1. Mock-infected A549 cells were used as a negative control. At 24 h post infection (hpi), the H3 virus and mock-infected cells were mechanically scraped into the culture medium and centrifuged at 8000 × g for 10 min. The cell pellets were washed three times with ice-cold PBS before subcellular fractionation. All virus experiments were carried out in a biosafety level 2 laboratory.
+2.2 Isolation of subcellular fractions
+For each sample, cytoplasmic and nuclear proteins were isolated using the ProteoExtract R Subcellular Proteome Extraction Kit (Merck, Darmstadt, Germany) according to the manufacturer’s instructions. The nuclear fractions were further puriﬁed with the 2D Clean-Up Kit (GE Healthcare, Little Chalfont, UK). The purity of the subcellular fractions was conﬁrmed with the known cytoplasmic marker protein calpain and nuclear marker protein histone 3. Protein concentrations were determined with the BCA protein assay kit (Novagen, Darmstadt, Germany) according to the manufacturer’s instructions.
+2.3 2DE and image analysis
+The ﬁrst dimension of 2DE was performed with 24 cm Ready Strip IPG strips pI 5–8 and pI 4–7 (Linear, Bio-Rad, Hercules, CA) for cytoplasmic and nuclear fractions, respectively, in the
+www.proteomics-journal.com
+
+Proteomics 2013, 13, 3309–3326
+PROTEAN IEF Cell with some modiﬁcations as previously described [19]. The IPG strips were rehydrated at 20ЊC for 14 h with 450 ␮L of rehydration buffer (7 M urea, 2 M thiourea, 2% w/v CHAPS, 65 mM DTT, and 0.2% Bio-Lyte3/10) containing 250 ␮g of proteins. The rehydrated strips were automatically focused using the following parameters: 250 V, linear, 1 h; 1000 V, linear, 1 h; 10 000 V, linear, 5 h; 10 000 V, rapid, 90 000 V-h. The isoelectric focused strips were incubated for 15 min in an equilibration buffer (6 M urea, 30% glycerol, 2% SDS, and 0.375 M Tris, pH 8.8) containing 1% DTT, followed by incubation for another 15 min in an equilibration buffer containing 2.5% iodoacetamide. The equilibrated IPG strips were further resolved by 11% SDS-PAGE in BIO-RAD PROTEN Plus DODECA Cell (Serial NO. 139BR 01479) at 80 V for 45 min and then at 200 V until the dye front reached the bottom of the gels. The gels were stained by the modiﬁed silver-staining method compatible with MS [20] and scanned at a resolution of 500 dots/inch using the image scanner III (GE Healthcare, Little Chalfont, UK). Spot detection, spot matching, and densitrometric analysis were performed using PDQuest 2D analysis software (Bio-Rad, Hercules, CA). The gel images were normalized according to the total quantity in the analysis set. Comparison of relative spot intensities corresponding to the level of abundance between H3 virus infected and mock-infected groups at indicated time points (three biological and three technical replicates per group) was performed using Student’s t-test. The ratio of protein intensity in infected cells to that of uninfected cells, which was larger than 2.0 (p ≤ 0.05) or smaller than 0.5 (p ≤ 0.05), indicated a signiﬁcant change. Only those protein spots that were clearly up- or downregulated in at least three independent experiments were chosen for identiﬁcation.
+2.4 Protein identiﬁcation by MALDI-TOF/TOF MS and database search
+Selected protein spots were cut from the silver-stained gels and transferred to V-bottom 96-well microplates loaded with 100 ␮L of 50% ACN (Sigma-Aldrich, St. Louis, MO) and 25 mM ammonium bicarbonate solution per well. The ingel tryptic digest was performed as previously described [21]. Dry peptide samples were reconstituted in 2 ␮L of a standard diluent (20:80 = ACN:water) and spotted on a 384-well Opti-TOF stainless steel plate covered with 5 mg/mL R-cyano4-hydroxy-cinnamic acid (Sigma-Aldrich) in 50% ACN and 0.1% triﬂuoroacetic acid before being dried. MS and MS/MS data for protein identiﬁcation were obtained by using a 4800 proteomics analyzer (Applied Biosystems, Foster, CA) in positive ion mode. Instrument parameters were set using the 4000 Series Explorer software (Applied Biosystems). MS spectra were recorded in reﬂector mode in a mass range from 800 to 4000 Th with a focus mass of 2000 Th. The instrument was routinely calibrated against the CalMix5 standard (ABI 4700 Calibration Mixture) to ensure m/z accuracy. For each MS full scan, 25 subspectra with 125 laser shots per subspectrum
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+3311
+were accumulated using a random search pattern. Autolysis peaks of trypsin ([M+H]+842.5100 Th and 2211.1046 Th) were used for internal calibration. For each MS scan, up to ten of the most intense ion signals were selected as precursors for subsequent MS/MS acquisition, excluding trypsin and matrix peaks. For each MS/MS scan, 50 subspectra with 50 shots per subspectrum were accumulated using a random search pattern. Collision energy was set to 2 kV, collision gas was air, and default calibration was set by using the Glu1Fibrino-peptide B ([M+H]+ 1570.6696) spotted onto Cal 7 positions of the MALDI target.
+Combined PMF and MS/MS queries were performed using the MASCOT search engine 2.2 (Matrix Science, Boston, MA) embedded into the GPS Explorer Software 3.6 (Applied Biosystems) against the International Protein Index (IPI) human protein database v3.6 (86702 sequence; December 10, 2010) and inﬂuenza virus database (191124 sequence; Jun 2, 2011) with the following parameter settings: 100 ppm mass accuracy for PMF, trypsin digestion, one missed cleavage allowed, cysteine carbamidomethylation as ﬁxed modiﬁcation, methionine oxidation as variable modiﬁcation, and 0.4 Da for MS/MS mass tolerance. Identiﬁcations with the GPS Explorer protein conﬁdence index ≥95% were further experimentally validated.
+2.5 Quantitative real-time RT-PCR analysis
+To validate the results of the differential proteome analysis at the mRNA level, speciﬁc primers (see Supporting Information Table 1) for the target genes were designed according to the corresponding gene sequences of proteins identiﬁed by MS/MS and the available gene information deposited in the GenBank database was obtained using the Lasergene sequence analysis software (DNAStar, Madison, WI). After infection with H3 virus (multiplicity of infection = 1) for 24 h, A549 monolayers were washed thrice with ice-cold PBS, lysed with Trizol reagent (Invitrogen, Grand Island, NY), and subjected to extraction of total cellular RNA using the RNeasy Mini Kit (Qiagen, GmbH, Hilden, Germany) according to the manufacturer’s protocol. RNA concentrations were measured using a spectrophotometer (260/280 nm). The RNA was reverse transcribed to cDNA using 200 U SuperScript III Reverse Transcriptase (Invitrogen, Carlsbad, CA). Real-time RT-PCR was performed using a 7500 Real-Time PCR System (Applied Biosystems) in a total volume of 20 ␮L containing 100 ng of cDNA template, 1× SYBR Premix Ex Taq (Perfect Real Time, TaKaRa), and 200 nM of each primer. After initial denaturation at 95ЊC for 2 min, the real-time PCR protocol included 40 cycles of ampliﬁcation with denaturation at 95ЊC for 15 s, annealing at 60ЊC for 34 s, and DNA extension at 72ЊC for 20 s. The melting curves were obtained, and the data were quantitatively analyzed using 7500 System SDS 10 software v1.3.1 in a relative quantiﬁcation (ddCt) study model (Applied Biosystems). Parallel mock-infected A549 cells were used as controls.
+www.proteomics-journal.com
+
+3312
+
+X. Wu et al.
+
+2.6 Western blotting (WB)
+
+Total protein concentrations of cellular fractions of the H3 virus infected and mock-infected cells were determined using a BCA assay (Merck). Protein fractions (10 ␮g) were resolved by 12% SDS-PAGE and transferred onto nitrocellulose membranes (Amersham Biosciences, Berks, UK) using a Bio-Rad semi-dry transfer apparatus. After blocking with 5% nonfat dry milk, the membranes were incubated at 37ЊC for 1 h with various mAbs, including rabbit mAbs to heterogeneous nuclear ribonucleoprotein (hnRNP) U (EP2633Y, 2353–1), hnRNP C (EP3034Y, 2438–1), ALDH1A1 (EP1933Y, 2052–1), WARS (tryptophanyl-tRNA synthetase; EPR3424, 2756–1), HSPB1 (EPR5477, 3763–1), ␤-tubulin (EPR1330, 3124–1), and glyceraldehyde-3-phosphate dehydrogenase(GAPDH) (EPR1977Y, 2251–1) purchased from Epitomics (Burlingame, CA); mouse mAbs to IFI35 (ab55332, Abcam, Cambridge, MA), calpain (208730, Merck), N-myc (and STAT) interactor (NMI; H-90; (sc-22819, Santa Cruz Biotechnology, Santa Cruz, CA), FLAG clone M2 (F1804, Sigma-Aldrich), histone 3 (R1105–1, Huaan Biotechnology, Hangzhou, China), as well as mouse mAbs to viral proteins NP, NS1, and M1 of SIV prepared in our lab (unpublished data). Subsequently, membranes were washed three times with 0.05% PBS–Tween 20 (PBST) and incubated with HRP-conjugated goat antimouse IgG or goat antirabbit IgG (both from KPL, Gaithersburg, MD) at 37ЊC for 60 min. The secondary antibody was detected using ChemiGlow chemiluminescence reagents (Alpha Innotech, San Leandra, CA).
+
+2.7 Double-staining immunoﬂuorescence and nuclear staining
+A549 cell monolayers adhered to coverslips were mockinfected or infected with the H3 virus. At 24 and 60 hpi, cells were washed twice with PBST and ﬁxed with cold acetone/methanol (1/1) for 20 min at −20ЊC and then allowed to air dry. The ﬁxed cells were incubated with a mixture of mouse mAbs to SIV proteins M1 and NS1 and the above-mentioned rabbit mAbs (WARS, ALDH1A1, VDAC1 (voltage-dependent anion channel 1), hnRNP U1L, and hnRNP C) and mouse mAb to NMI (H-90, sc-22819). After incubation at 37ЊC in a humidiﬁed chamber for 90 min and being washed three times with PBST, the cells were incubated for 1 h at 37ЊC with the mixture of secondary antibodies of TRITC-conjugated goat antirabbit IgG (Sigma-Aldrich) and FITC-conjugated goat antimouse IgG (KPL). Cell nuclei were visualized with 4 ,6diamidino-2-phenylindole (DAPI, Sigma). The triple-stained cells were washed three times with PBS and subsequently examined with a Zeiss LSM510 laser confocal microscope.
+
+2.8 Protein pathway analysis
+Data were analyzed by IPA (Ingenuity Systems, http://www. ingenuity.com), and networks were constructed as previ-
+
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Proteomics 2013, 13, 3309–3326
+ously described [22]. Brieﬂy, differentially expressed (>2.0fold change) proteins determined in the study were uploaded into the IPA application and mapped to corresponding genes in the Ingenuity Pathways Knowledge Base. Possible connections between the mapped genes were then evaluated based on the curated information in the IPA database. Graphical networks of these genes were then algorithmically generated based on their connectivity. Genes or gene products were represented as nodes, with the intensity of the node color indicating the relative increased (red) or decreased (green) abundance. Various shapes of the nodes were used to represent the functional class of the gene product. The biological relationships between nodes were linked, and all linkages were supported by at least one reference from the IPA curated literature or by canonical information stored in the Ingenuity Pathways Knowledge Base. In addition, identiﬁed proteins were overlaid with IPA curated canonical pathways to explore possible metabolic and cell signaling pathways that were overrepresented by the experimentally determined genes.
+2.9 Statistical analysis
+The statistically signiﬁcant differences between groups were determined using the Student t-test. The p-value less than 0.05 was considered signiﬁcant.
+3 Results
+3.1 Proteomic analysis of cytoplasmic and nuclear fractions of SIV-infected A549 cells using 2DE
+Subcellular prefractionation coupled with high-throughput 2DE analysis was employed to investigate the potential changes of the human lung A549 cell proteome in response to H3N2 SIV infection. Cytoplasmic and nuclear fractions were isolated from A549 cells at 24 h after mock or H3N2 SIV infection. Using calpain as a cytoplasmic protein marker and histone 3 as a nuclear protein marker, purities of the cytoplasmic and nuclear fractions were conﬁrmed by WB (Fig. 1A). Viral proteins NP, M1, and NS1 were detected using their corresponding mAbs in the fractions from H3 virus infected cells and not mock-infected cells, indicating successful infection by H3N2 subtype SIV. In order to determine the optimal collection time of cellular samples for 2DE analysis, A549 cells infected with H3N2 subtype SIV were evaluated using a mAb to the NS1 protein of SIV in an indirect immunoﬂuorescence assay at 6, 12, 24, and 48 hpi. As shown in Fig. 1B, the virus protein NS1 was detected in 80–90% of the infected cell monolayer at 24 hpi. Additionally, virus life cycle in A549 cells was further conﬁrmed by the WB for the viral protein NS1, which is expressed only during active viral replication. NS1 was expressed by 6 hpi and increased in abundance at 24 hpi (Fig. 1C), and this time point was chosen to collect H3 virus infected cells for 2DE analysis.
+www.proteomics-journal.com
+
+Proteomics 2013, 13, 3309–3326
+Figure 1. Identiﬁcation of A549 cells infected with H3N2 subtype SIV. (A) Western blot analysis of representative enriched proteins from the cytoplasmic and the nuclear fractions of mock- and H3N2 virus infected cells. The membrane-immobilized protein calpain and nucleus-immobilized protein histone 3 were used as markers for localization in the cytoplasmic and nuclear fractions, respectively. H3N2 viral proteins NP, NS1, and M1 were used as markers of infection. (B) Indirect immunoﬂuorescence analysis of mock-infected A549 cells and H3N2 virus infected A549 cells using a mAb to the NS1 protein of SIV at 6, 24, and 48 hpi. The cells were stained with mouse anti-NS1 mAb followed by FITCconjugated goat antimouse IgG (green). The nuclei were stained with 4 ,6-diamidino-2-phenylindole (DAPI; blue). Scale bars, 20 ␮m. (C) A549 cells were infected with H3N2 virus at 6, 12, and 24 hpi, and protein lysates were assayed for accumulation of viral NS1 protein by Western blot. GAPDH was used as a loading control.
+Based on the average ratios of protein spot intensities, 36 and 26 protein spots in total were dynamically altered in the cytoplasm and nucleus, respectively, of H3 virus infected cells (Supporting Information Fig. 1). In the cytoplasmic fraction of H3 virus infected cells, 18 protein spots were signiﬁcantly upregulated (infection/mock ratio ≥ 2, p ≤ 0.05, Table 1 and Supporting Information Fig. 1A) and 18 protein spots were signiﬁcantly downregulated (infection/mock ratio ≤ 0.5, p ≤ 0.05, Table 1 and Supporting Information Fig. 1B). In the nuclear proteome of H3 virus infected cells, 16 protein spots were signiﬁcantly increased (infection/mock ratio ≥ 2, p ≤ 0.05, Table 1 and Supporting Information Fig. 1C), while 10 protein spots were signiﬁcantly reduced (infection/mock
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+3313
+ratio ≤ 0.5, p ≤ 0.05, Table 1 and Supporting Information Fig. 1D).
+3.2 MS identiﬁcation of differentially expressed proteins
+To identify differentially expressed proteins of H3 virus infected A549 cells at the subcellular level in 2DE gels, a total of 61 protein spots with a threshold greater than twofold were excised and subjected to in-gel trypsin digestion and subsequent MALDI-TOF/TOF identiﬁcation. Fifty-one differentially expressed protein spots from both cytoplasmic (Fig. 2) and nuclear (Fig. 3) fractions were successfully identiﬁed. In this analysis, many different spots were identiﬁed to be the products of the same gene, including Mx1, HSPA5, ALDH1A1, IFI35, and hnRNP U, probably due to protein PTMs or distribution in different subcellular compartments. In comparison between the cytoplasmic and nuclear proteomes after virus infection, the abundance of ALDH1A1 was found to be decreased in the cytoplasm (two similarly regulated ALDH1A1 spots) but increased in the nucleus (one regulated ALDH1A1 spots), indicating that this protein was translocated to the nucleus in H3 virus infected cells. Interestingly, no viral proteins were detected in either fraction of virally infected cells using inﬂuenza genome data in MASCOT searches, potentially reﬂecting a lack of abundance at that time point, and this observation was consistent with those of previous studies [9, 11, 16]. Based upon the underlying biological evidence from the curated IPA literature database, we assigned identiﬁed proteins into different molecular and cellular functional classes. The relative proportions of proteins represented in each separate functional class in the cytoplasmic and nuclear proteomes of A549 cells indicated that both fractions had high proportions of proteins involved in cell death (30.17% in cytoplasm, 18.98% in nucleus), small molecule biochemistry (12.22% in cytoplasm, 13.87% in nucleus), and lipid metabolism (6.73% in cytoplasm, 9.49% in nucleus). Moreover, the cytoplasmic fraction had a greater proportion of proteins involved in cellular development (3.49%) and cellto-cell signaling and interaction (3.49%, Fig. 4A), compared with the nuclear fraction that had a relatively higher proportion of proteins involved in gene expression (6.57%). Such as HSP90AA1, CAPG and G6PD involved in cellular development are only identiﬁed in cytoplasmic proteomes, while hnRNP U, hnRNP C, NMI, GNB1, and GNB2 functioned as gene expression only present in nuclear proteomes (Fig. 4B).
+3.3 Transcriptional proﬁles of differentially expressed proteins during H3 virus infection
+The transcriptional alterations of the 25 genes selected from the differentially expressed proteins were analyzed using the mRNA transcript of the GAPDH gene as a control housekeeping gene. Changes greater than twofold (p < 0.05) in the
+www.proteomics-journal.com
+
+www.proteomics-journal.com
+
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Table 1. List of the differentially expressed protein spots in SIV-infected A549 identiﬁed by MALDI-TOF or MALDI-TOF/TOF
+
+Spot no.a)
+
+Protein name
+
+Abbr.
+
+Accession no.b)
+
+Mr (prep/ exp)c)
+
+PI (prep/ exp)
+
+Pep. count (total/ unique)d)
+
+Coverage (%)e)
+
+Protein score/ best ion scoref)
+
+Upregulated cytoplasm protein
+
+0013
+
+Ubiquitin-like protein 15 ISG15
+
+IPI00375631 17.93/16
+
+6.84/7.5
+
+15/10
+
+59
+
+414/124
+
+1211
+
+Annexin A1
+
+ANXA1
+
+IPI00218918 38.92/41
+
+6.57/7.3
+
+25/19
+
+56
+
+364/109
+
+2410
+
+Isoform 1 of Serpin B3 SERPINB3 IPI00022204 44.59/51.43 6.35/6.76
+
+20/14
+
+34
+
+272/74
+
+3211
+3413 5417 5808
+
+TryptophanylTrnasynthetase cytoplasmic isoform b
+Glucose-6-phosphate 1-dehydrogenase
+Melanocortin 1 receptor IFN-induced GTP-binding
+protein
+
+WARS
+G6PD MC1R Mx1
+
+IPI00412737 49.16/42.34 6.03/6.49
+
+IPI00642620 36.8/52.32
+
+6.09/6.62
+
+IPI01011318 31.33/50.64 IPI00167949 75.87/79.71
+
+5.52/6.03 5.6/5.92
+
+16/15
+12/9 8/5 35/23
+
+34
+30 7
+38
+
+230/70
+129/32 76/33
+747/109
+
+6808
+7408 7609
+8213 8402
+8602 8712
+
+IFN-induced GTP-binding Mx1 protein
+
+IPI00167949 75.87/79.11 5.6/5.69
+
+Cytokine-induced apoptosis inhibitor 1
+Peptidyl-prolyl cis-trans isomerase
+
+CIAPIN1 FKBP4
+
+IPI00025333 32.82/49.14 5.46/5.55 IPI00219005 52.05/65.77 5.35/5.44
+
+Isoform 1 of HSP 90 alpha HSP90AA1 IPI00784295 85/43.24
+
+Glutaredoxin-3
+
+GLRX3
+
+IPI00008552 37.69/49.08
+
+4.94/5.24 5.31/5.41
+
+Thymidine phosphorylase TYMP Glucose-regulated protein HSPA5
+
+IPI00853163 46.45/63.17 5.35/5.34
+
+IPI00003362 72.4/73.72
+
+5.07/5.21
+
+24/16
+10/7 27/17
+20/15 14/10
+16/11 31/20
+
+28
+27 32
+19 33
+30 34
+
+8714
+
+Glucose-regulated protein HSPA5
+
+IPI00003362 72.4/70.31
+
+5.07/5.18
+
+24/16
+
+29
+
+311/71
+92/41 422/121
+194/64 208/59
+192/52 697/124
+514/98
+
+Downregulated cytoplasm protein
+
+1509
+
+Homogentisate
+
+1,2-dioxygenase
+
+HGD
+
+IPI00303174 50.61/61.53 6.5/7.11
+
+16/11
+
+28
+
+162/38
+
+Ratio infected/ uninfected (Mean ± SD)g)
+NIi) 1.72 ± 0.08*,k) 1.65 ± 0.13* 6.42 ± 0.75*
+129 ± 0.71* 194 ± 1.85* 14.8 ± 0.42*
+NI
+2.12 ± 0.04** 2.04 ± 0.06**
+2.09 ± 0.44* 2.24 ± 0.15*
+2.87 ± 0.43* 2.41 ± 0.12**
+3.8 ± 0.16**
+0.33 ± 0.06**
+
+Peptide identiﬁedh)
+IGVHAFQQR CDEPLSILVR GLGTDEDTLIEILASR GVDEATIIDILTKR TNSILFYGR FYQTSVESVDFANAPEE ALIEVLQPLIAEHQAR GIFGFTDSDCIGK
+NSYVAGQYDDAASYQR
+FPGQLNADLR GQQEIQDQLSLSEALQR ELPGFVNYR SSVLEALSGVALPR VRPCIDLIDSLR EKIFFENHPYFR DVPDLTLIDLPGITR DVPDLTLIDLPGITR ELPGFVNYR SSVLEALSGVALPR SACGNCYLGDAFR
+FEIGEGENLDLPYGLER TQLAVCQQR RGEAHLAVNDFELAR DQVANSAFVER ELKENGELLPILR HNIQFSSFDIFSDEEVR HASSGSFLPSANEHLKE FGGAAVFPNQEQAR ALPLALVLHELGAGR IEIESFYEGEDFSETLTR AKFEELNMDLFR IINEPTAAAIAYGLDKR VTHAVVTVPAYFNDAQR DNHLLGTFDLTGIPPAPR AKFEELNMDLFR IINEPTAAAIAYGLDKR VTHAVVTVPAYFNDAQR IEIESFYEGEDFSETLTR
+MLVQPNEICVIQR
+
+Proteomics 2013, 13, 3309–3326
+
+X. Wu et al.
+
+3314
+
+www.proteomics-journal.com
+
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Table 1. Continued
+
+Spot no.a)
+
+Protein name
+
+Abbr.
+
+Accession no.b)
+
+Mr (prep/ exp)c)
+
+PI (prep/ exp)
+
+2022 3001 3412
+4006 4104 4205 4308 4610 4706 5407
+5408 5409 7002
+
+Voltage-dependent anion-selective channel protein 1
+L-lactate dehydrogenase B chain
+Retinal dehydrogenase 1
+
+VDAC1
+LDHB ALDH1A1
+
+IPI00790304 20.41/29.98
+IPI00789173 14.93/16.9 IPI00218914 55.45/52.29
+
+6.74/6.67
+5.39/6.65 6.3/6.49
+
+Trafﬁcking protein particle TRAPPC4 complex subunit 4
+Pyridoxine-5 -phosphate PNPO oxidase
+
+SUMO-activating enzyme subunit 2
+Isoform alpha-enolase of Alpha-enolase
+Retinal dehydrogenase 1
+Dihydropyrimidinaserelated protein 2
+Uroporphyrinogen decarboxylase
+
+UBA2 ENO1 ALDH1A1 DPYSL2
+UROD
+
+IPI00007691 24.43/29.85 IPI00018272 30.31/32.85
+IPI00023234 71.74/36.26 IPI00465248 47.48/48 IPI00218914 55.45/62.4 IPI00984387 58.58/71.7
+IPI00301489 41.1/49.33
+
+5.83/6.2 6.62/6.26
+5.15/6.17 7.01/6.18 6.3/6.2 5.77/6.25
+5.77/6.02
+
+Actin, cytoplasmic 2
+
+ACTG1
+
+IPI00021440 42.1/50.13
+
+5.31/6.01
+
+Macrophage-capping protein
+GST P
+
+CAPG GSTP1
+
+IPI00908511 36.45/49.56 IPI00219757 23.57/27.34
+
+5.82/5.96 5.43/5.67
+
+Upregulated nuclear proteome
+
+1405
+
+Retinal
+
+ALDH1A1
+
+dehydrogenase 1
+
+1412
+
+Keratin, type II cytoskeletal KRT2
+
+2 epidermal
+
+IPI00218914 55.45/50.53 IPI00021304 66.1/52.4
+
+6.3/6.45 8.07/6.47
+
+Pep. count (total/ unique)d)
+10/6
+
+Coverage (%)e)
+
+Protein score/ best ion scoref)
+
+44 96/54
+
+8/5 18/13
+
+40 23
+
+102/66 314/85
+
+12/9 20/14
+14/10 15/10 11/9 19/12
+22/13
+
+45 40
+19 30 18 31
+35
+
+194/61 264/46
+119/54 100/85 103/33 171/30
+416/72
+
+21/14
+11/8 14/8
+
+45
+25 43
+
+403/92
+149/68 435/123
+
+12/9 19 8/5 13
+
+164/123 121/84
+
+Ratio infected/ uninfected (Mean ± SD)g) 0.25 ± 0.13*
+0.47 ± 0.21* 0.69 ± 0.74*
+0.81 ± 0.56* 0.45 ± 0.13*
+NDj) 0.48 ± 0.12* 0.37 ± 0.11* 0.42 ± 0.01**
+0.38 ± 0.1*
+0.32 ± 0.08*
+0.43 ± 0.04** 0.44 ± 0.05**
+3.17 ± 1.43* 2.08 ± 0.56*
+
+Peptide identiﬁedh)
+EHINLGCDMDFDIAGPSI
+IVVVTAGVR
+TIPIDGNFFTYTR QAFQIGSPWR IFVEESIYDEFVR IFVEESIYDEFVRR AGGLIYQLDSYAPR
+LPEEEAECYFHSRPK FFTNFESR GEEDWLYER QFILVMNALDNR
+AGYTDKVVIGMDVAASEF FR AAVPSGASTGIYEALELR IFVEESIYDEFVR
+VFNLYPR
+SPEACCELTLQPLR AAQDFFSTCR SPEACCELTLQPLRR GPSFPEPLREEQDLER VAPEEHPVLLTEAPLNPK QEYDESGPSIVHR SYELPDGQVITIGNER QAALQVAEGFISR EVQGNESDLFMSYFPR FQDGDLTLYQSNTILR PPYTVVYFPVR MPPYTVVYFPVR TLGLYGKDQQEAALVDM
+TIPIDGNFFTYTR IFVEESIYDEFVR SISISVAGGGGGFGAAG
+
+3315
+
+Proteomics 2013, 13, 3309–3326
+
+Table 1. Continued
+
+3316
+
+X. Wu et al.
+
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Spot no.a)
+
+Protein name
+
+Abbr.
+
+Accession no.b)
+
+Mr (prep/ exp)c)
+
+PI (prep/ exp)
+
+Pep. count (total/ unique)d)
+
+Coverage (%)e)
+
+Protein score/ best ion scoref)
+
+Ratio infected/ uninfected (Mean ± SD)g)
+
+Peptide identiﬁedh)
+
+2409 3012 3013
+
+WARS, cytoplasmic isoform b
+Isoform 2 of IFN-induced 35-kDa protein
+HSP beta-1
+
+WARS IFI35 HSPB1
+
+IPI00412737 49.16/50.61 IPI00008613 31.69/33.17 IPI00025512 22.92/27.53
+
+3014
+
+Isoform 2 of IFN-induced IFI35
+
+35-kDa protein
+
+5012
+
+Guanine-nucleotide-
+
+GNB2
+
+binding-protein
+
+G(I)/G(S)/G(T) subunit
+
+beta-2
+
+5111
+
+Guanine-nucleotide-
+
+GNB1
+
+binding-protein
+
+G(I)/G(S)/G(T) subunit
+
+beta-1
+
+5307
+
+Keratin, type II cytoskeletal KRT8
+
+8
+
+6103
+
+N-myc-interactor
+
+NMI
+
+7414
+
+IFP with tetratricopeptide IFIT3
+
+repeats 3
+
+Downregulated nuclear proteome
+
+2108
+
+hnRNP U
+
+hnRNP U
+
+4201
+
+Selenide, water dikinase 1 SEPHS1
+
+IPI00008613 IPI00003348
+IPI00026268
+IPI00554648 IPI00012450 IPI00024254
+IPI00644079 IPI00029056
+
+31.69/33.69 38.04/35.55
+38.1/36.13
+53.67/50.16 35.2/38.78 56.69/54.29
+83.77/41.6 43.39/42.23
+
+6.03/6.18 5.75/5.97 5.98/6.16 5.75/5.97 5.6/5.74
+5.6/5.71
+5.52/5.69 5.24/5.5 5.12/5.45
+8.35/6.29 5.64/5.9
+
+5102 6709 7403 8110
+
+Isoform 4 of hnRNPs C1/C2 hnRNP C IPI00759596 27.8/40.66
+
+Isoform 1 of heat shock HSPA8
+
+cognate 71-kDa protein
+
+Tubulin alpha-1B
+
+TUBA1B
+
+IPI00003865 IPI00930688
+
+71.08/65.65 50.80/53.94
+
+Keratin, type I cytoskeletal KRT19 19
+
+IPI00479145 44.07/40.49
+
+4.55/5.75 5.37/5.48 4.94/5.43 5.04/5.13
+
+14/9 13/7 10/6 12/7 16/11
+16/11
+22/16 16/14 17/11
+9/6 13/7
+10/8 17/14 23/15 41/30
+
+26 24 24 24 25
+30
+31 42 26
+10 27
+30 24 43 47
+
+169/49 169/67 132/62 160/53 228/100
+
+2.8 ± 1.2* NI
+2.08 ± 0.32* NI NI
+
+ALIEVLQPLIAEHQAR GIDYDKLIVR LCQIGQFTVPLGGQQVPL VLVTGFPASLR LFDQAFGLPR LATQSNEITIPVTFESR LCQIGQFTVPLGGQQVPL VLVTGFPASLR ELPGHTGYLSCCR
+
+258/77
+182/59 288/67 180/65
+133/72 265/75
+111/41 187/59 389/276 646/59
+
+NI
+2.06 ± 0.25* NI NI
+0.58 ± 0.12* 0.84 ± 0.03**
+0.42 ± 0.13* 0.41 ± 0.18*
+ND 0.27 ± 0.03**
+
+ELAGHTGYLSCCR AGVLAGHDNR
+LEGLTDEINFLR
+EYPLYINQTCHR QAEELIQQEHADQAEIR HLDGNNEAALECLR
+NFILDQTNVSAAAQR ESFNPESYELDKSFR LLESLQENHFQEDEQFL GAVMPR VPPPPPIAR TVTNAVVTVPAYFNDSQR
+AVFVDLEPTVIDEVR IHFPLATYAPVISAEK VLDELTLAR IVLQIDNAR
+
+a) Spot no. is the unique sample spot protein number that refers to the labels in Fig. 2. b) Accession no. is the MASCOT result of MALDI-TOF/TOF search from the IPI database. c) Pred/exp, predicted/experimental. d) Total pep. count is the number of peptides identiﬁed by MS/MS and given by MASCOT. Unique is the number of unique pep. count. e) Sequence coverage (%) means the number of amino acids spanned by the assigned peptides divided by the sequence length. f) Protein score (based on combined MS and MS/MS spectra) and best ion score (based on MS/MS spectra) were from MALDI-TOF/TOF identiﬁcation. The proteins that had a statistically signiﬁcant protein score greater than 67 (p ≤ 0.05) were considered successfully identiﬁed. Ion score (conﬁdence interval >95%). g) Mean, the average protein abundance ratio for paired samples in which one certain spot could be detected. SD means the standard deviation of protein abundance ratios of one certain spot. h) The peptides identiﬁed by MALD-TOF/TOF with statistically signiﬁcant ion score (peptides conﬁdence interval >95%). i) NI, the protein spots were newly induced in SIV-infected cytoplasmic proteome or nuclear proteome. j) ND, the protein spots were not detectable in SIV-infected cytoplasmic proteome or nuclear proteome. k) The p-values of paired t-test. *, p ≤ 0.05; **, p ≤ 0.01.
+
+Proteomics 2013, 13, 3309–3326
+
+www.proteomics-journal.com
+
+Proteomics 2013, 13, 3309–3326
+
+3317
+
+relative expression levels were considered signiﬁcant. In general, the trends in the change in mRNA abundance (Fig. 5) were similar to those of their corresponding proteins in the 2DE gels. Of these genes, the mRNA levels of cell death associated genes ISG15 (ISG is interferon (IFN) stimulated gene) and HSPB1 were increased, while the genes VDAC1 and ENO1 were decreased. Small molecule biochemistry associated genes ALDH1A1 and UROD were downregulated to transcribe, but the transcript of lipid metabolism associated gene HSPA8 was increased. Cellular development associated genes PNPO and CAPG, and expression associated genes UBA2, HNRNP U, and HNRNP C, are downregulated to transcribe, conversely, the genes NMI, GNB1, and GNB2 were increased to transcribe. Similarly, the transcript of ISGs ISG15, WARS, IFI35, and IFIT3 were also increased. Additionally, although the mRNA levels of LDHB and HSPA8 were increased, and the genes HNRNP H3 and KRT8 were decreased, their change trends were inconsistent with that in the corresponding proteins in the 2DE gels. This transcriptional
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Figure 2. Dynamic 2DE proﬁles of the differentially expressed proteins in the cytoplasm of H3N2 virus infected cells. (A) Upregulated protein spots. (B) Downregulated protein spots. Differentially expressed protein spots are indicated by circles.
+information was complementary to the data of differentially expressed proteins detected by proteomic analysis.
+3.4 Western blot conﬁrmation of differentially expressed proteins
+Of the differentially expressed proteins described in Section 3.3, six proteins identiﬁed in both cytoplasmic and/or nuclear fractions (hnRNP C, hnRNP U, ALDH1A1, WARS, IFI35, and HSPB1) were chosen for Western blot analysis using speciﬁc antibodies to conﬁrm the dynamic alterations in their expression levels during H3 subtype SIV infection (Fig. 6). Calpain and histone 3 were used as cytoplasmic and nuclear protein markers, respectively, while GAPDH was detected as a loading control. Two proteins belonging to the subfamily of ubiquitously expressed hnRNPs, hnRNP U and hnRNP C [23, 24], were shown to be a nonsigniﬁcant downregulation (p > 0.05) in the nucleus of H3 virus infected cells compared
+www.proteomics-journal.com
+
+3318
+
+X. Wu et al.
+
+Proteomics 2013, 13, 3309–3326
+
+with mock-infected cells (Fig. 6B). Interestingly, ALDH1A1 appeared in cytoplasm, but was not detected in nucleus, although the intranuclear ALDH1A1 was upregulated in virusinfected cells in 2DE analysis (Supporting Information Fig. 1A and D). By 2DE blot, using anti-ALDH1A1 mAb, three spots of ALDH1A1 were markedly revealed in cytoplasmic fraction, and only one spot of ALDH1A1was weakly detected in nuclear fraction of virus-infected cells (Fig. 6C). The possible reason may be that there was only a weak reactivity of anti-ALDH1A1 mAb and intranuclear ALDH1A1. By ﬁne comparison, these spots recognized by the anti-ALDH1A1 mAb are the same as those the MS-identiﬁed and regulated spots. However, the nonsigniﬁcantly changed protein spot, one of three cytoplasmic ALDH1A1 spots detected in 2DE blot, was not labeled in 2DE images (Supporting Information Fig. 1A and B). The signiﬁcant increases (p < 0.05) of WARS, IFI35, and HSPB1 were observed in the cytoplasmic and nuclear fractions of H3N2 virus infected cells. These results were similar with the changes in protein expression identiﬁed by 2DE analysis, with the exception of intranuclear ALDH1A1.
+3.5 Confocal microscopy of candidate proteins
+To visualize and localize the proteins responding to infection identiﬁed in the 2DE analysis, confocal microscopy was
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Figure 3. Dynamic 2DE proﬁles of differentially expressed proteins in the nucleus of H3N2 virus infected cells. (A) Upregulated protein dots. (B) Downregulated protein dots. Differentially expressed protein spots are indicated by circles.
+performed using mAbs to WARS, ALDH1A1, VDAC1, NMI, hnRNP C, and hnRNP U by dual stainings. In mock-infected cells (Fig. 7), ALDH1A1, VDAC1, NMI, and WARS were expressed mainly in the cytoplasm; meanwhile, hnRNP U and hnRNP C appeared in the nucleus. In H3 virus infected cells, the distribution of the above-mentioned cellular proteins was the same as that in mock-infected cells, but the ﬂuorescence intensities of these proteins, except for NMI and WARS, were decreased in infected cells compared with mockinfected cells. Colocalization of cellular proteins with the H3 viral protein NS1 or M1 was investigated by dual immunoﬂuorescent stainings with speciﬁc antibodies. In H3 virus infected cells at 24 h after inoculation, the NS1 viral protein signal overlapped with that of NMI or hnRNP C (Fig. 7B and D), while no overlapping signals were observed with NS1 and ALDH1A1 or hnRNP U (Fig. 7A and C) and with the proteins M1 and VDAC1 or WARS (Fig. 7E and F). In comparison with that hnRNP C and NS1 is predominantly colocalized within the nucleus, NMI and NS1 colocalized within these circular structures are adjacent to the nucleus. Taken together, the confocal microscopy images not only supported observations from the quantitative proteomic analysis but also demonstrated the colocalization between the viral protein NS1 and cellular proteins hnRNP C and NMI. Interestingly, hnRNP C, which is normally expressed in the nucleus, was colocalized with the viral protein NS1 in both cytoplasm and nucleus of H3 virus infected cells (Fig. 7D), indicating that hnRNP C
+www.proteomics-journal.com
+
+Proteomics 2013, 13, 3309–3326
+
+3319
+
+Figure 4. Functional classiﬁcations of differentially expressed proteins in H3N2 virus infected cells. Functional classiﬁcations of identiﬁed proteins were determined based upon the underlying biological evidence from the curated IPA literature database. (A) Relative proportions of various proteins in the cytoplasmic fraction of H3N2 virus infected cells. (B) Relative proportions of various proteins in the nuclear fraction of H3N2 virus infected cells.
+was translocated from the nucleus to cytoplasm during the course of H3 virus infection.
+3.6 Network pathway analysis of virus–host cell interactions
+In order to determine whether the differentially expressed proteins in SIV infection could be mapped to speciﬁc cellular signaling cascades, we constructed virus–host interaction networks by IPA. The network analysis suggested that differentially expressed proteins in the cytoplasm of H3N2 SIV-infected cells were involved in cellular development, hematopoiesis and hematological system development and function (Fig. 8A). Most of them were linked to the NF-kB, AP-1, and IFN alpha signaling cascades. Certain proteins upregulated in the infected cells are known to be products of ISGs, such as WARS [25], ISG15 [26], and MX1 [27]. Additionally, in the nuclear fraction, proteins involved in cell death, cell-mediated immune responses, and RNA PTMs could be grouped together (Fig. 8B). For example, two of the downregulated proteins, hnRNP U and hnRNP C, can interact with each other and associate with p53 mRNA [28], a well-known tumor suppressor that plays an important role in mediating
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Figure 5. Transcriptional analysis of the differential expression of mitochondrial proteins. The total cellular mRNA levels of H3N2infected and mock-infected A549 cells after 24 h were analyzed by quantitative real-time PCR. All the samples were normalized to GAPDH, which was used as the control housekeeping gene, and with the mock-infected A549 cells at 24 h, which was used as the reference sample. Table 1 presents the gene symbols representing different genes. Error bars represent SD.
+apoptosis in response to virus infection [29]. The bioinformatics analysis suggests that the NF-␬B, IFN, and apoptosis pathways are vitally involved in H3N2 subtype SIV infection.
+4 Discussion
+In recent years, proteomicmethods have emerged as useful tools for exploring the cytopathological processes of virus infection [30]. Subcellular prefractionation has been employed as a popular technique to reduce sample complexity, extend protein coverage, and more critically, to provide a spatial description of proteins in the cell. In this study, a dynamic overview of the altered host proteins in response to H3N2 subtype SIV infection was obtained by comparing the differences in abundance of proteins isolated from both the cytoplasmic and nuclear fractions of SIV-infected and mock-infected A549 cells by quantitative proteomics. Possible biological functions and pathways associated with these differentially expressed proteins were explored by IPA package, and the identiﬁed cellular proteins were found to be mainly involved in cell death, small molecule biochemistry, molecular transport, stress response, and lipid metabolism. To our knowledge, this is the ﬁrst report of a subcellular proteomic analysis of the response to SIV infection in a cultured human cell model.
+Based upon the underlying biological evidence from the curated IPA literature database, members of the hnRNP family are evolutionarily conserved proteins with roles in signal transduction and gene expression. Our analysis found decreased expression of hnRNPs in the nuclear fraction of H3N2 subtype SIV-infected cells (Fig. 3B), which was consistent with previous observations during infections with A/PR/8/34 (H1N1) and A/Udorn/72 (H3N2) [18]. Moreover, cofocal microscopy analysis showed virus infection induced the relocalization of hnRNP C proteins (Fig. 7D) between the
+www.proteomics-journal.com
+
+3320
+
+X. Wu et al.
+
+Figure 6. Western blot conﬁrmation of representative differentially expressed proteins in subcellular fractions of H3N2 virus infected cells. (A) Western blot detection of hnRNP U, hnRNP C, IFI35, ALDH1A1, WARS, and HSPB1 by speciﬁc mAbs. Mockinfected cells were used as a negative control. Calpain and histone 3 were used as markers for the cytoplasm and nucleus, respectively. GAPDH was used as a loading control. M, mockinfected cells; I, SIV-infected cells. (B) The intensity for hnRNP U, hnRNP C, IFI35, ALDH1A1, WARS, and HSPB1 was normalized against mock-infected fraction. Value for each protein in the mock-infected condition is normalized to 1 and the bar corresponding to the protein in infected cells is the fold change. All data are reported as the mean ± SD of three independent experiments. The asterisks indicate signiﬁcant difference (*, p < 0.05; **, p < 0.01; ns, nonsigniﬁcant difference; n = 3). Nu−, nucleus of mock-infected cells. Nu+, nucleus of SIV-infected cells. Cyto−, cytoplasm of mock-infected cells. Cyto+, cytoplasm of SIV-infected cells. (C) 2DE blot. a was that three protein spots of cellular protein ALDH1A1 were detected in cytoplasm of mock-infected cells in Western blot. b indicated that one protein spots of cellular protein ALDH1A1 was detected in nucleus of infected cells.
+cytoplasm and nucleus of H3N2 virus infected cells. Similarly, poliovirus infection of cells has been shown to cause redistribution of the hnRNPs A1 and K from the nucleus to the cytoplasm [31], and hnRNP U (involved in pre-mRNA processing) is colocalized with the vesicular stomatitis virus in the cytoplasm of infected cells [32]. NS1 has multiple functions that may contribute toward efﬁcient virus replication, including the temporal regulation of viral RNA synthesis, control of viral mRNA splicing, enhancement of viral mRNA translation, regulation of virus particle morphogenesis, and
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Proteomics 2013, 13, 3309–3326
+suppression of apoptosis [33]. Intracellular localization of NS1 protein may be dependent not only on the subtype of the virus [34], but also on the host cell [35]. Therefore, the partly colocalization of NS1 and hnRNP U implies that NS1 regulates viral mRNA translation and cellular mRNA processes by interacting with numerous host cellular proteins such as hnRNP U. It is also plausible that NS1 might regulate a viral defense system that hinders proper cellular gene expression via inhibition of hnRNP U-mediated mRNA expression, and this inhibition may be relatively well conserved with different inﬂuenza virus strains. This hypothesis was supported by previous ﬁndings of the colocalization and coimmunoprecipitation of NS1 with hnRNP F in A/Puerto Rico/8/1934 (H1N1) infected 293T cells [36]. Unlike hnRNP U, hnRNP C is not only involved in mRNA metabolism [37], it can also be translocated to the cytoplasm during poliovirus and human rhinovirus infection through an apoptosis-independent mechanism [31,38]. In fact, hnRNP C can regulate the expression of p53 mRNA before and during apoptosis by interacting with a cis element within the coding region of the p53 transcript [28], as well as control the translation of X chromosome linked inhibitor of apoptosis protein to achieve a steady state between the pro- and antiapoptotic signals, safeguarding the cellular homeostasis [39]. In this study, we ﬁnd that hnRNP C colocalized with NS1 and translocated from the nucleus to cytoplasm during SIV H3N2 infection (Fig. 6A). This observation is consistent with a previous ﬁnding that hnRNP C can interact with dengue virus NS1 at the perinuclear region [40]. Collectively, the observed changes in quantity and subcellular distribution of hnRNP U and hnRNP C in SIV-infected cells implicated their inﬂuence on mRNA metabolism and association with the apoptosis pathway.
+Two other proteins associated with cell death and apoptosis, VDAC1 and HSPB1, were identiﬁed as being altered by SIV infection (Figs. 2 and 3). VDAC1 is a component of the mitochondrial permeability transition pore. Some virus infections have been found to impact VDAC1 expression or relocalization. For example, in human respiratory syncytial virus-infected cells, VDAC1 has shown an approximately 16fold decrease in the nucleus and 2-fold increase in the cytoplasm [41]. Hepatitis C virus is able to block signaling proteins in the outer membrane of the mitochondria for downstream activation of antiviral activities to evade host immunity [42]. In addition, VDAC1 can regulate mitochondrial ATP/ADP exchange [43]. In the present study, the expression of the cellular protein VDAC1 was partly decreased in SIV H3N2infected cells (Fig. 7F), which could be a strategy by which the virus reduces the expression of mitochondrial proteins to evade the host cell immune response, as is the case in the IFN pathway. Previous research has also reported that virus can utilize changing the expression of other mitochondrial proteins like NLRX, STING, and MFN1 during viral infection to interfere host cell immune response [44]. HSPB1 together with alpha B-crystallin, is a well-known member of the small HSPs (20–40 kDa) [45] and can prevent caspase-independent apoptosis [46]. Upregulated HSPB1 has been found in cells
+www.proteomics-journal.com
+
+Proteomics 2013, 13, 3309–3326
+
+3321
+
+infected with African swine fever virus [47], Enterovirus 71 [48], and infectious bursal disease virus [19]. The upregulation of HSPB1 in the cytoplasm and nucleus of SIV-infected cells (Fig. 3A) was ﬁrst demonstrated in this study, highlighting the possible protective role of this protein against cellular apoptosis.
+In this quantitative proteomic analysis, several different proteins involved in the NF-␬B and IFN pathway associated
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Figure 7. Confocal microscopy analysis of representative identiﬁed proteins. A549 cells infected with the H3N2 virus at 24 hpi were ﬁxed, stained with speciﬁc mAbs as indicated, and observed by confocal microscopy. Cellular proteins’ speciﬁc mAbs appear red, and viral proteins NS1 and M1 are in green. Nuclei were stained with DAPI (bar, 10 ␮m). (A–D) Cellular proteins ALDH1A1, NMI, hnRNP C, and hnRNP U in mock- and H3N2 virus infected cells. H3N2 viral protein NS1 colocalized with NMI and hnRNP C. (E and F) Cellular proteins WARS and VDAC1 in mock- and H3N2 virus infected cells.
+with SIV infection were altered (Figs. 2 and 3). Our validation with WB and confocal microscopy revealed that IFNinduced proteins (IFPs) such as MX1, WARS, NMI, IFI35 (IFP35), ISG15, and IFIT3 were all upregulated after SIV infection (Table 1), and NMI was demonstrated to colocalize with the viral protein NS1 in infected cells (Fig. 6A). MX1 is an IFN-inducible large GTPase that plays an important antiviral role, particularly against RNA viruses [27].
+www.proteomics-journal.com
+
+3322
+
+X. Wu et al.
+
+Proteomics 2013, 13, 3309–3326
+
+Additionally, it has been shown to be upregulated by inﬂuenza infection in several studies [9,11]. IFI35 was reported to interact with the Tas regulatory protein of bovine foamy virus and to play a role in maintaining latency of this virus [49]. NMI was detected as a new factor in a host response to a hepatitis B vaccine [50] and is involved in pathways such as Wnt/beta-catenin and Akt-mediated cell survival signaling [51,52]. The interaction between IFI35 and NMI has been
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Figure 7. Continued.
+demonstrated in IFN-treated cells [53], suggesting that NMI may interact with IFI35 and bind to transcription factors in the nucleus during SIV infection. This notion was support by a study showing that IFI35 and NMI can be coimmunoprecipitated from IFN-treated cells [54]. Hence, during SIV infection, we speculate that IFI35 may represent a pathway for IFN-mediated antiviral activity in host cells, but whether NMI interacts with IFI35 requires further investigation. IFPs
+www.proteomics-journal.com
+
+Proteomics 2013, 13, 3309–3326
+
+3323
+
+Figure 8. Network pathway analysis of proteins identiﬁed in cytoplasmic fractions (A) and nuclear fractions (B) of SIV-infected cells. Proteins shaded in green color indicate a twofold or greater decrease in abundance, and proteins shaded in red color correspond to a twofold or greater increase in the cytoplasmic or nucleus fraction of SIV H3N2-infected cells. Proteins without any color are those identiﬁed through the Ingenuity Pathways Knowledge Base but not identiﬁed in cytoplasmic and nucleus proteomes. Different shapes denote the molecular class of the protein. A solid line indicates a direct molecular interaction, and a dashed line indicates an indirect molecular interaction.
+
+exert multiple functions corresponding to diverse IFN signals. However, the intracellular functions of many IFPs upon virus stimulation are not fully characterized. WARS belongs to the aminoacyl-tRNA synthetase family and is known as an essential component of the translational apparatus catalyzing the aminoacylation of tRNA (trp) with tryptophan. Surprisingly, it is also inducible by IFN and may be associated with versatile cellular processes [25]. In this study, we observed that WARS was greatly enhanced by SIV infection. Another
+
+evaluated IFP was ISG15, a 17-kDa protein that contains two ubiquitin-like domains connected by a proline peptide linker [55]. Similar to ubiquitin, ISG15 can form conjugates with an array of intracellular host and viral proteins [56]. In the current study, we found ISG15 was greatly increased in the cytoplasm of H3 virus infected cells, implying that it may play an important role in the host defense against SIV infection. All of the proteins described above are downstream targets of the NF␬B-IFN pathway, which is central to the regulation of
+
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+www.proteomics-journal.com
+
+3324
+
+X. Wu et al.
+
+immune responses in viral invasion. Thus, NMI, IFI35, WARS, and ISG15 are highly likely to be downstream mediators of the antiviral NF␬B-IFN pathway.
+Research reports examining the relationship between lipid metabolism and inﬂuenza virus infection are limited [57–59]. Lipids play multifaceted roles in the inﬂuenza virus life cycle, including virus entry, assembly, and budding within the cell, and are known mediators of virus–host interactions [60, 61]. In the present study, we identiﬁed many proteins associated with lipid metabolism that were altered by H3N2 subtype SIV infection (Table 1, Fig. 2). For example, the expression of ALDH1A1 decreased during H3N2 subtype SIV infection, although the reason for this downregulation is unclear. Earlier studies have shown that ALDH1A1 is involved in the protection against oxidative stress induced cytotoxicity in human lens epithelial cells [62], and its increase during herpes simplex virus type 2 infection has been conﬁrmed [63]. In addition, the proteomic data further revealed the signiﬁcant upregulation by SIV infection of several key regulatory factors of lipid metabolism, including ANXA1, FKBP4, and G6PD. Based on the information gained from our proteomic analysis and previous studies, especially on the function of ANXA1 [64, 65], we speculate that SIV infection may extensively utilize the host cellular lipid metabolic pathways to beneﬁt viral assembly and budding, as well as to inhibit antigen-driven cellular proliferation and cytokine production.
+This work was supported by grants from National Key Technology R&D of China (Grant Nos. 2010BAD04B01, 2010BAD04B02). We thank Jianwen Hu (Shanghai Applied Protein Technology Co. Ltd, China) for help with MALDITOF/TOF MS.
+
+The authors have declared no conﬂicts of interest.
+
+5 References
+[1] Lemon, S. M., Mahmoud, A. A., The threat of pandemic inﬂuenza: are we ready? Biosecur. Bioterror. 2005, 3, 70–73.
+[2] Vijaykrishna, D., Smith, G. J., Pybus, O. G., Zhu, H. et al., Long-term evolution and transmission dynamics of swine inﬂuenza A virus. Nature 2011, 473, 519–522.
+[3] Horimoto, T., Kawaoka, Y., Inﬂuenza: lessons from past pandemics, warnings from current incidents. Nat. Rev. Microbiol. 2005, 3, 591–600.
+[4] Simonsen, L., Clarke, M. J., Williamson, G. D., Stroup, D. F. et al., The impact of inﬂuenza epidemics on mortality: introducing a severity index. Am. J. Public Health 1997, 87, 1944–1950.
+[5] Thompson, W. W., Shay, D. K., Weintraub, E., Brammer, L. et al., Mortality associated with inﬂuenza and respiratory syncytial virus in the United States. JAMA 2003, 289, 179–186.
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+Proteomics 2013, 13, 3309–3326
+[6] Wang, T. T., Palese, P., Unraveling the mystery of swine inﬂuenza virus. Cell 2009, 137, 983–985.
+[7] Shapira, S. D., Gat-Viks, I., Shum, B. O., Dricot, A. et al., A physical and regulatory map of host-inﬂuenza interactions reveals pathways in H1N1 infection. Cell 2009, 139, 1255– 1267.
+[8] Olsen, C. W., The emergence of novel swine inﬂuenza viruses in North America. Virus Res. 2002, 85, 199–210.
+[9] Liu, N., Song, W., Wang, P., Lee, K. et al., Proteomics analysis of differential expression of cellular proteins in response to avian H9N2 virus infection in human cells. Proteomics 2008, 8, 1851–1858.
+[10] Coombs, K. M., Berard, A., Xu, W., Krokhin, O. et al., Quantitative proteomic analyses of inﬂuenza virus-infected cultured human lung cells. J. Virol. 2010, 84, 10888–10906.
+[11] Vester, D., Rapp, E., Gade, D., Genzel, Y., Reichl, U., Quantitative analysis of cellular proteome alterations in human inﬂuenza A virus-infected mammalian cell lines. Proteomics 2009, 9, 3316–3327.
+[12] Baas, T., Baskin, C. R., Diamond, D. L., Garcia-Sastre, A. et al., Integrated molecular signature of disease: analysis of inﬂuenza virus-infected macaques through functional genomics and proteomics. J. Virol. 2006, 80, 10813–10828.
+[13] Vester, D., Rapp, E., Kluge, S., Genzel, Y., Reichl, U., Virushost cell interactions in vaccine production cell lines infected with different human inﬂuenza A virus variants: a proteomic approach. J. Proteomics 2010, 73, 1656–1669.
+[14] Brasier, A. R., Spratt, H., Wu, Z., Boldogh, I. et al., Nuclear heat shock response and novel nuclear domain 10 reorganization in respiratory syncytial virus-infected a549 cells identiﬁed by high-resolution two-dimensional gel electrophoresis. J. Virol. 2004, 78, 11461–11476.
+[15] Ohman, T., Rintahaka, J., Kalkkinen, N., Matikainen, S., Nyman, T. A., Actin and RIG-I/MAVS signaling components translocate to mitochondria upon inﬂuenza A virus infection of human primary macrophages. J. Immunol. 2009, 182, 5682–5692.
+[16] Lam, Y. W., Evans, V. C., Heesom, K. J., Lamond, A. I., Matthews, D. A., Proteomics analysis of the nucleolus in adenovirus-infected cells. Mol. Cell. Proteomics 2010, 9, 117– 130.
+[17] Emmott, E., Rodgers, M. A., Macdonald, A., McCrory, S. et al., Quantitative proteomics using stable isotope labeling with amino acids in cell culture reveals changes in the cytoplasmic, nuclear, and nucleolar proteomes in Vero cells infected with the coronavirus infectious bronchitis virus. Mol. Cell. Proteomics 2010, 9, 1920–1936.
+[18] Emmott, E., Wise, H., Loucaides, E. M., Matthews, D. A. et al., Quantitative proteomics using SILAC coupled to LC-MS/MS reveals changes in the nucleolar proteome in inﬂuenza A virus-infected cells. J. Proteome Res. 2010, 9, 5335–5345.
+[19] Zheng, X. J., Hong, L. L., Shi, L. X., Guo, J. Q. et al., Proteomics analysis of host cells infected with infectious bursal disease virus. Mol. Cell. Proteomics 2008, 7, 612–625.
+[20] Yan, J. X., Wait, R., Berkelman, T., Harry, R. A. et al., A modiﬁed silver staining protocol for visualization of proteins compatible with matrix-assisted laser desorption/ionization and
+www.proteomics-journal.com
+
+Proteomics 2013, 13, 3309–3326
+electrospray ionization-mass spectrometry. Electrophoresis 2000, 21, 3666–3672.
+[21] Taylor, C. F., Paton, N. W., Lilley, K. S., Binz, P. A. et al., The minimum information about a proteomics experiment (MIAPE). Nat. Biotechnol. 2007, 25, 887–893.
+[22] Munday, D. C., Emmott, E., Surtees, R., Lardeau, C. H. et al., Quantitative proteomic analysis of A549 cells infected with human respiratory syncytial virus. Mol. Cell. Proteomics 2010, 9, 2438–2459.
+[23] Shetty, S., Regulation of urokinase receptor mRNA stability by hnRNP C in lung epithelial cells. Mol. Cell. Biochem 2005, 272, 107–118.
+[24] Kiledjian, M., Dreyfuss, G., Primary structure and binding activity of the hnRNP U protein: binding RNA through RGG box. EMBO J. 1992, 11, 2655–2664.
+[25] Kisselev, L., Frolova, L., Haenni, A. L., Interferon inducibility of mammalian tryptophanyl-tRNA synthetase: new perspectives. Trends Biochem. Sci. 1993, 18, 263–267.
+[26] Durfee, L. A., Lyon, N., Seo, K., Huibregtse, J. M., The ISG15 conjugation system broadly targets newly synthesized proteins: implications for the antiviral function of ISG15. Mol. Cell 2010, 38, 722–732.
+[27] Haller, O., Kochs, G., Interferon-induced mx proteins: dynamin-like GTPases with antiviral activity. Trafﬁc 2002, 3, 710–717.
+[28] Christian, K. J., Lang, M. A., Raffalli-Mathieu, F., Interaction of heterogeneous nuclear ribonucleoprotein C1/C2 with a novel cis-regulatory element within p53 mRNA as a response to cytostatic drug treatment. Mol. Pharmacol. 2008, 73, 1558– 1567.
+[29] Mincberg, M., Gopas, J., Tal, J., Minute virus of mice (MVMp) infection and NS1 expression induce p53 independent apoptosis in transformed rat ﬁbroblast cells. Virology 2011, 412, 233–243.
+[30] Maxwell, K. L., Frappier, L., Viral proteomics. Microbiol. Mol. Biol. Rev. 2007, 71, 398–411.
+[31] Gustin, K. E., Sarnow, P., Effects of poliovirus infection on nucleo-cytoplasmic trafﬁcking and nuclear pore complex composition. EMBO J. 2001, 20, 240–249.
+[32] Gupta, A. K., Drazba, J. A., Banerjee, A. K., Speciﬁc interaction of heterogeneous nuclear ribonucleoprotein particle U with the leader RNA sequence of vesicular stomatitis virus. J. Virol. 1998, 72, 8532–8540.
+[33] Hale, B. G., Randall, R. E., Ortin, J., Jackson, D., The multifunctional NS1 protein of inﬂuenza A viruses. J. Gen. Virol. 2008, 89, 2359–2376.
+[34] Melen, K., Kinnunen, L., Fagerlund, R., Ikonen, N. et al., Nuclear and nucleolar targeting of inﬂuenza A virus NS1 protein: striking differences between different virus subtypes. J. Virol. 2007, 81, 5995–6006.
+[35] Volmer, R., Mazel-Sanchez, B., Volmer, C., Soubies, S. M., Guerin, J. L., Nucleolar localization of inﬂuenza A NS1: striking differences between mammalian and avian cells. Virol. J. 2010, 7, 63.
+[36] Lee, J. H., Kim, S. H., Pascua, P. N., Song, M. S. et al., Direct interaction of cellular hnRNP-F and NS1 of inﬂuenza A virus
+
+3325
+accelerates viral replication by modulation of viral transcriptional activity and host gene expression. Virology 2010, 397, 89–99.
+[37] Gorlach, M., Burd, C. G., Dreyfuss, G., The determinants of RNA-binding speciﬁcity of the heterogeneous nuclear ribonucleoprotein C proteins. J. Biol. Chem. 1994, 269, 23074– 23078.
+[38] Gustin, K. E., Sarnow, P., Inhibition of nuclear import and alteration of nuclear pore complex composition by rhinovirus. J. Virol. 2002, 76, 8787–8796.
+[39] Spahn, A., Blondeau, N., Heurteaux, C., Dehghani, F., Rami, A., Concomitant transitory up-regulation of X-linked inhibitor of apoptosis protein (XIAP) and the heterogeneous nuclear ribonucleoprotein C1-C2 in surviving cells during neuronal apoptosis. Neurochem. Res. 2008, 33, 1859–1868.
+[40] Noisakran, S., Sengsai, S., Thongboonkerd, V., Kanlaya, R. et al., Identiﬁcation of human hnRNP C1/C2 as a dengue virus NS1-interacting protein. Biochem. Biophys. Res. Commun. 2008, 372, 67–72.
+[41] Munday, D. C., Hiscox, J. A., Barr, J. N., Quantitative proteomic analysis of A549 cells infected with human respiratory syncytial virus subgroup B using SILAC coupled to LC-MS/MS. Proteomics 2010, 10, 4320–4334.
+[42] Piccoli, C., Scrima, R., D’Aprile, A., Ripoli, M. et al., Mitochondrial dysfunction in hepatitis C virus infection. Biochim. Biophys. Acta 2006, 1757, 1429–1437.
+[43] Grills, C., Jithesh, P. V., Blayney, J., Zhang, S. D., Fennell, D. A., Gene expression meta-analysis identiﬁes VDAC1 as a predictor of poor outcome in early stage non-small cell lung cancer. PLoS One 2011, 6, e14635.
+[44] Moore, C. B., Bergstralh, D. T., Duncan, J. A., Lei, Y. et al., NLRX1 is a regulator of mitochondrial antiviral immunity. Nature 2008, 451, 573–577.
+[45] Arrigo, A. P., Structure-functions of HspB1 (Hsp27). Methods Mol. Biol. 2011, 787, 105–119.
+[46] Mosser, D. D., Morimoto, R. I., Molecular chaperones and the stress of oncogenesis. Oncogene 2004, 23, 2907–2918.
+[47] Alfonso, P., Rivera, J., Hernaez, B., Alonso, C., Escribano, J. M., Identiﬁcation of cellular proteins modiﬁed in response to African swine fever virus infection by proteomics. Proteomics 2004, 4, 2037–2046.
+[48] Leong, W. F., Chow, V. T., Transcriptomic and proteomic analyses of rhabdomyosarcoma cells reveal differential cellular gene expression in response to enterovirus 71 infection. Cell. Microbiol. 2006, 8, 565–580.
+[49] Tan, J., Qiao, W., Wang, J., Xu, F. et al., IFP35 is involved in the antiviral function of interferon by association with the viral tas transactivator of bovine foamy virus. J. Virol. 2008, 82, 4275–4283.
+[50] Davila, S., Froeling, F. E., Tan, A., Bonnard, C. et al., New genetic associations detected in a host response study to hepatitis B vaccine. Genes Immun. 2010, 11, 232–238.
+[51] Zhang, L., Tang, Y., Tie, Y., Tian, C. et al., The PH domain containing protein CKIP-1 binds to IFP35 and Nmi and is involved in cytokine signaling. Cell. Signal. 2007, 19, 932–944.
+
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+www.proteomics-journal.com
+
+3326
+
+X. Wu et al.
+
+[52] Fillmore, R. A., Mitra, A., Xi, Y., Ju, J. et al., Nmi (N-Myc interactor) inhibits Wnt/beta-catenin signaling and retards tumor growth. Int. J. Cancer 2009, 125, 556–564.
+[53] Lee, N. D., Chen, J., Shpall, R. L., Naumovski, L., Subcellular localization of interferon-inducible Myc/stat-interacting protein Nmi is regulated by a novel IFP 35 homologous domain. J. Interferon Cytokine Res. 1999, 19, 1245–1252.
+[54] Zhou, X., Liao, J., Meyerdierks, A., Feng, L. et al., Interferonalpha induces nmi-IFP35 heterodimeric complex formation that is affected by the phosphorylation of IFP35. J. Biol. Chem. 2000, 275, 21364–21371.
+[55] Narasimhan, J., Wang, M., Fu, Z., Klein, J. M. et al., Crystal structure of the interferon-induced ubiquitin-like protein ISG15. J. Biol. Chem. 2005, 280, 27356–27365.
+[56] Kim, K. I., Giannakopoulos, N. V., Virgin, H. W., Zhang, D. E., Interferon-inducible ubiquitin E2, Ubc8, is a conjugating enzyme for protein ISGylation. Mol. Cell. Biol. 2004, 24, 9592– 9600.
+[57] Billharz, R., Zeng, H., Proll, S. C., Korth, M. J. et al., The NS1 protein of the 1918 pandemic inﬂuenza virus blocks host interferon and lipid metabolism pathways. J. Virol. 2009, 83, 10557–10570.
+[58] Safronetz, D., Rockx, B., Feldmann, F., Belisle, S. E. et al., Pandemic swine-origin H1N1 inﬂuenza A virus isolates show heterogeneous virulence in macaques. J. Virol. 2011, 85, 1214–1223.
+
+Proteomics 2013, 13, 3309–3326
+[59] Ma, W., Belisle, S. E., Mosier, D., Li, X. et al., 2009 pandemic H1N1 inﬂuenza virus causes disease and upregulation of genes related to inﬂammatory and immune responses, cell death, and lipid metabolism in pigs. J. Virol. 2011, 85, 11626– 11637.
+[60] Chan, R. B., Tanner, L., Wenk, M. R., Implications for lipids during replication of enveloped viruses. Chem. Phys. Lipids 2010, 163, 449–459.
+[61] Heaton, N. S., Randall, G., Multifaceted roles for lipids in viral infection. Trends Microbiol. 2011, 19, 368–375.
+[62] Xiao, T., Shoeb, M., Siddiqui, M. S., Zhang, M. et al., Molecular cloning and oxidative modiﬁcation of human lens ALDH1A1: implication in impaired detoxiﬁcation of lipid aldehydes. J. Toxicol. Environ. Health A 2009, 72, 577–584.
+[63] Martinelli, E., Tharinger, H., Frank, I., Arthos, J. et al., HSV2 infection of dendritic cells ampliﬁes a highly susceptible HIV-1 cell target. PLoS Pathog. 2011, 7, e1002109.
+[64] Kalinec, F., Webster, P., Maricle, A., Guerrero, D. et al., Glucocorticoid-stimulated, transcription-independent release of annexin A1 by cochlear Hensen cells. Br. J. Pharmacol. 2009, 158, 1820–1834.
+[65] Kamal, A. M., Smith, S. F., De Silva Wijayasinghe, M., Solito, E., Corrigan, C. J., An annexin 1 (ANXA1)-derived peptide inhibits prototype antigen-driven human T cell Th1 and Th2 responses in vitro. Clin. Exp. Allergy 2001, 31, 1116–1125.
+
+C 2013 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim
+
+www.proteomics-journal.com
