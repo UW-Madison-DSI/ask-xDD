@@ -2,15 +2,15 @@ version: '3.4'
 services:
   weaviate:
     command:
-    - --host
-    - 0.0.0.0
-    - --port
-    - '8080'
-    - --scheme
-    - http
+      - --host
+      - 0.0.0.0
+      - --port
+      - '8080'
+      - --scheme
+      - http
     image: semitechnologies/weaviate:1.19.0
     ports:
-    - 8080:8080
+      - 8080:8080
     restart: on-failure:0
     environment:
       CLUSTER_HOSTNAME: 'node1'
@@ -32,3 +32,12 @@ services:
     image: semitechnologies/transformers-inference:facebook-dpr-question_encoder-single-nq-base
     environment:
       ENABLE_CUDA: '0'
+  generator:
+    build:
+      context: ./askem/generator
+      dockerfile: Dockerfile
+    ports:
+      - 4503:4503
+    environment:
+      ENABLE_CUDA: '1'
+      CUDA_CORE: 'cuda:3'
