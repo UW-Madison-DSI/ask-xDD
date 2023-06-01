@@ -1,9 +1,11 @@
 import logging
 
 import click
+from dotenv import load_dotenv
 
-from askem.retriever import import_passages, init_retriever
+from askem.retriever import get_client, import_passages, init_retriever
 
+load_dotenv()
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -16,20 +18,24 @@ logging.basicConfig(level=logging.DEBUG)
 )
 @click.option("--input-dir", help="Input directory.", type=str)
 @click.option("--topic", help="Topic.", type=str)
-def main(init: bool, input_dir: str, topic: str):
-    """Main entrypoint.
+@click.option(
+    "--weaviate-url", help="Weaviate URL.", type=str, default="http://localhost:8080"
+)
+def main(init: bool, input_dir: str, topic: str, weaviate_url: str):
+    """Deployment entrypoint.
 
     Usage:
     python -m ./askem.deploy --init --input-dir data/covid_qa --topic covid
 
     """
+    weaviate_client = get_client(url=weaviate_url)
 
     logging.debug(f"Initializing passage retriever... with {init=}")
     if init:
-        init_retriever(force=True)
+        init_retriever(force=True, client=weaviate_client)
 
     logging.debug(f"Ingesting passages from {input_dir}...")
-    import_passages(input_dir=input_dir, topic=topic)
+    import_passages(input_dir=input_dir, topic=topic, client=weaviate_client)
 
 
 if __name__ == "__main__":
