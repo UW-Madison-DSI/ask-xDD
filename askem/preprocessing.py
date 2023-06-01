@@ -1,17 +1,106 @@
 import logging
 import re
+from copy import deepcopy
 from pathlib import Path
-from typing import List, Protocol
+from typing import Dict, List, Optional, Protocol, Tuple, Union
 
 from haystack import Pipeline
-from haystack.nodes import TextConverter
-from preprocessor import PreProcessor
-from typing import Optional, Tuple
+from haystack.errors import HaystackError
+from haystack.nodes import PreProcessor, TextConverter
+from haystack.schema import Document
 
 logging.basicConfig(level=logging.INFO)
 
 MAX_WORDS = 250
 MIN_WORDS = 100
+
+
+class ModifiedPreProcessor(PreProcessor):
+    """A modified version of the Haystack PreProcessor with ."""
+
+    def __init__(self, join_paragraphs: bool = True, **kwargs):
+        super().__init__(**kwargs)
+        self.join_paragraphs = join_paragraphs
+
+    def clean(
+        self,
+        document: Union[dict, Document],
+        clean_whitespace: bool,
+        clean_header_footer: bool,
+        clean_empty_lines: bool,
+        remove_substrings: Optional[List[str]] = None,
+        id_hash_keys: Optional[List[str]] = None,
+    ) -> Document:
+        if remove_substrings is None:
+            remove_substrings = []
+        if id_hash_keys is None:
+            id_hash_keys = self.id_hash_keys
+
+        if isinstance(document, dict):
+            document["id_hash_keys"] = id_hash_keys
+            document = Document.from_dict(document)
+
+        if not isinstance(document, Document):
+            raise HaystackError(
+                "Document must not be of type 'dict' but of type 'Document'."
+            )
+
+        if type(document.content) is not str:
+            logger.error("Document content is not of type str. Nothing to clean.")
+            return document
+
+        if self.join_paragraphs:
+            text = self._join_paragraphs(document.content)
+
+        if clean_header_footer:
+            text = self._find_and_remove_header_footer(
+                text, n_chars=300, n_first_pages_to_ignore=1, n_last_pages_to_ignore=1
+            )
+
+        headlines = document.meta["headlines"] if "headlines" in document.meta else []
+
+        if clean_whitespace:
+            text, headlines = self._clean_whitespace(text=text, headlines=headlines)
+
+        if clean_empty_lines:
+            text, headlines = self._clean_empty_lines(text=text, headlines=headlines)
+
+        for substring in remove_substrings:
+            text, _ = self._remove_substring(
+                text=text, substring=substring, headlines=headlines
+            )
+
+        if text != document.content:
+            document = deepcopy(document)
+            document.content = text
+        if headlines:
+            document.meta["headlines"] = headlines
+
+        return document
+
+    @staticmethod
+    def _join_paragraphs(text: str) -> str:
+        """Join paragraphs that are split across multiple lines."""
+
+        lines = text.splitlines()
+        lines = [line.strip() for line in lines if line.strip()]
+
+        processed_lines = []
+        current_line = lines[0]
+        for next_line in lines[1:]:
+            current_line_ended = current_line[-1] in {".", "?", "!"}
+            next_line_started = next_line[0].isupper() or next_line[0].isdigit()
+            if current_line_ended or next_line_started:
+                # New paragraph
+                processed_lines.append(current_line)
+                current_line = next_line
+            else:
+                # Continue previous paragraph
+                current_line += f" {next_line}"
+
+        processed_lines.append(current_line)  # Add the last accumulated line
+        return "\n\n".join(processed_lines)
+
 
 def clean_paragraphs(paragraphs: List[str]) -> List[str]:
     cleaned_paragraphs = []
@@ -29,21 +118,24 @@ def clean_paragraphs(paragraphs: List[str]) -> List[str]:
             cleaned_paragraphs.append(paragraph)
     return cleaned_paragraphs
 
+
 def detect_references(text: str) -> bool:
-    if text.strip().lower() == 'references':
+    if text.strip().lower() == "references":
         return True
-    if text.strip().lower() == 'reference':
+    if text.strip().lower() == "reference":
         return True
     return False
 
+
 def remove_section_header(text: str) -> Optional[str]:
-    """Remove section header with only Captial letters or Captial letters and numbers."""
+    """Remove section header with only capital letters or capital letters and numbers."""
     if not text:
         return None
     words = text.split(" ")
     if all([word.isupper() or word.isdigit() for word in words]):
         return None
     return text
+
 
 def remove_download_remnant(text: str) -> Optional[str]:
     """Remove useless download pattern like: `Download by: [UW-Madison (GeoDeepDive)]`."""
@@ -54,7 +146,8 @@ def remove_download_remnant(text: str) -> Optional[str]:
     has_download = "download" in text or "Download" in text
     if short and has_download:
         return None
-    return text 
+    return text
+
 
 def remove_time_remnant(text: str) -> Optional[str]:
     """Remove useless time pattern like: `12:00`."""
@@ -62,12 +155,13 @@ def remove_time_remnant(text: str) -> Optional[str]:
         return None
     words = text.split(" ")
     short = len(words) < 25
-    pattern = r'\b([01]?[0-9]|2[0-3]):[0-5][0-9]\b'
+    pattern = r"\b([01]?[0-9]|2[0-3]):[0-5][0-9]\b"
     has_time = re.search(pattern, text)
 
     if short and has_time:
         return None
     return text
+
 
 def remove_short_paragraph(text: str) -> Optional[str]:
     """Remove short paragraphs that are less than 15 words."""
@@ -78,15 +172,21 @@ def remove_short_paragraph(text: str) -> Optional[str]:
         return None
     return text
 
-def concatenate_incomplete_paragraph(paragraphs: List[str], paragraph: str) -> Optional[str]:
+
+def concatenate_incomplete_paragraph(
+    paragraphs: List[str], paragraph: str
+) -> Optional[str]:
     """Concatenate incomplete paragraphs that do not end with a punctuation and is not capitalized"""
     if not paragraph:
         return None
     if len(paragraphs) > 0:
-        if not (paragraph[0].isupper() or paragraph[0].isdigit())and not paragraphs[-1][-1] in {'.', '?', '!'}:
+        if not (paragraph[0].isupper() or paragraph[0].isdigit()) and not paragraphs[
+            -1
+        ][-1] in {".", "?", "!"}:
             paragraphs[-1] = paragraphs[-1] + " " + paragraph
             return None
-    return paragraph    
+    return paragraph
+
 
 def process_paragraphs(paragraphs_before_adjust: List[str]) -> List[str]:
     """Process paragraphs to make sure each paragraph has a proper length."""
@@ -95,7 +195,10 @@ def process_paragraphs(paragraphs_before_adjust: List[str]) -> List[str]:
         process_single_paragraph(paragraphs_before_adjust, i, paragraphs_after_adjust)
     return paragraphs_after_adjust
 
-def process_single_paragraph(paragraphs_before_adjust: List[str], index: int, paragraphs_after_adjust: List[str]) -> None:
+
+def process_single_paragraph(
+    paragraphs_before_adjust: List[str], index: int, paragraphs_after_adjust: List[str]
+) -> None:
     """Process a single paragraph to make sure it has a proper length."""
     paragraph = paragraphs_before_adjust[index]
     paragraph_words = paragraph.split(" ")
@@ -104,25 +207,39 @@ def process_single_paragraph(paragraphs_before_adjust: List[str], index: int, pa
     if MIN_WORDS <= num_of_words and num_of_words <= MAX_WORDS:
         ## if the paragraph is within the proper length
         process_proper_paragraph(paragraphs_after_adjust, paragraph)
-    
+
     elif num_of_words < MIN_WORDS:
         ## if the paragraph is too short
-        process_short_paragraph(paragraphs_before_adjust, paragraphs_after_adjust, paragraph, index)
-    
+        process_short_paragraph(
+            paragraphs_before_adjust, paragraphs_after_adjust, paragraph, index
+        )
+
     elif num_of_words > MAX_WORDS:
         ## if the paragraph is too long
         process_long_paragraph(paragraphs_after_adjust, paragraph)
 
-def process_proper_paragraph(paragraphs_after_adjust: List[str], paragraph: str) -> None:
+
+def process_proper_paragraph(
+    paragraphs_after_adjust: List[str], paragraph: str
+) -> None:
     paragraphs_after_adjust.append(paragraph)
 
-def process_short_paragraph(paragraphs_before_adjust: List[str], paragraphs_after_adjust: List[str], paragraph: str, index: int) -> None:
+
+def process_short_paragraph(
+    paragraphs_before_adjust: List[str],
+    paragraphs_after_adjust: List[str],
+    paragraph: str,
+    index: int,
+) -> None:
     if index == len(paragraphs_before_adjust) - 1:
         # if the current paragraph is the last paragraph
         paragraphs_after_adjust.append(paragraph)
     else:
-        ## append to the begining of the next paragraph
-        paragraphs_before_adjust[index+1] = paragraph + "\n" + paragraphs_before_adjust[index+1]
+        ## append to the beginning of the next paragraph
+        paragraphs_before_adjust[index + 1] = (
+            paragraph + "\n" + paragraphs_before_adjust[index + 1]
+        )
+
 
 def process_long_paragraph(paragraphs_after_adjust: List[str], paragraph: str):
     sentences = paragraph.split(". ")
@@ -135,9 +252,12 @@ def process_long_paragraph(paragraphs_after_adjust: List[str], paragraph: str):
         # if the paragraph has more than one sentence
         passage_start_index = 0
         while passage_start_index < num_of_sentences:
-            new_paragraph, passage_end_index = build_new_paragraph(sentences, passage_start_index)
+            new_paragraph, passage_end_index = build_new_paragraph(
+                sentences, passage_start_index
+            )
             paragraphs_after_adjust.append(new_paragraph)
             passage_start_index = passage_end_index + 1
+
 
 def build_new_paragraph(sentences: List[str], start_index: int) -> Tuple[str, int]:
     paragraph = sentences[start_index]
@@ -146,7 +266,7 @@ def build_new_paragraph(sentences: List[str], start_index: int) -> Tuple[str, in
     num_of_sentences = len(sentences)
 
     for sentence_index in range(start_index + 1, num_of_sentences):
-        sentence  = sentences[sentence_index]
+        sentence = sentences[sentence_index]
         sentence_words = sentence.split(" ")
         sentence_length = len(sentence_words)
         if paragraph_length + sentence_length > (MAX_WORDS - 50):
@@ -156,8 +276,8 @@ def build_new_paragraph(sentences: List[str], start_index: int) -> Tuple[str, in
             paragraph_length += sentence_length
             end_index = sentence_index
 
-    # add overlap at the end if the paragprah is not the last paragraph and the total length doesn't exceed the limit
-    
+    # add overlap at the end if the paragraph is not the last paragraph and the total length doesn't exceed the limit
+
     if end_index < num_of_sentences - 1:
         next_sentence = sentences[end_index + 1]
         next_sentence_length = len(next_sentence.split(" "))
@@ -175,12 +295,14 @@ def build_new_paragraph(sentences: List[str], start_index: int) -> Tuple[str, in
 
     return paragraph, end_index
 
+
 def adjust_paragraphs(original_paragraphs: List[str]) -> List[str]:
     cleaned_paragraphs = clean_paragraphs(original_paragraphs)
-    adjusted_paragraphs = process_paragraphs(cleaned_paragraphs)  
+    adjusted_paragraphs = process_paragraphs(cleaned_paragraphs)
     return adjusted_paragraphs
 
-class Preprocessor(Protocol):
+
+class ASKEMPreprocessor(Protocol):
     def run(self, input_dir: str, topic: str) -> List[dict]:
         ...
 
@@ -199,15 +321,17 @@ class HaystackPreprocessor:
 
     @staticmethod
     def _get_pipeline() -> Pipeline:
-        text_converter = TextConverter(remove_numeric_tables=True, valid_languages=["en"])
-        preprocessor = PreProcessor(
+        text_converter = TextConverter(
+            remove_numeric_tables=True, valid_languages=["en"]
+        )
+        preprocessor = ModifiedPreProcessor(
+            join_paragraphs=True,
             clean_whitespace=True,
             clean_header_footer=True,
             clean_empty_lines=False,
             split_by="passage",
             split_length=1,
             split_respect_sentence_boundary=False,
-            # split_overlap=5,
         )
         pipeline = Pipeline()
         pipeline.add_node(text_converter, name="text_converter", inputs=["File"])
@@ -224,7 +348,7 @@ class HaystackPreprocessor:
         outputs = []
         contents = [d.content for d in results["documents"]]
         adjusted_contents = adjust_paragraphs(contents)
-                    
+
         for content in adjusted_contents:
             outputs.append(
                 {
