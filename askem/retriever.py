@@ -1,16 +1,92 @@
+import json
+import logging
 import os
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
 
 import weaviate
+from dotenv import load_dotenv
+from tqdm import tqdm
+
+from askem.preprocessing import ASKEMPreprocessor, HaystackPreprocessor
 
 
 def get_client() -> weaviate.Client:
     """Returns a weaviate client."""
-
+    load_dotenv()
     apikey = os.getenv("WEAVIATE_APIKEY")
     url = os.getenv("WEAVIATE_URL")
+    logging.info(f"Connecting to Weaviate at {url}")
     return weaviate.Client(url, weaviate.auth.AuthApiKey(apikey))
+
+
+def init_retriever(force: bool = False):
+    """Initialize the passage retriever."""
+
+    client = get_client()
+    if force:
+        client.schema.delete_all()
+
+    PASSAGE_SCHEMA = {
+        "class": "Passage",
+        "description": "Paragraph chunk of a document",
+        "vectorizer": "text2vec-transformers",
+        "moduleConfig": {"text2vec-transformers": {"vectorizeClassName": False}},
+        # "vectorIndexConfig": {"distance": "dot"},
+        "properties": [
+            {
+                "name": "paper_id",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
+                "name": "topic",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
+                "name": "preprocessor_id",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
+                "name": "type",
+                "dataType": ["text"],  # Paragraph, Table, Figure
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
+                "name": "cosmos_object_id",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {"name": "text_content", "dataType": ["text"]},
+        ],
+    }
+
+    client.schema.create_class(PASSAGE_SCHEMA)
+
+    # Dump full schema to file
+    with open("./askem/schema/passage.json", "w") as f:
+        json.dump(client.schema.get("passage"), f, indent=2)
+
+
+def import_passages(
+    input_dir: str, topic: str, preprocessor: ASKEMPreprocessor = None
+) -> None:
+    """Ingest passages into Weaviate."""
+
+    if preprocessor is None:
+        preprocessor = HaystackPreprocessor()
+
+    client = get_client()
+    input_files = Path(input_dir).glob("**/*.txt")
+
+    for input_file in tqdm(list(input_files)):
+        passages = preprocessor.run(input_file=input_file, topic=topic)
+
+        for passage in passages:
+            client.data_object.create(data_object=passage, class_name="Passage")
 
 
 @dataclass

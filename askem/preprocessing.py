@@ -16,7 +16,7 @@ MIN_WORDS = 100
 
 
 class ModifiedPreProcessor(PreProcessor):
-    """A modified version of the Haystack PreProcessor with ."""
+    """A modified version of the Haystack PreProcessor."""
 
     def __init__(self, join_paragraphs: bool = True, **kwargs):
         super().__init__(**kwargs)

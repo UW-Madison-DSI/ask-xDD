@@ -5,7 +5,7 @@ source .env
 docker-compose up -d
 
 # Install local package askem
-pip install -e .
+pip install .
 
 # Run the deployment script
-python ./askem/deploy.py --init --input-dir "/askem/data/debug_data/" --topic "covid-19"
+python ./deploy.py --init --input-dir "data/debug_data/" --topic "covid-19"
