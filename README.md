@@ -3,7 +3,7 @@ title: Ask xdd-COVID
 emoji: 📑
 sdk: streamlit
 sdk_version: 1.19.0
-app_file: askem/app.py
+app_file: askem/demo/app.py
 pinned: false
 ---
 

@@ -1,8 +1,6 @@
-import json
 import os
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
-from pathlib import Path
 
 import requests
 import streamlit as st
@@ -40,7 +38,7 @@ RETRIEVER_CLIENT = get_retriever_client()
 
 question = st.text_input("Ask your question.")
 
-# Sidebar (for low-level settings)
+# Sidebar (for low-level system settings)
 with st.sidebar:
     st.subheader("Retriever settings")
     top_k = st.slider("Top-k: How many paragraphs to retrieve?", 1, 10, 5)

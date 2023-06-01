@@ -43,7 +43,6 @@ services:
       CUDA_CORE: 'cuda:3'
   demo:
     build:
-      context: .
       dockerfile: ./askem/demo/Dockerfile
     ports:
       - 8501:8501
