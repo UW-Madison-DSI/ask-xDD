@@ -12,19 +12,26 @@ from tqdm import tqdm
 from askem.preprocessing import ASKEMPreprocessor, HaystackPreprocessor
 
 
-def get_client() -> weaviate.Client:
-    """Returns a weaviate client."""
+def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
+    """Get a weaviate client."""
+
     load_dotenv()
-    apikey = os.getenv("WEAVIATE_APIKEY")
-    url = os.getenv("WEAVIATE_URL")
+    if url is None:
+        url = os.getenv("WEAVIATE_URL")
+
+    if apikey is None:
+        apikey = os.getenv("WEAVIATE_APIKEY")
+
     logging.info(f"Connecting to Weaviate at {url}")
     return weaviate.Client(url, weaviate.auth.AuthApiKey(apikey))
 
 
-def init_retriever(force: bool = False):
+def init_retriever(force: bool = False, client=None):
     """Initialize the passage retriever."""
 
-    client = get_client()
+    if client is None:
+        client = get_client()
+
     if force:
         client.schema.delete_all()
 
@@ -72,14 +79,16 @@ def init_retriever(force: bool = False):
 
 
 def import_passages(
-    input_dir: str, topic: str, preprocessor: ASKEMPreprocessor = None
+    input_dir: str, topic: str, preprocessor: ASKEMPreprocessor = None, client=None
 ) -> None:
     """Ingest passages into Weaviate."""
 
     if preprocessor is None:
         preprocessor = HaystackPreprocessor()
 
-    client = get_client()
+    if client is None:
+        client = get_client()
+
     input_files = Path(input_dir).glob("**/*.txt")
 
     for input_file in tqdm(list(input_files)):
