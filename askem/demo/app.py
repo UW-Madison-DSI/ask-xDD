@@ -6,8 +6,8 @@ import requests
 import streamlit as st
 from dotenv import load_dotenv
 
-from askem.retriever import get_client, get_paragraphs
-from askem.summarizer import summarize
+import askem.retriever
+import askem.summarizer
 
 load_dotenv()
 st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")
@@ -15,7 +15,7 @@ st.title("ASKEM: COVID-19 QA demo")
 
 
 def ask_generator(question: str, context: str) -> dict:
-    """Send request to generator service."""
+    """Send request to generator REST API service."""
 
     response = requests.post(
         os.getenv("GENERATOR_URL"),
@@ -31,7 +31,7 @@ def ask_generator(question: str, context: str) -> dict:
 
 @st.cache_resource
 def get_retriever_client():
-    return get_client()
+    return askem.retriever.get_client()
 
 
 RETRIEVER_CLIENT = get_retriever_client()
@@ -60,7 +60,7 @@ if st.button("Submit"):
     # Retriever
     st.header("Retriever")
     with st.spinner("Getting relevant passages..."):
-        paragraphs = get_paragraphs(
+        paragraphs = askem.retriever.get_paragraphs(
             RETRIEVER_CLIENT,
             question=question,
             top_k=top_k,
@@ -97,5 +97,5 @@ if st.button("Submit"):
     # Summarizer
     st.header("Summarizer")
     with st.spinner("Summarizing..."):
-        simple_answer = summarize(question, contexts=answers)
+        simple_answer = askem.summarizer.summarize(question, contexts=answers)
         st.info(simple_answer)
