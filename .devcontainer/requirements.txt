@@ -12,3 +12,4 @@ pytest
 pre-commit
 hatchling
 streamlit
+peewee
