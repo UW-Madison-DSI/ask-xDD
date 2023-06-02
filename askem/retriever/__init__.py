@@ -9,7 +9,7 @@ import weaviate
 from dotenv import load_dotenv
 from tqdm import tqdm
 
-from askem.preprocessing import ASKEMPreprocessor, HaystackPreprocessor
+import askem.preprocessing
 
 
 def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
@@ -40,7 +40,7 @@ def init_retriever(force: bool = False, client=None):
         "description": "Paragraph chunk of a document",
         "vectorizer": "text2vec-transformers",
         "moduleConfig": {"text2vec-transformers": {"vectorizeClassName": False}},
-        # "vectorIndexConfig": {"distance": "dot"},
+        # "vectorIndexConfig": {"distance": "dot"},  #TODO: parameterize this
         "properties": [
             {
                 "name": "paper_id",
@@ -79,12 +79,15 @@ def init_retriever(force: bool = False, client=None):
 
 
 def import_passages(
-    input_dir: str, topic: str, preprocessor: ASKEMPreprocessor = None, client=None
+    input_dir: str,
+    topic: str,
+    preprocessor: askem.preprocessing.ASKEMPreprocessor = None,
+    client=None,
 ) -> None:
     """Ingest passages into Weaviate."""
 
     if preprocessor is None:
-        preprocessor = HaystackPreprocessor()
+        preprocessor = askem.preprocessing.HaystackPreprocessor()
 
     if client is None:
         client = get_client()
@@ -143,10 +146,12 @@ def get_paragraphs(
         .with_additional(["distance"])
     )
 
+    # Filter by topic
     if topic is not None:
         filter = {"path": ["topic"], "operator": "Equal", "valueText": topic}
         results = results.with_where(filter)
 
+    # Filter by preprocessor id
     if preprocessor_id is not None:
         filter = {
             "path": ["preprocessor_id"],
