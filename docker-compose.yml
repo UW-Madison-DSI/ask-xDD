@@ -9,6 +9,8 @@ services:
       - --scheme
       - http
     image: semitechnologies/weaviate:1.19.0
+    volumes:
+      - /var/weaviate:/var/lib/weaviate
     ports:
       - 8080:8080
     restart: on-failure:0
@@ -32,15 +34,15 @@ services:
     image: semitechnologies/transformers-inference:facebook-dpr-question_encoder-single-nq-base
     environment:
       ENABLE_CUDA: '0'
-  generator:
+  generator:  # this is fully self-contained, no need to access the base askem library
     build:
       context: ./askem/generator
       dockerfile: Dockerfile
     ports:
       - 4503:4503
     environment:
-      ENABLE_CUDA: '1'
-      CUDA_CORE: 'cuda:3'
+      ENABLE_CUDA: '0'
+      CUDA_CORE: '3'
   demo:
     build:
       dockerfile: ./askem/demo/Dockerfile
