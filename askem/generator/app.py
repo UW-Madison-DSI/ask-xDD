@@ -41,7 +41,7 @@ app = FastAPI(lifespan=lifespan)
 class Query(BaseModel):
     """Generator query input data model."""
 
-    paragraph: str
+    context: str
     question: str
 
 
@@ -63,9 +63,9 @@ async def get_root():
 # POST endpoint for query
 @app.post("/")
 async def get_answer(query: Query) -> Answer:
-    """Generate answer for a given question and paragraph."""
+    """Generate answer for a given question and context."""
     answer = cached_resources["generator"](
-        question=query.question, context=query.paragraph
+        question=query.question, context=query.context
     )
     print(answer.keys())
     return Answer(**answer)

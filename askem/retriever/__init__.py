@@ -111,7 +111,7 @@ class Document:
     paper_id: str  # xdd document id
     doc_type: str  # document type (paragraph, figure, table)
     text: str  # paragraph text
-    distance: float  # distance metric of the paragraph
+    distance: float  # distance metric of the document
     cosmos_object_id: str = None
 
 
@@ -136,15 +136,15 @@ def get_documents(
     doc_type: str = None,
     preprocessor_id: str = None,
 ) -> List[Document]:
-    """Ask a question to retriever and return a list of relevant `Paragraph`.
+    """Ask a question to retriever and return a list of relevant `Document`.
 
     Args:
         client: Weaviate client.
         query: Query string.
-        limit: Max number of paragraphs to return. Defaults to 5.
-        distance: Max distance of the paragraph. Defaults to 0.5.
-        topic: Topic filter of the paragraph. Defaults to None (No filter).
-        preprocessor_id: Preprocessor filter of the paragraph. Defaults to None (No filter).
+        limit: Max number of documents to return. Defaults to 5.
+        distance: Max distance of the document. Defaults to 0.5.
+        topic: Topic filter of the document. Defaults to None (No filter).
+        preprocessor_id: Preprocessor filter of the document. Defaults to None (No filter).
     """
 
     # Get weaviate results
@@ -185,5 +185,5 @@ def get_documents(
 
     results = results.with_limit(top_k).do()
 
-    # Convert results to Paragraph and return
+    # Convert results to Document and return
     return [to_document(result) for result in results["data"]["Get"]["Passage"]]

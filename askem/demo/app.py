@@ -20,7 +20,7 @@ def ask_generator(question: str, context: str) -> dict:
     response = requests.post(
         os.getenv("GENERATOR_URL"),
         headers={"Content-Type": "application/json"},
-        json={"paragraph": context, "question": question},
+        json={"context": context, "question": question},
     )
 
     if response.status_code != 200:
@@ -41,12 +41,16 @@ question = st.text_input("Ask your question.")
 # Sidebar (for low-level system settings)
 with st.sidebar:
     st.subheader("Retriever settings")
-    top_k = st.slider("Top-k: How many paragraphs to retrieve?", 1, 10, 5)
+    top_k = st.slider("Top-k: How many documents to retrieve:", 1, 10, 5)
     distance = st.slider(
-        "Distance: How similar should the paragraphs be?", 0.0, 1.0, 0.7, 0.1
+        "Distance: Maximum acceptable cosine distance:", 0.0, 1.0, 0.7, 0.1
     )
     topic = st.selectbox("Topic filter", ["covid"])
-    preprocessor_id = st.selectbox("Preprocessor filter", ["haystack_v0.0.2"])
+    preprocessor_id = st.selectbox(
+        "Preprocessor filter", ["haystack_v0.0.1", "haystack_v0.0.2"]
+    )
+
+    doc_type = st.selectbox("Document type", ["paragraph", "table", "figure"])
 
     st.subheader("Generator settings")
     answer_score_threshold = st.slider("Answer score threshold", 0.0, 1.0, 0.0, 0.01)
@@ -60,23 +64,27 @@ if st.button("Submit"):
     # Retriever
     st.header("Retriever")
     with st.spinner("Getting relevant passages..."):
-        paragraphs = askem.retriever.get_documents(
+        documents = askem.retriever.get_documents(
             RETRIEVER_CLIENT,
             question=question,
             top_k=top_k,
             distance=distance,
+            topic=topic,
+            doc_type=doc_type,
+            preprocessor_id=preprocessor_id,
         )
 
-    _ = [st.info(p.text) for p in paragraphs]
+    _ = [st.info(d.text) for d in documents]  # show documents in frontend
 
     # Generator
     st.header("Generator")
+
     if skip_generator:
         # Bypass generator workflow
-        answers = [p.text for p in paragraphs]
+        answers = [d.text for d in documents]
     else:
         with st.spinner("Answering..."):
-            contexts = [p.text for p in paragraphs]
+            contexts = [d.text for d in documents]
             ask = partial(ask_generator, question)
 
             # Parallelize (TODO: Need to configure FastAPI for maximizing speed)
