@@ -8,4 +8,4 @@ docker-compose up -d
 pip install .
 
 # Run the deployment script
-python ./deploy.py --init --input-dir "data/debug_data/" --topic "covid-19"
+python askem/deploy.py --init --input-dir "data/debug_data/" --topic "covid-19"

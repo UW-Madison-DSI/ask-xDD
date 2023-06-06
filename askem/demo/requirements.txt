@@ -1,0 +1,6 @@
+requests
+streamlit
+python-dotenv
+openai
+farm-haystack==1.16.1
+weaviate-client==3.17.0

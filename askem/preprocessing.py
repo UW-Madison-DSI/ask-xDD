@@ -2,7 +2,7 @@ import logging
 import re
 from copy import deepcopy
 from pathlib import Path
-from typing import Dict, List, Optional, Protocol, Tuple, Union
+from typing import List, Optional, Protocol, Tuple, Union
 
 from haystack import Pipeline
 from haystack.errors import HaystackError
@@ -13,6 +13,11 @@ logging.basicConfig(level=logging.INFO)
 
 MAX_WORDS = 250
 MIN_WORDS = 100
+WEAVIATE_DOC_TYPES = [
+    "paragraph",
+    "figure",
+    "table",
+]  # Valid values in Weaviate's `type` field
 
 
 class ModifiedPreProcessor(PreProcessor):
@@ -46,7 +51,7 @@ class ModifiedPreProcessor(PreProcessor):
             )
 
         if type(document.content) is not str:
-            logger.error("Document content is not of type str. Nothing to clean.")
+            logging.error("Document content is not of type str. Nothing to clean.")
             return document
 
         if self.join_paragraphs:
@@ -338,11 +343,18 @@ class HaystackPreprocessor:
         pipeline.add_node(preprocessor, name="preprocessor", inputs=["text_converter"])
         return pipeline
 
-    def run(self, input_file: Path, topic: str) -> List[dict]:
-        """Use haystack preprocessing to preprocess one file."""
+    def run(self, input_file: Path, topic: str, doc_type: str) -> List[dict]:
+        """Use haystack preprocessing to preprocess one file.
+
+        Args:
+            input_file: Input file path.
+            topic: Topic.
+            type: Type of the input file (e.g., paragraph, figure).
+        """
+
+        assert doc_type in WEAVIATE_DOC_TYPES
 
         file_stem = Path(input_file).stem
-
         results = self.haystack_pipeline.run(file_paths=[input_file])
 
         outputs = []
@@ -354,7 +366,7 @@ class HaystackPreprocessor:
                 {
                     "preprocessor_id": self.preprocessor_id,
                     "paper_id": file_stem,
-                    "type": "paragraph",
+                    "type": doc_type,
                     "topic": topic,
                     "text_content": content,
                 }

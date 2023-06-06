@@ -11,8 +11,6 @@ authors = [
 dependencies = [
     "farm-haystack==1.16.1",
     "weaviate-client==3.17.0",
-    "datasets==2.12.0",
-    "peewee==3.16.2"
 ]
 
 [build-system]
