@@ -3,7 +3,7 @@ import logging
 import click
 from dotenv import load_dotenv
 
-from askem.retriever import get_client, import_passages, init_retriever
+from askem.retriever import get_client, import_documents, init_retriever
 
 load_dotenv()
 logging.basicConfig(level=logging.DEBUG)
@@ -18,10 +18,11 @@ logging.basicConfig(level=logging.DEBUG)
 )
 @click.option("--input-dir", help="Input directory.", type=str)
 @click.option("--topic", help="Topic.", type=str)
+@click.option("--doc-type", help="Document type.", type=str)
 @click.option(
     "--weaviate-url", help="Weaviate URL.", type=str, default="http://localhost:8080"
 )
-def main(init: bool, input_dir: str, topic: str, weaviate_url: str):
+def main(init: bool, input_dir: str, topic: str, doc_type: str, weaviate_url: str):
     """Deployment entrypoint.
 
     Usage:
@@ -35,7 +36,9 @@ def main(init: bool, input_dir: str, topic: str, weaviate_url: str):
         init_retriever(force=True, client=weaviate_client)
 
     logging.debug(f"Ingesting passages from {input_dir}...")
-    import_passages(input_dir=input_dir, topic=topic, client=weaviate_client)
+    import_documents(
+        input_dir=input_dir, topic=topic, doc_type=doc_type, client=weaviate_client
+    )
 
 
 if __name__ == "__main__":

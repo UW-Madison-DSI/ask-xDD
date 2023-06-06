@@ -60,7 +60,7 @@ if st.button("Submit"):
     # Retriever
     st.header("Retriever")
     with st.spinner("Getting relevant passages..."):
-        paragraphs = askem.retriever.get_paragraphs(
+        paragraphs = askem.retriever.get_documents(
             RETRIEVER_CLIENT,
             question=question,
             top_k=top_k,

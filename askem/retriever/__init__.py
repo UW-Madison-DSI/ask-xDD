@@ -26,7 +26,7 @@ def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
     return weaviate.Client(url, weaviate.auth.AuthApiKey(apikey))
 
 
-def init_retriever(force: bool = False, client=None):
+def init_retriever(force: bool = False, client=None) -> None:
     """Initialize the passage retriever."""
 
     if client is None:
@@ -35,6 +35,8 @@ def init_retriever(force: bool = False, client=None):
     if force:
         client.schema.delete_all()
 
+    # Passage schema, for all types of documents, including paragraph, figures and tables
+    # TODO: If safe, rename to document?
     PASSAGE_SCHEMA = {
         "class": "Passage",
         "description": "Paragraph chunk of a document",
@@ -58,8 +60,8 @@ def init_retriever(force: bool = False, client=None):
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
             {
-                "name": "type",
-                "dataType": ["text"],  # Paragraph, Table, Figure
+                "name": "type",  # TODO: rename to doc_type if safe
+                "dataType": ["text"],
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
             {
@@ -78,13 +80,14 @@ def init_retriever(force: bool = False, client=None):
         json.dump(client.schema.get("passage"), f, indent=2)
 
 
-def import_passages(
+def import_documents(
     input_dir: str,
     topic: str,
+    doc_type: str,
     preprocessor: askem.preprocessing.ASKEMPreprocessor = None,
     client=None,
 ) -> None:
-    """Ingest passages into Weaviate."""
+    """Ingest documents into Weaviate."""
 
     if preprocessor is None:
         preprocessor = askem.preprocessing.HaystackPreprocessor()
@@ -95,37 +98,44 @@ def import_passages(
     input_files = Path(input_dir).glob("**/*.txt")
 
     for input_file in tqdm(list(input_files)):
-        passages = preprocessor.run(input_file=input_file, topic=topic)
+        docs = preprocessor.run(input_file=input_file, topic=topic, doc_type=doc_type)
 
-        for passage in passages:
-            client.data_object.create(data_object=passage, class_name="Passage")
+        for doc in docs:
+            client.data_object.create(
+                data_object=doc, class_name="Passage"
+            )  # TODO: Should rename to Document if safe.
 
 
 @dataclass
-class Paragraph:
+class Document:
     paper_id: str  # xdd document id
+    doc_type: str  # document type (paragraph, figure, table)
     text: str  # paragraph text
     distance: float  # distance metric of the paragraph
+    cosmos_object_id: str = None
 
 
-def to_paragraph(result: dict) -> Paragraph:
-    """Convert a weaviate result to a `Paragraph`."""
+def to_document(result: dict) -> Document:
+    """Convert a weaviate result to a `Document`."""
 
-    return Paragraph(
+    return Document(
         paper_id=result["paper_id"],
+        cosmos_object_id=result["cosmos_object_id"],
+        doc_type=result["type"],
         text=result["text_content"],
         distance=result["_additional"]["distance"],
     )
 
 
-def get_paragraphs(
+def get_documents(
     client: weaviate.Client,
     question: str,
     top_k: int = 5,
     distance: float = 0.5,
     topic: str = None,
+    doc_type: str = None,
     preprocessor_id: str = None,
-) -> List[Paragraph]:
+) -> List[Document]:
     """Ask a question to retriever and return a list of relevant `Paragraph`.
 
     Args:
@@ -140,16 +150,19 @@ def get_paragraphs(
     # Get weaviate results
     results = (
         client.query.get(
-            "Passage", ["paper_id", "text_content", "topic", "preprocessor_id"]
+            "Passage",
+            [
+                "paper_id",
+                "text_content",
+                "topic",
+                "preprocessor_id",
+                "type",
+                "cosmos_object_id",
+            ],
         )
         .with_near_text({"concepts": [question], "distance": distance})
         .with_additional(["distance"])
     )
-
-    # Filter by topic
-    if topic is not None:
-        filter = {"path": ["topic"], "operator": "Equal", "valueText": topic}
-        results = results.with_where(filter)
 
     # Filter by preprocessor id
     if preprocessor_id is not None:
@@ -160,7 +173,17 @@ def get_paragraphs(
         }
         results = results.with_where(filter)
 
+    # Filter by topic
+    if topic is not None:
+        filter = {"path": ["topic"], "operator": "Equal", "valueText": topic}
+        results = results.with_where(filter)
+
+    # Filter by doc_type
+    if doc_type is not None:
+        filter = {"path": ["type"], "operator": "Equal", "valueText": doc_type}
+        results = results.with_where(filter)
+
     results = results.with_limit(top_k).do()
 
     # Convert results to Paragraph and return
-    return [to_paragraph(result) for result in results["data"]["Get"]["Passage"]]
+    return [to_document(result) for result in results["data"]["Get"]["Passage"]]
