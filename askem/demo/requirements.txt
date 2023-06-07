@@ -1,5 +1,7 @@
 requests
 streamlit
+pybtex
+pybtex-apa-style
 python-dotenv
 openai
 bcrypt
