@@ -3,6 +3,7 @@ import logging
 import click
 from dotenv import load_dotenv
 
+from askem.preprocessing import WEAVIATE_DOC_TYPES
 from askem.retriever import get_client, import_documents, init_retriever
 
 load_dotenv()
@@ -29,6 +30,8 @@ def main(init: bool, input_dir: str, topic: str, doc_type: str, weaviate_url: st
     python -m ./askem.deploy --init --input-dir data/covid_qa --topic covid
 
     """
+
+    assert doc_type in WEAVIATE_DOC_TYPES
     weaviate_client = get_client(url=weaviate_url)
 
     logging.debug(f"Initializing passage retriever... with {init=}")
