@@ -31,15 +31,29 @@ def ask_generator(question: str, context: str) -> dict:
     return response.json()
 
 
+def append_answer(
+    question: str, document: askem.retriever.Document
+) -> askem.retriever.Document:
+    """Append generator answer to document."""
+
+    document.answer = ask_generator(question, document.text)
+    return document
+
+
 @st.cache_resource
 def get_retriever_client():
     return askem.retriever.get_client()
 
 
+def highlight(text: str, start: int, end: int) -> str:
+    """Highlight section in text."""
+    return text[:start] + "**:red[" + text[start:end] + "]**" + text[end:]
+
+
 RETRIEVER_CLIENT = get_retriever_client()
 
-
-if st_check_password():
+# Password protection
+if os.getenv("DEBUG") == "1" or st_check_password():
     st.title("ASKEM: COVID-19 QA demo")
 
     question = st.text_input("Ask your question.")
@@ -67,10 +81,12 @@ if st_check_password():
         skip_generator = st.checkbox("Skip generator", value=False)
 
     # When pressing submit button, execute the QA pipeline
+    # TODO: refactorize into a module
+
     if st.button("Submit"):
         # Retriever
-        st.header("Retriever")
-        with st.spinner("Getting relevant passages..."):
+        st.header("Answer")
+        with st.spinner("Finding relevant documents..."):
             documents = askem.retriever.get_documents(
                 RETRIEVER_CLIENT,
                 question=question,
@@ -81,39 +97,53 @@ if st_check_password():
                 preprocessor_id=preprocessor_id,
             )
 
+        # Append citation to document
         for document in documents:
-            citation = to_apa(document.paper_id, in_text=True)
-            with st.expander(citation):
-                st.info(document.text)
-
-        # Generator
-        st.header("Generator")
+            document.citation = to_apa(document.paper_id, in_text=True)
 
         if skip_generator:
             # Bypass generator workflow
-            answers = [d.text for d in documents]
+            for document in documents:
+                document.html = document.text
+                document.answer = {"answer": document.text}
+
         else:
-            with st.spinner("Answering..."):
-                contexts = [d.text for d in documents]
-                ask = partial(ask_generator, question)
+            with st.spinner("Generating intermediate answers..."):
+                ask = partial(append_answer, question)
 
                 # Parallelize (TODO: Need to configure FastAPI for maximizing speed)
                 with ThreadPoolExecutor() as executor:
-                    answers = list(executor.map(ask, contexts))
+                    # Write answer to document
+                    executor.map(ask, documents)
 
-                print("Pre-screened answers:")
-                print(answers)
+                # Append stylized text to document
+                for document in documents:
+                    document.html = highlight(
+                        document.text,
+                        document.answer["start"],
+                        document.answer["end"],
+                    )
 
-                print("Answers, after filtering by threshold:")
-                answers = [a for a in answers if a["score"] >= answer_score_threshold]
-                st.json(answers)
+            # Filter out documents with low answer score
+            documents = [
+                doc
+                for doc in documents
+                if doc.answer["score"] >= answer_score_threshold
+            ]
 
-                # text only answers
-                answers = [a["answer"] for a in answers]
-                st.success(answers)
+            # Filter out answer with only a dot
+            documents = [doc for doc in documents if doc.answer["answer"] != "."]
 
         # Summarizer
-        st.header("Summarizer")
         with st.spinner("Summarizing..."):
+            answers = [document.answer["answer"] for document in documents]
             simple_answer = askem.summarizer.summarize(question, contexts=answers)
-            st.info(simple_answer)
+
+        # Output to UI
+        st.info(simple_answer)
+
+        # References
+        st.subheader("References")
+        for document in documents:
+            with st.expander(document.citation):
+                st.markdown(document.html, unsafe_allow_html=True)
