@@ -50,12 +50,13 @@ def to_bibtex(doc_id: str) -> str:
     return bibtex
 
 
-def bibtex_to_apa(bibtex: str) -> str:
+def bibtex_to_apa(bibtex: str, in_text: bool = False) -> str:
     """
     This function converts a BibTeX string into an APA citation string using the pybtex library.
 
     Args:
         bibtex (str): The BibTeX string to convert to APA.
+        in_text (bool, optional): Whether to return an in-text citation or not. Defaults to False.
 
     Returns:
         str: The APA citation string.
@@ -66,10 +67,15 @@ def bibtex_to_apa(bibtex: str) -> str:
     bibliography = apa_style.format_bibliography(bib_data)
     for entry in bibliography:
         # only one entry in bibliography
-        return entry.text.render_as("text")
+        citation = entry.text.render_as("html")
+        if not in_text:
+            return citation
+
+        author_year = citation.split(")")[0]
+        return author_year + ")"
 
 
-def to_apa(doc_id: str) -> str:
+def to_apa(doc_id: str, in_text: bool = False) -> str:
     """
     This function converts a document from the XDD API (given by its doc_id) into an APA citation string.
     This function uses the json_to_bibtex and bibtex_to_apa functions.
@@ -81,5 +87,5 @@ def to_apa(doc_id: str) -> str:
         str: The APA citation string representing the document.
     """
     bibtex = to_bibtex(doc_id)
-    citation = bibtex_to_apa(bibtex)
+    citation = bibtex_to_apa(bibtex, in_text=in_text)
     return citation

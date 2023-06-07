@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import askem.retriever
 import askem.summarizer
 from askem.demo.auth import st_check_password
+from askem.demo.citation import to_apa
 
 load_dotenv()
 st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")
@@ -80,7 +81,10 @@ if st_check_password():
                 preprocessor_id=preprocessor_id,
             )
 
-        _ = [st.info(d.text) for d in documents]  # show documents in frontend
+        for document in documents:
+            citation = to_apa(document.paper_id, in_text=True)
+            with st.expander(citation):
+                st.info(document.text)
 
         # Generator
         st.header("Generator")
