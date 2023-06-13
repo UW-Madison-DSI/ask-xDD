@@ -48,3 +48,14 @@ services:
       dockerfile: ./askem/demo/Dockerfile
     ports:
       - 8501:8501
+    environment:
+      OPENAI_API_KEY: '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'
+      OPENAI_ORGANIZATION: 'org-KrG6Kbas9dxwNmdeKNf50qoQ'
+      WEAVIATE_URL: 'http://cosmos0001.chtc.wisc.edu:8080'
+      WEAVIATE_APIKEY: 'thULk8nqccgjwPvXEjrgGn6586g8Ybiy'
+      GENERATOR_URL: 'http://cosmos0001.chtc.wisc.edu:4503'
+      DEMO_SALT: '$2b$12$cpeqnf/d.Uo56Z3IbeHKv.'
+      DEMO_HASHED_PASSWORD: '$2b$12$cpeqnf/d.Uo56Z3IbeHKv.CeOIW7WEZfwFKS/oSjpBehXNOauOunO'
+      DEBUG: 1
+
+

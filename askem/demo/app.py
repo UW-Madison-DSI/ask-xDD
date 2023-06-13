@@ -1,17 +1,18 @@
 import os
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
-
+import logging
 import requests
 import streamlit as st
-from dotenv import load_dotenv
 
 import askem.retriever
 import askem.summarizer
 from askem.demo.auth import st_check_password
 from askem.demo.citation import to_apa
 
-load_dotenv()
+
+logging.basicConfig(level=logging.DEBUG)
+
 st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")
 
 
@@ -22,11 +23,14 @@ def ask_generator(question: str, context: str) -> dict:
     response = requests.post(
         os.getenv("GENERATOR_URL"),
         headers={"Content-Type": "application/json"},
-        json={"context": context, "question": question},
+        json={"paragraph": context, "question": question},
+        # json={"context": context, "question": question},  # TODO: update to match with generator when deployed
     )
 
     if response.status_code != 200:
         raise Exception(response.text)
+
+    logging.debug(f"Generator Response: {response.json()}")
 
     return response.json()
 
@@ -37,6 +41,8 @@ def append_answer(
     """Append generator answer to document."""
 
     document.answer = ask_generator(question, document.text)
+    document.answer["answer"] = question + " " + document.answer["answer"]
+    logging.info(f"Answer: {document.answer}")
     return document
 
 
@@ -66,9 +72,7 @@ if os.getenv("DEBUG") == "1" or st_check_password():
             "Distance: Maximum acceptable cosine distance:", 0.0, 1.0, 0.7, 0.1
         )
         topic = st.selectbox("Topic filter", ["covid"])
-        preprocessor_id = st.selectbox(
-            "Preprocessor filter", ["haystack_v0.0.1", "haystack_v0.0.2"]
-        )
+        preprocessor_id = st.selectbox("Preprocessor filter", ["haystack_v0.0.2"])
 
         doc_type = st.selectbox("Document type", ["paragraph", "table", "figure"])
 
@@ -99,7 +103,10 @@ if os.getenv("DEBUG") == "1" or st_check_password():
 
         # Append citation to document
         for document in documents:
-            document.citation = to_apa(document.paper_id, in_text=True)
+            try:
+                document.citation = to_apa(document.paper_id, in_text=True)
+            except Exception:
+                document.citation = document.paper_id
 
         if skip_generator:
             # Bypass generator workflow
@@ -109,12 +116,18 @@ if os.getenv("DEBUG") == "1" or st_check_password():
 
         else:
             with st.spinner("Generating intermediate answers..."):
+                logging.info(f"Asking generator: {question}")
                 ask = partial(append_answer, question)
 
                 # Parallelize (TODO: Need to configure FastAPI for maximizing speed)
-                with ThreadPoolExecutor() as executor:
+                with ThreadPoolExecutor(max_workers=8) as executor:
                     # Write answer to document
+                    logging.debug(
+                        f"Documents before executor: {[doc.__dict__ for doc in documents]}"
+                    )
                     executor.map(ask, documents)
+
+                logging.debug(f"Documents after executor: {documents}")
 
                 # Append stylized text to document
                 for document in documents:
