@@ -4,7 +4,7 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List
-
+import logging
 import weaviate
 from dotenv import load_dotenv
 from tqdm import tqdm
@@ -164,26 +164,34 @@ def get_documents(
         .with_additional(["distance"])
     )
 
+    where_filter = {"operator": "And", "operands": []}
     # Filter by preprocessor id
     if preprocessor_id is not None:
-        filter = {
-            "path": ["preprocessor_id"],
-            "operator": "Equal",
-            "valueText": preprocessor_id,
-        }
-        results = results.with_where(filter)
+        logging.info(f"Filtering by preprocessor_id: {preprocessor_id}")
+
+        where_filter["operands"].append(
+            {
+                "path": ["preprocessor_id"],
+                "operator": "Equal",
+                "valueText": preprocessor_id,
+            }
+        )
 
     # Filter by topic
     if topic is not None:
-        filter = {"path": ["topic"], "operator": "Equal", "valueText": topic}
-        results = results.with_where(filter)
+        logging.info(f"Filtering by topic: {topic}")
+        where_filter["operands"].append(
+            {"path": ["topic"], "operator": "Equal", "valueText": topic}
+        )
 
     # Filter by doc_type
     if doc_type is not None:
-        filter = {"path": ["type"], "operator": "Equal", "valueText": doc_type}
-        results = results.with_where(filter)
+        logging.info(f"Filtering by doc_type: {doc_type}")
+        where_filter["operands"].append(
+            {"path": ["type"], "operator": "Equal", "valueText": doc_type}
+        )
 
-    results = results.with_limit(top_k).do()
+    results = results.with_where(where_filter).with_limit(top_k).do()
 
     # Convert results to Document and return
     return [to_document(result) for result in results["data"]["Get"]["Passage"]]
