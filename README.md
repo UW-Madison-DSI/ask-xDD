@@ -35,5 +35,5 @@ To deploy the system
     then run this:
 
     ```sh
-    python askem/deploy.py --input-dir "data/debug_data/figure_test" --topic "covid-19" --doc-type "figure"
+    python askem/deploy.py --input-dir "data/debug_data/figure_test" --topic "covid-19" --doc-type "figure" --weaviate-url "url_to_weaviate"
     ```
