@@ -148,6 +148,12 @@ if os.getenv("DEBUG") == "1" or st_check_password():
             documents = [doc for doc in documents if doc.answer["answer"] != "."]
 
         # Summarizer
+        if not documents:
+            st.warning(
+                "Unable to locate any relevant papers that address your question."
+            )
+            st.stop()
+
         with st.spinner("Summarizing..."):
             answers = [document.answer["answer"] for document in documents]
             simple_answer = askem.summarizer.summarize(question, contexts=answers)
