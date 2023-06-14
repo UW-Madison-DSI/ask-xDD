@@ -9,7 +9,7 @@ def summarize(question: str, contexts: List[str]) -> str:
     openai.api_key = os.getenv("OPENAI_API_KEY")
     openai.organization = os.getenv("OPENAI_ORGANIZATION")
 
-    instruction = "Answer the question based on the contexts."
+    instruction = "Answer the question based on the contexts. If there is no answer in context, say 'no answer'."
     prompt = f"Question: {question}{os.linesep} Context: {os.linesep.join(contexts)}"
 
     response = openai.ChatCompletion.create(
