@@ -19,3 +19,23 @@ build-backend = "hatchling.build"
 
 [tool.hatch.version]
 path = "askem/__about__.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/docs",
+  ".vscode",
+  ".gitignore",
+  "/chtc",
+  ".devcontainer",
+  "/data",
+  "notebooks",
+  "scripts",
+  "tests",
+  ".env",
+  ".git",
+  ".gitattributes",
+  ".pre-commit-config.yaml",
+  "docker-compose.yml",
+  "working.ipynb",
+]
