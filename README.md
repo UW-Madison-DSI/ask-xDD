@@ -29,3 +29,11 @@ To deploy the system
     ```sh
     bash ./scripts/launch_test.sh
     ```
+
+1. Ingest figures
+    put all text files in a folder, with file format as `<ingest_dir>/<paper-id>.<cosmos_object_id>.txt`
+    then run this:
+
+    ```sh
+    python askem/deploy.py --input-dir "data/debug_data/figure_test" --topic "covid-19" --doc-type "figure"
+    ```
