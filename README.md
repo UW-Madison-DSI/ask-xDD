@@ -21,8 +21,11 @@ To deploy the system
 
     OPENAI_API_KEY=<key_here>
     OPENAI_ORGANIZATION=<org_id_here>
+    ...
 
     ```
+
+    see share [dotenv](https://docs.google.com/document/d/1TyGeHxbOShv_jzTIM7vn-equH0XB3wM0mBuAvYI0AR0/edit) file for the actual values
 
 1. Run launch test
 

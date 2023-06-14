@@ -76,11 +76,6 @@ if os.getenv("DEBUG") == "1" or st_check_password():
 
         doc_type = st.selectbox("Document type", ["paragraph", "table", "figure"])
 
-        st.subheader("Generator settings")
-        answer_score_threshold = st.slider(
-            "Answer score threshold", 0.0, 1.0, 0.0, 0.01
-        )
-
         st.subheader("Summarizer settings")
         skip_generator = st.checkbox("Skip generator", value=False)
 
@@ -136,13 +131,6 @@ if os.getenv("DEBUG") == "1" or st_check_password():
                         document.answer["start"],
                         document.answer["end"],
                     )
-
-            # Filter out documents with low answer score
-            documents = [
-                doc
-                for doc in documents
-                if doc.answer["score"] >= answer_score_threshold
-            ]
 
             # Filter out answer with only a dot
             documents = [doc for doc in documents if doc.answer["answer"] != "."]

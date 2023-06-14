@@ -11,7 +11,7 @@
         {
             "label": "demo",
             "type": "shell",
-            "command": "streamlit run ./askem/demo/app.py"
+            "command": "docker-compose up demo --build"
         }
     ]
 }
