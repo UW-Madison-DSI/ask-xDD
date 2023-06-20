@@ -79,7 +79,7 @@ def to_bibtex(attrs: Dict) -> str:
     bibtex += "}"
     return bibtex
 
-def bibtex_to_apa(bibtex: str, in_text: bool = False) -> str:
+def to_citation(bibtex: str, in_text: bool = False) -> str:
     """
     This function converts a BibTeX string into an APA citation string using the pybtex library.
     It can either generate a full citation or an in-text citation based on the in_text parameter.
@@ -103,7 +103,7 @@ def bibtex_to_apa(bibtex: str, in_text: bool = False) -> str:
         author_year = citation.split(")")[0]
         return author_year + ")"
 
-def format_citation(attrs, in_text=False):
+def format_citation(attrs: dict, in_text=False):
     """
     This function formats a dictionary of document attributes into an APA citation.
     It manually formats the citation when the conversion from BibTeX to APA fails, adding robustness to the code.
@@ -116,33 +116,34 @@ def format_citation(attrs, in_text=False):
         str: The APA citation string.
     """
 
-    citation = f"{attrs['author']}" if attrs.get('author') else ""
+    citation = ""
+    if attrs.get('author'):
+        citation += f"{attrs['author']}"
 
     if attrs.get('year'):
-        citation += f"\n({attrs['year']})." if citation else f"({attrs['year']})."
-
+        citation += f"\n({attrs['year']})."
     if attrs.get('title'):
-        citation += f"\n{attrs['title']}." if citation else f"{attrs['title']}."
+        citation += f"\n{attrs['title']}."
 
     if attrs.get('journal'):
-        citation += f"\n<em>{attrs['journal']}</em>" if citation else f"<em>{attrs['journal']}</em>"
+        citation += f"\n<em>{attrs['journal']}</em>"
         if attrs.get('volume'):
             citation += f", <em>{attrs['volume']}</em>"
         if attrs.get('number'):
             citation += f"({attrs['number']})"
 
     if attrs.get('pages'):
-        citation += f".\npp. {attrs['pages']}" if citation else f"pp. {attrs['pages']}."
+        citation += f".\npp. {attrs['pages']}"
 
     if attrs.get('url'):
-        citation += f"\nURL: <a href=\"{attrs['url']}\">{attrs['url']}</a>" if citation else f"URL: <a href=\"{attrs['url']}\">{attrs['url']}</a>"
+        citation += f"\nURL: <a href=\"{attrs['url']}\">{attrs['url']}</a>"
     
     if in_text:
         if attrs.get('year'):
             citation = f"({attrs['year']})"
         else:
             citation = ""
-
+    citation = citation.strip()
     return citation
 
 def to_apa(doc_id: str, in_text: bool = False) -> str:
@@ -162,7 +163,7 @@ def to_apa(doc_id: str, in_text: bool = False) -> str:
     attrs = get_attributes(doc_id)
     try:
         bibtex = to_bibtex(attrs)
-        citation = bibtex_to_apa(bibtex, in_text=in_text)
+        citation = to_citation(bibtex, in_text=in_text)
     except Exception as e:
         citation = format_citation(attrs, in_text=in_text)
 
