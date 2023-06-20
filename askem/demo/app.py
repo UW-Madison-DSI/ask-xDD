@@ -81,7 +81,13 @@ if os.getenv("DEBUG") == "1" or st_check_password():
             "Distance: Maximum acceptable cosine distance:", 0.0, 1.0, 0.7, 0.1
         )
         topic = st.selectbox("Topic filter", ["covid"])
-        preprocessor_id = st.selectbox("Preprocessor filter", ["haystack_v0.0.2"])
+
+        # Remove for now, not really useful
+        # preprocessor_id = st.selectbox(
+        #     "Preprocessor filter", ["haystack_v0.0.2", "none"]
+        # )
+        # if preprocessor_id == "none":
+        #     preprocessor_id = None
 
         doc_type = st.selectbox("Document type", ["paragraph", "table", "figure"])
 
@@ -102,7 +108,7 @@ if os.getenv("DEBUG") == "1" or st_check_password():
                 distance=distance,
                 topic=topic,
                 doc_type=doc_type,
-                preprocessor_id=preprocessor_id,
+                # preprocessor_id=preprocessor_id,
             )
 
             # Append citation to document
