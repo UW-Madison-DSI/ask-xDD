@@ -1,7 +1,9 @@
+import logging
 import os
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
-import logging
+from typing import Optional
+
 import requests
 import streamlit as st
 
@@ -9,10 +11,9 @@ import askem.retriever
 import askem.summarizer
 from askem.demo.auth import st_check_password
 from askem.demo.citation import to_apa
-
+from askem.demo.style import to_html
 
 logging.basicConfig(level=logging.DEBUG)
-
 st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")
 
 
@@ -23,37 +24,45 @@ def ask_generator(question: str, context: str) -> dict:
     response = requests.post(
         os.getenv("GENERATOR_URL"),
         headers={"Content-Type": "application/json"},
-        json={"paragraph": context, "question": question},
-        # json={"context": context, "question": question},  # TODO: update to match with generator when deployed
+        # json={"paragraph": context, "question": question},
+        json={
+            "context": context,
+            "question": question,
+        },  # TODO: update to match with generator when deployed
     )
 
     if response.status_code != 200:
+        logging.debug(response.text)
         raise Exception(response.text)
 
     logging.debug(f"Generator Response: {response.json()}")
-
     return response.json()
 
 
-def append_answer(
-    question: str, document: askem.retriever.Document
-) -> askem.retriever.Document:
+def append_citation(document: askem.retriever.Document) -> None:
+    """Append citation to document."""
+
+    try:
+        document.citation = to_apa(document.paper_id, in_text=True)
+    except Exception:
+        document.citation = document.paper_id
+
+
+def append_answer(question: str, document: askem.retriever.Document) -> None:
     """Append generator answer to document."""
 
     document.answer = ask_generator(question, document.text)
-    document.answer["answer"] = question + " " + document.answer["answer"]
+
+    # Remove junk answer
+    if document.answer["answer"] == ".":
+        document.answer = None
+
     logging.info(f"Answer: {document.answer}")
-    return document
 
 
 @st.cache_resource
 def get_retriever_client():
     return askem.retriever.get_client()
-
-
-def highlight(text: str, start: int, end: int) -> str:
-    """Highlight section in text."""
-    return text[:start] + "**:red[" + text[start:end] + "]**" + text[end:]
 
 
 RETRIEVER_CLIENT = get_retriever_client()
@@ -96,27 +105,18 @@ if os.getenv("DEBUG") == "1" or st_check_password():
                 preprocessor_id=preprocessor_id,
             )
 
-        # Append citation to document
-        for document in documents:
-            try:
-                document.citation = to_apa(document.paper_id, in_text=True)
-            except Exception:
-                document.citation = document.paper_id
+            # Append citation to document
+            with ThreadPoolExecutor(max_workers=8) as executor:
+                executor.map(append_citation, documents)
 
-        if skip_generator:
-            # Bypass generator workflow
-            for document in documents:
-                document.html = document.text
-                document.answer = {"answer": document.text}
-
-        else:
+        # Generator
+        if not skip_generator:
             with st.spinner("Generating intermediate answers..."):
                 logging.info(f"Asking generator: {question}")
                 ask = partial(append_answer, question)
 
-                # Parallelize (TODO: Need to configure FastAPI for maximizing speed)
+                # Write answer to document
                 with ThreadPoolExecutor(max_workers=8) as executor:
-                    # Write answer to document
                     logging.debug(
                         f"Documents before executor: {[doc.__dict__ for doc in documents]}"
                     )
@@ -124,16 +124,8 @@ if os.getenv("DEBUG") == "1" or st_check_password():
 
                 logging.debug(f"Documents after executor: {documents}")
 
-                # Append stylized text to document
-                for document in documents:
-                    document.html = highlight(
-                        document.text,
-                        document.answer["start"],
-                        document.answer["end"],
-                    )
-
-            # Filter out answer with only a dot
-            documents = [doc for doc in documents if doc.answer["answer"] != "."]
+            documents = [doc for doc in documents if doc.answer is not None]
+            logging.info(f"Documents after generator: {documents}")
 
         # Summarizer
         if not documents:
@@ -143,8 +135,15 @@ if os.getenv("DEBUG") == "1" or st_check_password():
             st.stop()
 
         with st.spinner("Summarizing..."):
-            answers = [document.answer["answer"] for document in documents]
-            simple_answer = askem.summarizer.summarize(question, contexts=answers)
+            if skip_generator:
+                simple_answer = askem.summarizer.summarize(
+                    question, contexts=[document.text for document in documents]
+                )
+            else:
+                simple_answer = askem.summarizer.summarize(
+                    question,
+                    contexts=[document.answer["answer"] for document in documents],
+                )
 
         # Output to UI
         st.info(simple_answer)
@@ -153,4 +152,10 @@ if os.getenv("DEBUG") == "1" or st_check_password():
         st.subheader("References")
         for document in documents:
             with st.expander(document.citation):
-                st.markdown(document.html, unsafe_allow_html=True)
+                html = to_html(
+                    doc_type=document.doc_type,
+                    text=document.text,
+                    generator_answer=document.answer,
+                    cosmos_object_id=document.cosmos_object_id,
+                )
+                st.markdown(html, unsafe_allow_html=True)
