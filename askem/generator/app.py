@@ -6,7 +6,6 @@ from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
 
 
 # GPU support
-# TODO: Fix GPU, currently not working on OLVI
 ENABLE_CUDA = os.getenv("ENABLE_CUDA") == "1"
 DEVICE = os.getenv("CUDA_CORE") if ENABLE_CUDA else "cpu"
 
