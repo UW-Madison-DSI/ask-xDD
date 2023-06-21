@@ -1,12 +1,11 @@
-import os
 import logging
+import os
 from contextlib import asynccontextmanager
 from typing import List
 
+from base import get_client, get_documents
+from data_models import Document, Query
 from fastapi import FastAPI
-
-from . import get_client, get_documents
-from .data_models import Document, Query
 
 cached_resources = {}
 

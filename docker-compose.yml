@@ -58,5 +58,14 @@ services:
       DEMO_SALT: '${DEMO_SALT}'
       DEMO_HASHED_PASSWORD: '${DEMO_HASHED_PASSWORD}'
       DEBUG: 1
+  retriever:
+    build:
+      context: ./askem/retriever
+      dockerfile: Dockerfile
+    ports:
+      - 4502:4502
+    environment:
+      WEAVIATE_URL: '${WEAVIATE_URL}'
+      WEAVIATE_APIKEY: '${WEAVIATE_APIKEY}'
 
 

@@ -4,7 +4,7 @@ import click
 from dotenv import load_dotenv
 
 import askem.preprocessing
-from askem.retriever import get_client, init_retriever
+from askem.retriever.base import get_client, init_retriever
 
 load_dotenv()
 logging.basicConfig(level=logging.DEBUG)
