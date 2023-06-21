@@ -1,7 +1,6 @@
 import os
 import requests
 from typing import Optional
-from base64 import b64decode
 from askem.preprocessing import WEAVIATE_DOC_TYPES
 
 COSMOS_URL = os.getenv("COSMOS_URL")
