@@ -1,7 +1,9 @@
 import logging
+from pathlib import Path
 
 import click
 from dotenv import load_dotenv
+from tqdm import tqdm
 
 import askem.preprocessing
 from askem.retriever.base import get_client, init_retriever
