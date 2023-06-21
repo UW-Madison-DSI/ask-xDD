@@ -1,7 +1,6 @@
 import json
 import logging
 import os
-from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Optional
 import logging
@@ -10,6 +9,8 @@ from dotenv import load_dotenv
 from tqdm import tqdm
 
 import askem.preprocessing
+
+from .data_models import Document
 
 
 def get_client(
@@ -108,16 +109,6 @@ def import_documents(
             )  # TODO: Should rename to Document if safe.
 
 
-@dataclass
-class Document:
-    paper_id: str  # xdd document id
-    doc_type: str  # document type (paragraph, figure, table)
-    text: str  # paragraph text
-    distance: float  # distance metric of the document
-    cosmos_object_id: str = None
-    answer: dict = None
-
-
 def to_document(result: dict) -> Document:
     """Convert a weaviate result to a `Document`."""
 
@@ -194,7 +185,12 @@ def get_documents(
             {"path": ["type"], "operator": "Equal", "valueText": doc_type}
         )
 
-    results = results.with_where(where_filter).with_limit(top_k).do()
+    # Apply filters
+    if where_filter["operands"]:
+        results = results.with_where(where_filter).with_limit(top_k).do()
+    else:
+        results = results.with_limit(top_k).do()
+    logging.info(f"Retrieved {len(results['data']['Get']['Passage'])} results")
 
     # Convert results to Document and return
     return [to_document(result) for result in results["data"]["Get"]["Passage"]]
