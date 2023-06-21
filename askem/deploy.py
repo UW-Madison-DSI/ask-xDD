@@ -3,11 +3,39 @@ import logging
 import click
 from dotenv import load_dotenv
 
-from askem.preprocessing import WEAVIATE_DOC_TYPES
-from askem.retriever import get_client, import_documents, init_retriever
+import askem.preprocessing
+from askem.retriever import get_client, init_retriever
 
 load_dotenv()
 logging.basicConfig(level=logging.DEBUG)
+
+
+def import_documents(
+    input_dir: str,
+    topic: str,
+    doc_type: str,
+    preprocessor: askem.preprocessing.ASKEMPreprocessor = None,
+    client=None,
+) -> None:
+    """Ingest documents into Weaviate."""
+
+    import askem.preprocessing
+
+    if preprocessor is None:
+        preprocessor = askem.preprocessing.HaystackPreprocessor()
+
+    if client is None:
+        client = get_client()
+
+    input_files = Path(input_dir).glob("**/*.txt")
+
+    for input_file in tqdm(list(input_files)):
+        docs = preprocessor.run(input_file=input_file, topic=topic, doc_type=doc_type)
+
+        for doc in docs:
+            client.data_object.create(
+                data_object=doc, class_name="Passage"
+            )  # TODO: Should rename to Document if safe.
 
 
 @click.command()
@@ -31,7 +59,7 @@ def main(init: bool, input_dir: str, topic: str, doc_type: str, weaviate_url: st
 
     """
 
-    assert doc_type in WEAVIATE_DOC_TYPES
+    assert doc_type in askem.preprocessing.WEAVIATE_DOC_TYPES
     weaviate_client = get_client(url=weaviate_url)
 
     logging.debug(f"Initializing passage retriever... with {init=}")

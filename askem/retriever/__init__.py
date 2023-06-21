@@ -8,8 +8,6 @@ import weaviate
 from dotenv import load_dotenv
 from tqdm import tqdm
 
-import askem.preprocessing
-
 from .data_models import Document
 
 
@@ -81,32 +79,6 @@ def init_retriever(force: bool = False, client=None) -> None:
     # Dump full schema to file
     with open("./askem/schema/passage.json", "w") as f:
         json.dump(client.schema.get("passage"), f, indent=2)
-
-
-def import_documents(
-    input_dir: str,
-    topic: str,
-    doc_type: str,
-    preprocessor: Optional[askem.preprocessing.ASKEMPreprocessor] = None,
-    client=None,
-) -> None:
-    """Ingest documents into Weaviate."""
-
-    if preprocessor is None:
-        preprocessor = askem.preprocessing.HaystackPreprocessor()
-
-    if client is None:
-        client = get_client()
-
-    input_files = Path(input_dir).glob("**/*.txt")
-
-    for input_file in tqdm(list(input_files)):
-        docs = preprocessor.run(input_file=input_file, topic=topic, doc_type=doc_type)
-
-        for doc in docs:
-            client.data_object.create(
-                data_object=doc, class_name="Passage"
-            )  # TODO: Should rename to Document if safe.
 
 
 def to_document(result: dict) -> Document:
