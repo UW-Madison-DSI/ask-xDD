@@ -10,7 +10,12 @@ def summarize(question: str, contexts: List[str]) -> str:
     openai.organization = os.getenv("OPENAI_ORGANIZATION")
 
     instruction = "Answer the question based on the contexts. If there is no answer in context, say 'no answer'."
-    prompt = f"Question: {question}{os.linesep} Context: {os.linesep.join(contexts)}"
+
+    # Provide QA pairs as context
+    context = [f"{question}: {context}" for context in contexts]
+
+    # Append main question
+    prompt = f"Question: {question}{os.linesep} Context: {' '.join(contexts)}"
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",

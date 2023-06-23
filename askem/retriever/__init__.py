@@ -113,6 +113,7 @@ class Document:
     text: str  # paragraph text
     distance: float  # distance metric of the document
     cosmos_object_id: str = None
+    answer: dict = None
 
 
 def to_document(result: dict) -> Document:
