@@ -38,13 +38,31 @@ def to_html(
     else:
         html = highlight(text, generator_answer["start"], generator_answer["end"])
 
+    image_css = """
+        <style>
+            .img_container {
+                display: flex;
+                justify-content: center;
+            }
+            .img_container img {
+                max-width: 100%;
+            }
+        </style>
+    """
+
     # Append link to figure / table object
     if doc_type in ["figure", "table"]:
         html += "<br>"
-        html += f"<a href='{to_url(cosmos_object_id)}'>Link</a>"
+
+        # Get JPEG
         img = get_image_bytes(cosmos_object_id)
         if img is not None:
+            html += image_css
             html += "<br>"
+            html += "<div class='img_container'>"
             html += f"<img src='data:image/jpg;base64,{get_image_bytes(cosmos_object_id)}' />"
+            html += "</div>"
 
+        # Add hyperlink
+        html += f"<a href='{to_url(cosmos_object_id)}'>Link</a>"
     return html
