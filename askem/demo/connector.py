@@ -57,7 +57,10 @@ def query_retriever(
 
     response = requests.post(
         os.getenv("RETRIEVER_URL"),
-        headers={"Content-Type": "application/json"},
+        headers={
+            "Content-Type": "application/json",
+            "Api-Key": os.getenv("RETRIEVER_APIKEY"),
+        },
         json=data,
     )
 
