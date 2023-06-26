@@ -45,18 +45,30 @@ services:
       CUDA_CORE: '3'
   demo:
     build:
-      dockerfile: ./askem/demo/Dockerfile
+      context: ./askem/demo
+      dockerfile: Dockerfile
     ports:
       - 8501:8501
     environment:
       OPENAI_API_KEY: '${OPENAI_API_KEY}'
       OPENAI_ORGANIZATION: '${OPENAI_ORGANIZATION}'
-      WEAVIATE_URL: '${WEAVIATE_URL}'
-      WEAVIATE_APIKEY: '${WEAVIATE_APIKEY}'
+      RETRIEVER_URL: '${RETRIEVER_URL}'
+      RETRIEVER_APIKEY: '${RETRIEVER_APIKEY}'
       GENERATOR_URL: '${GENERATOR_URL}'
       COSMOS_URL: '${COSMOS_URL}'
       DEMO_SALT: '${DEMO_SALT}'
       DEMO_HASHED_PASSWORD: '${DEMO_HASHED_PASSWORD}'
       DEBUG: 1
+  retriever:
+    build:
+      context: ./askem/retriever
+      dockerfile: Dockerfile
+    ports:
+      - 4502:4502
+    environment:
+      WEAVIATE_URL: '${WEAVIATE_URL}'
+      WEAVIATE_APIKEY: '${WEAVIATE_APIKEY}'
+      RETRIEVER_APIKEY: '${RETRIEVER_APIKEY}'
+      
 
 
