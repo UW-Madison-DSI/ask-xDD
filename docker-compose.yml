@@ -58,6 +58,7 @@ services:
       DEMO_SALT: '${DEMO_SALT}'
       DEMO_HASHED_PASSWORD: '${DEMO_HASHED_PASSWORD}'
       DEBUG: 1
+      RETRIEVER_URL: '${RETRIEVER_URL}'
   retriever:
     build:
       context: ./askem/retriever
@@ -67,5 +68,6 @@ services:
     environment:
       WEAVIATE_URL: '${WEAVIATE_URL}'
       WEAVIATE_APIKEY: '${WEAVIATE_APIKEY}'
+      
 
 
