@@ -3,6 +3,7 @@ from pybtex.plugin import find_plugin
 from pybtex.database import parse_string
 from typing import Dict
 
+
 def get_attributes(doc_id: str) -> Dict[str, str]:
     """
     This function gets the attributes of a document from the XDD API (given by its doc_id).
@@ -21,9 +22,7 @@ def get_attributes(doc_id: str) -> Dict[str, str]:
     data = response.json()
     article = data["success"]["data"][0]
 
-    attributes = {
-        "id": article["_gddid"]
-    }
+    attributes = {"id": article["_gddid"]}
 
     if "author" in article and article["author"]:
         authors = " and ".join([author["name"] for author in article["author"]])
@@ -43,11 +42,11 @@ def get_attributes(doc_id: str) -> Dict[str, str]:
         if field in article and article[field]:
             attributes[field] = article[field]
 
-
     if "link" in article and article["link"]:
         attributes["url"] = article["link"][0]["url"]
 
     return attributes
+
 
 def to_bibtex(attrs: Dict) -> str:
     """
@@ -79,6 +78,7 @@ def to_bibtex(attrs: Dict) -> str:
     bibtex += "}"
     return bibtex
 
+
 def to_citation(bibtex: str, in_text: bool = False) -> str:
     """
     This function converts a BibTeX string into an APA citation string using the pybtex library.
@@ -94,7 +94,7 @@ def to_citation(bibtex: str, in_text: bool = False) -> str:
 
     bib_data = parse_string(bibtex, "bibtex")
     apa_style = find_plugin("pybtex.style.formatting", "apa")()
-    bibliography = apa_style.format_bibliography(bib_data)
+    bibliography = apa_style.format_bibliography(bib_data)  # type: ignore
     for entry in bibliography:
         citation = entry.text.render_as("html")
         if not in_text:
@@ -102,6 +102,7 @@ def to_citation(bibtex: str, in_text: bool = False) -> str:
 
         author_year = citation.split(")")[0]
         return author_year + ")"
+
 
 def format_citation(attrs: dict, in_text=False):
     """
@@ -117,34 +118,39 @@ def format_citation(attrs: dict, in_text=False):
     """
 
     citation = ""
-    if attrs.get('author'):
+    if attrs.get("author"):
         citation += f"{attrs['author']}"
 
-    if attrs.get('year'):
+    if attrs.get("year"):
         citation += f"\n({attrs['year']})."
-    if attrs.get('title'):
+    if attrs.get("title"):
         citation += f"\n{attrs['title']}."
 
-    if attrs.get('journal'):
+    if attrs.get("journal"):
         citation += f"\n<em>{attrs['journal']}</em>"
-        if attrs.get('volume'):
+        if attrs.get("volume"):
             citation += f", <em>{attrs['volume']}</em>"
-        if attrs.get('number'):
+        if attrs.get("number"):
             citation += f"({attrs['number']})"
 
-    if attrs.get('pages'):
+    if attrs.get("pages"):
         citation += f".\npp. {attrs['pages']}"
 
-    if attrs.get('url'):
+    if attrs.get("url"):
         citation += f"\nURL: <a href=\"{attrs['url']}\">{attrs['url']}</a>"
-    
+
     if in_text:
-        if attrs.get('year'):
-            citation = f"({attrs['year']})"
+        if attrs.get("author") and attrs.get("year"):
+            citation = f"{attrs['author']} ({attrs['year']})"
+        elif attrs.get("title") and attrs.get("year"):
+            citation = f"{attrs['title']} ({attrs['year']})"
+        elif attrs.get("url"):
+            citation = attrs["url"]
         else:
-            citation = ""
+            citation = attrs["id"]
     citation = citation.strip()
     return citation
+
 
 def to_apa(doc_id: str, in_text: bool = False) -> str:
     """
