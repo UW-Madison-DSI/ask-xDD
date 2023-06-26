@@ -3,7 +3,7 @@ import logging
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 import logging
 import weaviate
 from dotenv import load_dotenv
@@ -12,7 +12,9 @@ from tqdm import tqdm
 import askem.preprocessing
 
 
-def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
+def get_client(
+    url: Optional[str] = None, apikey: Optional[str] = None
+) -> weaviate.Client:
     """Get a weaviate client."""
 
     load_dotenv()
@@ -84,7 +86,7 @@ def import_documents(
     input_dir: str,
     topic: str,
     doc_type: str,
-    preprocessor: askem.preprocessing.ASKEMPreprocessor = None,
+    preprocessor: Optional[askem.preprocessing.ASKEMPreprocessor] = None,
     client=None,
 ) -> None:
     """Ingest documents into Weaviate."""

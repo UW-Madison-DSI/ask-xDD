@@ -308,7 +308,7 @@ def adjust_paragraphs(original_paragraphs: List[str]) -> List[str]:
 
 
 class ASKEMPreprocessor(Protocol):
-    def run(self, input_dir: str, topic: str) -> List[dict]:
+    def run(self, input_file: Path, topic: str, doc_type: str) -> List[dict]:
         ...
 
     @property
