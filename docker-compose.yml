@@ -45,7 +45,8 @@ services:
       CUDA_CORE: '3'
   demo:
     build:
-      dockerfile: ./askem/demo/Dockerfile
+      context: ./askem/demo
+      dockerfile: Dockerfile
     ports:
       - 8501:8501
     environment:

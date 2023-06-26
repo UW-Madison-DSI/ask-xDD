@@ -1,7 +1,6 @@
 import os
 import requests
 from typing import Optional
-from askem.preprocessing import WEAVIATE_DOC_TYPES
 
 COSMOS_URL = os.getenv("COSMOS_URL")
 
@@ -16,7 +15,7 @@ def to_url(cosmos_object_id: str) -> str:
     return f"{COSMOS_URL}/{cosmos_object_id}"
 
 
-def get_image_bytes(cosmos_object_id: str ) -> str:
+def get_image_bytes(cosmos_object_id: str) -> str:
     resp = requests.get(to_url(cosmos_object_id))
     result = resp.json()
     try:
@@ -25,6 +24,7 @@ def get_image_bytes(cosmos_object_id: str ) -> str:
     except:
         return None
 
+
 def to_html(
     doc_type: str,
     text: str,
@@ -32,11 +32,6 @@ def to_html(
     cosmos_object_id: Optional[str] = None,
 ) -> str:
     """Format text to HTML output."""
-
-    # TODO: Move checking to tests
-    assert doc_type in WEAVIATE_DOC_TYPES
-    # if doc_type in ["figure", "table"]:
-    #     assert cosmos_object_id is not None
 
     if generator_answer is None:
         html = text
