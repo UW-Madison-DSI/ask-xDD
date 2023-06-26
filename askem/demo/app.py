@@ -65,7 +65,6 @@ if os.getenv("DEBUG") == "1" or st_check_password():
                 distance=distance,
                 topic=topic,
                 doc_type=doc_type,
-                # preprocessor_id=preprocessor_id,
             )
 
             # Append citation to document

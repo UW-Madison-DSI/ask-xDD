@@ -5,7 +5,8 @@ from typing import List
 import weaviate
 from base import get_client
 from data_models import Document, Query
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from auth import has_valid_api_key
 
 
 def to_document(result: dict) -> Document:
@@ -119,7 +120,7 @@ async def get_root():
 
 
 # POST endpoint for query
-@app.post("/")
+@app.post("/", dependencies=[Depends(has_valid_api_key)])
 async def get_docs(query: Query) -> List[Document]:
     """Search relevant documents."""
 
