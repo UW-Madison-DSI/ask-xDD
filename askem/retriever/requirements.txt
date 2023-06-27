@@ -1,0 +1,7 @@
+weaviate-client
+python-dotenv
+tqdm
+fastapi
+pydantic
+uvicorn
+tqdm

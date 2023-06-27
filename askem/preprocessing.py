@@ -2,7 +2,7 @@ import logging
 import re
 from copy import deepcopy
 from pathlib import Path
-from typing import Dict, List, Optional, Protocol, Tuple, Union
+from typing import List, Optional, Protocol, Tuple, Union
 
 from haystack import Pipeline
 from haystack.errors import HaystackError
@@ -13,6 +13,11 @@ logging.basicConfig(level=logging.INFO)
 
 MAX_WORDS = 250
 MIN_WORDS = 100
+WEAVIATE_DOC_TYPES = [
+    "paragraph",
+    "figure",
+    "table",
+]  # Valid values in Weaviate's `type` field
 
 
 class ModifiedPreProcessor(PreProcessor):
@@ -46,7 +51,7 @@ class ModifiedPreProcessor(PreProcessor):
             )
 
         if type(document.content) is not str:
-            logger.error("Document content is not of type str. Nothing to clean.")
+            logging.error("Document content is not of type str. Nothing to clean.")
             return document
 
         if self.join_paragraphs:
@@ -304,7 +309,7 @@ def adjust_paragraphs(original_paragraphs: List[str]) -> List[str]:
 
 
 class ASKEMPreprocessor(Protocol):
-    def run(self, input_dir: str, topic: str) -> List[dict]:
+    def run(self, input_file: Path, topic: str, doc_type: str) -> List[dict]:
         ...
 
     @property
@@ -339,11 +344,8 @@ class HaystackPreprocessor:
         pipeline.add_node(preprocessor, name="preprocessor", inputs=["text_converter"])
         return pipeline
 
-    def run(self, input_file: Path, topic: str) -> List[dict]:
-        """Use haystack preprocessing to preprocess one file."""
-
+    def _process_paragraph_files(self, input_file: str, topic: str) -> List[dict]:
         file_stem = Path(input_file).stem
-
         results = self.haystack_pipeline.run(file_paths=[input_file])
 
         outputs = []
@@ -362,3 +364,41 @@ class HaystackPreprocessor:
             )
 
         return outputs
+
+    def _process_fig_and_table_files(
+        self, input_file: str, topic: str, doc_type: str
+    ) -> List[dict]:
+        input_file = Path(input_file)
+        paper_id = input_file.stem.split(".")[0]
+        cosmos_object_id = input_file.stem.split(".")[1]
+
+        with open(input_file, "r") as f:
+            content = f.read()  # Probably no need to preprocess here.
+
+        outputs = []
+        outputs.append(
+            {
+                "paper_id": paper_id,
+                "cosmos_object_id": cosmos_object_id,
+                "type": doc_type,
+                "topic": topic,
+                "text_content": content,
+            }
+        )
+        return outputs
+
+    def run(self, input_file: Path, topic: str, doc_type: str) -> List[dict]:
+        """Use haystack preprocessing to preprocess one file.
+
+        Args:
+            input_file: Input file path.
+            topic: Topic.
+            type: Type of the input file (e.g., paragraph, figure).
+        """
+
+        assert doc_type in WEAVIATE_DOC_TYPES
+
+        if doc_type == "paragraph":
+            return self._process_paragraph_files(input_file, topic)
+        else:
+            return self._process_fig_and_table_files(input_file, topic, doc_type)
