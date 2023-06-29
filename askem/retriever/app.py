@@ -35,7 +35,7 @@ def get_documents(
     Args:
         client: Weaviate client.
         query: Query string.
-        limit: Max number of documents to return. Defaults to 5.
+        top_k: Number of documents to return. Defaults to 5.
         distance: Max distance of the document. Defaults to 0.5.
         topic: Topic filter of the document. Defaults to None (No filter).
         preprocessor_id: Preprocessor filter of the document. Defaults to None (No filter).
