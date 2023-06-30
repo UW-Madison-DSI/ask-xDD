@@ -84,6 +84,7 @@ def summarize(question: str, contexts: List[str]) -> str:
 
     # Append main question
     prompt = f"Question: {question}{os.linesep} Context: {' '.join(qa_context)}"
+    logging.debug(f"Summarizer prompt: {prompt}")
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",

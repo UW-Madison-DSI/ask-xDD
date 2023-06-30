@@ -115,7 +115,7 @@ if os.getenv("DEBUG") == "1" or st_check_password():
                 html = to_html(
                     doc_type=document["doc_type"],
                     text=document["text"],
-                    generator_answer=document["answer"],
+                    generator_answer=document["answer"] if not skip_generator else None,
                     cosmos_object_id=document["cosmos_object_id"],
                 )
                 st.markdown(html, unsafe_allow_html=True)
