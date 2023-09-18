@@ -16,8 +16,23 @@ def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
     logging.info(f"Connecting to Weaviate at {url}")
     return weaviate.Client(url, weaviate.auth.AuthApiKey(apikey))
 
+def to_v2(schema: dict) -> dict:
+    """Convert a v1 schema to a v2 schema."""
+    v2_extra_properties = []
 
-def init_retriever(force: bool = False, client=None) -> None:
+    # 10 new paper terms
+    for i in range(10):
+        v2_extra_properties.append({"name": f"paper_terms_{i}", "dataType": ["text"], "moduleConfig": {"text2vec-transformers": {"skip": True}}})
+    
+    # 3 new paragraph terms
+    for i in range(3):
+        v2_extra_properties.append({"name": f"paragraph_terms_{i}", "dataType": ["text"], "moduleConfig": {"text2vec-transformers": {"skip": True}}})
+
+    schema["class"] = "PassageV2"
+    schema["properties"].extent(v2_extra_properties)
+    return schema
+
+def init_retriever(force: bool = False, client=None, version: int=1) -> None:
     """Initialize the passage retriever."""
 
     if client is None:
@@ -33,7 +48,7 @@ def init_retriever(force: bool = False, client=None) -> None:
         "description": "Paragraph chunk of a document",
         "vectorizer": "text2vec-transformers",
         "moduleConfig": {"text2vec-transformers": {"vectorizeClassName": False}},
-        # "vectorIndexConfig": {"distance": "dot"},  #TODO: parameterize this
+        "vectorIndexConfig": {"distance": "dot"},
         "properties": [
             {
                 "name": "paper_id",
@@ -60,9 +75,13 @@ def init_retriever(force: bool = False, client=None) -> None:
                 "dataType": ["text"],
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
-            {"name": "text_content", "dataType": ["text"]},
+            {"name": "text_content", "dataType": ["text"]}
         ],
     }
+
+    # V2 schema diff
+    if version == 2:
+        PASSAGE_SCHEMA = to_v2(PASSAGE_SCHEMA)
 
     client.schema.create_class(PASSAGE_SCHEMA)
 
