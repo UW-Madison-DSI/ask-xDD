@@ -3,6 +3,8 @@ import logging
 import os
 import weaviate
 
+LATEST_SCHEMA_VERSION = 2
+
 
 def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
     """Get a weaviate client."""
@@ -16,23 +18,37 @@ def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
     logging.info(f"Connecting to Weaviate at {url}")
     return weaviate.Client(url, weaviate.auth.AuthApiKey(apikey))
 
+
 def to_v2(schema: dict) -> dict:
     """Convert a v1 schema to a v2 schema."""
     v2_extra_properties = []
 
     # 10 new paper terms
     for i in range(10):
-        v2_extra_properties.append({"name": f"paper_terms_{i}", "dataType": ["text"], "moduleConfig": {"text2vec-transformers": {"skip": True}}})
-    
+        v2_extra_properties.append(
+            {
+                "name": f"paper_terms_{i}",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            }
+        )
+
     # 3 new paragraph terms
     for i in range(3):
-        v2_extra_properties.append({"name": f"paragraph_terms_{i}", "dataType": ["text"], "moduleConfig": {"text2vec-transformers": {"skip": True}}})
+        v2_extra_properties.append(
+            {
+                "name": f"paragraph_terms_{i}",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            }
+        )
 
     schema["class"] = "PassageV2"
     schema["properties"].extend(v2_extra_properties)
     return schema
 
-def init_retriever(client=None, version: int=1) -> None:
+
+def init_retriever(client=None, version: int = 1) -> None:
     """Initialize the passage retriever."""
 
     if client is None:
@@ -72,7 +88,7 @@ def init_retriever(client=None, version: int=1) -> None:
                 "dataType": ["text"],
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
-            {"name": "text_content", "dataType": ["text"]}
+            {"name": "text_content", "dataType": ["text"]},
         ],
     }
 
