@@ -1,17 +1,18 @@
 import logging
 from pathlib import Path
 from typing import List
+
 import click
 from dotenv import load_dotenv
 from tqdm import tqdm
 
 from askem.preprocessing import (
+    WEAVIATE_DOC_TYPES,
     ASKEMPreprocessor,
     HaystackPreprocessor,
     get_all_cap_words,
     get_top_k,
     update_count,
-    WEAVIATE_DOC_TYPES,
 )
 from askem.retriever.base import get_client, init_retriever
 
@@ -72,7 +73,7 @@ def import_documents(
     input_files = Path(input_dir).glob("**/*.txt")
 
     # Batching
-    client.batch.configure(batch_size=500)
+    client.batch.configure(batch_size=32, dynamic=True)
     with client.batch as batch:
         # article level loop (each file)
         for input_file in tqdm(list(input_files)):
