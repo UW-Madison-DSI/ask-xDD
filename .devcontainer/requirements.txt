@@ -3,6 +3,7 @@ nltk
 openai
 python-dotenv
 captum
+pydantic==1.10.11
 farm-haystack==1.16.1
 weaviate-client==3.17.0
 farm-haystack[weaviate]
@@ -14,3 +15,4 @@ hatchling
 streamlit
 peewee
 ipykernel
+isort
