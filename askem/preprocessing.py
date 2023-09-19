@@ -1,4 +1,5 @@
 import logging
+import unicodedata
 import re
 from copy import deepcopy
 from pathlib import Path
@@ -19,6 +20,47 @@ WEAVIATE_DOC_TYPES = [
     "table",
 ]  # Valid values in Weaviate's `type` field
 
+def update_count(d: dict, words: Optional[List[str]]) -> None:
+    if not words:
+        return None
+    
+    for word in words:
+        if word in d:
+            d[word] += 1
+        else:
+            d[word] = 1
+
+def get_top_k(d: dict, k: int = 10, min_occurrences: int = 1) -> dict:
+    """Get top-k most frequent words in a dictionary."""
+
+    d = {k: v for k, v in d.items() if v >= min_occurrences}
+    return sorted(d, key=d.get, reverse=True)[:k]
+
+
+def strip_punctuation(text: str) -> str:
+    return "".join([c for c in text if c.isalnum() or c.isspace()])
+
+def remove_diacritics(text: str) -> str:
+    nfkd_form = unicodedata.normalize('NFKD', text)
+    return ''.join([c for c in nfkd_form if not unicodedata.combining(c)])
+
+def get_all_cap_words(text: str, min_length: int = 3, top_k: int = 3) -> list:
+    """Get capitalized words in a text, sorted by number of occurrence."""
+
+    text = strip_punctuation(text)
+    text = remove_diacritics(text)
+    
+    words = text.split()
+    all_cap_words = [word for word in words if word.isupper() and len(word) >= min_length]
+
+    if not all_cap_words:
+        return None
+    
+    # Count the number of all caps words
+    counts = {word: text.count(word) for word in all_cap_words}
+
+    # Return top-k most frequent all caps words
+    return sorted(counts, key=counts.get, reverse=True)[:top_k]
 
 class ModifiedPreProcessor(PreProcessor):
     """A modified version of the Haystack PreProcessor."""
