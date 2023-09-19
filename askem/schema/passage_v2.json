@@ -122,7 +122,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_0",
+      "name": "article_terms_0",
       "tokenization": "word"
     },
     {
@@ -137,7 +137,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_1",
+      "name": "article_terms_1",
       "tokenization": "word"
     },
     {
@@ -152,7 +152,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_2",
+      "name": "article_terms_2",
       "tokenization": "word"
     },
     {
@@ -167,7 +167,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_3",
+      "name": "article_terms_3",
       "tokenization": "word"
     },
     {
@@ -182,7 +182,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_4",
+      "name": "article_terms_4",
       "tokenization": "word"
     },
     {
@@ -197,7 +197,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_5",
+      "name": "article_terms_5",
       "tokenization": "word"
     },
     {
@@ -212,7 +212,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_6",
+      "name": "article_terms_6",
       "tokenization": "word"
     },
     {
@@ -227,7 +227,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_7",
+      "name": "article_terms_7",
       "tokenization": "word"
     },
     {
@@ -242,7 +242,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_8",
+      "name": "article_terms_8",
       "tokenization": "word"
     },
     {
@@ -257,7 +257,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "paper_terms_9",
+      "name": "article_terms_9",
       "tokenization": "word"
     },
     {
