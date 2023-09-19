@@ -29,17 +29,14 @@ def to_v2(schema: dict) -> dict:
         v2_extra_properties.append({"name": f"paragraph_terms_{i}", "dataType": ["text"], "moduleConfig": {"text2vec-transformers": {"skip": True}}})
 
     schema["class"] = "PassageV2"
-    schema["properties"].extent(v2_extra_properties)
+    schema["properties"].extend(v2_extra_properties)
     return schema
 
-def init_retriever(force: bool = False, client=None, version: int=1) -> None:
+def init_retriever(client=None, version: int=1) -> None:
     """Initialize the passage retriever."""
 
     if client is None:
         client = get_client()
-
-    if force:
-        client.schema.delete_all()
 
     # Passage schema, for all types of documents, including paragraph, figures and tables
     # TODO: If safe, rename to document?
@@ -86,5 +83,5 @@ def init_retriever(force: bool = False, client=None, version: int=1) -> None:
     client.schema.create_class(PASSAGE_SCHEMA)
 
     # Dump full schema to file
-    with open("./askem/schema/passage.json", "w") as f:
-        json.dump(client.schema.get("passage"), f, indent=2)
+    with open(f"./askem/schema/passage_v{version}.json", "w") as f:
+        json.dump(client.schema.get(PASSAGE_SCHEMA["class"]), f, indent=2)
