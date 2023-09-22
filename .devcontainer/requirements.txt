@@ -5,7 +5,7 @@ python-dotenv
 captum
 pydantic==1.10.11
 farm-haystack==1.16.1
-weaviate-client==3.17.0
+weaviate-client==3.24.1
 farm-haystack[weaviate]
 farm-haystack[faiss]
 bert-score

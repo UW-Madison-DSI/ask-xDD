@@ -3,14 +3,20 @@ from contextlib import asynccontextmanager
 from typing import List
 
 import weaviate
+from auth import has_valid_api_key
 from base import get_client
 from data_models import Document, Query
-from fastapi import FastAPI, Depends
-from auth import has_valid_api_key
+from fastapi import Depends, FastAPI, HTTPException
 
 
 def to_document(result: dict) -> Document:
     """Convert a weaviate result to a `Document`."""
+
+    article_terms = [result[f"article_terms_{i}"] for i in range(10)]
+    article_terms = [term for term in article_terms if term]  # Remove empty terms
+
+    paragraph_terms = [result[f"paragraph_terms_{i}"] for i in range(3)]
+    paragraph_terms = [term for term in paragraph_terms if term]  # Remove empty terms
 
     return Document(
         paper_id=result["paper_id"],
@@ -18,6 +24,8 @@ def to_document(result: dict) -> Document:
         doc_type=result["type"],
         text=result["text_content"],
         distance=result["_additional"]["distance"],
+        article_terms=article_terms,
+        paragraph_terms=paragraph_terms,
     )
 
 
@@ -29,6 +37,8 @@ def get_documents(
     topic: str = None,
     doc_type: str = None,
     preprocessor_id: str = None,
+    article_terms: List[str] = None,
+    paragraph_terms: List[str] = None,
 ) -> List[Document]:
     """Ask a question to retriever and return a list of relevant `Document`.
 
@@ -39,26 +49,70 @@ def get_documents(
         distance: Max distance of the document. Defaults to 0.5.
         topic: Topic filter of the document. Defaults to None (No filter).
         preprocessor_id: Preprocessor filter of the document. Defaults to None (No filter).
+        article_terms: List of parent's article terms (CAPITALIZED WORDS) to filter by. Defaults to None (No filter).
+        paragraph_terms: List of paragraph terms to filter by. Defaults to None (No filter).
     """
 
-    # Get weaviate results
+    # Get weaviate results (not executed yet)
+    output_fields = ["paper_id", "cosmos_object_id", "preprocessor_id"]
+    output_fields.extend(["topic", "type", "text_content"])
+    output_fields.extend([f"article_terms_{i}" for i in range(10)])
+    output_fields.extend([f"paragraph_terms_{i}" for i in range(3)])
+
     results = (
-        client.query.get(
-            "Passage",
-            [
-                "paper_id",
-                "text_content",
-                "topic",
-                "preprocessor_id",
-                "type",
-                "cosmos_object_id",
-            ],
-        )
+        client.query.get("Passage", output_fields)
         .with_near_text({"concepts": [question], "distance": distance})
         .with_additional(["distance"])
     )
 
     where_filter = {"operator": "And", "operands": []}
+
+    # Filter by article_terms: any of the terms must be present in the article_terms_0,1...9
+    if article_terms is not None:
+        logging.info(f"Filtering by article_terms: {article_terms}")
+
+        _operands = []
+        for i in range(10):
+            path_name = f"article_terms_{i}"
+            _operands.append(
+                {
+                    "path": [path_name],
+                    "operator": "ContainsAny",
+                    "valueText": article_terms,
+                }
+            )
+
+        print(f"{_operands=}")  # DEBUG
+        where_filter["operands"].append(
+            {
+                "operator": "Or",
+                "operands": _operands,
+            }
+        )
+
+    # Filter by paragraph_terms: any of the terms must be present in the paragraph_terms_0,1,2
+    if paragraph_terms is not None:
+        logging.info(f"Filtering by paragraph_terms: {paragraph_terms}")
+
+        _operands = []
+        for i in range(3):
+            path_name = f"paragraph_terms_{i}"
+            _operands.append(
+                {
+                    "path": [path_name],
+                    "operator": "ContainsAny",
+                    "valueText": paragraph_terms,
+                }
+            )
+
+        print(f"{_operands=}")  # DEBUG
+        where_filter["operands"].append(
+            {
+                "operator": "Or",
+                "operands": _operands,
+            }
+        )
+
     # Filter by preprocessor id
     if preprocessor_id is not None:
         logging.info(f"Filtering by preprocessor_id: {preprocessor_id}")
@@ -90,6 +144,12 @@ def get_documents(
         results = results.with_where(where_filter).with_limit(top_k).do()
     else:
         results = results.with_limit(top_k).do()
+
+    if "data" not in results:
+        logging.info(f"No results found")
+        logging.info(f"{results=}")
+        raise HTTPException(status_code=404, detail="No results found")
+
     logging.info(f"Retrieved {len(results['data']['Get']['Passage'])} results")
 
     # Convert results to Document and return

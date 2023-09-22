@@ -91,13 +91,12 @@ def import_documents(
 @click.option("--input-dir", help="Input directory.", type=str)
 @click.option("--topic", help="Topic.", type=str)
 @click.option("--doc-type", help="Document type.", type=str)
-@click.option("--weaviate-url", help="Weaviate URL.", type=str)
-@click.option("--class-name", help="Class name.", type=str)
-def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str, class_name: str):
+@click.option("--weaviate-url", help="Weaviate URL.", type=str, required=False)
+def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str) -> None:
     """Ingesting data into weaviate database.
 
     Usage:
-    python -m ./askem.deploy --input-dir data/covid_qa --topic covid --doc-type paragraph --weaviate-url http://url:8080 --class-name Passage
+    python -m ./askem.deploy --input-dir data/covid_qa --topic covid --doc-type paragraph --weaviate-url http://url:8080
 
     """
 
@@ -106,7 +105,7 @@ def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str, class_nam
 
     logging.debug(f"Ingesting passages from {input_dir}...")
     import_documents(
-        class_name=class_name,
+        class_name="Passage",
         input_dir=input_dir,
         topic=topic,
         doc_type=doc_type,
