@@ -10,6 +10,8 @@ class Query(BaseModel):
     topic: str = None
     doc_type: str = None
     preprocessor_id: str = None
+    article_terms: list[str] = None
+    paragraph_terms: list[str] = None
 
 
 class Document(BaseModel):
@@ -20,3 +22,5 @@ class Document(BaseModel):
     text: str  # paragraph text
     distance: float  # distance metric of the document
     cosmos_object_id: str = None
+    article_terms: list[str] = None
+    paragraph_terms: list[str] = None

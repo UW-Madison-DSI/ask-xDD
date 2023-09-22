@@ -1,0 +1,347 @@
+{
+  "class": "Passage",
+  "description": "Paragraph chunk of a document",
+  "invertedIndexConfig": {
+    "bm25": {
+      "b": 0.75,
+      "k1": 1.2
+    },
+    "cleanupIntervalSeconds": 60,
+    "stopwords": {
+      "additions": null,
+      "preset": "en",
+      "removals": null
+    }
+  },
+  "moduleConfig": {
+    "text2vec-transformers": {
+      "poolingStrategy": "masked_mean",
+      "vectorizeClassName": false
+    }
+  },
+  "properties": [
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "paper_id",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "topic",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "preprocessor_id",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "type",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "cosmos_object_id",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": false,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "text_content",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_0",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_1",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_2",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_3",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_4",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_5",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_6",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_7",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_8",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "article_terms_9",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "paragraph_terms_0",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "paragraph_terms_1",
+      "tokenization": "word"
+    },
+    {
+      "dataType": [
+        "text"
+      ],
+      "indexFilterable": true,
+      "indexSearchable": true,
+      "moduleConfig": {
+        "text2vec-transformers": {
+          "skip": true,
+          "vectorizePropertyName": false
+        }
+      },
+      "name": "paragraph_terms_2",
+      "tokenization": "word"
+    }
+  ],
+  "replicationConfig": {
+    "factor": 1
+  },
+  "shardingConfig": {
+    "virtualPerPhysical": 128,
+    "desiredCount": 1,
+    "actualCount": 1,
+    "desiredVirtualCount": 128,
+    "actualVirtualCount": 128,
+    "key": "_id",
+    "strategy": "hash",
+    "function": "murmur3"
+  },
+  "vectorIndexConfig": {
+    "skip": false,
+    "cleanupIntervalSeconds": 300,
+    "maxConnections": 64,
+    "efConstruction": 128,
+    "ef": -1,
+    "dynamicEfMin": 100,
+    "dynamicEfMax": 500,
+    "dynamicEfFactor": 8,
+    "vectorCacheMaxObjects": 1000000000000,
+    "flatSearchCutoff": 40000,
+    "distance": "dot",
+    "pq": {
+      "enabled": false,
+      "bitCompression": false,
+      "segments": 0,
+      "centroids": 256,
+      "encoder": {
+        "type": "kmeans",
+        "distribution": "log-normal"
+      }
+    }
+  },
+  "vectorIndexType": "hnsw",
+  "vectorizer": "text2vec-transformers"
+}

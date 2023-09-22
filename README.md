@@ -131,17 +131,7 @@ The generator is an extractive question-answering system that takes a `question`
 
 1. Make a .env file in the project root directory with these variables
 
-    ```txt
-    WEAVIATE_URL=http://weaviate:8080
-    WEAVIATE_APIKEY=<generate it yourself using askem.utils.generate_api_key>
-
-    GENERATOR_URL=http://generator:4503
-
-    OPENAI_API_KEY=<key_here>
-    OPENAI_ORGANIZATION=<org_id_here>
-    ...
-
-    ```
+    see example: `.env.example`
 
     see shared [dotenv](https://docs.google.com/document/d/1TyGeHxbOShv_jzTIM7vn-equH0XB3wM0mBuAvYI0AR0/edit) file for the actual values
 
