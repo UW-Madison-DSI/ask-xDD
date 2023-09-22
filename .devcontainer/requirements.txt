@@ -16,3 +16,4 @@ streamlit
 peewee
 ipykernel
 isort
+gspread
