@@ -5,6 +5,9 @@ from typing import Any, List, Optional, Protocol
 
 import spacy
 
+# Non-informative in cov
+BLACKLIST = {"covid": ["COVID19", "COVID-19", "COVID", "SARS-CoV-2"]}
+
 
 class Strategy(Protocol):
     """A strategy for extracting terms from a text."""
@@ -34,8 +37,14 @@ def get_top_k(d: dict, k: int = 10, min_n: int = 3) -> dict:
     return sorted(d, key=d.get, reverse=True)[:k]
 
 
-def strip_punctuation(text: str) -> str:
-    return "".join([c for c in text if c.isalnum() or c.isspace()])
+def remove_punctuations(text: str, exceptions: Optional[list] = None) -> str:
+    if exceptions is None:
+        exceptions = []
+    return "".join([c for c in text if c.isalnum() or c.isspace() or c in exceptions])
+
+
+def remove_line_breaks(text: str) -> str:
+    return text.replace("\n", " ")
 
 
 def remove_diacritics(text: str) -> str:
@@ -62,7 +71,8 @@ class CapitalizedWordsStrategy:
 
     @staticmethod
     def preprocessing(text: str) -> str:
-        text = strip_punctuation(text)
+        text = remove_line_breaks(text)
+        text = remove_punctuations(text)
         text = remove_diacritics(text)
         text = remove_citations(text)
         return text
@@ -93,10 +103,10 @@ class MoreThanOneCapStrategy:
 
     @staticmethod
     def preprocessing(text: str) -> str:
+        text = remove_line_breaks(text)
         text = remove_diacritics(text)
         text = remove_citations(text)
-        text = text.replace(",", " ")
-        text = text.replace(".", " ")
+        text = remove_punctuations(text, exceptions=["-", "_", "/"])
         return text
 
     def extract_terms(self, text: str) -> Optional[List[str]]:
@@ -129,6 +139,7 @@ class ProperNounStrategy:
 
     @staticmethod
     def preprocessing(text: str) -> str:
+        text = remove_line_breaks(text)
         text = remove_diacritics(text)
         text = remove_citations(text)
         return text
