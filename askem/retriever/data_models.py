@@ -1,4 +1,21 @@
+from enum import Enum
+from typing import List
+
 from pydantic import BaseModel
+
+
+class DocType(str, Enum):
+    PARAGRAPH = "paragraph"
+    FIGURE = "figure"
+    TABLE = "table"
+
+
+class Topic(str, Enum):
+    COVID = "covid"
+
+
+class ClassName(str, Enum):
+    PASSAGE = "Passage"
 
 
 class Query(BaseModel):
@@ -10,8 +27,8 @@ class Query(BaseModel):
     topic: str = None
     doc_type: str = None
     preprocessor_id: str = None
-    article_terms: list[str] = None
-    paragraph_terms: list[str] = None
+    article_terms: List[str] = None
+    paragraph_terms: List[str] = None
 
 
 class Document(BaseModel):
@@ -22,5 +39,5 @@ class Document(BaseModel):
     text: str  # paragraph text
     distance: float  # distance metric of the document
     cosmos_object_id: str = None
-    article_terms: list[str] = None
-    paragraph_terms: list[str] = None
+    article_terms: List[str] = None
+    paragraph_terms: List[str] = None

@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 from tqdm import tqdm
 
 from askem.preprocessing import (
-    WEAVIATE_DOC_TYPES,
     ASKEMPreprocessor,
     HaystackPreprocessor,
     get_all_cap_words,
@@ -15,6 +14,7 @@ from askem.preprocessing import (
     update_count,
 )
 from askem.retriever.base import get_client, init_retriever
+from askem.retriever.data_models import ClassName, DocType, Topic
 
 load_dotenv()
 logging.basicConfig(level=logging.DEBUG)
@@ -55,10 +55,10 @@ def append_terms(docs: List[dict]) -> List[dict]:
 
 
 def import_documents(
-    class_name: str,
     input_dir: str,
-    topic: str,
-    doc_type: str,
+    class_name: ClassName,
+    topic: Topic,
+    doc_type: DocType,
     preprocessor: ASKEMPreprocessor = None,
     client=None,
 ) -> None:
@@ -89,8 +89,16 @@ def import_documents(
 
 @click.command()
 @click.option("--input-dir", help="Input directory.", type=str)
-@click.option("--topic", help="Topic.", type=str)
-@click.option("--doc-type", help="Document type.", type=str)
+@click.option(
+    "--topic",
+    help="Topic.",
+    type=click.Choice([e.value for e in Topic], case_sensitive=False),
+)
+@click.option(
+    "--doc-type",
+    help="Document type.",
+    type=click.Choice([e.value for e in DocType], case_sensitive=False),
+)
 @click.option("--weaviate-url", help="Weaviate URL.", type=str, required=False)
 def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str) -> None:
     """Ingesting data into weaviate database.
@@ -100,7 +108,10 @@ def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str) -> None:
 
     """
 
-    assert doc_type in WEAVIATE_DOC_TYPES
+    assert doc_type in [e.value for e in DocType]
+    assert topic in [e.value for e in Topic]
+    assert Path(input_dir).exists()
+
     weaviate_client = get_client(url=weaviate_url)
 
     logging.debug(f"Ingesting passages from {input_dir}...")
