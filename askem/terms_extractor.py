@@ -6,7 +6,15 @@ from typing import Any, List, Optional, Protocol
 import spacy
 
 # Non-informative in cov
-BLACKLIST = {"covid": ["COVID19", "COVID-19", "COVID", "SARS-CoV-2"]}
+
+
+def get_blacklist(topic: str) -> list:
+    BLACKLIST = {"covid-19": ["COVID19", "COVID-19", "COVID", "SARS-CoV-2", "SARS-CoV"]}
+    try:
+        return BLACKLIST[topic]
+    except KeyError:
+        logging.warning(f"Topic {topic} not found in blacklist.")
+        return []
 
 
 class Strategy(Protocol):
@@ -64,10 +72,13 @@ def remove_citations(text: str) -> str:
 class CapitalizedWordsStrategy:
     """Extracts capitalized words from a text."""
 
-    def __init__(self, min_length: int, min_occurrence: int, top_k: int) -> None:
+    def __init__(
+        self, min_length: int, min_occurrence: int, top_k: int, blacklist: list
+    ) -> None:
         self.min_length = min_length
         self.min_occurrence = min_occurrence
         self.top_k = top_k
+        self.blacklist = blacklist
 
     @staticmethod
     def preprocessing(text: str) -> str:
@@ -84,7 +95,9 @@ class CapitalizedWordsStrategy:
         terms = [
             word
             for word in text.split()
-            if word.isupper() and len(word) >= self.min_length
+            if word.isupper()
+            and len(word) >= self.min_length
+            and word not in self.blacklist
         ]
 
         if not terms:
@@ -96,10 +109,13 @@ class CapitalizedWordsStrategy:
 
 
 class MoreThanOneCapStrategy:
-    def __init__(self, min_length: int, min_occurrence: int, top_k: int) -> None:
+    def __init__(
+        self, min_length: int, min_occurrence: int, top_k: int, blacklist: list
+    ) -> None:
         self.min_length = min_length
         self.min_occurrence = min_occurrence
         self.top_k = top_k
+        self.blacklist = blacklist
 
     @staticmethod
     def preprocessing(text: str) -> str:
@@ -119,7 +135,7 @@ class MoreThanOneCapStrategy:
                 continue
 
             n_upper = sum(1 for char in word if char.isupper())
-            if n_upper > 1:
+            if n_upper > 1 and word not in self.blacklist:
                 terms.append(word)
 
         if not terms:
@@ -131,10 +147,13 @@ class MoreThanOneCapStrategy:
 
 
 class ProperNounStrategy:
-    def __init__(self, min_length: int, min_occurrence: int, top_k: int) -> None:
+    def __init__(
+        self, min_length: int, min_occurrence: int, top_k: int, blacklist: list
+    ) -> None:
         self.min_length = min_length
         self.min_occurrence = min_occurrence
         self.top_k = top_k
+        self.blacklist = blacklist
         self.nlp = spacy.load("en_core_web_sm")
 
     @staticmethod
@@ -150,7 +169,11 @@ class ProperNounStrategy:
 
         terms = []
         for token in self.nlp(text):
-            if token.pos_ == "PROPN" and len(token.text) >= self.min_length:
+            if (
+                token.pos_ == "PROPN"
+                and len(token.text) >= self.min_length
+                and token.text not in self.blacklist
+            ):
                 terms.append(token.text)
 
         if not terms:
