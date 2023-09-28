@@ -12,8 +12,6 @@ from haystack.schema import Document
 
 from askem.retriever.data_models import DocType, Topic
 
-logging.basicConfig(level=logging.INFO)
-
 MAX_WORDS = 250
 MIN_WORDS = 100
 WEAVIATE_DOC_TYPES = [
