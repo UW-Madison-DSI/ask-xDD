@@ -3,11 +3,10 @@ from contextlib import asynccontextmanager
 from typing import List, Optional
 
 import weaviate
+from auth import has_valid_api_key
+from base import get_client
+from data_models import Document, Query
 from fastapi import Depends, FastAPI, HTTPException
-
-from .auth import has_valid_api_key
-from .base import get_client
-from .data_models import Document, Query
 
 
 def to_document(result: dict) -> Document:

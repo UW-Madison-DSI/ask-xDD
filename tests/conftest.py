@@ -1,10 +1,12 @@
 import os
+import sys
 
 import pytest
 import weaviate
 from dotenv import load_dotenv
 
 load_dotenv()
+sys.path.append("askem/retriever")
 
 
 @pytest.fixture
