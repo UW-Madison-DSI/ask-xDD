@@ -1,12 +1,13 @@
 import logging
 from contextlib import asynccontextmanager
-from typing import List
+from typing import List, Optional
 
 import weaviate
-from auth import has_valid_api_key
-from base import get_client
-from data_models import Document, Query
 from fastapi import Depends, FastAPI, HTTPException
+
+from .auth import has_valid_api_key
+from .base import get_client
+from .data_models import Document, Query
 
 
 def to_document(result: dict) -> Document:
@@ -34,11 +35,15 @@ def get_documents(
     question: str,
     top_k: int = 5,
     distance: float = 0.5,
-    topic: str = None,
-    doc_type: str = None,
-    preprocessor_id: str = None,
-    article_terms: List[str] = None,
-    paragraph_terms: List[str] = None,
+    topic: Optional[str] = None,
+    doc_type: Optional[str] = None,
+    preprocessor_id: Optional[str] = None,
+    article_terms: Optional[List[str]] = None,
+    paragraph_terms: Optional[List[str]] = None,
+    move_to: Optional[str] = None,
+    move_to_weight: Optional[float] = None,
+    move_away_from: Optional[str] = None,
+    move_away_from_weight: Optional[float] = None,
 ) -> List[Document]:
     """Ask a question to retriever and return a list of relevant `Document`.
 
@@ -51,6 +56,7 @@ def get_documents(
         preprocessor_id: Preprocessor filter of the document. Defaults to None (No filter).
         article_terms: List of parent's article terms (CAPITALIZED WORDS) to filter by. Defaults to None (No filter).
         paragraph_terms: List of paragraph terms to filter by. Defaults to None (No filter).
+        move_to: Adds an optional concept string to the query vector for more targeted results. Defaults to None, meaning no additional concept is added.
     """
 
     # Get weaviate results (not executed yet)
@@ -59,11 +65,8 @@ def get_documents(
     output_fields.extend([f"article_terms_{i}" for i in range(10)])
     output_fields.extend([f"paragraph_terms_{i}" for i in range(3)])
 
-    results = (
-        client.query.get("Passage", output_fields)
-        .with_near_text({"concepts": [question], "distance": distance})
-        .with_additional(["distance"])
-    )
+    # Progressively build up the get query: filter -> near_text ->  limit
+    results = client.query.get("Passage", output_fields).with_additional(["distance"])
 
     where_filter = {"operator": "And", "operands": []}
 
@@ -139,11 +142,30 @@ def get_documents(
             {"path": ["type"], "operator": "Equal", "valueText": doc_type}
         )
 
-    # Apply filters
     if where_filter["operands"]:
-        results = results.with_where(where_filter).with_limit(top_k).do()
-    else:
-        results = results.with_limit(top_k).do()
+        results = results.with_where(where_filter)
+
+    # Build near text query
+
+    near_text_query = {"concepts": [question], "distance": distance}
+
+    if move_to is not None:
+        logging.debug(f"Moving towards {move_to} with weight {move_to_weight}")
+        near_text_query["moveTo"] = {"concepts": [move_to], "force": move_to_weight}
+
+    if move_away_from is not None:
+        logging.debug(
+            f"Moving away from {move_away_from} with weight {move_away_from_weight}"
+        )
+        near_text_query["moveAwayFrom"] = {
+            "concepts": [move_away_from],
+            "force": move_away_from_weight,
+        }
+
+    results = results.with_near_text(near_text_query)
+
+    # Limit and run
+    results = results.with_limit(top_k).do()
 
     if "data" not in results:
         logging.info(f"No results found")
