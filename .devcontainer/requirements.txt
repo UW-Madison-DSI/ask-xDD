@@ -17,3 +17,5 @@ peewee
 ipykernel
 isort
 gspread
+spacy
+unicodedata2

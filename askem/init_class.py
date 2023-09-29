@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 from askem.retriever.base import LATEST_SCHEMA_VERSION, get_client, init_retriever
 
 load_dotenv()
-logging.basicConfig(level=logging.DEBUG)
 
 
 @click.command()

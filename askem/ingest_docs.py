@@ -6,21 +6,15 @@ import click
 from dotenv import load_dotenv
 from tqdm import tqdm
 
-from askem.preprocessing import (
-    WEAVIATE_DOC_TYPES,
-    ASKEMPreprocessor,
-    HaystackPreprocessor,
-    get_all_cap_words,
-    get_top_k,
-    update_count,
-)
-from askem.retriever.base import get_client, init_retriever
+from askem.preprocessing import ASKEMPreprocessor, HaystackPreprocessor, update_count
+from askem.retriever.base import get_client
+from askem.retriever.data_models import ClassName, DocType, Topic
+from askem.terms_extractor import MoreThanOneCapStrategy, Strategy, get_blacklist
 
 load_dotenv()
-logging.basicConfig(level=logging.DEBUG)
 
 
-def append_terms(docs: List[dict]) -> List[dict]:
+def append_terms(docs: List[dict], extractor: Strategy) -> List[dict]:
     """Append terms to document.
 
     Term is defined as a word that is all capital letters.
@@ -28,12 +22,9 @@ def append_terms(docs: List[dict]) -> List[dict]:
         article_terms_i: top 10 paragraph level terms (top 3) to each paragraph.
     """
 
-    # Keep track of article-level information
-    article_terms_count = {}
-
     for paragraph in docs:
         text = paragraph["text_content"]
-        terms = get_all_cap_words(text, min_length=3, top_k=3)
+        terms = extractor.extract_terms(text)
 
         if not terms:
             continue
@@ -42,23 +33,14 @@ def append_terms(docs: List[dict]) -> List[dict]:
         for i, term in enumerate(terms):
             paragraph[f"paragraph_terms_{i}"] = term
 
-        # Update article level terms count
-        update_count(article_terms_count, terms)
-
-    # Append article level terms
-    article_terms = get_top_k(article_terms_count, k=10, min_occurrences=3)
-    for i, term in enumerate(article_terms):
-        for paragraph in docs:
-            paragraph[f"article_terms_{i}"] = term
-
     return docs
 
 
 def import_documents(
-    class_name: str,
     input_dir: str,
-    topic: str,
-    doc_type: str,
+    class_name: ClassName,
+    topic: Topic,
+    doc_type: DocType,
     preprocessor: ASKEMPreprocessor = None,
     client=None,
 ) -> None:
@@ -72,6 +54,11 @@ def import_documents(
 
     input_files = Path(input_dir).glob("**/*.txt")
 
+    # Terms Extractor
+    terms_extractor = MoreThanOneCapStrategy(
+        min_length=3, min_occurrence=1, top_k=3, blacklist=get_blacklist(topic)
+    )
+
     # Batching
     client.batch.configure(batch_size=32, dynamic=True)
     with client.batch as batch:
@@ -80,7 +67,7 @@ def import_documents(
             docs = preprocessor.run(
                 input_file=input_file, topic=topic, doc_type=doc_type
             )
-            docs = append_terms(docs)
+            docs = append_terms(docs, terms_extractor)
 
             # paragraph level loop (each paragraph)
             for doc in docs:
@@ -89,8 +76,16 @@ def import_documents(
 
 @click.command()
 @click.option("--input-dir", help="Input directory.", type=str)
-@click.option("--topic", help="Topic.", type=str)
-@click.option("--doc-type", help="Document type.", type=str)
+@click.option(
+    "--topic",
+    help="Topic.",
+    type=click.Choice([e.value for e in Topic], case_sensitive=False),
+)
+@click.option(
+    "--doc-type",
+    help="Document type.",
+    type=click.Choice([e.value for e in DocType], case_sensitive=False),
+)
 @click.option("--weaviate-url", help="Weaviate URL.", type=str, required=False)
 def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str) -> None:
     """Ingesting data into weaviate database.
@@ -100,7 +95,10 @@ def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str) -> None:
 
     """
 
-    assert doc_type in WEAVIATE_DOC_TYPES
+    assert doc_type in [e.value for e in DocType]
+    assert topic in [e.value for e in Topic]
+    assert Path(input_dir).exists()
+
     weaviate_client = get_client(url=weaviate_url)
 
     logging.debug(f"Ingesting passages from {input_dir}...")

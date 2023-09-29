@@ -5,13 +5,11 @@ from functools import partial
 from typing import List
 
 import streamlit as st
-
 from auth import st_check_password
 from citation import to_apa
-from style import to_html
 from connector import ask_generator, query_retriever, summarize
+from style import to_html
 
-logging.basicConfig(level=logging.DEBUG)
 st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")
 
 
