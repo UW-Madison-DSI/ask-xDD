@@ -9,7 +9,7 @@ import spacy
 
 
 def get_blacklist(topic: str) -> list:
-    BLACKLIST = {"covid-19": ["COVID19", "COVID-19", "COVID", "SARS-CoV-2", "SARS-CoV"]}
+    BLACKLIST = {"covid": ["COVID19", "COVID-19", "COVID", "SARS-CoV-2", "SARS-CoV"]}
     try:
         return BLACKLIST[topic]
     except KeyError:
