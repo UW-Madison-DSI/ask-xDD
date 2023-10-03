@@ -1,4 +1,5 @@
 import logging
+import os
 from contextlib import asynccontextmanager
 from typing import Any, List, Optional
 
@@ -206,7 +207,7 @@ def xdd_search(query: str, top_k: int, dataset: str) -> dict:
         dataset: Dataset to query. e.g.: xdd-covid-19.
     """
 
-    url = "https://xdd.wisc.edu/api/articles"
+    url = os.getenv("HYBRID_SEARCH_XDD_URL")
 
     params = {
         "term": query,
@@ -276,7 +277,7 @@ async def hybrid_get_docs(query: Query) -> List[Document]:
     logging.info(f"{query.dict()=}")
     assert query.paper_ids is None
 
-    STAGE_1_TOP_K = 100  # TODO: tune? discuss any metrics for absolute quality boundary
+    STAGE_1_TOP_K = 100
     query.paper_ids = _screening(query.question, STAGE_1_TOP_K)
 
     return get_documents(client=cached_resources["weaviate_client"], **query.dict())

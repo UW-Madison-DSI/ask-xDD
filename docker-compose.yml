@@ -34,7 +34,8 @@ services:
     image: semitechnologies/transformers-inference:facebook-dpr-question_encoder-single-nq-base
     environment:
       ENABLE_CUDA: '0'
-  generator:  # this is fully self-contained, no need to access the base askem library
+  generator:
+    # this is fully self-contained, no need to access the base askem library
     build:
       context: ./askem/generator
       dockerfile: Dockerfile
@@ -71,3 +72,4 @@ services:
       WEAVIATE_URL: '${WEAVIATE_URL}'
       WEAVIATE_APIKEY: '${WEAVIATE_APIKEY}'
       RETRIEVER_APIKEY: '${RETRIEVER_APIKEY}'
+      HYBRID_SEARCH_XDD_URL: '${HYBRID_SEARCH_XDD_URL}'
