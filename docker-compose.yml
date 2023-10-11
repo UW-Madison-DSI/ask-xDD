@@ -64,8 +64,6 @@ services:
     build:
       context: ./askem/retriever
       dockerfile: Dockerfile
-    depends_on:
-      - weaviate
     ports:
       - 4502:4502
     environment:

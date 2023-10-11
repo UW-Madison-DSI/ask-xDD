@@ -26,7 +26,8 @@ def load_testset() -> pd.DataFrame:
     new_labels = [label.lower().replace(" ", "_") for label in labels]
     df = pd.DataFrame.from_records(data, columns=new_labels)
     df["is_keyword"] = df["is_keyword"].astype(int)
-    return df[["source", "target_type", "is_keyword", "question"]]
+    df["is_complex"] = df["is_complex"].map({"": 0, "1": 1}).astype(int)
+    return df[["source", "target_type", "is_keyword", "is_complex", "question"]]
 
 
 def gpt_eval(result: str, model: str = "gpt-4") -> List[str]:
