@@ -1,9 +1,9 @@
 requests
-streamlit
-pybtex
+streamlit==1.27.2
+pybtex==0.24.0
 pybtex-apa-style
-python-dotenv
-openai
-bcrypt
+python-dotenv==1.0.0
+openai==0.28.1
+bcrypt==4.0.1
 farm-haystack==1.16.1
 weaviate-client==3.17.0
