@@ -8,7 +8,6 @@ import streamlit as st
 from auth import st_check_password
 from citation import to_apa
 from connector import ask_generator, query_retriever, summarize
-from react import react_workflow
 from style import to_html
 
 st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")

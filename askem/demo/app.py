@@ -5,9 +5,21 @@ from typing import Optional
 import react
 import streamlit as st
 
-# Initialize chat history
+# Initialize states
+st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
+
+
+@st.cache_data
+def get_questions():
+    with open("questions.txt", "r") as f:
+        return f.read().splitlines()
+
+
+if "questions" not in st.session_state:
+    st.session_state.questions = get_questions()
 
 
 # Convinience functions
@@ -43,8 +55,7 @@ def chat_log(role: str, content: str, container: Container = None, avatar: str =
     render(message)
 
 
-# Set page title and icon
-st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")
+# App logic
 st.title("ASKEM: COVID-19 QA demo")
 
 # Re-render chat history
@@ -52,7 +63,8 @@ for message in st.session_state.messages:
     render(message)
 
 
-if question := st.chat_input("Ask a question about COVID-19", key="question"):
+def main(question: str):
+    """Main loop of the demo app."""
     chat_log(role="user", content=question)
 
     answer = {}
@@ -79,3 +91,17 @@ if question := st.chat_input("Ask a question about COVID-19", key="question"):
 
     final_answer = answer["output"]
     chat_log(role="assistant", content=final_answer)
+
+
+if question := st.chat_input("Ask a question about COVID-19", key="question"):
+    main(question)
+
+# Preset questions
+with st.sidebar:
+    preset_question = st.selectbox(
+        "Select example questions", st.session_state.questions
+    )
+    run_from_preset = st.button("Run")
+
+if run_from_preset:
+    main(preset_question)
