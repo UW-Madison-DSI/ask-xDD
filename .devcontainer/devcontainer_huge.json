@@ -1,0 +1,18 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+// docker volume create --driver local --opt type=none --opt device=/data/clo36/docker_volume --opt o=bind data_clo36
+{
+	"name": "ASKEM",
+	"image": "huggingface/transformers-pytorch-gpu:4.29.2",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/askem,type=bind,consistency=cached",
+	"workspaceFolder": "/askem",
+	"remoteUser": "root",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+		"ghcr.io/devcontainers/features/git-lfs:1": {}
+	},
+	"postCreateCommand": "bash .devcontainer/post-create.sh",
+	"runArgs": [
+		"--network=askem_default"
+	]
+}

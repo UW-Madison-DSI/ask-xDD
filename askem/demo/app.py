@@ -1,156 +1,107 @@
-import logging
-import os
-from concurrent.futures import ThreadPoolExecutor
-from functools import partial
-from typing import List
+from dataclasses import dataclass
+from enum import Enum
+from typing import Optional
 
+import react
 import streamlit as st
-from auth import st_check_password
-from citation import to_apa
-from connector import ask_generator, query_retriever, summarize
-from style import to_html
 
+# Initialize states
 st.set_page_config(page_title="COVID-19 Question answering.", page_icon="📚")
 
-
-def append_citation(document: dict) -> None:
-    """Append citation to document."""
-
-    try:
-        document["citation"] = to_apa(document["paper_id"], in_text=True)
-    except Exception:
-        document["citation"] = document["paper_id"]
+if "messages" not in st.session_state:
+    st.session_state.messages = []
 
 
-def append_answer(question: str, document: dict) -> None:
-    """Append generator answer to document."""
-
-    document["answer"] = ask_generator(question, document["text"])
-
-    # Remove junk answer
-    if document["answer"]["answer"] == ".":
-        document["answer"] = None
-
-    logging.info(f"Answer: {document['answer']}")
+@st.cache_data
+def get_questions():
+    with open("questions.txt", "r") as f:
+        return f.read().splitlines()
 
 
-def retriever_workflow(
-    question: str, top_k: int, distance: float, topic: str, doc_type: str
-) -> List[dict]:
-    """Retrieve module in the demo app."""
-
-    logging.info(f"Retrieving {top_k} documents...")
-
-    with st.spinner("Finding relevant documents..."):
-        documents = query_retriever(
-            question=question,
-            top_k=top_k,
-            distance=distance,
-            topic=topic,
-            doc_type=doc_type,
-        )
-
-    # Append citation to document
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        executor.map(append_citation, documents)
-
-    if not documents:
-        st.warning("Unable to locate any relevant papers that address your question.")
-        st.stop()
-
-    return documents
+if "questions" not in st.session_state:
+    st.session_state.questions = get_questions()
 
 
-def generator_workflow(question: str, documents: List[dict]) -> List[dict]:
-    """Generator module in the demo app."""
-
-    logging.info(f"Generating answers for {len(documents)} documents...")
-
-    with st.spinner("Generating intermediate answers..."):
-        logging.info(f"Asking generator: {question}")
-        ask = partial(append_answer, question)
-
-    # Append answer to document
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        logging.debug(f"Documents before executor: {documents}")
-        executor.map(ask, documents)
-
-    logging.debug(f"Documents after executor: {documents}")
-    return [doc for doc in documents if doc["answer"] is not None]
+# Convinience functions
 
 
-def summarizer_workflow(documents: List[dict]) -> str:
-    """Summarizer module in the demo app."""
-
-    logging.info(f"Summarizing {len(documents)} documents...")
-
-    has_generator_answer = any("answer" in document for document in documents)
-
-    if has_generator_answer:
-        context = [document["answer"]["answer"] for document in documents]
-    else:
-        context = [document["text"] for document in documents]
-
-    with st.spinner("Summarizing..."):
-        summarized_answer = summarize(question, contexts=context)
-    return summarized_answer
+@dataclass
+class Message:
+    role: str
+    content: str
+    container: str
+    avatar: Optional[str] = None
 
 
-# Password protection
-if os.getenv("DEBUG") == "1" or st_check_password():
-    st.title("ASKEM: COVID-19 QA demo")
+class Container(Enum):
+    MARKDOWN = "markdown"
+    EXPANDER = "expander"
 
-    question = st.text_input("Ask your question.")
 
-    # Sidebar (for low-level system settings)
-    with st.sidebar:
-        st.subheader("Retriever settings")
-        top_k = st.slider("Top-k: How many documents to retrieve:", 1, 10, 5)
-        distance = st.slider(
-            "Distance: Maximum acceptable cosine distance:", 0.0, 1.0, 0.7, 0.1
-        )
-        topic = st.selectbox("Topic filter", ["covid"])
+def render(message: Message) -> None:
+    """Render message in chat."""
 
-        doc_type = st.selectbox("Document type", ["paragraph", "figure"])
-
-        if doc_type is "paragraph":
-            st.subheader("Generator settings")
-            skip_generator = st.checkbox("Skip generator", value=False)
-
-    if st.button("Submit"):
-        # Processing pipeline (Retriever, Generator, Summarizer)
-        if doc_type is not "paragraph":
-            skip_generator = True  # Override user input
-            skip_summarizer = True
+    with st.chat_message(message.role, avatar=message.avatar):
+        if message.container == Container.EXPANDER:
+            with st.expander(message.content[:80] + "..."):
+                st.markdown(message.content)
         else:
-            skip_summarizer = False
+            st.markdown(message.content)
 
-        # Retriever
-        documents = retriever_workflow(question, top_k, distance, topic, doc_type)
 
-        # Generator
-        if not skip_generator:
-            documents = generator_workflow(question, documents)
+def chat_log(role: str, content: str, container: Container = None, avatar: str = None):
+    message = Message(role, content, container, avatar)
+    st.session_state.messages.append(message)
+    render(message)
 
-        # Summarizer
-        if not skip_summarizer:
-            summarized_answer = summarizer_workflow(documents)
-        else:
-            summarized_answer = None
 
-        # Output to UI
-        if not skip_summarizer:
-            st.header("Answer")
-            st.info(summarized_answer)
+# App logic
+st.title("ASKEM: COVID-19 QA demo")
 
-        # References
-        st.subheader("References")
-        for document in documents:
-            with st.expander(document["citation"]):
-                html = to_html(
-                    doc_type=document["doc_type"],
-                    text=document["text"],
-                    generator_answer=document["answer"] if not skip_generator else None,
-                    cosmos_object_id=document["cosmos_object_id"],
+# Re-render chat history
+for message in st.session_state.messages:
+    render(message)
+
+
+def main(question: str):
+    """Main loop of the demo app."""
+    chat_log(role="user", content=question)
+
+    answer = {}
+    react_iterator = react.get_iterator(question)
+
+    # Iterate ReAct chain
+    while not "output" in answer:
+        with st.spinner("Generating..."):
+            answer = next(react_iterator)
+
+        if "intermediate_step" in answer:
+            action_logs = answer["intermediate_step"][0][0].log.split("\n")
+            for action_log in action_logs:
+                chat_log(role="assistant", content=action_log)
+
+            action_returns = answer["intermediate_step"][0][1].split("\n\n")
+            for action_return in action_returns:
+                chat_log(
+                    role="assistant",
+                    content=action_return,
+                    container=Container.EXPANDER,
+                    avatar="📜",
                 )
-                st.markdown(html, unsafe_allow_html=True)
+
+    final_answer = answer["output"]
+    chat_log(role="assistant", content=final_answer)
+
+
+if question := st.chat_input("Ask a question about COVID-19", key="question"):
+    main(question)
+
+# Preset questions
+with st.sidebar:
+    preset_question = st.selectbox(
+        "Select example questions", st.session_state.questions
+    )
+    run_from_preset = st.button("Run")
+
+if run_from_preset:
+    main(preset_question)

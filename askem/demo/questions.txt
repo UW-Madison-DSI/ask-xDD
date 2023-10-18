@@ -1,0 +1,57 @@
+SIR model formula
+Link to real-world contact matrix data
+Link to real-world population distribution data
+What is SIDARTHE model?
+What are the formula for SIDARTHE model?
+What are the differences between the original SIDARTHE and SIDARTHE-V?
+What is SIDARTHE-V model?
+Infection rate of COVID from June 1st, 2021 to December 31st, 2021
+Recovery rate of COVID from June 1st, 2021 to December 31st, 2021
+Alternative models to the SIR and SIDARTHE for studying COVID-19.
+What is deterministic SEIR Model
+Formula of SEIR Model
+How a model account for vaccination rate
+Alternative models to SEIR that also account for vaccination rate
+Model for forecasting Covid cases and hospitalizations
+Covid model with infections and hospitalization
+COVID model that  support NPIs that effect a change in baseline transmission levels, including support for interventions implemented at different points in time, and for various lengths of time, which may depend on the values of output variables (hospitalizations in particular). The model should allow the user to choose the specific start date of the intervention, and length of time in place, etc., or set triggers for intervention start and end times.
+COVID model that consider increase level of vaccination
+COVID model that consider time and location
+COVID model that consider time and location with formula
+How masking affects transmission rate
+How masking affects transmission rate in SEIRD model
+Explain: MechBayes SEIRHD model
+MechBayes SEIRHD model formula
+Comparing SEIRD and SEIRD Renewal Model
+Formula for COVID campus testing strategy
+Alternative to PIS
+No. of students in University of Michigan
+No. of faculty or staff in University of Michigan in Ann Arbor campus
+COVID infection rate in University of Michigan by month
+In this paper: "https://doi.org/10.3390/ijerph18179027" what are the SEIRD model equations
+COVID 19 model with wastewater-based data as predictor
+How COVID wastewater viral RNA concentration can predict infectious rate
+Formula for COVID wastewater to predict infection rate
+extract the code in this paper: "Understanding the dynamics of SARS-CoV-2 variants of concern in Ontario, Canada: a modeling study"
+simplest SVAIR model with formula
+Extract code from: https://github.com/MehrshadSD/SARS-CoV-2-variants-of-concern-in-Ontario
+SV2AIR3 model formula
+COmplexVID-19 model
+COmplexVID-19 model formula
+efficacy of surgical masks in preventing onward transmission of SARS-CoV-2
+Formula describing efficacy of surgical masks in preventing onward transmission of SARS-CoV-2
+Formula describing efficacy of surgical masks in preventing onward transmission of SARS-CoV-2 with uncertainty
+masking compliance rates from March or April, 2020
+efficacy of simple cloth masks in preventing transmission of SARS-CoV-2
+efficacy of simple cloth masks in preventing transmission of SARS-CoV-2, with uncertainty estimate
+estimates on contact rates pre-pandemic and during the pandemic
+how social distancing reduces contact rates
+how social distancing reduces contact rates with uncertainty and formula
+Extract ‘United_States_subnational_New_York_M_overall_contact_matrix_18.csv’ from (https://github.com/mobs-lab/mixing-patterns/tree/main) and this paper (https://www.nature.com/articles/s41467-020-20544-y).
+how social distancing policies can affect different age groups differently
+Formula on how social distancing policies can affect different age groups differently
+vaccine effectiveness for children under the age of 11.
+SEIR-V model equations
+underreporting of COVID-19 data
+Extract viral load, population served from https://data.cityofnewyork.us/Health/SARS-CoV-2-concentrations-measured-in-NYC-Wastewat/f7dc-2q9f/data
+Extract flow rate in Table S1 of the supplemental materials of https://doi.org/10.1039/D1EW00747E
