@@ -18,8 +18,8 @@ class ClassName(str, Enum):
     PASSAGE = "Passage"
 
 
-class Query(BaseModel):
-    """Retriever query input data model."""
+class BaseQuery(BaseModel):
+    """Base retriever query input data model."""
 
     question: str
     top_k: int = 5
@@ -38,6 +38,15 @@ class Query(BaseModel):
     move_to_weight: Optional[float] = None
     move_away_from: Optional[str] = None
     move_away_from_weight: Optional[float] = None
+
+
+class HybridQuery(BaseQuery):
+    screening_top_k: int = 100
+
+
+class ReactQuery(HybridQuery):
+    retriever_endpoint: str = "http://retriever:4502/hybrid"
+    model_name: str = "gpt-4"
 
 
 class Document(BaseModel):

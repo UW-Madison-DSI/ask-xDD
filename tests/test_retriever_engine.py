@@ -1,4 +1,4 @@
-from askem.retriever.app import get_documents
+from askem.retriever.base import get_documents
 
 
 def test_get_doc_base(weaviate_client):
