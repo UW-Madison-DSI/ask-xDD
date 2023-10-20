@@ -5,6 +5,7 @@ from langchain.agents import AgentType, initialize_agent
 from langchain.agents.agent_iterator import AgentExecutorIterator
 from langchain.llms import OpenAI
 from langchain.tools import tool
+from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 
 @tool
@@ -27,9 +28,15 @@ def search_retriever(query: str) -> str:
     return "\n\n".join([r["text"] for r in response.json()])
 
 
+@retry(wait=wait_random_exponential(min=1, max=30), stop=stop_after_attempt(6))
+def get_llm(model_name: str):
+    """Get LLM instance."""
+    return OpenAI(model_name=model_name, temperature=0)
+
+
 agent_executor = initialize_agent(
     [search_retriever],
-    llm=OpenAI(model_name="gpt-4", temperature=0),
+    llm=get_llm("gpt-4"),
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True,
 )
