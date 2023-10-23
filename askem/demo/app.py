@@ -1,6 +1,6 @@
 import os
 from dataclasses import dataclass
-from enum import Enum
+from enum import Enum, auto
 from typing import Optional
 
 import streamlit as st
@@ -49,15 +49,10 @@ class Message:
     link: str = None
 
 
-class Container(Enum):
-    MARKDOWN = "markdown"
-    EXPANDER = "expander"
-
-
 def chat_log(
     role: str,
     content: str,
-    container: Container = None,
+    container: str = None,
     avatar: str = None,
     title: str = None,
     link: str = None,
@@ -71,7 +66,7 @@ def render(message: Message) -> None:
     """Render message in chat."""
 
     with st.chat_message(message.role, avatar=message.avatar):
-        if message.container == Container.EXPANDER:
+        if message.container == "expander":
             if message.title:
                 title = message.title
             else:
@@ -123,7 +118,7 @@ def main(
             chat_log(
                 role="assistant",
                 content=doc["text"],
-                container=Container.EXPANDER,
+                container="expander",
                 avatar="📄",
                 title=doc["citation"],
                 link=f"https://xdd.wisc.edu/api/v2/articles/?docid={doc['paper_id']}",
