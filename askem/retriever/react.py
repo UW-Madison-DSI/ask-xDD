@@ -8,7 +8,7 @@ from langchain.tools import StructuredTool
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 
-@retry(wait=wait_random_exponential(min=1, max=30), stop=stop_after_attempt(6))
+@retry(wait=wait_random_exponential(min=3, max=10), stop=stop_after_attempt(3))
 def get_llm(model_name: str):
     """Get LLM instance."""
     return ChatOpenAI(model_name=model_name, temperature=0)

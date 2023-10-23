@@ -10,7 +10,7 @@ authors = [
 ]
 dependencies = [
     "farm-haystack==1.16.1",
-    "weaviate-client==3.17.0",
+    "weaviate-client==3.24.1",
 ]
 
 [build-system]

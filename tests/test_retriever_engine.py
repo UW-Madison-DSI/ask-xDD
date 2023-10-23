@@ -50,8 +50,8 @@ def test_get_doc_preprocessor(weaviate_client):
 def test_get_doc_term(weaviate_client):
     get_documents(
         client=weaviate_client,
-        question="What is the incubation period of COVID-19?",
-        paragraph_terms=["SIR"],
+        question="What is SEIRD model??",
+        paragraph_terms=["SEIRD"],
     )
 
 
