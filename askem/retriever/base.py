@@ -287,7 +287,7 @@ def get_documents(
     # Limit and run
     results = results.with_limit(top_k).do()
 
-    if "data" not in results:
+    if "data" not in results or not results["data"]["Get"]["Passage"]:
         logging.info(f"No results found")
         logging.info(f"{results=}")
         raise HTTPException(status_code=404, detail="No results found")

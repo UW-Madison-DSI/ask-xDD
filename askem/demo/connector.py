@@ -1,6 +1,7 @@
 import logging
 import os
 from typing import List, Optional
+
 import openai
 import requests
 
@@ -95,3 +96,41 @@ def summarize(question: str, contexts: List[str]) -> str:
     )
 
     return response.choices[0].message.content
+
+
+def query_react(
+    question: str,
+    top_k: int,
+    model_name: str,
+    screening_top_k: int = None,
+    retriever_endpoint: str = None,
+    **kwargs,
+) -> dict:
+    """Send request to retriever/react API service.
+
+    Also see: askem/retriever/app.py
+    """
+
+    data = {
+        "question": question,
+        "top_k": top_k,
+        "model_name": model_name,
+        "screening_top_k": screening_top_k,
+        "retriever_endpoint": retriever_endpoint,
+    }
+
+    response = requests.post(
+        os.getenv("REACT_URL"),
+        headers={
+            "Content-Type": "application/json",
+            "Api-Key": os.getenv("RETRIEVER_APIKEY"),
+        },
+        json=data,
+    )
+
+    if response.status_code != 200:
+        logging.debug(response.text)
+        raise Exception(response.text)
+
+    logging.debug(f"Retriever Response: {response.json()}")
+    return response.json()

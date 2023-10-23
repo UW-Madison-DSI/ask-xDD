@@ -95,7 +95,7 @@ async def hybrid_get_docs(query: HybridQuery) -> List[Document]:
 
 
 @app.post("/react", dependencies=[Depends(has_valid_api_key)])
-async def react_chain(query: ReactQuery) -> dict:
+def react_chain(query: ReactQuery) -> dict:
     """ReAct search chain."""
 
     logging.info(f"Accessing react route with: {query}")
