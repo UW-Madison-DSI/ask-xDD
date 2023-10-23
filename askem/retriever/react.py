@@ -8,7 +8,7 @@ from langchain.tools import StructuredTool
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 
-@retry(wait=wait_random_exponential(min=3, max=10), stop=stop_after_attempt(3))
+@retry(wait=wait_random_exponential(min=3, max=15), stop=stop_after_attempt(6))
 def get_llm(model_name: str):
     """Get LLM instance."""
     return ChatOpenAI(model_name=model_name, temperature=0)
@@ -37,6 +37,7 @@ class ReactManager:
             llm=get_llm(self.model_name),
             agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
             verbose=verbose,
+            handle_parsing_errors=True,
         )
 
     def search_retriever(self, react_query: str) -> str:
