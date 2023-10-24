@@ -1,128 +1,122 @@
----
-title: Ask xdd-COVID
-emoji: 📑
-sdk: streamlit
-sdk_version: 1.19.0
-app_file: askem/demo/app.py
-pinned: false
----
+# Askem xdd-COVID retrieval-augmented generation prototype
 
-repo: <https://github.com/AFIDSI/askem>
+Repo: <https://github.com/AFIDSI/askem>
+
+Demo: <http://cosmos0001.chtc.wisc.edu:8501/>
+
+API Base URL: <http://cosmos0001.chtc.wisc.edu:4502/>
 
 ## For end-users
 
-The end users of our system are ASKEM performers who access it using REST API.
+The end users of our system are ASKEM performers who access it using REST API. You can also visit our [demo](http://cosmos0001.chtc.wisc.edu:8501/) to try how this system can power a traceable COVID-19 search engine.
 
-You can visit our [demo](http://cosmos0001.chtc.wisc.edu:8501/) to try how this system can power a traceable COVID-19 search engine.
+### Retriever overview
 
-### Retriever
+The retriever uses an embedding-based search engine, specifically [Dense Passage Retriever (DPR)](https://arxiv.org/abs/2004.04906), to query relevant documents from the XDD database. Currently, it returns `paragraphs` as documents. Future updates may include `figures`, `tables`, and `equations`. The API accepts **POST** requests and requires an **APIKEY**. ASKEM performers can obtain an API key by contacting [me](mailto:jason.lo@wisc.edu).
 
-The retriever is a embedding-based search engine powered by [Dense Passage Retriever](https://arxiv.org/abs/2004.04906). It takes a `question` and returns a list of relevant documents from our [XDD database](https://xdd.wisc.edu/), a document can be a `paragraph` or `figure`. It accepts a **POST** request and requires an **APIKEY**. If you are an ASKEM performer and need your own API key, please do not hesitate to [contact me](mailto:jason.lo@wisc.edu).
+Base URL: <http://cosmos0001.chtc.wisc.edu:4502>
 
-- Endpoint: <http://cosmos0001.chtc.wisc.edu:4502>
+There are 3 endpoints available:
 
-- Example usage:
+1. `vector`: Basic DPR vector search (Not recommended).
+2. `hybrid`: Combines Elasticsearch pre-filtering with DPR vector search (Recommended, better performance).
+3. `react`: Builds on the `hybrid` approach, integrating the [ReAct agent](https://react-lm.github.io/) for "reasoning" (via gpt-4 by default) and subsequent querying (via `hybrid` endpoint by default) to generate better answers. (Experimental, slow, highest performance).
 
-    ```python
-    import requests
+### `vector` and `hybrid` endpoint example usage
 
-    APIKEY = "insert_api_key_here"
-    ENDPOINT = "http://cosmos0001.chtc.wisc.edu:4502"
+Both `vector` and `hybrid` endpoints use similar format for request and response data.
 
-    headers = {"Content-Type": "application/json", "Api-Key": APIKEY}
-    data = {
-        "question": "What is the incubation period of COVID-19?",
-        "top_k": 3,
-        "doc_type": "paragraph",
-    }
+```python
+import requests
 
-    response = requests.post(ENDPOINT, headers=headers, json=data)
-    response.json()
-    ```
+APIKEY = "insert_api_key_here"
+ENDPOINT = "http://cosmos0001.chtc.wisc.edu:4502/hybrid"
 
-- Request body schema:
+headers = {"Content-Type": "application/json", "Api-Key": APIKEY}
+data = {
+    "question": "What is SIDARTHE model?",
+    "top_k": 3,
+}
 
-    ```python
+response = requests.post(ENDPOINT, headers=headers, json=data)
+response.json()
+```
+
+#### Request body schema for `vector` and `hybrid` endpoints
+
+```python
+{
+    "question": str,
+    "top_k": Optional[int] = 5, # Number of documents to return
+    "distance": Optional[float] = 0.5, # Max cosine distance between question and document
+    "topic": Optional[str] = None, # Filter by topic, only "covid" is available now
+    "doc_type": Optional[str] = None,  # Filter by document type, only "paragraph" is available now
+    "preprocessor_id": Optional[str] = None,  # Filter by preprocessor_id, for developer use only
+    "article_terms": Optional[List[str]] = None,  # Obsolete, do not use
+    "paragraph_terms": Optional[List[str]] = None,  # Filter by capitalized terms (any word that has more than one capital letter) in the paragraph
+    "paper_ids": Optional[List[str]] = None,  # Filter by XDD paper ids
+    "move_to": Optional[str] = None,  # Move the answer to better match the context of the given string, like `mathematical equation`.
+    "move_to_weight": Optional[float] = 0,  # Weight `move_to` parameter to adjusts the influence on the original answer, with a range from 0 to 1. Higher values mean stronger augmentation.
+    "move_away_from": Optional[str] = None,  # Move the answer away from irrelevant topics, like `general commentary`.
+    "move_away_from_weight": Optional[float] = 0,  # Weight `move_away_from` to adjusts the influence on the original answer, with a range from 0 to 1. Higher values mean stronger augmentation.
+    "screening_top_k": Optional[int] = 100,  # `hybrid` endpoint only. Number of documents to return from the elastic search pre-filtering step.
+}
+```
+
+#### Response body schema for `vector` and `hybrid` endpoints
+
+```python
+[
     {
-        "question": str,
-        "top_k": Optional[int] = 5, # Number of documents to return
-        "distance": Optional[float] = 0.5, # Max cosine distance between question and document
-        "topic": Optional[str] = None, # Only "covid" is available now
-        "doc_type": Optional[str] = None,  # "paragraph" or "figure"
-        "preprocessor_id": Optional[str] = None,  # "for future use"
-    }
-    ```
+        "paper_id": str,  # XDD paper id
+        "doc_type": str,  # only "paragraph" for now
+        "text": str,  # text content
+        "distance": float,  # distance to question
+        "cosmos_object_id": str,  # only available for doc_type="figure"
+        "article_terms": List[str],  # Obsolete, do not use
+        "paragraph_terms": List[str], # Capitalized terms in the paragraph
+    },
+    ...
+]
+```
 
-- Response body schema:
+### `react` endpoint example usage
 
-    ```python
-    [
-        {
-            "paper_id": str,
-            "doc_type": str,
-            "text": str,
-            "distance": float,
-            "cosmos_object_id": str  # only available for doc_type="figure"
-        },
-        ...
-    ]
-    ```
+```python
+import requests
 
-- Retrieve COSMOS figure image from `cosmos_object_id` (Also see COSMOS [documentation](https://uw-cosmos.github.io/Cosmos/) for details)
+APIKEY = "insert_api_key_here"
+ENDPOINT = "http://cosmos0001.chtc.wisc.edu:4502/react"
 
-    ```python
-    response = requests.get(f"https://xdd.wisc.edu/askem/object/{cosmos_object_id}")
-    jpeg_bytes = response.json()["success"]["data"][0]["properties"]["image"]
-    html = f"<img src='data:image/jpg;base64,{jpeg_bytes}' />"
-    ```
+headers = {"Content-Type": "application/json", "Api-Key": APIKEY}
+data = {
+    "question": "What is SIDARTHE model?",
+    "top_k": 3,
+}
 
-- [Automatically generated docs](http://cosmos0001.chtc.wisc.edu:4502/docs#/default/get_docs__post)
+response = requests.post(ENDPOINT, headers=headers, json=data)
+response.json()
+```
 
-### Generator (Extractive question-answering BERT)
+#### Request body schema for `react` endpoint
 
-The generator is an extractive question-answering system that takes a `question` and a `document` and returns an answer using the exact wording from the `document`. It is based on `BertForQuestionAnswering` model from [HuggingFace](https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertForQuestionAnswering), fine-tuned with [COVID QA deepset](https://huggingface.co/datasets/covid_qa_deepset). An in-house benchmark shows that it can achieve 0.90 BERT-F1 score on the our [testset](https://github.com/AFIDSI/askem/blob/ee8e53d95893083685cd696afe5117ff4064216d/notebooks/make_benchmark_gpt.ipynb), out performing zero-shot Chat-GPT `gpt-3.5-turbo-0301` (BERT-F1 = 0.82, *with minimal hand prompt-tuning*). It accepts a **POST** request and requires no authentication.
+```python
+{
+    "question": str,
+    ..., # Same as `hybrid` endpoint, see
+    "retriever_endpoint": Optional[str] = "http://retriever:4502/hybrid",  # retriever endpoint to use
+    "model_name": Optional[str] = "gpt-4",  # OpenAI llm model name
+}
+```
 
-- Endpoint: <http://cosmos0001.chtc.wisc.edu:4503>
+#### Response body schema for `react` endpoint
 
-- Example usage:
-
-    ```python
-    import requests
-
-    ENDPOINT = "http://cosmos0001.chtc.wisc.edu:4503"
-
-    headers = {"Content-Type": "application/json"}
-    data = {
-        "question": "What is the incubation period of COVID-19?",
-        "context": "The incubation period of COVID-19 is 14 days.",
-    }
-
-    response = requests.post(ENDPOINT, headers=headers, json=data)
-    response.json()
-    ```
-
-- Request body schema:
-
-    ```python
-    {
-        "question": str,
-        "context": str,
-    }
-    # The combined length of question and context should not exceed 384 tokens
-    ```
-
-- Response body schema:
-
-    ```python
-    {
-        "answer": str,
-        "start": int,  # Start index of the answer in the context
-        "end": int,  # End index of the answer in the context
-        "score": float,  # Confidence score of the answer. Range in [0, 1], higher is better.
-    }
-    ```
-
-- [Automatically generated docs](http://cosmos0001.chtc.wisc.edu:4503/docs#/default/get_answer__post)
+```python
+{
+    "answer": str,  # Final answer to the question
+    "used_docs": list[Document],  # Relevant documents used to generate the answer, with the same schema as the response of `hybrid` endpoint
+}
+```
 
 <details>
     <summary style="font-size: 1.5em;">For developer</summary>
@@ -141,9 +135,17 @@ The generator is an extractive question-answering system that takes a `question`
     bash ./scripts/launch_test.sh
     ```
 
+1. Ingest documents
+
+    Put all text files in a folder, with file format as `<ingest_dir>/<paper-id>.txt`, then run this:
+
+    ```sh
+    python askem/ingest_docs.py --input-dir "data/debug_data/paragraph_test" --topic "covid-19" --doc-type "paragraph" --weaviate-url "url_to_weaviate"
+    ```
+
 1. Ingest figures
-    put all text files in a folder, with file format as `<ingest_dir>/<paper-id>.<cosmos_object_id>.txt`
-    then run this:
+
+    Put all text files in a folder, with file format as `<ingest_dir>/<paper-id>.<cosmos_object_id>.txt`, then run this:
 
     ```sh
     python askem/deploy.py --input-dir "data/debug_data/figure_test" --topic "covid-19" --doc-type "figure" --weaviate-url "url_to_weaviate"

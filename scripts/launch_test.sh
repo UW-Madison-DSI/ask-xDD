@@ -5,7 +5,7 @@ source .env
 docker-compose up -d
 
 # Install local package askem
-pip install .
+pip install . -e
 
 # Run weaviate init (Do not init if already initialized, it will wipe everything!!!)
 python3 askem/init_class.py

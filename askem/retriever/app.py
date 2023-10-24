@@ -63,7 +63,12 @@ async def lifespan(app: FastAPI):
     cached_resources["weaviate_client"] = None
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    title="xdd-llm-prototype",
+    description="API for the xdd-llm-prototype.",
+    version="0.3.0",
+    lifespan=lifespan,
+)
 
 
 @app.get("/")
