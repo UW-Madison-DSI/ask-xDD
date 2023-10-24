@@ -1,10 +1,11 @@
 # Askem xdd-COVID retrieval-augmented generation prototype
 
 repo: <https://github.com/AFIDSI/askem>
+demo: <http://cosmos0001.chtc.wisc.edu:8501/>
 
 ## For end-users
 
-The end users of our system are ASKEM performers who access it using REST API.
+The end users of our system are ASKEM performers who access it using [REST API](http://cosmos0001.chtc.wisc.edu:4502/docs).
 
 You can visit our [demo](http://cosmos0001.chtc.wisc.edu:8501/) to try how this system can power a traceable COVID-19 search engine.
 
