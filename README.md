@@ -1,13 +1,14 @@
 # Askem xdd-COVID retrieval-augmented generation prototype
 
-repo: <https://github.com/AFIDSI/askem>
-demo: <http://cosmos0001.chtc.wisc.edu:8501/>
+Repo: <https://github.com/AFIDSI/askem>
+
+Demo: <http://cosmos0001.chtc.wisc.edu:8501/>
+
+API Base URL: <http://cosmos0001.chtc.wisc.edu:4502/>
 
 ## For end-users
 
-The end users of our system are ASKEM performers who access it using [REST API](http://cosmos0001.chtc.wisc.edu:4502/docs).
-
-You can visit our [demo](http://cosmos0001.chtc.wisc.edu:8501/) to try how this system can power a traceable COVID-19 search engine.
+The end users of our system are ASKEM performers who access it using REST API. You can also visit our [demo](http://cosmos0001.chtc.wisc.edu:8501/) to try how this system can power a traceable COVID-19 search engine.
 
 ### Retriever overview
 
@@ -102,19 +103,7 @@ response.json()
 ```python
 {
     "question": str,
-    "top_k": Optional[int] = 5, # Number of documents to return
-    "distance": Optional[float] = 0.5, # Max cosine distance between question and document
-    "topic": Optional[str] = None, # Filter by topic, only "covid" is available now
-    "doc_type": Optional[str] = None,  # Filter by document type, only "paragraph" is available now
-    "preprocessor_id": Optional[str] = None,  # Filter by preprocessor_id, for developer use only
-    "article_terms": Optional[List[str]] = None,  # Obsolete, do not use
-    "paragraph_terms": Optional[List[str]] = None,  # Filter by capitalized terms (any word that has more than one capital letter) in the paragraph
-    "paper_ids": Optional[List[str]] = None,  # Filter by XDD paper ids
-    "move_to": Optional[str] = None,  # Move the answer to better match the context of the given string, like `mathematical equation`.
-    "move_to_weight": Optional[float] = 0,  # Weight `move_to` parameter to adjusts the influence on the original answer, with a range from 0 to 1. Higher values mean stronger augmentation.
-    "move_away_from": Optional[str] = None,  # Move the answer away from irrelevant topics, like `general commentary`.
-    "move_away_from_weight": Optional[float] = 0,  # Weight `move_away_from` to adjusts the influence on the original answer, with a range from 0 to 1. Higher values mean stronger augmentation.
-    "screening_top_k": Optional[int] = 100,  # `hybrid` endpoint only. Number of documents to return from the elastic search pre-filtering step.
+    ..., # Same as `hybrid` endpoint, see
     "retriever_endpoint": Optional[str] = "http://retriever:4502/hybrid",  # retriever endpoint to use
     "model_name": Optional[str] = "gpt-4",  # OpenAI llm model name
 }
@@ -128,8 +117,6 @@ response.json()
     "used_docs": list[Document],  # Relevant documents used to generate the answer, with the same schema as the response of `hybrid` endpoint
 }
 ```
-
-[Swagger UI automatically generated docs](http://cosmos0001.chtc.wisc.edu:4502/docs)
 
 <details>
     <summary style="font-size: 1.5em;">For developer</summary>
