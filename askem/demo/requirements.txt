@@ -7,4 +7,4 @@ openai==0.28.1
 bcrypt==4.0.1
 farm-haystack==1.16.1
 weaviate-client==3.17.0
-langchain==0.0.316
+langchain==0.0.329
