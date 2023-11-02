@@ -30,6 +30,7 @@ class ReactManager:
         self.search_config = search_config
         self.model_name = model_name
         self.used_docs = []
+        self.latest_used_docs = []
 
         # Retriever + ReAct agent
         self.agent_executor = initialize_agent(
@@ -37,29 +38,29 @@ class ReactManager:
             llm=get_llm(self.model_name),
             agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
             verbose=verbose,
-            handle_parsing_errors=True,
         )
 
-    def search_retriever(self, react_query: str) -> str:
-        """Useful for when you need to answer questions about facts."""
+    def search_retriever(self, question: str) -> str:
+        """Useful when you need to answer question about facts."""
         # Do NOT change the doc-string of this function, it will affect how ReAct works!
 
         headers = {
             "Content-Type": "application/json",
             "Api-Key": os.getenv("RETRIEVER_APIKEY"),
         }
-        data = {"question": react_query}
+        data = {"question": question}
         data.update(self.search_config)
         response = requests.post(self.retriever_endpoint, headers=headers, json=data)
         response.raise_for_status()
 
         # Collect used documents
         self.used_docs.extend(response.json())
+        self.latest_used_docs = response.json()
         return "\n\n".join([r["text"] for r in response.json()])
 
     def get_iterator(self) -> AgentExecutorIterator:
         """ReAct iterator."""
-        return self.agent_executor.iter(inputs={"input": self.entry_query})
+        return self.agent_executor.iter({"input": self.entry_query})
 
     def run(self) -> str:
         """Run the chain until the end."""
