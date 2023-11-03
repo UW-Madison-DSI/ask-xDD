@@ -10,7 +10,18 @@ API Base URL: <http://cosmos0001.chtc.wisc.edu:4502/>
 
 The end users of our system are ASKEM performers who access it using REST API. You can also visit our [demo](http://cosmos0001.chtc.wisc.edu:8501/) to try how this system can power a traceable COVID-19 search engine.
 
+### Release notes (v0.3.0)
+
+#### Highlights
+
+- Enhance performance tailored to Hackathon scenarios
+- Integrate `ReAct` for better handling of complex queries
+- Implement `hybrid` search to refine keyword query results
+- Eliminated `**generator**` to increase versatility
+
 ### Retriever overview
+
+![overview](img/overview_0.3.0.png)
 
 The retriever uses an embedding-based search engine, specifically [Dense Passage Retriever (DPR)](https://arxiv.org/abs/2004.04906), to query relevant documents from the XDD database. Currently, it returns `paragraphs` as documents. Future updates may include `figures`, `tables`, and `equations`. The API accepts **POST** requests and requires an **APIKEY**. ASKEM performers can obtain an API key by contacting [me](mailto:jason.lo@wisc.edu).
 
