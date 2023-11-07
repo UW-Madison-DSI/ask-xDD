@@ -4,10 +4,11 @@ import os
 from typing import List, Optional
 
 import weaviate
-from data_models import Document
 from fastapi import HTTPException
 
-LATEST_SCHEMA_VERSION = 2
+from .data_models import Document
+
+LATEST_SCHEMA_VERSION = 1
 
 
 def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
@@ -48,7 +49,7 @@ def get_v1_schema() -> dict:
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
             {
-                "name": "type",  # TODO: rename to doc_type if safe
+                "name": "doc_type",
                 "dataType": ["text"],
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
@@ -62,40 +63,7 @@ def get_v1_schema() -> dict:
     }
 
 
-def to_v2(schema: dict) -> dict:
-    """Convert a v1 schema to a v2 schema."""
-    v2_extra_properties = []
-
-    # 10 new paper terms
-    for i in range(10):
-        v2_extra_properties.append(
-            {
-                "name": f"article_terms_{i}",
-                "dataType": ["text"],
-                "moduleConfig": {"text2vec-transformers": {"skip": True}},
-            }
-        )
-
-    # 3 new paragraph terms
-    for i in range(3):
-        v2_extra_properties.append(
-            {
-                "name": f"paragraph_terms_{i}",
-                "dataType": ["text"],
-                "moduleConfig": {"text2vec-transformers": {"skip": True}},
-            }
-        )
-
-    schema["properties"].extend(v2_extra_properties)
-    return schema
-
-
-def get_v2_schema() -> dict:
-    """Obtain the v2 schema."""
-    return to_v2(get_v1_schema())
-
-
-def init_retriever(client=None, version: int = 1) -> None:
+def init_retriever(client: weaviate.Client | None = None, version: int = 1) -> None:
     """Initialize the passage retriever."""
 
     if client is None:
@@ -103,8 +71,6 @@ def init_retriever(client=None, version: int = 1) -> None:
 
     if version == 1:
         PASSAGE_SCHEMA = get_v1_schema()
-    elif version == 2:
-        PASSAGE_SCHEMA = get_v2_schema()
 
     client.schema.create_class(PASSAGE_SCHEMA)
 
@@ -116,20 +82,12 @@ def init_retriever(client=None, version: int = 1) -> None:
 def to_document(result: dict) -> Document:
     """Convert a weaviate result to a `Document`."""
 
-    article_terms = [result[f"article_terms_{i}"] for i in range(10)]
-    article_terms = [term for term in article_terms if term]  # Remove empty terms
-
-    paragraph_terms = [result[f"paragraph_terms_{i}"] for i in range(3)]
-    paragraph_terms = [term for term in paragraph_terms if term]  # Remove empty terms
-
     return Document(
         paper_id=result["paper_id"],
         cosmos_object_id=result["cosmos_object_id"],
         doc_type=result["type"],
         text=result["text_content"],
         distance=result["_additional"]["distance"],
-        article_terms=article_terms,
-        paragraph_terms=paragraph_terms,
     )
 
 
@@ -141,8 +99,6 @@ def get_documents(
     topic: Optional[str] = None,
     doc_type: Optional[str] = None,
     preprocessor_id: Optional[str] = None,
-    article_terms: Optional[List[str]] = None,
-    paragraph_terms: Optional[List[str]] = None,
     paper_ids: Optional[List[str]] = None,
     move_to: Optional[str] = None,
     move_to_weight: Optional[float] = 1.0,

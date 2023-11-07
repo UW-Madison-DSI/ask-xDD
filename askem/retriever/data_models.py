@@ -12,6 +12,7 @@ class DocType(str, Enum):
 
 class Topic(str, Enum):
     COVID = "covid"
+    DOLOMITES = "dolomites"
 
 
 class ClassName(str, Enum):
@@ -29,8 +30,6 @@ class BaseQuery(BaseModel):
     topic: Optional[str] = None
     doc_type: Optional[str] = None
     preprocessor_id: Optional[str] = None
-    article_terms: Optional[List[str]] = None
-    paragraph_terms: Optional[List[str]] = None
     paper_ids: Optional[List[str]] = None
 
     # Search vectoring
@@ -57,5 +56,3 @@ class Document(BaseModel):
     text: str  # paragraph text
     distance: float  # distance metric of the document
     cosmos_object_id: str = None
-    article_terms: List[str] = None
-    paragraph_terms: List[str] = None

@@ -66,7 +66,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="xdd-llm-prototype",
     description="API for the xdd-llm-prototype.",
-    version="0.3.0",
+    version="0.3.1",
     lifespan=lifespan,
 )
 

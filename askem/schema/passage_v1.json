@@ -19,6 +19,9 @@
       "vectorizeClassName": false
     }
   },
+  "multiTenancyConfig": {
+    "enabled": false
+  },
   "properties": [
     {
       "dataType": [
@@ -77,7 +80,7 @@
           "vectorizePropertyName": false
         }
       },
-      "name": "type",
+      "name": "doc_type",
       "tokenization": "word"
     },
     {
@@ -141,6 +144,7 @@
       "bitCompression": false,
       "segments": 0,
       "centroids": 256,
+      "trainingLimit": 100000,
       "encoder": {
         "type": "kmeans",
         "distribution": "log-normal"

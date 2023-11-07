@@ -8,7 +8,7 @@ services:
       - '8080'
       - --scheme
       - http
-    image: semitechnologies/weaviate:1.21.3
+    image: semitechnologies/weaviate:1.22.2
     volumes:
       - /var/weaviate:/var/lib/weaviate
     ports:
@@ -34,16 +34,6 @@ services:
     image: semitechnologies/transformers-inference:facebook-dpr-question_encoder-single-nq-base
     environment:
       ENABLE_CUDA: '0'
-  generator:
-    # this is fully self-contained, no need to access the base askem library
-    build:
-      context: ./askem/generator
-      dockerfile: Dockerfile
-    ports:
-      - 4503:4503
-    environment:
-      ENABLE_CUDA: '0'
-      CUDA_CORE: '3'
   demo:
     build:
       context: ./askem/demo
@@ -74,3 +64,12 @@ services:
       HYBRID_SEARCH_XDD_URL: '${HYBRID_SEARCH_XDD_URL}'
       OPENAI_API_KEY: '${OPENAI_API_KEY}'
       OPENAI_ORGANIZATION: '${OPENAI_ORGANIZATION}'
+  # generator: # Deprecated
+  #   build:
+  #     context: ./askem/generator
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 4503:4503
+  #   environment:
+  #     ENABLE_CUDA: '0'
+  #     CUDA_CORE: '3'
