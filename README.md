@@ -59,7 +59,7 @@ response.json()
 {
     "question": str,
     "top_k": Optional[int] = 5, # Number of documents to return
-    "distance": Optional[float] = 0.5, # Max cosine distance between question and document
+    "distance": Optional[float] = None, # Max cosine distance between question and document
     "topic": Optional[str] = None, # Filter by topic, only "covid" is available now
     "doc_type": Optional[str] = None,  # Filter by document type, only "paragraph" is available now
     "preprocessor_id": Optional[str] = None,  # Filter by preprocessor_id, for developer use only
@@ -115,7 +115,6 @@ response.json()
 {
     "question": str,
     ..., # Same as `hybrid` endpoint, see
-    "retriever_endpoint": Optional[str] = "http://retriever:4502/hybrid",  # retriever endpoint to use
     "model_name": Optional[str] = "gpt-4",  # OpenAI llm model name
 }
 ```

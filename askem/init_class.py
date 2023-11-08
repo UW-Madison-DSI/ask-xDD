@@ -1,9 +1,10 @@
+import os
 from typing import Optional
 
 import click
 from dotenv import load_dotenv
 
-from askem.retriever.base import LATEST_SCHEMA_VERSION, get_client, init_retriever
+from askem.retriever.base import get_client, init_retriever
 
 load_dotenv()
 
@@ -24,7 +25,7 @@ def main(weaviate_url: str = None, version: Optional[int] = None) -> None:
     """
 
     if not version:
-        version = LATEST_SCHEMA_VERSION
+        version = os.getenv("WEAVIATE_SCHEMA_VERSION")
 
     client = get_client(url=weaviate_url)
     init_retriever(client=client, version=version)

@@ -30,7 +30,7 @@ def ask_generator(question: str, context: str) -> dict:
 def query_retriever(
     question: str,
     top_k: int,
-    distance: Optional[float] = 0.5,
+    distance: Optional[float] = None,
     topic: Optional[str] = None,
     doc_type: Optional[str] = None,
     preprocessor_id: Optional[str] = None,
@@ -103,7 +103,6 @@ def query_react(
     top_k: int,
     model_name: str,
     screening_top_k: int = None,
-    retriever_endpoint: str = None,
     **kwargs,
 ) -> dict:
     """Send request to retriever/react API service.
@@ -116,7 +115,6 @@ def query_react(
         "top_k": top_k,
         "model_name": model_name,
         "screening_top_k": screening_top_k,
-        "retriever_endpoint": retriever_endpoint,
     }
 
     response = requests.post(
