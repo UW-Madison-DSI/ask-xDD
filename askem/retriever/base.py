@@ -4,9 +4,8 @@ import os
 from typing import List, Optional
 
 import weaviate
+from data_models import Document
 from fastapi import HTTPException
-
-from .data_models import Document
 
 LATEST_SCHEMA_VERSION = 1
 
