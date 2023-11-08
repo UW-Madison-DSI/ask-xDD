@@ -1,7 +1,8 @@
-import requests
-from pybtex.plugin import find_plugin
-from pybtex.database import parse_string
 from typing import Dict
+
+import requests
+from pybtex.database import parse_string
+from pybtex.plugin import find_plugin
 
 
 def get_attributes(doc_id: str) -> Dict[str, str]:

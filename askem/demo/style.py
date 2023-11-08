@@ -1,6 +1,7 @@
 import os
-import requests
 from typing import Optional
+
+import requests
 
 COSMOS_URL = os.getenv("COSMOS_URL")
 

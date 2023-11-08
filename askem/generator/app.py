@@ -1,9 +1,9 @@
 import os
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
-
 
 # GPU support
 ENABLE_CUDA = os.getenv("ENABLE_CUDA") == "1"

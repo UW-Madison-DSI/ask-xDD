@@ -72,9 +72,17 @@ class MigrationManager:
         self,
         source_properties: list[str],
         parsing_function: ResponseParser,
-        batch_size: int = 10000,
+        batch_size: int = 1000,
+        debug: bool = False,
     ) -> None:
-        """Clone all data from the source to the destination."""
+        """Clone all data from the source to the destination.
+
+        Args:
+            source_properties: The properties to retrieve from the source.
+            parsing_function: A function that converts a response from the source to a payload for the destination, see `ResponseParser` for function signature.
+            batch_size: The batch size to use when retrieving data from the source.
+            debug: If True, only one batch will be cloned.
+        """
 
         cursor = None
         self.destination_client.batch.configure(batch_size=batch_size, dynamic=True)
@@ -96,10 +104,14 @@ class MigrationManager:
                 break
 
             # Process data and add it to the destination
-            data, vectors, cursor = convert_data(response)
+            data, vectors, cursor = parsing_function(response)
             with self.destination_client.batch as batch:
                 for i, x in enumerate(data):
                     batch.add_data_object(x, self.class_name, vector=vectors[i])
 
             progress_bar.update(1)
+
+            if debug:
+                progress_bar.close()
+                break
         progress_bar.close()

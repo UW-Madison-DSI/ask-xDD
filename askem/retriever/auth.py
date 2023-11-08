@@ -1,6 +1,7 @@
 import os
-from fastapi.security import APIKeyHeader
+
 from fastapi import Depends, HTTPException, status
+from fastapi.security import APIKeyHeader
 
 API_KEY = os.getenv("RETRIEVER_APIKEY")
 API_KEY_NAME = "Api-Key"
