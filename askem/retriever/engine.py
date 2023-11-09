@@ -90,11 +90,9 @@ class ReactManager:
         entry_query: str,
         search_config: dict,
         openai_model_name: str,
-        retriever_endpoint: str,
         verbose: bool = False,
     ):
         self.entry_query = entry_query
-        self.retriever_endpoint = retriever_endpoint
         self.search_config = search_config
         self.openai_model_name = openai_model_name
         self.used_docs = []
@@ -142,15 +140,18 @@ class ReactManager:
 def react_search(
     question: str,
     openai_model_name: str = "gpt-4-1106-preview",
+    streaming: bool = False,
     **kwargs,
-) -> dict:
+) -> dict | Iterator[dict]:
     chain = ReactManager(
         entry_query=question,
         openai_model_name=openai_model_name,
         search_config=kwargs,
-        retriever_endpoint=os.getenv("RETRIEVER_URL"),
         verbose=False,
     )
 
-    answer = chain.run()
-    return {"answer": answer, "used_docs": chain.used_docs}
+    if not streaming:
+        answer = chain.run()
+        return {"answer": answer, "used_docs": chain.used_docs}
+
+    return chain.get_iterator()

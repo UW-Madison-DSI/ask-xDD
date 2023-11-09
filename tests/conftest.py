@@ -2,17 +2,41 @@ import os
 import sys
 
 import pytest
-import weaviate
 from dotenv import load_dotenv
 
 load_dotenv()
 sys.path.append("askem/retriever")
 
+from app import app
+
+API_BASE_URL = os.getenv("WEAVIATE_URL")
+API_HEADER = {
+    "Api-Key": os.getenv("RETRIEVER_APIKEY"),
+    "Content-Type": "application/json",
+}
+API_KEY = os.getenv("RETRIEVER_APIKEY")
+
 
 @pytest.fixture
 def weaviate_client():
-    client = weaviate.Client(
-        url=os.getenv("WEAVIATE_URL"),
-        auth_client_secret=weaviate.AuthApiKey(api_key=os.getenv("WEAVIATE_APIKEY")),
-    )
-    return client
+    import weaviate
+
+    key = os.getenv("WEAVIATE_APIKEY")
+    secret = weaviate.AuthApiKey(api_key=key)
+    with weaviate.Client(API_BASE_URL, secret) as client:
+        yield client
+
+
+@pytest.fixture
+def test_client():
+    from fastapi.testclient import TestClient
+
+    with TestClient(app, headers=API_HEADER) as client:
+        yield client
+
+
+@pytest.fixture
+def async_test_client():
+    from httpx import AsyncClient
+
+    return AsyncClient(app=app, base_url=API_BASE_URL, headers=API_HEADER)

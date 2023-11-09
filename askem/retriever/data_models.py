@@ -41,6 +41,7 @@ class BaseQuery(BaseModel):
 
 
 class HybridQuery(BaseQuery):
+    topic: Topic  # Override topic to be required
     screening_top_k: int = 100
 
 
