@@ -9,7 +9,6 @@ sys.path.append("askem/retriever")
 
 from app import app
 
-API_BASE_URL = os.getenv("WEAVIATE_URL")
 API_HEADER = {
     "Api-Key": os.getenv("RETRIEVER_APIKEY"),
     "Content-Type": "application/json",
@@ -23,7 +22,7 @@ def weaviate_client():
 
     key = os.getenv("WEAVIATE_APIKEY")
     secret = weaviate.AuthApiKey(api_key=key)
-    with weaviate.Client(API_BASE_URL, secret) as client:
+    with weaviate.Client(os.getenv("WEAVIATE_URL"), secret) as client:
         yield client
 
 
@@ -39,4 +38,4 @@ def test_client():
 def async_test_client():
     from httpx import AsyncClient
 
-    return AsyncClient(app=app, base_url=API_BASE_URL, headers=API_HEADER)
+    return AsyncClient(app=app, base_url=os.getenv("RETRIEVER_URL"), headers=API_HEADER)

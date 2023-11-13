@@ -53,5 +53,3 @@ async def test_react_search_streaming(async_test_client):
     }
     response = await async_test_client.post("/react_streaming", json=query)
     assert response.status_code == 200
-    results = [line for line in response.iter_lines() if line]
-    print(results)
