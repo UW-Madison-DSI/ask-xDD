@@ -14,7 +14,8 @@ app_settings = AppSettings(
 )
 
 
-async def main(app_settings):
+async def main(app_settings: AppSettings) -> None:
+    """Streamlit app."""
     st.set_page_config(page_title=app_settings.title, page_icon="📖")
     st.title(app_settings.title)
 

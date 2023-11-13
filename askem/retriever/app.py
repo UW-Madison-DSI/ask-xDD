@@ -3,7 +3,7 @@ import logging
 
 from auth import has_valid_api_key
 from data_models import BaseQuery, Document, HybridQuery, ReactQuery
-from engine import hybrid_search, react_search, vector_search
+from engine import ReactManager, hybrid_search, react_search, vector_search
 from fastapi import Depends, FastAPI
 from fastapi.responses import StreamingResponse
 
@@ -52,19 +52,34 @@ async def react_chain(query: ReactQuery) -> dict:
 
     logging.debug(f"Accessing react streaming route with: {query}")
 
-    step_iterator = react_search(streaming=True, **query.model_dump(exclude_none=True))
+    search_config = query.model_dump(exclude_none=True)
+    entry_query = search_config.pop("question")
+    openai_model_name = search_config.pop("openai_model_name")
+    chain = ReactManager(
+        entry_query=entry_query,
+        openai_model_name=openai_model_name,
+        search_config=search_config,
+    )
+    step_iterator = chain.get_iterator()
 
-    def formatted_iterator():
+    def _formatted_iterator():
         for step in step_iterator:
             if "output" in step:
-                messages = [step["output"]]
+                messages = [{"answer": step["output"]}]
+
             elif "intermediate_step" in step:
                 action_logs = step["intermediate_step"][0][0].log.split("\n")
-                messages = [log for log in action_logs if log]
+                messages = [{"thoughts": log} for log in action_logs if log]
+
+                # Append used documents
+                serialized_docs = [
+                    doc.model_dump(exclude_none=True) for doc in chain.latest_used_docs
+                ]
+                messages.append({"used_docs": serialized_docs})
             else:
                 raise ValueError(f"Unknown step: {step}")
 
             for message in messages:
-                yield f"data: {json.dumps(message)}\n\n"
+                yield json.dumps(message) + "\n"
 
-    return StreamingResponse(formatted_iterator(), media_type="text/event-stream")
+    return StreamingResponse(_formatted_iterator(), media_type="application/json")

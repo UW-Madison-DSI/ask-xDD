@@ -30,7 +30,7 @@ def weaviate_client():
 def test_client():
     from fastapi.testclient import TestClient
 
-    with TestClient(app, headers=API_HEADER) as client:
+    with TestClient(app=app, headers=API_HEADER) as client:
         yield client
 
 

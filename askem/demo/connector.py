@@ -1,3 +1,4 @@
+import ast
 import os
 from typing import AsyncGenerator
 
@@ -10,7 +11,7 @@ async def query_react(
     top_k: int,
     model_name: str,
     screening_top_k: int = None,
-) -> AsyncGenerator[str, None]:
+) -> AsyncGenerator[dict, None]:
     """Access react in streaming mode.
 
     Usage:
@@ -41,6 +42,7 @@ async def query_react(
     async with AsyncClient(headers=headers, timeout=300).stream(
         "POST", os.getenv("ASYNC_REACT_URL"), json=data
     ) as response:
-        async for chunk in response.aiter_text():
+        async for chunk in response.aiter_raw():
+            chunk = chunk.decode("utf-8")
             if chunk:  # Only yield non-empty chunks
-                yield chunk.lstrip("data: ")
+                yield ast.literal_eval(chunk)

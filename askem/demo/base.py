@@ -90,6 +90,35 @@ def chat_log(
     render(message)
 
 
+def render_doc(doc: dict) -> None:
+    """Render document in chat."""
+
+    append_citation(doc)
+    append_title(doc)
+    chat_log(
+        role="assistant",
+        content=doc["text"],
+        container="expander",
+        avatar="📄",
+        title=f"{doc['title']} [{doc['citation']}]",
+        link=f"https://xdd.wisc.edu/api/v2/articles/?docid={doc['paper_id']}",
+    )
+
+
+def render_chunk(chunk: dict, verbose: bool) -> None:
+    """Decode different types of chunk."""
+
+    if "thoughts" in chunk and verbose:
+        chat_log(role="assistant", content=chunk["thoughts"])
+
+    if "used_docs" in chunk:
+        for doc in chunk["used_docs"]:
+            render_doc(doc)
+
+    if "answer" in chunk:
+        chat_log(role="assistant", content=chunk["answer"])
+
+
 async def search(
     question: str,
     topic: str,
@@ -110,11 +139,5 @@ async def search(
             model_name=model_name,
             screening_top_k=screening_top_k,
         ):
-            if verbose:
-                with st.spinner():
-                    chat_log(role="assistant", content=chunk)
-
-            last_chunk = chunk
-
-    if not verbose:
-        chat_log(role="assistant", content=last_chunk)
+            with st.spinner():
+                render_chunk(chunk, verbose=verbose)

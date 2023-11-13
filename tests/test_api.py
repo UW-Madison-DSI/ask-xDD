@@ -16,10 +16,10 @@ def test_vector_search(test_client):
 
 def test_hybrid_search(test_client):
     query = {
-        "question": "What is the incubation period of COVID-19?",
-        "top_k": 5,
+        "question": "What is COVID?",
         "topic": "covid",
-        "screening_top_k": 500,
+        "top_k": 5,
+        "screening_top_k": 1000,
     }
     response = test_client.post("/hybrid", json=query)
     assert response.status_code == 200
