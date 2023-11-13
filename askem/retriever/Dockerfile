@@ -12,4 +12,4 @@ COPY . .
 
 # Serving
 EXPOSE 4502
-ENTRYPOINT ["uvicorn", "--app-dir=/app", "app:app", "--host", "0.0.0.0", "--port", "4502"]
+ENTRYPOINT ["uvicorn", "--app-dir=/app", "app:app", "--host", "0.0.0.0", "--port", "4502", "--timeout-keep-alive", "300"]
