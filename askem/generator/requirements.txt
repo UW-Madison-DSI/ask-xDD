@@ -1,4 +1,4 @@
 transformers
 fastapi
-pydantic==1.10.11 
+pydantic>=1.10,<2.0
 uvicorn
