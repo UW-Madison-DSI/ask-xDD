@@ -9,8 +9,9 @@ authors = [
     { name = "Jason Lo", email = "jason.lo@wisc.edu" }
 ]
 dependencies = [
+    "weaviate-client==3.25.3",
     "farm-haystack==1.16.1",
-    "weaviate-client==3.24.1",
+    "pydantic>=1.10,<2.0",
 ]
 
 [build-system]

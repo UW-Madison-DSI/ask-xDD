@@ -1,6 +1,6 @@
 from enum import Enum
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, validator
 
 
 class ClassName(str, Enum):
@@ -68,7 +68,7 @@ class Document(BaseModel):
     cosmos_object_id: str | None = None
     distance: float | None = None
 
-    @field_validator("topic")
+    @validator("topic")
     @classmethod
     def check_and_normalize_topic(cls, v: str):
         v = v.lower()
@@ -77,7 +77,7 @@ class Document(BaseModel):
         assert v.upper() in Topic.__members__, f"{v=} is not a valid topic"
         return Topic(v)
 
-    @field_validator("doc_type")
+    @validator("doc_type")
     @classmethod
     def check_doc_type(cls, v: str):
         v = v.lower()

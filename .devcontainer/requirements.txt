@@ -3,11 +3,9 @@ nltk
 openai
 python-dotenv
 captum
-pydantic==1.10.11
+pydantic>=1.10,<2.0
 farm-haystack==1.16.1
 weaviate-client==3.24.1
-farm-haystack[weaviate]
-farm-haystack[faiss]
 bert-score
 pytest
 pre-commit
