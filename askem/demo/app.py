@@ -55,7 +55,7 @@ async def main(app_settings: AppSettings) -> None:
         render(message)
 
     # Chat input
-    if question := st.chat_input("Ask a question about COVID-19", key="question"):
+    if question := st.chat_input("Ask a question.", key="question"):
         await search(question=question, **st.session_state.search_settings)
 
     if run_from_preset:
