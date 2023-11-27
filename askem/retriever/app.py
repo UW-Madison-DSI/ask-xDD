@@ -23,7 +23,7 @@ async def get_root():
 
 
 @app.post("/vector", dependencies=[Depends(has_valid_api_key)])
-async def get_docs_from_vector(query: BaseQuery) -> list[Document]:
+async def vector(query: BaseQuery) -> list[Document]:
     """Search relevant documents using vector search."""
 
     logging.debug(f"Accessing vector route with: {query}")
@@ -31,7 +31,7 @@ async def get_docs_from_vector(query: BaseQuery) -> list[Document]:
 
 
 @app.post("/hybrid", dependencies=[Depends(has_valid_api_key)])
-async def hybrid_get_docs(query: HybridQuery) -> list[Document]:
+async def hybrid(query: HybridQuery) -> list[Document]:
     """Hybrid search relevant documents."""
 
     logging.debug(f"Accessing hybrid route with: {query}")
@@ -39,7 +39,7 @@ async def hybrid_get_docs(query: HybridQuery) -> list[Document]:
 
 
 @app.post("/react", dependencies=[Depends(has_valid_api_key)])
-def react_chain(query: ReactQuery) -> dict:
+def react(query: ReactQuery) -> dict:
     """ReAct search chain."""
 
     logging.debug(f"Accessing react route with: {query}")
@@ -47,7 +47,7 @@ def react_chain(query: ReactQuery) -> dict:
 
 
 @app.post("/react_streaming", dependencies=[Depends(has_valid_api_key)])
-async def react_chain(query: ReactQuery) -> dict:
+async def react_streaming(query: ReactQuery) -> dict:
     """ReAct search chain."""
 
     logging.debug(f"Accessing react streaming route with: {query}")
