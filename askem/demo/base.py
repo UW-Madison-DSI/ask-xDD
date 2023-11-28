@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -53,10 +54,14 @@ def append_title(document: dict) -> None:
         )
         xdd_response.raise_for_status()
         xdd_data = xdd_response.json()
-        print(xdd_data)
         document["title"] = xdd_data["success"]["data"][0]["title"]
     except Exception:
         document["title"] = ""
+
+
+def fix_string(string: str) -> str:
+    """Fix string for markdown."""
+    return string.encode("utf-16", "surrogatepass").decode("utf-16")
 
 
 def render(message: Message) -> None:
@@ -70,7 +75,10 @@ def render(message: Message) -> None:
                 title = message.content[:80] + "..."
 
             with st.expander(title):
-                st.markdown(message.content)
+                try:
+                    st.markdown(message.content)
+                except UnicodeEncodeError:
+                    st.markdown(fix_string(message.content))
                 if message.link:
                     st.markdown(f"Source: {message.link}")
         else:

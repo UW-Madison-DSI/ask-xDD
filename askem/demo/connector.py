@@ -36,6 +36,7 @@ async def query_react(
         "topic": topic,
         "top_k": top_k,
         "model_name": model_name,
+        "doc_type": "paragraph",  # TODO: Move this to UI
         "screening_top_k": screening_top_k,
     }
 
