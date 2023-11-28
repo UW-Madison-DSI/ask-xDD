@@ -46,7 +46,7 @@ async def main(app_settings: AppSettings) -> None:
         search_settings["model_name"] = st.radio("model", app_settings.model_names)
         search_settings["top_k"] = st.number_input("retriever top-k", value=5)
         search_settings["screening_top_k"] = st.number_input(
-            "elastic search screening phase top-k", value=1000
+            "elastic search screening phase top-k", value=100
         )
         search_settings["verbose"] = st.checkbox("verbose", value=True)
 
