@@ -1,7 +1,10 @@
 import asyncio
+import logging
 
 import streamlit as st
 from base import AppSettings, render, search
+
+logging.basicConfig(level=logging.DEBUG)
 
 app_settings = AppSettings(
     title="XDD-LLM Question answering",
