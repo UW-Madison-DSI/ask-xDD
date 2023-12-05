@@ -1,4 +1,5 @@
-# Askem xdd-COVID retrieval-augmented generation prototype
+# ASK-xDD
+Askem retrieval-augmented generation prototype
 
 Repo: <https://github.com/AFIDSI/askem>
 
