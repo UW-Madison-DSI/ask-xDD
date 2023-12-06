@@ -8,7 +8,11 @@ def test_health(test_client):
 
 
 def test_vector_search(test_client):
-    query = {"question": "What is the incubation period of COVID-19?", "top_k": 5}
+    query = {
+        "topic": "covid",
+        "question": "What is the incubation period of COVID-19?",
+        "top_k": 5,
+    }
     response = test_client.post("/vector", json=query)
     assert response.status_code == 200
     assert len(response.json()) <= 5
@@ -16,6 +20,7 @@ def test_vector_search(test_client):
 
 def test_hybrid_search(test_client):
     query = {
+        "topic": "covid",
         "question": "What is COVID?",
         "topic": "covid",
         "top_k": 5,
@@ -28,9 +33,9 @@ def test_hybrid_search(test_client):
 
 def test_react_search(test_client):
     query = {
+        "topic": "covid",
         "question": "What is the incubation period of COVID-19?",
         "top_k": 5,
-        "topic": "covid",
         "screening_top_k": 1000,
     }
     response = test_client.post("/react", json=query)

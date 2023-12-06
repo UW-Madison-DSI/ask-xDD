@@ -15,6 +15,18 @@ API_HEADER = {
 }
 API_KEY = os.getenv("RETRIEVER_APIKEY")
 
+PROD_API_URL = "http://cosmos0001.chtc.wisc.edu:4502"
+
+
+@pytest.fixture
+def prod_api_url():
+    return PROD_API_URL
+
+
+@pytest.fixture
+def prod_api_header():
+    return API_HEADER
+
 
 @pytest.fixture
 def weaviate_client():
