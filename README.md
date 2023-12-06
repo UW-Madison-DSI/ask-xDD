@@ -1,4 +1,5 @@
 # ASK-xDD
+
 Askem retrieval-augmented generation prototype
 
 Repo: <https://github.com/AFIDSI/askem>
@@ -46,6 +47,7 @@ ENDPOINT = "http://cosmos0001.chtc.wisc.edu:4502/hybrid"
 
 headers = {"Content-Type": "application/json", "Api-Key": APIKEY}
 data = {
+    "topic": "covid",
     "question": "What is SIDARTHE model?",
     "top_k": 3,
 }
@@ -102,6 +104,7 @@ ENDPOINT = "http://cosmos0001.chtc.wisc.edu:4502/react"
 
 headers = {"Content-Type": "application/json", "Api-Key": APIKEY}
 data = {
+    "topic": "covid",
     "question": "What is SIDARTHE model?",
     "top_k": 3,
 }
