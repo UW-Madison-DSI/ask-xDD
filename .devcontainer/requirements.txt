@@ -17,3 +17,6 @@ isort
 gspread
 spacy
 unicodedata2
+pytest
+pytest-httpx
+pytest-asyncio
