@@ -1,0 +1,10 @@
+Which Conservation Laws matter for climate? Mass, Energy, Momentum, Angular Momentum, and Charge.
+What is the continuity equation and why is it important?
+In 2D Navier-Stokes equation, how does viscosity appear to influence the pressure zones? Do the observed changes in the field make intuitive sense?
+Would adding salt to water increase or decrease the viscosity of water? Why?
+How would the increase or decrease in temperature influence the viscosity? Why?
+Thought experiment: Based on the solubility (chemical and physical properties) of CFC-11, CFC-12 and SF6, where would these inert gases be most soluble in the ocean water? Start from the Artic (North Pole) and move to the Antarctica (South Pole). Going East to West, consider the Atlantic Ocean, Indian Ocean, and Pacific Ocean.
+Given CFCs and SF6 are not naturally occurring, what ocean body (and what part) should contain the highest concentration?
+Based on CFCs and SF6 should have highest concentration in North Atlantic Ocean, where would you propose placing probes or monitoring stations to alert you that some larger scale phenomena may be underway?
+Describe at least 2 mechanisms (or processes, non-anthropogenic) by which the ocean will become a source of CFCs and SF6.
+Based on 5a above, what would be the apparent exchange rate between the Northern and Southern hemisphere for the CFCs and SF6.
