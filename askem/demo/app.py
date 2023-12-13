@@ -8,11 +8,11 @@ logging.basicConfig(level=logging.DEBUG)
 
 app_settings = AppSettings(
     title="XDD-LLM Question answering",
-    topics=["covid", "dolomites", "climate"],
+    topics=["covid", "dolomites", "climate_change"],
     preset_questions_paths=[
         "preset_questions/preset_covid_q.txt",
         "preset_questions/preset_dolomites_q.txt",
-        "preset_questions/preset_climate_q.txt",
+        "preset_questions/preset_climate_change_q.txt",
     ],
     model_names=["gpt-3.5-turbo-16k", "gpt-4", "gpt-4-1106-preview"],
 )
