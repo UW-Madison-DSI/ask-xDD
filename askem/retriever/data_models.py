@@ -16,6 +16,8 @@ class DocType(str, Enum):
 
 
 class Topic(str, Enum):
+    """Topic enum, must match with xDD dataset values and Weaviate topics."""
+
     COVID = "covid"
     DOLOMITES = "dolomites"
     CLIMATE_CHANGE = "climate_change"

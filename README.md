@@ -165,4 +165,12 @@ response.json()
     python askem/deploy.py --input-dir "data/debug_data/figure_test" --topic "covid-19" --doc-type "figure" --weaviate-url "url_to_weaviate"
     ```
 
+### To add a new topic
+
+1. In [retriever data models](askem/retriever/data_models.py), add new topic to `Topic` enum class
+1. Ingest data with the new topic
+1. Make sure xDD articles API has the new topic `dataset` available, they use the same name without any translation layer.
+1. Add new preset demo questions to `askem/demo/present_questions`, e.g.: [climate change preset questions](askem/demo/preset_questions/preset_climate_change_q.txt)
+1. Update demo config in [demo](askem/demo/app.py), similar to this [commit](https://github.com/UW-Madison-DSI/askem/commit/785e03bac55bc7b87b6880132e6f4019e5174b98)
+
 </details>
