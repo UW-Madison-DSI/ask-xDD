@@ -1,3 +1,4 @@
+What are the governing equations in the SIR model for COVID19
 SIR model formula
 Link to real-world contact matrix data
 Link to real-world population distribution data
