@@ -404,7 +404,7 @@ class HaystackPreprocessor:
                 {
                     "preprocessor_id": self.preprocessor_id,
                     "paper_id": file_stem,
-                    "type": "paragraph",
+                    "doc_type": "paragraph",
                     "topic": topic,
                     "text_content": content,
                 }
@@ -427,7 +427,7 @@ class HaystackPreprocessor:
             {
                 "paper_id": paper_id,
                 "cosmos_object_id": cosmos_object_id,
-                "type": doc_type,
+                "doc_type": doc_type,
                 "topic": topic,
                 "text_content": content,
             }

@@ -16,8 +16,11 @@ class DocType(str, Enum):
 
 
 class Topic(str, Enum):
+    """Topic enum, must match with xDD dataset values and Weaviate topics."""
+
     COVID = "covid"
     DOLOMITES = "dolomites"
+    CLIMATE_CHANGE = "climate_change"
 
 
 class BaseQuery(BaseModel):
@@ -74,6 +77,7 @@ class Document(BaseModel):
         v = v.lower()
         if v in ["covid-19", "covid", "xdd-covid-19"]:
             v = Topic.COVID
+
         assert v.upper() in Topic.__members__, f"{v=} is not a valid topic"
         return Topic(v)
 
