@@ -19,7 +19,6 @@ The end users of our system are ASKEM performers who access it using REST API. Y
 - Enhance performance tailored to Hackathon scenarios
 - Integrate `ReAct` for better handling of complex queries
 - Implement `hybrid` search to refine keyword query results
-- Eliminated `**generator**` to increase versatility
 
 ### Retriever overview
 

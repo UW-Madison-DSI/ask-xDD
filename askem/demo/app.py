@@ -7,7 +7,7 @@ from base import AppSettings, render, search
 logging.basicConfig(level=logging.DEBUG)
 
 app_settings = AppSettings(
-    title="XDD-LLM Question answering",
+    title="ASK-xDD",
     topics=["covid", "dolomites", "climate_change"],
     preset_questions_paths=[
         "preset_questions/preset_covid_q.txt",
