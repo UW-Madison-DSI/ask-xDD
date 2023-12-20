@@ -1,3 +1,5 @@
+.streamlit
+trulens_eval.db
 secrets/
 data/hybrid_retrieval
 code
