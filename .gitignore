@@ -1,3 +1,5 @@
+.streamlit/
+*.db
 secrets/
 data/hybrid_retrieval
 code
