@@ -27,7 +27,7 @@ async def vector(query: BaseQuery) -> list[Document]:
     """Search relevant documents using vector search."""
 
     logging.debug(f"Accessing vector route with: {query}")
-    return vector_search(**query.dict(exclude_none=True))
+    return vector_search(**query.model_dump(exclude_none=True))
 
 
 @app.post("/hybrid", dependencies=[Depends(has_valid_api_key)])
@@ -35,7 +35,7 @@ async def hybrid(query: HybridQuery) -> list[Document]:
     """Hybrid search relevant documents."""
 
     logging.debug(f"Accessing hybrid route with: {query}")
-    return hybrid_search(**query.dict(exclude_none=True))
+    return hybrid_search(**query.model_dump(exclude_none=True))
 
 
 @app.post("/react", dependencies=[Depends(has_valid_api_key)])
@@ -43,7 +43,7 @@ def react(query: ReactQuery) -> dict:
     """ReAct search chain."""
 
     logging.debug(f"Accessing react route with: {query}")
-    return react_search(**query.dict(exclude_none=True))
+    return react_search(**query.model_dump(exclude_none=True))
 
 
 @app.post("/react_streaming", dependencies=[Depends(has_valid_api_key)])
@@ -52,7 +52,7 @@ async def react_streaming(query: ReactQuery) -> dict:
 
     logging.debug(f"Accessing react streaming route with: {query}")
 
-    search_config = query.dict(exclude_none=True)
+    search_config = query.model_dump(exclude_none=True)
     entry_query = search_config.pop("question")
     openai_model_name = search_config.pop("openai_model_name")
     chain = ReactManager(
@@ -73,7 +73,7 @@ async def react_streaming(query: ReactQuery) -> dict:
 
                 # Append used documents
                 serialized_docs = [
-                    doc.dict(exclude_none=True) for doc in chain.latest_used_docs
+                    doc.model_dump(exclude_none=True) for doc in chain.latest_used_docs
                 ]
                 messages.append({"used_docs": serialized_docs})
             else:
