@@ -10,8 +10,8 @@ from fastapi.responses import StreamingResponse
 logging.basicConfig(level=logging.DEBUG)
 
 app = FastAPI(
-    title="xdd-llm-prototype",
-    description="API for the xdd-llm-prototype.",
+    title="ASK-xDD API",
+    description="API for the ASK-xDD.",
     version="0.3.1",
 )
 

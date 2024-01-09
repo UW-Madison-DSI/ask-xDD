@@ -40,8 +40,10 @@ async def query_react(
         "screening_top_k": screening_top_k,
     }
 
+    url = os.getenv("RETRIEVER_URL") + "/react_streaming"
+
     async with AsyncClient(headers=headers, timeout=300).stream(
-        "POST", os.getenv("ASYNC_REACT_URL"), json=data
+        "POST", url, json=data
     ) as response:
         async for chunk in response.aiter_raw():
             chunk = chunk.decode("utf-8")
