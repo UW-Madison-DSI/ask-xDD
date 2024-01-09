@@ -6,9 +6,11 @@ import click
 import weaviate
 from dotenv import load_dotenv
 from tqdm import tqdm
+import pickle
 
 from askem.preprocessing import ASKEMPreprocessor, HaystackPreprocessor
 from askem.retriever.data_models import ClassName, DocType, Topic
+from askem.utils import count_docs
 
 load_dotenv()
 
@@ -19,6 +21,7 @@ def import_documents(
     class_name: ClassName,
     topic: Topic,
     doc_type: DocType,
+    duplicate_check: bool = False,
     preprocessor: ASKEMPreprocessor = None,
 ) -> None:
     """Ingest documents into Weaviate."""
@@ -28,11 +31,24 @@ def import_documents(
 
     input_files = Path(input_dir).glob("**/*.txt")
 
+    existing_docids = set([])
+    if duplicate_check:
+        if not os.path.exists("document_counts.pkl"):
+            print("Gathering document IDs ingested...")
+            count_docs(client)
+        with open("document_counts.pkl", "rb") as fin:
+            docs = pickle.load(fin)
+        for topic, docids in docs.items():
+            existing_docids = existing_docids.union(docids)
+
     # Batching
     client.batch.configure(batch_size=32, dynamic=True)
     with client.batch as batch:
         # article level loop (each file)
         for input_file in tqdm(list(input_files)):
+            # Skip if document exists in the weaviate docid dump.
+            if input_file.name.replace(".txt", "") in existing_docids:
+                continue
             docs = preprocessor.run(
                 input_file=input_file, topic=topic, doc_type=doc_type
             )
@@ -55,7 +71,9 @@ def import_documents(
     type=click.Choice([e.value for e in DocType], case_sensitive=False),
 )
 @click.option("--weaviate-url", help="Weaviate URL.", type=str, required=False)
-def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str) -> None:
+@click.option("--duplicate-check", help="Protect against ingesting documents. Compares against the dumped docid list if it exists (and creates it if it doesn't)",
+        type=bool, default=False, required=False)
+def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str, duplicate_check: bool) -> None:
     """Ingesting data into weaviate database.
 
     Usage:
@@ -77,6 +95,7 @@ def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str) -> None:
         input_dir=input_dir,
         topic=topic,
         doc_type=doc_type,
+        duplicate_check=duplicate_check,
     )
 
 
