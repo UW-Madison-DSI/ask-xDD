@@ -1,12 +1,12 @@
 import logging
 import os
+import pickle
 from pathlib import Path
 
 import click
 import weaviate
 from dotenv import load_dotenv
 from tqdm import tqdm
-import pickle
 
 from askem.preprocessing import ASKEMPreprocessor, HaystackPreprocessor
 from askem.retriever.data_models import ClassName, DocType, Topic
@@ -21,7 +21,7 @@ def import_documents(
     class_name: ClassName,
     topic: Topic,
     doc_type: DocType,
-    duplicate_check: bool = False,
+    duplicate_check: bool = True,
     preprocessor: ASKEMPreprocessor = None,
 ) -> None:
     """Ingest documents into Weaviate."""
@@ -47,8 +47,9 @@ def import_documents(
         # article level loop (each file)
         for input_file in tqdm(list(input_files)):
             # Skip if document exists in the weaviate docid dump.
-            if input_file.name.replace(".txt", "") in existing_docids:
-                continue
+            if duplicate_check:
+                if input_file.name.replace(".txt", "") in existing_docids:
+                    continue
             docs = preprocessor.run(
                 input_file=input_file, topic=topic, doc_type=doc_type
             )
@@ -71,9 +72,16 @@ def import_documents(
     type=click.Choice([e.value for e in DocType], case_sensitive=False),
 )
 @click.option("--weaviate-url", help="Weaviate URL.", type=str, required=False)
-@click.option("--duplicate-check", help="Protect against ingesting documents. Compares against the dumped docid list if it exists (and creates it if it doesn't)",
-        type=bool, default=False, required=False)
-def main(input_dir: str, topic: str, doc_type: str, weaviate_url: str, duplicate_check: bool) -> None:
+@click.option(
+    "--duplicate-check",
+    help="Protect against ingesting documents. Compares against the dumped docid list if it exists (and creates it if it doesn't)",
+    type=bool,
+    default=True,
+    required=False,
+)
+def main(
+    input_dir: str, topic: str, doc_type: str, weaviate_url: str, duplicate_check: bool
+) -> None:
     """Ingesting data into weaviate database.
 
     Usage:
