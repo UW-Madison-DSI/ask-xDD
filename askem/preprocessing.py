@@ -136,6 +136,7 @@ class ModifiedPreProcessor(PreProcessor):
 
         lines = text.splitlines()
         lines = [line.strip() for line in lines if line.strip()]
+        if lines == []: return ""
 
         processed_lines = []
         current_line = lines[0]
