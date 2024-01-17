@@ -1,5 +1,4 @@
 import numpy as np
-from tqdm import tqdm
 from trulens_eval import Feedback, Select, Tru, TruCustomApp
 from trulens_eval.feedback import Groundedness
 from trulens_eval.feedback.provider.openai import OpenAI as fOpenAI
@@ -83,7 +82,12 @@ class Eval:
 
         self.tru = Tru("sqlite:///data/trulens_eval.db")
         self.fopenai = fOpenAI(model_engine=self.model_engine)
-        self._grounded = CustomGroundedness(groundedness_provider=self.fopenai)
+
+        # Custom max groundedness
+        # self._grounded = CustomGroundedness(groundedness_provider=self.fopenai)
+
+        # Default mean groundedness
+        self._grounded = Groundedness(groundedness_provider=self.fopenai)
 
     def create_feedbacks(self) -> list[Feedback]:
         """Create feedbacks for Trulens."""
@@ -113,7 +117,7 @@ class Eval:
             )
             .on(Select.RecordCalls.retrieve.args.query)
             .on(Select.RecordCalls.retrieve.rets.collect())
-            .aggregate(np.max)  # Aggregate over all context chunks (max relevance)
+            .aggregate(np.mean)  # Aggregate over all context chunks (max relevance)
         )
 
         return [f_groundedness, f_qa_relevance, f_context_relevance]
