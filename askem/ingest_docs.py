@@ -38,7 +38,7 @@ def import_documents(
             count_docs(client)
         with open("document_counts.pkl", "rb") as fin:
             docs = pickle.load(fin)
-        for topic, docids in docs.items():
+        for _, docids in docs.items():
             existing_docids = existing_docids.union(docids)
 
     # Batching
