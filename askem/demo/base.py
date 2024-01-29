@@ -1,4 +1,3 @@
-import logging
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -9,21 +8,21 @@ from connector import query_react
 
 
 @dataclass
+class Topic:
+    name: str  # backend name, must match with xdd dataset
+    label: str  # frontend label
+    preset_questions_path: str | Path
+
+    def __post_init__(self) -> None:
+        with open(self.preset_questions_path, "r") as f:
+            self.preset_questions = f.read().splitlines()
+
+
+@dataclass
 class AppSettings:
     title: str
-    topics: list[str]
-    preset_questions_paths: list[Path, str]
+    topics: list[Topic]
     model_names: list[str]
-
-    @st.cache_data
-    def preset_questions(self) -> dict[str, list[str]]:
-        """Load preset questions from file."""
-
-        preset_questions = {}
-        for topic, path in zip(self.topics, self.preset_questions_paths):
-            with open(path, "r") as f:
-                preset_questions[topic] = f.read().splitlines()
-        return preset_questions
 
 
 @dataclass
