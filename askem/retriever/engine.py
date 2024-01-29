@@ -5,10 +5,11 @@ from typing import Iterator
 import langchain
 import requests
 import tenacity
-from base import get_client, get_documents
-from data_models import Document
 from langchain.agents import initialize_agent
 from langchain.agents.agent_iterator import AgentExecutorIterator
+
+from .base import get_client, get_documents
+from .data_models import Document
 
 WEAVIATE_CLIENT = get_client()
 
@@ -72,11 +73,6 @@ def hybrid_search(
     )
 
 
-# React search
-@tenacity.retry(
-    wait=tenacity.wait_random_exponential(min=3, max=15),
-    stop=tenacity.stop_after_attempt(6),
-)
 def get_llm(model_name: str):
     """Get LLM instance."""
     return langchain.chat_models.ChatOpenAI(model_name=model_name, temperature=0)
@@ -87,12 +83,10 @@ class ReactManager:
 
     def __init__(
         self,
-        entry_query: str,
         search_config: dict,
         openai_model_name: str,
         verbose: bool = False,
     ):
-        self.entry_query = entry_query
         self.search_config = search_config
         self.openai_model_name = openai_model_name
         self.used_docs = []
@@ -128,30 +122,42 @@ class ReactManager:
         self.latest_used_docs = relevant_docs
         return "\n\n".join([r.text for r in relevant_docs])
 
-    def get_iterator(self) -> AgentExecutorIterator:
+    def get_iterator(self, question: str) -> AgentExecutorIterator:
         """ReAct iterator."""
-        return self.agent_executor.iter(inputs={"input": self.entry_query})
+        return self.agent_executor.iter(inputs={"input": question})
 
-    def run(self) -> str:
+    def run(self, question: str) -> str:
         """Run the chain until the end."""
-        return self.agent_executor.invoke({"input", self.entry_query})["output"]
+        return self.agent_executor.invoke({"input", question})["output"]
 
 
+# @tenacity.retry(
+#     wait=tenacity.wait_random_exponential(min=3, max=15),
+#     stop=tenacity.stop_after_attempt(6),
+# )
 def react_search(
     question: str,
+    topic: str,
     openai_model_name: str = "gpt-4-1106-preview",
     streaming: bool = False,
     **kwargs,
 ) -> dict | Iterator[dict]:
+    """Convinience function to run ReAct search."""
+
+    kwargs["topic"] = topic
     chain = ReactManager(
-        entry_query=question,
         openai_model_name=openai_model_name,
         search_config=kwargs,
         verbose=False,
     )
 
     if not streaming:
-        answer = chain.run()
-        return {"answer": answer, "used_docs": chain.used_docs}
+        answer = chain.run(question)
+        output = {"answer": answer, "used_docs": chain.used_docs}
 
-    return chain.get_iterator()
+        # Reset used docs and latest used docs
+        chain.used_docs = []
+        chain.latest_used_docs = []
+        return output
+
+    return chain.get_iterator(question)

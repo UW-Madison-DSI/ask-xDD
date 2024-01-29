@@ -1,3 +1,4 @@
+ingest/
 .streamlit/
 *.db
 secrets/
