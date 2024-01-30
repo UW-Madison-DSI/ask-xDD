@@ -1,9 +1,16 @@
+import os
+import pickle
 import secrets
 import string
 import textwrap
+
+import elasticsearch
 import weaviate
-import pickle
+from dotenv import load_dotenv
 from tqdm import tqdm
+
+load_dotenv()
+
 
 def generate_api_key(length=32) -> str:
     characters = string.ascii_letters + string.digits
@@ -13,6 +20,38 @@ def generate_api_key(length=32) -> str:
 
 def wrap_print(text, width=150) -> None:
     print(textwrap.fill(text, width=width))
+
+
+def get_text(docid: str) -> str:
+    """Get text from ElasticSearch.
+    1. Connect to ES
+    2. Look up document
+    3. Return contents field
+    """
+
+    ES_HOST = os.getenv("ES_HOST")
+    ES_CERT_PATH = os.getenv("ES_CERT_PATH")
+    ES_USER = os.getenv("ES_USER")
+    ES_PASSWORD = os.getenv("ES_PASSWORD")
+
+    if not os.path.exists(ES_CERT_PATH):
+        raise Exception("No ES certs provided!")
+
+    client = elasticsearch.Elasticsearch(
+        hosts=[ES_HOST],
+        request_timeout=30,
+        verify_certs=True,
+        ca_certs=ES_CERT_PATH,
+        basic_auth=(ES_USER, ES_PASSWORD),
+    )
+
+    article = client.get(id=docid, index="articles")
+    contents = article["_source"]["contents"]
+
+    if isinstance(contents, list):
+        contents = contents[0]
+    return contents
+
 
 def get_batch_with_cursor(
     client, class_name, class_properties, batch_size, cursor=None
@@ -27,6 +66,7 @@ def get_batch_with_cursor(
         return query.with_after(cursor).do()
     else:
         return query.do()
+
 
 def count_docs(
     client: weaviate.Client,
