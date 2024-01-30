@@ -3,8 +3,9 @@ import logging
 import os
 
 import weaviate
-from data_models import Document
 from fastapi import HTTPException
+
+from .data_models import Document
 
 
 def get_client(url: str = None, apikey: str = None) -> weaviate.Client:

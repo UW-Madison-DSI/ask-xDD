@@ -21,6 +21,7 @@ class Topic(str, Enum):
     COVID = "covid"
     DOLOMITES = "dolomites"
     CLIMATE_CHANGE = "climate_change"
+    CRITICAL_MAAS = "criticalmaas"
 
 
 class BaseQuery(BaseModel):
