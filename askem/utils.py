@@ -1,9 +1,14 @@
 import secrets
+import os
 import string
 import textwrap
 import weaviate
+from dotenv import load_dotenv
+import elasticsearch
 import pickle
 from tqdm import tqdm
+
+load_dotenv()
 
 def generate_api_key(length=32) -> str:
     characters = string.ascii_letters + string.digits
@@ -13,6 +18,23 @@ def generate_api_key(length=32) -> str:
 
 def wrap_print(text, width=150) -> None:
     print(textwrap.fill(text, width=width))
+
+def get_text(docid: str) -> str:
+    """
+    1. Connect to ES
+    2. Look up document
+    3. Return contents field
+    """
+
+    cert_path = "ca.crt"
+    if not os.path.exists(cert_path):
+        raise Exception("No ES certs provided!")
+    es = elasticsearch.Elasticsearch(hosts=[os.getenv("ES_HOST")], request_timeout=100, verify_certs=True, ca_certs="ca.crt",  basic_auth=(os.getenv("ES_USER"), os.getenv("ES_PASSWORD")))
+    art = es.get(id=docid, index="articles")
+    contents = art['_source']['contents']
+    if isinstance(contents, list):
+        contents = contents[0]
+    return contents
 
 def get_batch_with_cursor(
     client, class_name, class_properties, batch_size, cursor=None
