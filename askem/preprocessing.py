@@ -4,6 +4,7 @@ import unicodedata
 from copy import deepcopy
 from pathlib import Path
 from typing import List, Optional, Protocol, Tuple, Union
+import hashlib
 
 from haystack import Pipeline
 from haystack.errors import HaystackError
@@ -17,6 +18,11 @@ MIN_WORDS = 100
 WEAVIATE_DOC_TYPES = [
     x.value for x in DocType
 ]  # Valid values in Weaviate's `type` field
+
+
+def get_hash(text: str) -> str:
+    """Get SHA256 hash of text for `hashed_text` property in Weaviate."""
+    return hashlib.sha256(text.encode()).hexdigest()
 
 
 def update_count(d: dict, words: Optional[List[str]]) -> None:
@@ -136,7 +142,8 @@ class ModifiedPreProcessor(PreProcessor):
 
         lines = text.splitlines()
         lines = [line.strip() for line in lines if line.strip()]
-        if lines == []: return ""
+        if lines == []:
+            return ""
 
         processed_lines = []
         current_line = lines[0]
@@ -391,7 +398,9 @@ class HaystackPreprocessor:
         pipeline.add_node(preprocessor, name="preprocessor", inputs=["text_converter"])
         return pipeline
 
-    def _process_paragraph_files(self, input_file: str, topic: str) -> List[dict]:
+    def _process_paragraph_files(
+        self, input_file: str, topics: list[str]
+    ) -> List[dict]:
         file_stem = Path(input_file).stem
         results = self.haystack_pipeline.run(file_paths=[input_file])
 
@@ -405,15 +414,16 @@ class HaystackPreprocessor:
                     "preprocessor_id": self.preprocessor_id,
                     "paper_id": file_stem,
                     "doc_type": "paragraph",
-                    "topic": topic,
+                    "topic_list": topics,
                     "text_content": content,
+                    "hashed_text": get_hash(content),
                 }
             )
 
         return outputs
 
     def _process_fig_and_table_files(
-        self, input_file: str, topic: str, doc_type: str
+        self, input_file: str, topics: list[str], doc_type: str
     ) -> List[dict]:
         input_file = Path(input_file)
         paper_id = input_file.stem.split(".")[0]
@@ -428,13 +438,16 @@ class HaystackPreprocessor:
                 "paper_id": paper_id,
                 "cosmos_object_id": cosmos_object_id,
                 "doc_type": doc_type,
-                "topic": topic,
+                "topic_list": topics,
                 "text_content": content,
+                "hashed_text": get_hash(content),
             }
         )
         return outputs
 
-    def run(self, input_file: Path, topic: Topic, doc_type: DocType) -> List[dict]:
+    def run(
+        self, input_file: Path, topics: list[Topic], doc_type: DocType
+    ) -> List[dict]:
         """Use haystack preprocessing to preprocess one file.
 
         Args:
@@ -444,6 +457,6 @@ class HaystackPreprocessor:
         """
 
         if doc_type == "paragraph":
-            return self._process_paragraph_files(input_file, topic)
+            return self._process_paragraph_files(input_file, topics)
         else:
-            return self._process_fig_and_table_files(input_file, topic, doc_type)
+            return self._process_fig_and_table_files(input_file, topics, doc_type)

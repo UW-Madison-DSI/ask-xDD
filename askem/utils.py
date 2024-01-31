@@ -74,18 +74,17 @@ def get_batch_with_cursor(
         return query.do()
 
 
-def count_docs(
+def get_ingested_ids(
     client: weaviate.Client,
     class_name: str = "Passage",
     batch_size: int = 5000,
 ) -> dict:
-    """Count the number of documents in a topic."""
+    """Get all ingested paper_ids from weaviate."""
 
     _tmp = client.query.aggregate(class_name).with_meta_count().do()
     n = _tmp["data"]["Aggregate"][class_name][0]["meta"]["count"]
 
-    paper_ids = {}
-    count_paragraphs = {}
+    paper_ids = set()
     cursor = None
 
     with tqdm(total=n) as progress_bar:
@@ -93,32 +92,22 @@ def count_docs(
             batch = get_batch_with_cursor(
                 client,
                 class_name,
-                ["topic", "paper_id"],
+                ["paper_id"],
                 batch_size,
                 cursor=cursor,
             )
 
+            # Exit condition
             if len(batch["data"]["Get"][class_name]) == 0:
                 break
 
             objects_list = batch["data"]["Get"][class_name]
             for obj in objects_list:
-                # Count paragraphs
-                count_paragraphs[obj["topic"]] = (
-                    count_paragraphs.get(obj["topic"], 0) + 1
-                )
-
-                # Store paper ids as set
-                paper_ids[obj["topic"]] = paper_ids.get(obj["topic"], set())
-                paper_ids[obj["topic"]].add(obj["paper_id"])
+                paper_ids.add(obj["paper_id"])
 
             cursor = batch["data"]["Get"][class_name][-1]["_additional"]["id"]
             progress_bar.update(batch_size)
 
-    counts = {
-        "n_paragraphs": count_paragraphs,
-        "n_papers": {k: len(v) for k, v in paper_ids.items()},
-    }
-    with open("document_counts.pkl", "wb") as f:
+    with open("tmp/ingested.pkl", "wb") as f:
         pickle.dump(paper_ids, f)
-    return counts
+    return paper_ids
