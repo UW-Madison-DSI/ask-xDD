@@ -19,7 +19,7 @@ def import_documents(
     client: weaviate.Client,
     input_dir: str,
     class_name: ClassName,
-    topic: Topic,
+    topics: list[Topic],
     doc_type: DocType,
     duplicate_check: bool = True,
     preprocessor: ASKEMPreprocessor = None,
@@ -31,7 +31,7 @@ def import_documents(
 
     input_files = Path(input_dir).glob("**/*.txt")
 
-    existing_docids = set([])
+    existing_docids = set()
     if duplicate_check:
         if not os.path.exists("document_counts.pkl"):
             print("Gathering document IDs ingested...")

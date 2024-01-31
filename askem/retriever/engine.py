@@ -5,11 +5,16 @@ from typing import Iterator
 import langchain
 import requests
 import tenacity
+
+# These are for docker
+from base import get_client, get_documents
+from data_models import Document
 from langchain.agents import initialize_agent
 from langchain.agents.agent_iterator import AgentExecutorIterator
 
-from .base import get_client, get_documents
-from .data_models import Document
+# These are for local dev testing
+# from .base import get_client, get_documents
+# from .data_models import Document
 
 WEAVIATE_CLIENT = get_client()
 
@@ -131,10 +136,10 @@ class ReactManager:
         return self.agent_executor.invoke({"input", question})["output"]
 
 
-# @tenacity.retry(
-#     wait=tenacity.wait_random_exponential(min=3, max=15),
-#     stop=tenacity.stop_after_attempt(6),
-# )
+@tenacity.retry(
+    wait=tenacity.wait_random_exponential(min=3, max=15),
+    stop=tenacity.stop_after_attempt(6),
+)
 def react_search(
     question: str,
     topic: str,

@@ -1,3 +1,4 @@
+import hashlib
 import os
 import pickle
 import secrets
@@ -10,6 +11,11 @@ from dotenv import load_dotenv
 from tqdm import tqdm
 
 load_dotenv()
+
+
+def get_hash(text: str) -> str:
+    """Get SHA256 hash of text for `hashed_text` property in Weaviate."""
+    return hashlib.sha256(text.encode()).hexdigest()
 
 
 def generate_api_key(length=32) -> str:
@@ -113,6 +119,6 @@ def count_docs(
         "n_paragraphs": count_paragraphs,
         "n_papers": {k: len(v) for k, v in paper_ids.items()},
     }
-    with open("document_counts.pkl", "wb") as fout:
-        pickle.dump(paper_ids, fout)
+    with open("document_counts.pkl", "wb") as f:
+        pickle.dump(paper_ids, f)
     return counts

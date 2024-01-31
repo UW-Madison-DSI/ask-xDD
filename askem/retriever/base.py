@@ -3,9 +3,8 @@ import logging
 import os
 
 import weaviate
+from data_models import Document
 from fastapi import HTTPException
-
-from .data_models import Document
 
 
 def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
@@ -21,10 +20,10 @@ def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
     return weaviate.Client(url, weaviate.auth.AuthApiKey(apikey))
 
 
-def get_v1_schema() -> dict:
+def get_schema(class_name: str = "Passage") -> dict:
     """Obtain the v1 schema."""
     return {
-        "class": "Passage",
+        "class": class_name,
         "description": "Paragraph chunk of a document",
         "vectorizer": "text2vec-transformers",
         "moduleConfig": {"text2vec-transformers": {"vectorizeClassName": False}},
@@ -32,11 +31,6 @@ def get_v1_schema() -> dict:
         "properties": [
             {
                 "name": "paper_id",
-                "dataType": ["text"],
-                "moduleConfig": {"text2vec-transformers": {"skip": True}},
-            },
-            {
-                "name": "topic",
                 "dataType": ["text"],
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
@@ -55,25 +49,30 @@ def get_v1_schema() -> dict:
                 "dataType": ["text"],
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
+            {
+                "name": "topic_list",
+                "dataType": ["text[]"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
+                "name": "hashed_text",
+                "description": "SHA256 hash of text_content",
+                "dataType": ["text"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
             {"name": "text_content", "dataType": ["text"]},
         ],
     }
 
 
-def init_retriever(client: weaviate.Client | None = None, version: int = 1) -> None:
+def init_retriever(client: weaviate.Client | None = None) -> None:
     """Initialize the retriever."""
 
     if client is None:
         client = get_client()
 
-    if version == 1:
-        schema = get_v1_schema()
-
+    schema = get_schema()
     client.schema.create_class(schema)
-
-    # Dump full schema to file
-    with open(f"./askem/schema/passage_v{version}.json", "w") as f:
-        json.dump(client.schema.get(schema["class"]), f, indent=2)
 
 
 def to_document(result: dict) -> Document:
