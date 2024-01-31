@@ -1,3 +1,4 @@
+document_counts.pkl
 ingest/
 .streamlit/
 *.db
