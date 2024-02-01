@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 ALL_TOPICS = [
     Topic(
-        name="covid",
+        name="xdd-covid-19",
         label="COVID-19",
         preset_questions_path="preset_questions/preset_covid_q.txt",
     ),
@@ -18,7 +18,7 @@ ALL_TOPICS = [
         preset_questions_path="preset_questions/preset_dolomites_q.txt",
     ),
     Topic(
-        name="climate_change",
+        name="climate-change-modeling",
         label="Climate Change",
         preset_questions_path="preset_questions/preset_climate_change_q.txt",
     ),
@@ -26,6 +26,11 @@ ALL_TOPICS = [
         name="criticalmaas",
         label="Critical MaaS",
         preset_questions_path="preset_questions/preset_critical_maas.txt",
+    ),
+    Topic(
+        name="geoarchive",
+        label="Geoarchive",
+        preset_questions_path="preset_questions/preset_geoarchive_q.txt",
     ),
 ]
 
@@ -83,10 +88,16 @@ async def main(app_settings: AppSettings) -> None:
 
     # Chat input
     if question := st.chat_input("Ask a question.", key="question"):
-        await search(question=question, **st.session_state.search_settings)
+        try:
+            await search(question=question, **st.session_state.search_settings)
+        except Exception as e:
+            st.error(f"Error occur when searching relevant documents: {e}")
 
     if run_from_preset:
-        await search(question=preset_question, **st.session_state.search_settings)
+        try:
+            await search(question=preset_question, **st.session_state.search_settings)
+        except Exception as e:
+            st.error(f"Error occur when searching relevant documents: {e}")
 
 
 if __name__ == "__main__":

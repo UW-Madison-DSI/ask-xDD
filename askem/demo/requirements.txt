@@ -1,5 +1,5 @@
 requests
-streamlit==1.27.2
+streamlit==1.30
 pybtex==0.24.0
 pybtex-apa-style
 python-dotenv==1.0.0

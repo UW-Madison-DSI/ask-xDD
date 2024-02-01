@@ -104,7 +104,7 @@ def render_doc(doc: dict) -> None:
     append_title(doc)
     chat_log(
         role="assistant",
-        content=doc["text"],
+        content=doc["text_content"],
         container="expander",
         avatar="📄",
         title=f"{doc['title']} [{doc['citation']}]",

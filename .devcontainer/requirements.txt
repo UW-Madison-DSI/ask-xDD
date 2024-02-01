@@ -21,3 +21,4 @@ streamlit
 trulens_eval==0.20.0
 unicodedata2
 weaviate-client==3.25.3
+pytest-asyncio

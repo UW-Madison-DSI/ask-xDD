@@ -53,14 +53,13 @@ async def react_streaming(query: ReactQuery) -> dict:
     logging.debug(f"Accessing react streaming route with: {query}")
 
     search_config = query.model_dump(exclude_none=True)
-    entry_query = search_config.pop("question")
+    question = search_config.pop("question")
     openai_model_name = search_config.pop("openai_model_name")
     chain = ReactManager(
-        entry_query=entry_query,
         openai_model_name=openai_model_name,
         search_config=search_config,
     )
-    step_iterator = chain.get_iterator()
+    step_iterator = chain.get_iterator(question=question)
 
     def _formatted_iterator():
         for step in step_iterator:
