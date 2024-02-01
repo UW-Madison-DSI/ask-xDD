@@ -76,7 +76,7 @@ class WeaviateIngester:
         paragraphs = list(chain(*paragraphs))  # Flatten
 
         # Push docs to weaviate
-        self.client.batch.configure(batch_size=1024, dynamic=True)
+        self.client.batch.configure(batch_size=128, dynamic=True)
         with self.client.batch as batch:
             for doc in paragraphs:
                 batch.add_data_object(data_object=doc, class_name=self.class_name)
