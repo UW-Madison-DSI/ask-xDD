@@ -125,7 +125,7 @@ class ReactManager:
         # Collect used documents
         self.used_docs.extend(relevant_docs)
         self.latest_used_docs = relevant_docs
-        return "\n\n".join([r.text for r in relevant_docs])
+        return "\n\n".join([r.text_content for r in relevant_docs])
 
     def get_iterator(self, question: str) -> AgentExecutorIterator:
         """ReAct iterator."""

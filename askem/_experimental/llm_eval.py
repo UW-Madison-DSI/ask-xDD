@@ -25,7 +25,7 @@ class RAG:
 
     @instrument
     def retrieve(self, query: str) -> list:
-        return [doc.text for doc in self.used_docs]
+        return [doc.text_content for doc in self.used_docs]
 
     @instrument
     def generate_completion(self, query: str, context_str: list) -> str:

@@ -4,7 +4,8 @@ from pydantic import BaseModel, validator
 
 
 class ClassName(str, Enum):
-    PASSAGE = "Passage"
+    PASSAGE = "Passage"  # Deprecating
+    PARAGRAPH = "Paragraph"
 
 
 class DocType(str, Enum):
@@ -18,10 +19,11 @@ class DocType(str, Enum):
 class Topic(str, Enum):
     """Topic enum, must match with xDD dataset values and Weaviate topics."""
 
-    COVID = "covid"
+    COVID = "xdd-covid-19"
     DOLOMITES = "dolomites"
-    CLIMATE_CHANGE = "climate_change"
+    CLIMATE_CHANGE = "climate-change-modeling"
     CRITICAL_MAAS = "criticalmaas"
+    GEOARCHIVE = "geoarchive"
 
 
 class BaseQuery(BaseModel):
@@ -58,29 +60,34 @@ class Document(BaseModel):
 
     Args:
         paper_id: xdd document id
-        topic: document topic
+        preprocessor_id: preprocessor id
+        topic_list: list of document topic
         doc_type: document type
-        text: paragraph text
+        text_content: paragraph text
         cosmos_object_id: cosmos object id
         distance: distance to query vector
     """
 
     paper_id: str
-    topic: Topic | str
-    doc_type: DocType | str
-    text: str
+    preprocessor_id: str
+    doc_type: str
+    topic_list: list[str]
+    text_content: str
+    hashed_text: str | None = None
     cosmos_object_id: str | None = None
     distance: float | None = None
 
-    @validator("topic")
+    @validator("topic_list")
     @classmethod
-    def check_and_normalize_topic(cls, v: str):
-        v = v.lower()
-        if v in ["covid-19", "covid", "xdd-covid-19"]:
-            v = Topic.COVID
-
-        assert v.upper() in Topic.__members__, f"{v=} is not a valid topic"
-        return Topic(v)
+    def check_and_normalize_topic(cls, v: list[str]):
+        normalized = []
+        for topic in v:
+            if topic in ["covid-19", "covid", "xdd-covid-19"]:
+                topic = Topic.COVID
+            if isinstance(topic, str):
+                topic = Topic(topic)
+            normalized.append(topic)
+        return normalized
 
     @validator("doc_type")
     @classmethod

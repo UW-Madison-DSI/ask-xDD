@@ -1,10 +1,11 @@
-import json
 import logging
 import os
 
 import weaviate
-from data_models import Document
+from data_models import DocType, Document, Topic
 from fastapi import HTTPException
+
+WEAVIATE_CLASS_NAME = os.getenv("WEAVIATE_CLASS_NAME")
 
 
 def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
@@ -20,7 +21,7 @@ def get_client(url: str = None, apikey: str = None) -> weaviate.Client:
     return weaviate.Client(url, weaviate.auth.AuthApiKey(apikey))
 
 
-def get_schema(class_name: str = "Passage") -> dict:
+def get_schema(class_name: str) -> dict:
     """Obtain the v1 schema."""
     return {
         "class": class_name,
@@ -80,10 +81,12 @@ def to_document(result: dict) -> Document:
 
     return Document(
         paper_id=result["paper_id"],
-        topic=result["topic"],
-        cosmos_object_id=result["cosmos_object_id"],
+        preprocessor_id=result["preprocessor_id"],
         doc_type=result["doc_type"],
-        text=result["text_content"],
+        topic_list=result["topic_list"],
+        cosmos_object_id=result["cosmos_object_id"],
+        text_content=result["text_content"],
+        hashed_text=result["hashed_text"],
         distance=result["_additional"]["distance"],
     )
 
@@ -93,8 +96,8 @@ def get_documents(
     question: str,
     top_k: int = 5,
     distance: float | None = None,
-    topic: str | None = None,
-    doc_type: str | None = None,
+    topic: Topic | str | None = None,
+    doc_type: DocType | str | None = None,
     preprocessor_id: str | None = None,
     paper_ids: list[str] | None = None,
     move_to: str | None = None,
@@ -123,13 +126,16 @@ def get_documents(
         "paper_id",
         "cosmos_object_id",
         "preprocessor_id",
-        "topic",
+        "topic_list",
         "doc_type",
         "text_content",
+        "hashed_text",
     ]
 
     # ========== Build query: filtering, semantic search, limit ==========
-    results = client.query.get("Passage", output_fields).with_additional(["distance"])
+    results = client.query.get(WEAVIATE_CLASS_NAME, output_fields).with_additional(
+        ["distance"]
+    )
 
     # Filtering
     where_filter = {"operator": "And", "operands": []}
@@ -138,7 +144,7 @@ def get_documents(
     if topic is not None:
         logging.info(f"Filtering by topic: {topic}")
         where_filter["operands"].append(
-            {"path": ["topic"], "operator": "Equal", "valueText": topic}
+            {"path": ["topic_list"], "operator": "ContainsAny", "valueText": [topic]}
         )
 
     # by doc_type
@@ -176,7 +182,6 @@ def get_documents(
         results = results.with_where(where_filter)
 
     # Semantic search
-
     near_text_query = {"concepts": [question]}
 
     if distance is not None:
@@ -208,12 +213,16 @@ def get_documents(
     if "errors" in results:
         raise HTTPException(status_code=500, detail=results["errors"])
 
-    if "data" not in results or not results["data"]["Get"]["Passage"]:
+    if "data" not in results or not results["data"]["Get"][WEAVIATE_CLASS_NAME]:
         logging.info(f"No results found")
         logging.info(f"{results=}")
         raise HTTPException(status_code=404, detail=f"No results found: {results}")
 
-    logging.info(f"Retrieved {len(results['data']['Get']['Passage'])} results")
+    logging.info(
+        f"Retrieved {len(results['data']['Get'][WEAVIATE_CLASS_NAME])} results"
+    )
 
     # Convert results to Document and return
-    return [to_document(result) for result in results["data"]["Get"]["Passage"]]
+    return [
+        to_document(result) for result in results["data"]["Get"][WEAVIATE_CLASS_NAME]
+    ]
