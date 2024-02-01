@@ -5,7 +5,6 @@ from copy import deepcopy
 from pathlib import Path
 from typing import List, Optional, Protocol, Tuple, Union
 import hashlib
-
 from haystack import Pipeline
 from haystack.errors import HaystackError
 from haystack.nodes import PreProcessor, TextConverter
@@ -382,7 +381,7 @@ class HaystackPreprocessor:
     @staticmethod
     def _get_pipeline() -> Pipeline:
         text_converter = TextConverter(
-            remove_numeric_tables=True, valid_languages=["en"]
+            remove_numeric_tables=True, valid_languages=["en"], progress_bar=False
         )
         preprocessor = ModifiedPreProcessor(
             join_paragraphs=True,
@@ -392,6 +391,7 @@ class HaystackPreprocessor:
             split_by="passage",
             split_length=1,
             split_respect_sentence_boundary=False,
+            progress_bar=False,
         )
         pipeline = Pipeline()
         pipeline.add_node(text_converter, name="text_converter", inputs=["File"])
