@@ -96,6 +96,8 @@ class WeaviateIngester:
 
         for docid in batch_ids:
             text = get_text(docid)
+            if not text:
+                continue
             with open(f"{self.ingest_folder}/{docid}.txt", "w") as f:
                 f.write(text)
 
