@@ -1,8 +1,10 @@
 import weaviate
+import slack_sdk
+
 from askem.utils import get_ingested_ids
 from askem.preprocessing import HaystackPreprocessor
 from pathlib import Path
-from tqdm import tqdm
+from tqdm.contrib.slack import tqdm
 import os
 import pickle
 from multiprocessing import Pool
