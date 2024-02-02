@@ -10,7 +10,6 @@ import pickle
 from multiprocessing import Pool
 from pathlib import Path
 from itertools import chain
-
 from dotenv import load_dotenv
 from askem.elastic import get_text, DocumentTopicFactory, SET_NAMES
 import argparse
@@ -140,8 +139,28 @@ def main():
         ingested=ingested,
     )
 
-    ingester.ingest_all(batch_size=16)
+    ingester.ingest_all(batch_size=10)
+
+
+def send_slack_message(message: str) -> None:
+    """Send a message to TQDM Slack channel for monitoring."""
+
+    TQDM_SLACK_TOKEN = os.getenv("TQDM_SLACK_TOKEN")
+    TQDM_SLACK_CHANNEL = os.getenv("TQDM_SLACK_CHANNEL")
+    client = slack_sdk.WebClient(TQDM_SLACK_TOKEN)
+
+    try:
+        response = client.chat_postMessage(
+            channel=TQDM_SLACK_CHANNEL,
+            text=message,
+        )
+        assert response["message"]["text"] == message
+    except slack_sdk.errors.SlackApiError as e:
+        raise f"Error sending message: {e.response['error']}"
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        send_slack_message(f"Error: {e}")
