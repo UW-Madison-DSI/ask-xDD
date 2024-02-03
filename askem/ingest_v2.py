@@ -164,3 +164,4 @@ if __name__ == "__main__":
         main()
     except Exception as e:
         send_slack_message(f"Error: {e}")
+        pass
