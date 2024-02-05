@@ -117,7 +117,7 @@ class WeaviateIngester:
 
 
 def main():
-    """Ingest all documents from ElasticSerarch to Weaviate."""
+    """Ingest all documents from Elastic Search to Weaviate."""
 
     parser = argparse.ArgumentParser(description="Ingest documents to weaviate.")
     parser.add_argument(

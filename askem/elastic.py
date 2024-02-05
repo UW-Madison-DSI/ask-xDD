@@ -38,6 +38,7 @@ def get_text(docid: str) -> str:
     if "contents" not in article["_source"]:
         return None
 
+    contents = article["_source"]["contents"]
     if isinstance(contents, list):
         if not contents:
             return None
