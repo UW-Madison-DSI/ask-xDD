@@ -34,7 +34,9 @@ def get_text(docid: str) -> str:
     )
 
     article = client.get(id=docid, index="articles")
-    contents = article["_source"]["contents"]
+
+    if "contents" not in article["_source"]:
+        return None
 
     if isinstance(contents, list):
         if not contents:
