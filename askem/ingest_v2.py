@@ -1,6 +1,6 @@
 import weaviate
 import slack_sdk
-
+import logging
 from askem.utils import get_ingested_ids
 from askem.preprocessing import HaystackPreprocessor
 from pathlib import Path
@@ -13,6 +13,10 @@ from itertools import chain
 from dotenv import load_dotenv
 from askem.elastic import get_text, DocumentTopicFactory, SET_NAMES
 import argparse
+
+logging.basicConfig(
+    filename="error.log", level=logging.ERROR, format="%(asctime)s - %(message)s"
+)
 
 load_dotenv()
 MAX_CPU_COUNT = 4
@@ -96,11 +100,15 @@ class WeaviateIngester:
         self.ingest_folder.mkdir(parents=True, exist_ok=True)
 
         for docid in batch_ids:
-            text = get_text(docid)
-            if not text:
+            try:
+                text = get_text(docid)
+                if not text:
+                    continue
+                with open(f"{self.ingest_folder}/{docid}.txt", "w") as f:
+                    f.write(text)
+            except Exception as e:
+                logging.error(f"docid: {docid}, Error: {e}")
                 continue
-            with open(f"{self.ingest_folder}/{docid}.txt", "w") as f:
-                f.write(text)
 
 
 def main():
@@ -160,8 +168,4 @@ def send_slack_message(message: str) -> None:
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        send_slack_message(f"Error: {e}")
-        pass
+    main()
