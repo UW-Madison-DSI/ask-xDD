@@ -18,6 +18,10 @@ logging.basicConfig(
     filename="error.log", level=logging.ERROR, format="%(asctime)s - %(message)s"
 )
 
+logging.basicConfig(
+    filename="info.log", level=logging.INFO, format="%(asctime)s - %(message)s"
+)
+
 load_dotenv()
 MAX_CPU_COUNT = 4
 DOC_TYPE = "paragraph"  # Only support paragraph for now
@@ -103,6 +107,7 @@ class WeaviateIngester:
             try:
                 text = get_text(docid)
                 if not text:
+                    logging.info(f"docid: {docid} has no text.")
                     continue
                 with open(f"{self.ingest_folder}/{docid}.txt", "w") as f:
                     f.write(text)
