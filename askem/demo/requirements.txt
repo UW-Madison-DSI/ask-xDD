@@ -1,4 +1,4 @@
-requests
+requests==2.28.2
 streamlit==1.30
 pybtex==0.24.0
 pybtex-apa-style
@@ -7,4 +7,4 @@ openai==0.28.1
 bcrypt==4.0.1
 weaviate-client==3.17.0
 langchain==0.0.329
-httpx
+httpx==0.26.0
