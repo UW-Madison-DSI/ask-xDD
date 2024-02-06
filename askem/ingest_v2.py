@@ -107,7 +107,6 @@ class WeaviateIngester:
             try:
                 text = get_text(docid)
                 if not text:
-                    logging.info(f"docid: {docid} has no text.")
                     continue
                 with open(f"{self.ingest_folder}/{docid}.txt", "w") as f:
                     f.write(text)

@@ -1,6 +1,7 @@
 import pickle
 import requests
 import os
+import logging
 from tqdm import tqdm
 import elasticsearch
 
@@ -36,11 +37,13 @@ def get_text(docid: str) -> str:
     article = client.get(id=docid, index="articles")
 
     if "contents" not in article["_source"]:
+        logging.info(f"docid: {docid} has no contents.")
         return None
 
     contents = article["_source"]["contents"]
     if isinstance(contents, list):
         if not contents:
+            logging.info(f"docid: {docid} has no text in content.")
             return None
         contents = contents[0]
     return contents
