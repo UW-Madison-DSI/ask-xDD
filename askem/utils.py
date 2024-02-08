@@ -42,7 +42,7 @@ def get_batch_with_cursor(
 
 def get_ingested_ids(
     client: weaviate.Client,
-    class_name: str = "Passage",
+    class_name: str = "Paragraph",
     batch_size: int = 5000,
 ) -> set:
     """Get all ingested paper_ids from weaviate."""
@@ -77,3 +77,42 @@ def get_ingested_ids(
     with open("tmp/ingested.pkl", "wb") as f:
         pickle.dump(paper_ids, f)
     return paper_ids
+
+
+def get_id_topics_from_weaviate(
+    client: weaviate.Client,
+    class_name: str = "Paragraph",
+    batch_size: int = 5000,
+) -> dict:
+    """Get all paper_ids and their topics from weaviate."""
+
+    _tmp = client.query.aggregate(class_name).with_meta_count().do()
+    n = _tmp["data"]["Aggregate"][class_name][0]["meta"]["count"]
+
+    id2topics = {}
+    cursor = None
+
+    with tqdm(total=n) as progress_bar:
+        while True:
+            batch = get_batch_with_cursor(
+                client,
+                class_name,
+                ["paper_id", "topic_list"],
+                batch_size,
+                cursor=cursor,
+            )
+
+            # Exit condition
+            if len(batch["data"]["Get"][class_name]) == 0:
+                break
+
+            objects_list = batch["data"]["Get"][class_name]
+            for obj in objects_list:
+                id2topics[obj["paper_id"]] = obj["topic_list"]
+
+            cursor = batch["data"]["Get"][class_name][-1]["_additional"]["id"]
+            progress_bar.update(batch_size)
+
+    with open("tmp/id2topics_weaviate.pkl", "wb") as f:
+        pickle.dump(id2topics, f)
+    return id2topics
