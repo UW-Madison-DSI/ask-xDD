@@ -24,7 +24,7 @@ ALL_TOPICS = [
     ),
     Topic(
         name="criticalmaas",
-        label="Critical MaaS",
+        label="CriticalMAAS",
         preset_questions_path="preset_questions/preset_critical_maas.txt",
     ),
     Topic(
