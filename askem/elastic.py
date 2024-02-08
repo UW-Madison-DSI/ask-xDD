@@ -37,13 +37,13 @@ def get_text(docid: str) -> str:
     article = client.get(id=docid, index="articles")
 
     if "contents" not in article["_source"]:
-        logging.info(f"docid: {docid} has no contents.")
+        logging.error(f"No contents found for {docid}")
         return None
 
     contents = article["_source"]["contents"]
     if isinstance(contents, list):
         if not contents:
-            logging.info(f"docid: {docid} has no text in content.")
+            logging.error(f"Contents is empty found for {docid}")
             return None
         contents = contents[0]
     return contents

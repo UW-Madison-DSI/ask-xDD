@@ -18,10 +18,6 @@ logging.basicConfig(
     filename="error.log", level=logging.ERROR, format="%(asctime)s - %(message)s"
 )
 
-logging.basicConfig(
-    filename="info.log", level=logging.INFO, format="%(asctime)s - %(message)s"
-)
-
 load_dotenv()
 MAX_CPU_COUNT = 4
 DOC_TYPE = "paragraph"  # Only support paragraph for now
@@ -85,7 +81,7 @@ class WeaviateIngester:
         paragraphs = list(chain(*paragraphs))  # Flatten
 
         # Push docs to weaviate
-        self.client.batch.configure(batch_size=128, dynamic=True)
+        self.client.batch.configure(batch_size=64, dynamic=True)
         with self.client.batch as batch:
             for doc in paragraphs:
                 batch.add_data_object(data_object=doc, class_name=self.class_name)
@@ -107,6 +103,7 @@ class WeaviateIngester:
             try:
                 text = get_text(docid)
                 if not text:
+                    logging.error(f"docid: {docid}, Error: No text found.")
                     continue
                 with open(f"{self.ingest_folder}/{docid}.txt", "w") as f:
                     f.write(text)
