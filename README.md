@@ -2,15 +2,15 @@
 
 Askem retrieval-augmented generation prototype
 
-Repo: <https://github.com/AFIDSI/askem>
+Repo: <https://github.com/UW-Madison-DSI/ask-xDD>
 
-Demo: <http://cosmos0001.chtc.wisc.edu:8501/>
+Demo: <http://cosmos0002.chtc.wisc.edu:8501/>
 
-API Base URL: <http://cosmos0001.chtc.wisc.edu:4502/>
+API Base URL: <http://cosmos0002.chtc.wisc.edu:4502/>
 
 ## For end-users
 
-The end users of our system are ASKEM performers who access it using REST API. You can also visit our [demo](http://cosmos0001.chtc.wisc.edu:8501/) to try how this system can power a traceable COVID-19 search engine.
+The end users of our system are ASKEM performers who access it using REST API. You can also visit our [demo](http://cosmos0002.chtc.wisc.edu:8501/) to try how this system can power a traceable COVID-19 search engine.
 
 ### Release notes (v0.3.0)
 
@@ -26,7 +26,7 @@ The end users of our system are ASKEM performers who access it using REST API. Y
 
 The retriever uses an embedding-based search engine, specifically [Dense Passage Retriever (DPR)](https://arxiv.org/abs/2004.04906), to query relevant documents from the XDD database. Currently, it returns `paragraphs` as documents. Future updates may include `figures`, `tables`, and `equations`. The API accepts **POST** requests and requires an **APIKEY**. ASKEM performers can obtain an API key by contacting [me](mailto:jason.lo@wisc.edu).
 
-Base URL: <http://cosmos0001.chtc.wisc.edu:4502>
+Base URL: <http://cosmos0002.chtc.wisc.edu:4502>
 
 There are 3 endpoints available:
 
@@ -42,7 +42,7 @@ Both `vector` and `hybrid` endpoints use similar format for request and response
 import requests
 
 APIKEY = "insert_api_key_here"
-ENDPOINT = "http://cosmos0001.chtc.wisc.edu:4502/hybrid"
+ENDPOINT = "BASE_URL/hybrid"
 
 headers = {"Content-Type": "application/json", "Api-Key": APIKEY}
 data = {
@@ -99,7 +99,7 @@ response.json()
 import requests
 
 APIKEY = "insert_api_key_here"
-ENDPOINT = "http://cosmos0001.chtc.wisc.edu:4502/react"
+ENDPOINT = "BASE_URL/react"
 
 headers = {"Content-Type": "application/json", "Api-Key": APIKEY}
 data = {
