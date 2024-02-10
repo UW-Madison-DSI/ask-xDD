@@ -1,36 +1,73 @@
-import weaviate
-import slack_sdk
-import logging
-from askem.utils import get_ingested_ids
-from askem.preprocessing import HaystackPreprocessor
-from pathlib import Path
-from tqdm.contrib.slack import tqdm
 import os
+import re
 import pickle
+import logging
+import argparse
 from multiprocessing import Pool
 from pathlib import Path
 from itertools import chain
+
 from dotenv import load_dotenv
+import weaviate
+import slack_sdk
+from tqdm.contrib.slack import tqdm
+
+from askem.utils import get_ingested_ids
+from askem.preprocessing import HaystackPreprocessor
 from askem.elastic import get_text, DocumentTopicFactory, SET_NAMES
-import argparse
 
 logging.basicConfig(
     filename="error.log", level=logging.ERROR, format="%(asctime)s - %(message)s"
 )
 
 load_dotenv()
-MAX_CPU_COUNT = 4
-DOC_TYPE = "paragraph"  # Only support paragraph for now
-
-with open("tmp/id2topics.pkl", "rb") as f:
-    ID2TOPICS = pickle.load(f)
 
 
 def process_file(file: Path) -> list[dict]:
     """Process a file and return a list of documents."""
-    topics = ID2TOPICS[file.stem]
+
+    with open("tmp/id2topics.pkl", "rb") as f:
+        idstopics = pickle.load(f)
+
+    topics = idstopics[file.stem]
     preprocessor = HaystackPreprocessor()
-    return preprocessor.run(input_file=file, topics=topics, doc_type=DOC_TYPE)
+    return preprocessor.run(input_file=file, topics=topics, doc_type="paragraph")
+
+
+def get_id(text: str) -> str | None:
+    return re.findall(r"\b[0-9a-f]{24}\b", text)[0]
+
+
+def parse_error_log(file: str = "error.log") -> dict:
+    """Sort and deduplicate error logs into `empty`, `api_error`, and `other`."""
+
+    with open(file, "r") as f:
+        errors = f.readlines()
+
+    parsed = {"empty": [], "api_error": [], "other": []}
+
+    for line in errors:
+        # Find Empty
+        if (
+            ("Contents is empty found for" in line)
+            or ("No text found" in line)
+            or ("No contents found" in line)
+        ):
+            parsed["empty"].append(get_id(line))
+
+        # Find API error
+        elif ("Error: ApiError" in line) or ("Error: NotFoundError" in line):
+            parsed["api_error"].append(get_id(line))
+
+        # Other (Just get the line instead of id)
+        else:
+            parsed["other"].append(line)
+
+    # Remove duplicates
+    for k, v in parsed.items():
+        parsed[k] = list(set(v))
+
+    return parsed
 
 
 class WeaviateIngester:
@@ -106,7 +143,7 @@ class WeaviateIngester:
                     logging.error(f"docid: {docid}, Error: No text found.")
                     continue
                 with open(f"{self.ingest_folder}/{docid}.txt", "w") as f:
-                    f.write(text)
+                    f.write(str(text))
             except Exception as e:
                 logging.error(f"docid: {docid}, Error: {e}")
                 continue
@@ -137,6 +174,11 @@ def main():
     else:
         id2topics_factory = DocumentTopicFactory(set_names=SET_NAMES)
         id2topics = id2topics_factory.run()
+
+    # Skip empty documents (TODO: Remove this after fixing the empty documents in elastic search)
+    with open("tmp/empty_ids.pkl", "rb") as f:
+        empty_ids = pickle.load(f)
+    id2topics = {k: v for k, v in id2topics.items() if k not in empty_ids}
 
     # A set of ingested doc_ids from the current weaviate database
     ingested = get_ingested_ids(client=client, class_name=CLASS_NAME)
