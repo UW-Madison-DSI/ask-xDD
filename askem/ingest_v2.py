@@ -104,10 +104,10 @@ class WeaviateIngester:
         """Ingest all documents to weaviate."""
         progress_bar = tqdm(total=len(self.awaiting_ingest_ids))
         while self.awaiting_ingest_ids:
-            self.ingest_batch(batch_size=batch_size)
-            progress_bar.update(batch_size)
+            n = self.ingest_batch(batch_size=batch_size)
+            progress_bar.update(n)
 
-    def ingest_batch(self, batch_size: int) -> None:
+    def ingest_batch(self, batch_size: int) -> int:
         """Ingest a batch of documents to weaviate."""
 
         # Convert docs to paragraphs
@@ -125,6 +125,7 @@ class WeaviateIngester:
 
         self.purge_ingest_folder()
         self.ingested.update(docids)
+        return len(docids)
 
     def purge_ingest_folder(self) -> None:
         """Purge the ingest folder."""
