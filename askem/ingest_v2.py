@@ -70,6 +70,37 @@ def parse_error_log(file: str = "error.log") -> dict:
     return parsed
 
 
+def update_empty_ids_file(empty_ids_pickle: str, error_log: str = "error.log") -> None:
+    """Update the empty_ids.pkl file with new empty ids from the error log."""
+
+    with open(empty_ids_pickle, "rb") as f:
+        empty_ids = pickle.load(f)
+
+    parsed = parse_error_log(error_log)
+    empty_ids.extend(parsed["empty"])
+    empty_ids = list(set(empty_ids))
+
+    with open(empty_ids_pickle, "wb") as f:
+        pickle.dump(empty_ids, f)
+
+
+def send_slack_message(message: str) -> None:
+    """Send a message to TQDM Slack channel for monitoring."""
+
+    TQDM_SLACK_TOKEN = os.getenv("TQDM_SLACK_TOKEN")
+    TQDM_SLACK_CHANNEL = os.getenv("TQDM_SLACK_CHANNEL")
+    client = slack_sdk.WebClient(TQDM_SLACK_TOKEN)
+
+    try:
+        response = client.chat_postMessage(
+            channel=TQDM_SLACK_CHANNEL,
+            text=message,
+        )
+        assert response["message"]["text"] == message
+    except slack_sdk.errors.SlackApiError as e:
+        raise f"Error sending message: {e.response['error']}"
+
+
 class WeaviateIngester:
     def __init__(
         self,
@@ -193,22 +224,9 @@ def main():
 
     ingester.ingest_all(batch_size=10)
 
-
-def send_slack_message(message: str) -> None:
-    """Send a message to TQDM Slack channel for monitoring."""
-
-    TQDM_SLACK_TOKEN = os.getenv("TQDM_SLACK_TOKEN")
-    TQDM_SLACK_CHANNEL = os.getenv("TQDM_SLACK_CHANNEL")
-    client = slack_sdk.WebClient(TQDM_SLACK_TOKEN)
-
-    try:
-        response = client.chat_postMessage(
-            channel=TQDM_SLACK_CHANNEL,
-            text=message,
-        )
-        assert response["message"]["text"] == message
-    except slack_sdk.errors.SlackApiError as e:
-        raise f"Error sending message: {e.response['error']}"
+    # Post ingest
+    update_empty_ids_file(empty_ids_pickle="tmp/empty_ids.pkl", error_log="error.log")
+    send_slack_message("Done ingesting documents to Weaviate.")
 
 
 if __name__ == "__main__":
