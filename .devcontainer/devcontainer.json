@@ -11,6 +11,6 @@
 	"remoteUser": "root",
 	"postCreateCommand": "bash .devcontainer/post-create.sh",
 	"runArgs": [
-		"--network=askem_default"
+		"--network=host"
 	]
 }
