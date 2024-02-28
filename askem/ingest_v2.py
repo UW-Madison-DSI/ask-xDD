@@ -17,7 +17,7 @@ from askem.preprocessing import HaystackPreprocessor
 from askem.elastic import get_text, DocumentTopicFactory, SET_NAMES
 
 logging.basicConfig(
-    filename="error.log", level=logging.ERROR, format="%(asctime)s - %(message)s"
+    filename="tmp/error.log", level=logging.ERROR, format="%(asctime)s - %(message)s"
 )
 
 load_dotenv()
@@ -38,7 +38,7 @@ def get_id(text: str) -> str | None:
     return re.findall(r"\b[0-9a-f]{24}\b", text)[0]
 
 
-def parse_error_log(file: str = "error.log") -> dict:
+def parse_error_log(file: str) -> dict:
     """Sort and deduplicate error logs into `empty`, `api_error`, and `other`."""
 
     with open(file, "r") as f:
@@ -70,14 +70,22 @@ def parse_error_log(file: str = "error.log") -> dict:
     return parsed
 
 
-def update_empty_ids_file(empty_ids_pickle: str, error_log: str = "error.log") -> None:
+def update_empty_ids_file(empty_ids_pickle: str, error_log: str) -> None:
     """Update the empty_ids.pkl file with new empty ids from the error log."""
 
-    with open(empty_ids_pickle, "rb") as f:
-        empty_ids = pickle.load(f)
+    # Append or create new empty_ids.pkl
+    if not Path(empty_ids_pickle).exists():
+        empty_ids = []
+    else:
+        with open(empty_ids_pickle, "rb") as f:
+            empty_ids = pickle.load(f)
 
+    # Parse error log to get empty ids
     parsed = parse_error_log(error_log)
+
     empty_ids.extend(parsed["empty"])
+
+    # Deduplicate
     empty_ids = list(set(empty_ids))
 
     with open(empty_ids_pickle, "wb") as f:
@@ -225,7 +233,9 @@ def main():
     ingester.ingest_all(batch_size=10)
 
     # Post ingest
-    update_empty_ids_file(empty_ids_pickle="tmp/empty_ids.pkl", error_log="error.log")
+    update_empty_ids_file(
+        empty_ids_pickle="tmp/empty_ids.pkl", error_log="tmp/error.log"
+    )
     send_slack_message("Done ingesting documents to Weaviate.")
 
 

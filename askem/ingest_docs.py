@@ -1,3 +1,5 @@
+# Deprecated: This script is deprecated and is not used in the current pipeline.
+
 import logging
 import os
 import pickle
