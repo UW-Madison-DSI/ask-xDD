@@ -11,7 +11,7 @@
         {
             "label": "stream ingest log",
             "type": "shell",
-            "command": "tail -f -n 10 ingest.log"
+            "command": "tail -f -n 10 tmp/ingest.log"
         }
     ]
 }

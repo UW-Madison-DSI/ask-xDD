@@ -216,8 +216,14 @@ def main():
         id2topics = id2topics_factory.run()
 
     # Skip empty documents (TODO: Remove this after fixing the empty documents in elastic search)
-    with open("tmp/empty_ids.pkl", "rb") as f:
-        empty_ids = pickle.load(f)
+    # Append or create new empty_ids.pkl
+    empty_ids_pickle = "tmp/empty_ids.pkl"
+    if not Path(empty_ids_pickle).exists():
+        empty_ids = []
+    else:
+        with open(empty_ids_pickle, "rb") as f:
+            empty_ids = pickle.load(f)
+
     id2topics = {k: v for k, v in id2topics.items() if k not in empty_ids}
 
     # A set of ingested doc_ids from the current weaviate database
