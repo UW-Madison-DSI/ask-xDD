@@ -1,20 +1,20 @@
-import os
-import re
-import pickle
-import logging
 import argparse
+import logging
+import os
+import pickle
+import re
+from itertools import chain
 from multiprocessing import Pool
 from pathlib import Path
-from itertools import chain
 
-from dotenv import load_dotenv
-import weaviate
 import slack_sdk
+import weaviate
+from dotenv import load_dotenv
 from tqdm.contrib.slack import tqdm
 
-from askem.utils import get_ingested_ids
+from askem.elastic import DocumentTopicFactory, get_text
 from askem.preprocessing import HaystackPreprocessor
-from askem.elastic import get_text, DocumentTopicFactory, SET_NAMES
+from askem.utils import get_ingested_ids
 
 logging.basicConfig(
     filename="tmp/error.log", level=logging.ERROR, format="%(asctime)s - %(message)s"
@@ -212,7 +212,7 @@ def main():
         with open("tmp/id2topics.pkl", "rb") as f:
             id2topics = pickle.load(f)
     else:
-        id2topics_factory = DocumentTopicFactory(set_names=SET_NAMES)
+        id2topics_factory = DocumentTopicFactory()
         id2topics = id2topics_factory.run()
 
     # Skip empty documents (TODO: Remove this after fixing the empty documents in elastic search)

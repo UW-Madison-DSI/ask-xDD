@@ -1,9 +1,10 @@
-import pickle
-import requests
-import os
 import logging
-from tqdm import tqdm
+import os
+import pickle
+
 import elasticsearch
+import requests
+from tqdm import tqdm
 
 ID2TOPIC_PATH = "tmp/id2topics.pkl"
 SET_NAMES = [
@@ -64,7 +65,9 @@ def invert(d: dict[str : list[str]]) -> dict[str : list[str]]:
 class DocumentTopicFactory:
     """A factory to create document-topic mapping."""
 
-    def __init__(self, set_names: list[str]) -> None:
+    def __init__(self, set_names: list[str] | None = None) -> None:
+        if set_names is None:
+            set_names = SET_NAMES
         self.set_names = set_names
 
         self.id2topics: dict[str : list[str]] = {}
@@ -89,14 +92,17 @@ class DocumentTopicFactory:
         """Get all ids for a topic."""
 
         next_page = f"https://xdd.wisc.edu/api/articles?set={topic}&full_results=true&fields=_gddid"
-        progress_bar = tqdm()
+
+        hits = requests.get(next_page).json()["success"]["hits"]
+
+        progress_bar = tqdm(total=hits, desc=topic, unit="ids")
         ids = []
         while next_page:
             response = requests.get(next_page)
             data = response.json()
             ids.extend(self._parse_response(data))
             next_page = data["success"]["next_page"]
-            progress_bar.update(1)
+            progress_bar.update(len(data["success"]["data"]))
         return ids
 
     def __str__(self) -> str:
