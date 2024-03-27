@@ -8,7 +8,7 @@ services:
       - '8080'
       - --scheme
       - http
-    image: semitechnologies/weaviate:1.22.2
+    image: cr.weaviate.io/semitechnologies/weaviate:1.22.2
     volumes:
       - /var/weaviate:/var/lib/weaviate
     ports:
