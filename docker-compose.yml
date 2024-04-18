@@ -13,6 +13,7 @@ services:
       - /var/weaviate:/var/lib/weaviate
     ports:
       - 8080:8080
+      - 50051:50051  #gRPC port
     restart: on-failure:0
     environment:
       CLUSTER_HOSTNAME: 'node1'
