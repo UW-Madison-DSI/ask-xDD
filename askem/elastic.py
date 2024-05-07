@@ -1,9 +1,11 @@
-import pickle
-import requests
-import os
 import logging
-from tqdm import tqdm
+import os
+import pickle
+
 import elasticsearch
+import requests
+import tenacity
+from tqdm import tqdm
 
 ID2TOPIC_PATH = "tmp/id2topics.pkl"
 SET_NAMES = [
@@ -61,10 +63,27 @@ def invert(d: dict[str : list[str]]) -> dict[str : list[str]]:
     return inverted
 
 
+@tenacity.retry(wait=tenacity.wait_fixed(60), stop=tenacity.stop_after_attempt(5))
+def get_xdd_ids(url: str) -> list[str]:
+    """Get all ids for a topic (only one page)."""
+
+    response = requests.get(url)
+    response.raise_for_status()
+    data = response.json()
+
+    if "success" not in data:
+        logging.error(f"Error when calling xdd articles API at {url}: {data}")
+        raise ValueError("Unsuccessful xDD request.")
+
+    return data
+
+
 class DocumentTopicFactory:
     """A factory to create document-topic mapping."""
 
-    def __init__(self, set_names: list[str]) -> None:
+    def __init__(self, set_names: list[str] | None = None) -> None:
+        if set_names is None:
+            set_names = SET_NAMES
         self.set_names = set_names
 
         self.id2topics: dict[str : list[str]] = {}
@@ -88,15 +107,22 @@ class DocumentTopicFactory:
     def get_ids(self, topic: str) -> list[str]:
         """Get all ids for a topic."""
 
-        next_page = f"https://xdd.wisc.edu/api/articles?set={topic}&full_results=true&fields=_gddid"
-        progress_bar = tqdm()
+        # Get total
+        url = f"https://xdd.wisc.edu/api/articles?set={topic}&full_results=true&fields=_gddid&per_page=1000"
+        data = get_xdd_ids(url)
+        hits = data["success"]["hits"]
+
+        progress_bar = tqdm(total=hits, desc=topic, unit="ids")
         ids = []
-        while next_page:
-            response = requests.get(next_page)
-            data = response.json()
-            ids.extend(self._parse_response(data))
-            next_page = data["success"]["next_page"]
-            progress_bar.update(1)
+        while url:
+            data = get_xdd_ids(url)
+            ids.extend(self.data_to_ids(data))
+
+            if "next_page" not in data["success"]:
+                break
+
+            url = data["success"]["next_page"]
+            progress_bar.update(len(data["success"]["data"]))
         return ids
 
     def __str__(self) -> str:
@@ -105,11 +131,8 @@ class DocumentTopicFactory:
         )
 
     @staticmethod
-    def _parse_response(data: dict) -> list[str]:
+    def data_to_ids(data: dict) -> list[str]:
         """Get all ids from a xDD json response."""
-
-        if "success" not in data:
-            raise ValueError("Not a valid xDD response.")
 
         docs = data["success"]["data"]
         return [doc["_gddid"] for doc in docs]

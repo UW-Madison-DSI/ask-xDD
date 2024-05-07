@@ -4,7 +4,7 @@ Askem retrieval-augmented generation prototype
 
 Repo: <https://github.com/UW-Madison-DSI/ask-xDD>
 
-Demo: <http://cosmos0002.chtc.wisc.edu:8501/>
+Demo: <https://xdddev.chtc.io/ask-xdd-demo>
 
 API Base URL: <http://cosmos0002.chtc.wisc.edu:4502/>
 
