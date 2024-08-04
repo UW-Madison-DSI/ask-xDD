@@ -3,6 +3,7 @@ import logging
 import os
 import pickle
 import re
+from functools import lru_cache
 from itertools import chain
 from multiprocessing import Pool
 from pathlib import Path
@@ -23,13 +24,18 @@ logging.basicConfig(
 load_dotenv()
 
 
+@lru_cache
+def load_cached_id2topics() -> dict[str, list[str]]:
+    """Load the cached id2topics.pkl file."""
+    with open("tmp/id2topics.pkl", "rb") as f:
+        return pickle.load(f)
+
+
 def process_file(file: Path) -> list[dict]:
     """Process a file and return a list of documents."""
 
-    with open("tmp/id2topics.pkl", "rb") as f:
-        idstopics = pickle.load(f)
-
-    topics = idstopics[file.stem]
+    id2topics = load_cached_id2topics()
+    topics = id2topics[file.stem]
     preprocessor = HaystackPreprocessor()
     return preprocessor.run(input_file=file, topics=topics, doc_type="paragraph")
 
@@ -190,7 +196,14 @@ class WeaviateIngester:
 
 
 def main():
-    """Ingest all documents from Elastic Search to Weaviate."""
+    """Ingest all documents from Elastic Search to Weaviate.
+
+    Step 1. Get or create a new id2topics.pkl file.
+    Step 2. Skip any doc_ids that are stored in empty_ids.pkl.
+    Step 3. Skip any existing doc_ids in Weaviate.
+
+
+    """
 
     parser = argparse.ArgumentParser(description="Ingest documents to weaviate.")
     parser.add_argument(
@@ -209,11 +222,13 @@ def main():
 
     # A document-id to topics mapping in all selected `SET_NAMES` created from elastic search service
     if args.resume:
-        with open("tmp/id2topics.pkl", "rb") as f:
-            id2topics = pickle.load(f)
+        id2topics = load_cached_id2topics()
     else:
+        # Create a new id2topics.pkl file
         id2topics_factory = DocumentTopicFactory()
         id2topics = id2topics_factory.run()
+        with open("tmp/id2topics.pkl", "wb") as f:
+            pickle.dump(id2topics, f)
 
     # Skip empty documents (TODO: Remove this after fixing the empty documents in elastic search)
     # Append or create new empty_ids.pkl
@@ -236,7 +251,7 @@ def main():
         ingested=ingested,
     )
 
-    ingester.ingest_all(batch_size=10)
+    ingester.ingest_all(batch_size=32)
 
     # Post ingest
     update_empty_ids_file(
