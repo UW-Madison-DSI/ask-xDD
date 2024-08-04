@@ -376,7 +376,7 @@ class HaystackPreprocessor:
 
     @property
     def preprocessor_id(self) -> str:
-        return "haystack_v0.0.2"
+        return "haystack_v0.0.3"
 
     @staticmethod
     def _get_pipeline() -> Pipeline:
@@ -408,7 +408,7 @@ class HaystackPreprocessor:
         contents = [d.content for d in results["documents"]]
         adjusted_contents = adjust_paragraphs(contents)
 
-        for content in adjusted_contents:
+        for i, content in enumerate(adjusted_contents):
             outputs.append(
                 {
                     "preprocessor_id": self.preprocessor_id,
@@ -417,6 +417,7 @@ class HaystackPreprocessor:
                     "topic_list": topics,
                     "text_content": content,
                     "hashed_text": get_hash(content),
+                    "paragraph_order": i
                 }
             )
 

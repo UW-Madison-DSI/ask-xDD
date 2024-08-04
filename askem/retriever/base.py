@@ -56,6 +56,11 @@ def get_schema(class_name: str) -> dict:
                 "moduleConfig": {"text2vec-transformers": {"skip": True}},
             },
             {
+                "name": "paragraph_order",
+                "dataType": ["int"],
+                "moduleConfig": {"text2vec-transformers": {"skip": True}},
+            },
+            {
                 "name": "hashed_text",
                 "description": "SHA256 hash of text_content",
                 "dataType": ["text"],
@@ -66,13 +71,15 @@ def get_schema(class_name: str) -> dict:
     }
 
 
-def init_retriever(client: weaviate.Client | None = None) -> None:
+def init_retriever(
+    client: weaviate.Client | None = None, class_name: str = "Paragraph"
+) -> None:
     """Initialize the retriever."""
 
     if client is None:
         client = get_client()
 
-    schema = get_schema()
+    schema = get_schema(class_name=class_name)
     client.schema.create_class(schema)
 
 
@@ -214,7 +221,7 @@ def get_documents(
         raise HTTPException(status_code=500, detail=results["errors"])
 
     if "data" not in results or not results["data"]["Get"][WEAVIATE_CLASS_NAME]:
-        logging.info(f"No results found")
+        logging.info("No results found")
         logging.info(f"{results=}")
         raise HTTPException(status_code=404, detail=f"No results found: {results}")
 
